@@ -1,0 +1,221 @@
+﻿@using Resources;
+@using System.Threading
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.Dispatch
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Edit;
+}
+
+<h2> @Resources.Metadata_UISection_Edit </h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Dispatch</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">@Resources.Metadata_UISection_References</div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Name, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "Name (Unique)" })
+                            @Html.ValidationMessageFor(model => model.Name)
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Dispatcher, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.Dispatcher, new { @class = "manageMaxLength", @maxlength = "500", @placeholder = "Dispatcher" })
+                            @Html.ValidationMessageFor(model => model.Dispatcher)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RefNo, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.RefNo, new { @class = "manageMaxLength", @maxlength = "50", @placeholder = "RefNo (Unique)" })
+                            @Html.ValidationMessageFor(model => model.RefNo)
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Date, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                           <div class="dateDiv" style="position: relative">
+                                <input class="dateTxt" type="text"  id="Date" name="Date" value="@ControllerHelper.ConvertDateTimeFromUtc(Model.Date, User.TimeZone())"
+                                       data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.MarketType, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("MarketType", new List<SelectListItem>
+                            {
+                                new SelectListItem{ Text="Export", Value = "Export", Selected = true},
+                                new SelectListItem{ Text="Domestic", Value = "Domestic" },
+                            })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">@Resources.Metadata_UISection_Relations</div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AccountId, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("AccountId")
+                            @Html.ValidationMessageFor(model => model.AccountId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SubAccountId, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("SubAccountId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.SubAccountId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ContactId, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ContactId")
+                            @Html.ValidationMessageFor(model => model.ContactId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OrderId, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("OrderId", string.Empty)
+                            @Html.ValidationMessageFor(model => model.OrderId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Notify, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.Notify, new { @class = "manageMaxLength", @maxlength = "500", @placeholder = "Notify" })
+                            @Html.ValidationMessageFor(model => model.Notify)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Consignee, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.Consignee, new { @class = "manageMaxLength", @maxlength = "500", @placeholder = "Consignee" })
+                            @Html.ValidationMessageFor(model => model.Consignee)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">@Resources.Metadata_UISection_FollowUp</div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DeliveryTerms, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.DeliveryTerms, new { @class = "manageMaxLength", @maxlength = "500", @placeholder = "Delivery and shipping terms" })
+                            @Html.ValidationMessageFor(model => model.DeliveryTerms)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PaymentTerms, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.PaymentTerms, new { @class = "manageMaxLength", @maxlength = "500", @placeholder = "Payment terms" })
+                            @Html.ValidationMessageFor(model => model.PaymentTerms)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SpecialTerms, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.SpecialTerms, new { @class = "manageMaxLength", @maxlength = "500", @placeholder = "Special terms" })
+                            @Html.ValidationMessageFor(model => model.SpecialTerms)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DeliveryDate, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                           <div class="dateDiv" style="position: relative">
+                                <input class="dateTxt" type="text"  id="DeliveryDate" name="DeliveryDate" value="@DateTime.Now"
+                                       data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DeliveryStatusId, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("DeliveryStatusId")
+                            @Html.ValidationMessageFor(model => model.DeliveryStatusId)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Remark History", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <textarea id="historyProgressRemark" name="historyProgressRemark" readonly> @Model.Remark </textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Remark, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.Remark, new { @class = "manageMaxLength", @maxlength = "500", @placeholder = "Remarks" })
+                            @Html.ValidationMessageFor(model => model.Remark)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">@Resources.Metadata_UISection_SystemInfo</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @(User.IsInRole("LogisticsAuthorize") ? Html.EditorFor(model => model.Authorized) : Html.DisplayFor(model => model.Authorized))
+                            @Html.ValidationMessageFor(model => model.Authorized)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" accesskey="S" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Dispatch")
+}

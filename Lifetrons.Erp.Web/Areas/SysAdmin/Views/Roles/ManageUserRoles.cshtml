@@ -1,0 +1,352 @@
+﻿@using Resources;
+@using System.ComponentModel
+@using Lifetrons.Erp.Helpers
+
+@{
+    ViewBag.Title = "ManageUserRoles";
+}
+
+<h2>Manage User Roles</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @*<h4>Roles</h4>*@
+        <hr />
+        <div class="form-group">
+            @Html.Label("User", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Hidden("userId", TempData["userId"].ToString())
+                @Html.Label(TempData["userName"].ToString())
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.Label("Can Edit", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["canEdit"]) id="canEdit" name="canEdit" type="checkbox" value="true">
+               
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Can Authorize", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["canAuthorize"]) id="canAuthorize" name="canAuthorize" type="checkbox" value="true">
+               
+            </div>
+        </div> *@
+        <hr />
+        <div class="form-group">
+            @Html.Label("PriceBook Manager", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["PriceBookManager"]) id="PriceBookManager" name="PriceBookManager" type="checkbox" value="true">
+                @*@Html.CheckBox("PriceBookManager",  Convert.ToBoolean(TempData["PriceBookManager"]))*@
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            @Html.Label("All Cases", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["AllCases"]) id="AllCases" name="AllCases" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("All Orders", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["AllOrders"]) id="AllOrders" name="AllOrders" type="checkbox" value="true">
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            @Html.Label("Team Level", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["TeamLevel"]) id="TeamLevel" name="TeamLevel" type="checkbox" value="true">
+                @*@Html.CheckBox("TeamLevel", Convert.ToBoolean(TempData["TeamLevel"]))*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Department Level", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["DepartmentLevel"]) id="DepartmentLevel" name="DepartmentLevel" type="checkbox" value="true">
+                @*@Html.CheckBox("DepartmentLevel",  Convert.ToBoolean(TempData["DepartmentLevel"]))*@
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.Label("Organization Level", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["OrganizationLevel"]) id="OrganizationLevel" name="OrganizationLevel" type="checkbox" value="true">
+                @*@Html.CheckBox("OrganizationLevel",  Convert.ToBoolean(TempData["OrganizationLevel"]))*@
+            </div>
+        </div>
+
+        <hr />
+        <div class="form-group">
+            @Html.Label("Stock View", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["StockView"]) id="StockView" name="StockView" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Stock Edit", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["StockEdit"]) id="StockEdit" name="StockEdit" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Stock Authorize", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["StockAuthorize"]) id="StockAuthorize" name="StockAuthorize" type="checkbox" value="true">
+            </div>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            @Html.Label("Products View", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["ProductsView"]) id="ProductsView" name="ProductsView" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Products Edit", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["ProductsEdit"]) id="ProductsEdit" name="ProductsEdit" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Products Authorize", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["ProductsAuthorize"]) id="ProductsAuthorize" name="ProductsAuthorize" type="checkbox" value="true">
+            </div>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            @Html.Label("Sales View", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["SalesView"]) id="SalesView" name="SalesView" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Sales Edit", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["SalesEdit"]) id="SalesEdit" name="SalesEdit" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Sales Authorize", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["SalesAuthorize"]) id="SalesAuthorize" name="SalesAuthorize" type="checkbox" value="true">
+            </div>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            @Html.Label("Services View", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["ServicesView"]) id="ServicesView" name="ServicesView" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Services Edit", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["ServicesEdit"]) id="ServicesEdit" name="ServicesEdit" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Services Authorize", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["ServicesAuthorize"]) id="ServicesAuthorize" name="ServicesAuthorize" type="checkbox" value="true">
+            </div>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            @Html.Label("Procurement View", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["ProcurementView"]) id="ProcurementView" name="ProcurementView" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Procurement Edit", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["ProcurementEdit"]) id="ProcurementEdit" name="ProcurementEdit" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Procurement Authorize", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["ProcurementAuthorize"]) id="ProcurementAuthorize" name="ProcurementAuthorize" type="checkbox" value="true">
+            </div>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            @Html.Label("Works View", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["WorksView"]) id="WorksView" name="WorksView" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Works Edit", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["WorksEdit"]) id="WorksEdit" name="WorksEdit" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Works Authorize", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["WorksAuthorize"]) id="WorksAuthorize" name="WorksAuthorize" type="checkbox" value="true">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.Label("Works Planner", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["WorksPlanner"]) id="WorksPlanner" name="WorksPlanner" type="checkbox" value="true">
+            </div>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            @Html.Label("Logistics View", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["LogisticsView"]) id="LogisticsView" name="LogisticsView" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Logistics Edit", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["LogisticsEdit"]) id="LogisticsEdit" name="LogisticsEdit" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Logistics Authorize", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["LogisticsAuthorize"]) id="LogisticsAuthorize" name="LogisticsAuthorize" type="checkbox" value="true">
+            </div>
+        </div>
+        <hr />
+
+
+        <div class="form-group">
+            @Html.Label("HRAdmin View", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["HRAdminView"]) id="HRAdminView" name="HRAdminView" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("HRAdmin Edit", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["HRAdminEdit"]) id="HRAdminEdit" name="HRAdminEdit" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("HRAdmin Authorize", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["HRAdminAuthorize"]) id="HRAdminAuthorize" name="HRAdminAuthorize" type="checkbox" value="true">
+            </div>
+        </div>
+        <hr />
+        
+
+        <div class="form-group">
+            @Html.Label("People View", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["PeopleView"]) id="PeopleView" name="PeopleView" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("People Edit", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["PeopleEdit"]) id="PeopleEdit" name="PeopleEdit" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("People Authorize", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["PeopleAuthorize"]) id="PeopleAuthorize" name="PeopleAuthorize" type="checkbox" value="true">
+            </div>
+        </div>
+        <hr />
+        
+
+        <div class="form-group">
+            @Html.Label("SysAdmin View", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["SysAdminView"]) id="SysAdminView" name="SysAdminView" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("SysAdmin Edit", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["SysAdminEdit"]) id="SysAdminEdit" name="SysAdminEdit" type="checkbox" value="true">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("SysAdmin Authorize", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["SysAdminAuthorize"]) id="SysAdminAuthorize" name="SysAdminAuthorize" type="checkbox" value="true">
+            </div>
+        </div>
+        <hr />
+      
+
+        <div class="form-group">
+            @Html.Label("File Download", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["FileDownload"]) id="FileDownload" name="FileDownload" type="checkbox" value="true">
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("File Upload", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["FileUpload"]) id="FileUpload" name="FileUpload" type="checkbox" value="true">
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("File Authorize", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["FileAuthorize"]) id="FileAuthorize" name="FileAuthorize" type="checkbox" value="true">
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("File Admin", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input checked=@Convert.ToBoolean(TempData["FileAdmin"]) id="FileAdmin" name="FileAdmin" type="checkbox" value="true">
+            </div>
+        </div>
+        <hr />
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" accesskey="S" /> | @Html.ActionLink("Change User", "SelectUserToManageRoles")
+            </div>
+        </div>
+    </div>
+}

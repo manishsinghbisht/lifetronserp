@@ -1,0 +1,155 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+
+@model Lifetrons.Erp.Data.OrderLineItem
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Edit;
+}
+
+<h2> @Resources.Metadata_UISection_Edit </h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>@Resources.Metadata_OrderLineItem</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.OrderId)
+        @Html.HiddenFor(model => model.TimeStamp)
+        
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.PriceBookId, "Price Book Line Item", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{
+    Html.RenderAction("PriceBookLineItemDisplay", "PriceBookLineItemSelector",
+        new { area = "Product", priceBookId = Model.PriceBookId, selectedProductId = Model.ProductId, showSelectLink = false });
+                }
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Serial, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Serial, new { @class = "manageMaxLength", @maxlength = "3", @placeholder = "1" })
+                @Html.ValidationMessageFor(model => model.Serial)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShrtDesc, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ShrtDesc, new { @class = "manageMaxLength", @maxlength = "150", @placeholder = "Short description" })
+                @Html.ValidationMessageFor(model => model.ShrtDesc)
+            </div>
+        </div>
+       
+        <div class="form-group">
+            @Html.LabelFor(model => model.Desc, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Desc, new { @class = "manageMaxLength", @maxlength = "500", @placeholder = "Updates" })
+                @Html.ValidationMessageFor(model => model.Desc)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SalesPrice, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.SalesPrice, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "99.99" })
+                @Html.ValidationMessageFor(model => model.SalesPrice)
+            </div>
+        </div>
+      
+        <div class="form-group">
+            @Html.LabelFor(model => model.DiscountPercent, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="input-group col-md-2">
+                    <input name="DiscountPercent" id="DiscountPercent" type="text" class="form-control" maxlength="17" value="@Model.DiscountPercent" placeholder="Ex: 5">
+                    <span class="input-group-addon">
+                        %
+                    </span>
+                    @Html.ValidationMessageFor(model => model.DiscountPercent)
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DiscountAmount, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.DiscountAmount)
+                @Html.ValidationMessageFor(model => model.DiscountAmount)
+            </div>
+        </div>
+        
+       <div class="form-group">
+            @Html.LabelFor(model => model.LineItemPrice, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.LineItemPrice)
+                @Html.ValidationMessageFor(model => model.LineItemPrice)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Quantity, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "1" })
+                @Html.ValidationMessageFor(model => model.Quantity)
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Weight, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Weight, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "5" })
+                @Html.DropDownList("WeightUnitId", String.Empty)
+                @Html.ValidationMessageFor(model => model.Weight)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LineItemAmount, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.LineItemAmount)
+                @Html.ValidationMessageFor(model => model.LineItemAmount)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SpecialInstructions, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.SpecialInstructions, new { @placeholder = "Anything you want to emphasize" })
+                @Html.ValidationMessageFor(model => model.SpecialInstructions)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @(User.IsInRole("SalesAuthorize") ? Html.EditorFor(model => model.Authorized) : Html.DisplayFor(model => model.Authorized))
+                @Html.ValidationMessageFor(model => model.Authorized)
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @if (!Model.Authorized || User.IsInRole("SalesAuthorize"))
+                {
+                    <input type="submit" value="Save" class="btn btn-default" accesskey="S" />
+                }
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row">
+    @Html.ActionLink("Back to List", "Details", "Order", new { id = Model.OrderId }, null)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/OrderLineItem")
+}

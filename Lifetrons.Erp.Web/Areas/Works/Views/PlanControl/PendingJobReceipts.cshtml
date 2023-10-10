@@ -1,0 +1,106 @@
+﻿@using Resources;
+@model IEnumerable<Lifetrons.Erp.Web.Models.PendingReceipts>
+@using System.Threading
+@using Lifetrons.Erp.Data
+@using Lifetrons.Erp.Web.Models
+@using Lifetrons.Erp.Helpers
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework
+
+@{
+    ViewBag.Title = "PendingJobsReceipts";
+}
+
+@if (Request.IsAuthenticated)
+{
+    if (Model == null)
+    {
+        <form method="post" action="@Url.Action("PendingJobReceipts", "PlanControl")">
+            <table class="table-condensed">
+                <tr>
+                    <td class="col-md-1">@Html.Label("Start Date")</td>
+                    <td class="col-md-3">
+                        <div class="dateDiv"  style="position: relative">
+                            <input class="dateTxt" type="text"  id="StartDate" name="StartDate" value="@DateTime.Now.AddDays(-5)"
+                                   data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                        </div>
+                    </td>
+                    <td class="col-md-1">@Html.Label("End Date")</td>
+                    <td class="col-md-3">
+                        <div class="dateDiv" style="position: relative">
+                            <input class="dateTxt" type="text"  id="EndDate" name="EndDate" value="@DateTime.Now"
+                                   data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                        </div>
+                    </td>
+                    <td class="col-md-2">@Html.DropDownList("ProcessId")</td>
+                    <td class="col-md-2"><input type="submit" value="Submit" class="btn btn-default" /></td>
+                </tr>
+            </table>
+        </form>
+    }
+    if (Model != null)
+    {
+        if (Model.Any())
+        {
+            <div class="row panel panel-default">
+                <div class="panel-heading text-center"><b>Pending job receipts</b></div>
+                <div class="panel-body" style="height: 200px; overflow: auto;">
+                    <table class="table table-striped  table-hover">
+                        <tr>
+                            <th class="hidden">
+
+                            </th>
+                            <th>
+                                Issued By
+                            </th>
+                            <th>
+                                Issued To
+                            </th>
+
+                            <th>
+                                JobNo
+                            </th>
+                            <th>
+                                Pending quantity
+                            </th>
+
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IssuedFromProcess)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IssuedToProcess)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.JobNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PendingQuantity)
+                            </td>
+                        </tr>
+
+                        }
+
+                    </table>
+                </div>
+            </div>
+
+        }
+        else
+        {
+            <text>No pending job receipts found for given period and process. </text>
+        }
+    }
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/PendingJobReceipts")
+}

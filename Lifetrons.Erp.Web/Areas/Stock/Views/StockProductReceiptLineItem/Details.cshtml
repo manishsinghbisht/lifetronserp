@@ -1,0 +1,136 @@
+﻿@using Resources;
+@model Lifetrons.Erp.Data.StockProductReceipt
+@using System.Threading
+@using Lifetrons.Erp.Helpers
+
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Details;
+}
+
+<h2> @Resources.Metadata_UISection_Details </h2>
+
+<div class="row">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Stock Receipt Line Item</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.TimeStamp)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StockReceiptId, "Stock Receipt", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.StockReceiptId)
+                @Html.DisplayFor(model => model.StockReceiptHead.Name, new { Value = ViewData["StockReceiptHeadName"], @readonly = true })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Serial, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Serial, new { @class = "manageMaxLength", @maxlength = "3", @placeholder = "1" })
+                @Html.ValidationMessageFor(model => model.Serial)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JobNo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.JobNo, new { @class = "manageMaxLength", @maxlength = "15", @placeholder = "Short description" })
+                @Html.ValidationMessageFor(model => model.JobNo)
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.CaseNo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.CaseNo, new { @class = "manageMaxLength", @maxlength = "15", @placeholder = "123456" })
+                @Html.ValidationMessageFor(model => model.CaseNo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TaskNo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.TaskNo, new { @class = "manageMaxLength", @maxlength = "15", @placeholder = "123456" })
+                @Html.ValidationMessageFor(model => model.TaskNo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Product.Name)
+                @Html.ValidationMessageFor(model => model.ProductId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Quantity, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "Quantity. Ex: 1" })
+                @Html.ValidationMessageFor(model => model.Quantity)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Weight, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Weight, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "Weight unit. Ex: 5" })
+                @Html.ValidationMessageFor(model => model.Weight)
+                @Html.DisplayFor(model => model.WeightUnit.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExtraQuantity, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ExtraQuantity, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "Extra qty" })
+                @Html.ValidationMessageFor(model => model.ExtraQuantity)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Expenses, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               <div class="dateDiv" style="position: relative">
+                    @Html.DisplayFor(model => model.Expenses)
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Remark, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Remark, new { @class = "manageMaxLength", @maxlength = "250", @placeholder = "Updates" })
+                @Html.ValidationMessageFor(model => model.Remark)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @(User.IsInRole("StockAuthorize") ? Html.DisplayFor(model => model.Authorized) : Html.DisplayFor(model => model.Authorized))
+                @Html.ValidationMessageFor(model => model.Authorized)
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Details", "StockReceipt", new { id = Model.StockReceiptId }, null)
+    </p>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/StockProductReceiptLineItem")
+}

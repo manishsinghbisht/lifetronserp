@@ -1,0 +1,98 @@
+﻿@using Resources;
+@model Lifetrons.Erp.Data.CampaignMember
+@using Lifetrons.Erp.Helpers
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Details;
+}
+
+<h2>Details</h2>
+
+<div class="row">
+    <h4>@Resources.Metadata_CampaignMember</h4>
+    <hr />
+    <dl class="dl-horizontal">
+      <dt>
+            @Html.DisplayNameFor(model => model.CampaignId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Campaign.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CampaignMemberStatusId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CampaignMemberStatu.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contact.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LeadId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lead.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShrtDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShrtDesc)
+        </dd>
+
+        @*Start Details - Authorized, Active, Created and Modified*@
+        <dt>
+            @Html.DisplayNameFor(model => model.Authorized)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Authorized)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.UserName)
+            &nbsp;
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser1.UserName)
+            &nbsp;
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+        </dd>
+        @*End Details - Authorized, Active, Created and Modified*@
+
+
+
+
+    </dl>
+</div>
+
+<div class="row">
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Details", "Campaign", new { id = Model.CampaignId }, null)
+    </p>
+</div>

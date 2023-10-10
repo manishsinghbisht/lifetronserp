@@ -1,0 +1,468 @@
+﻿@using Resources;
+@using System.Threading
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.Contract
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Create;
+}
+
+<h2> @Resources.Metadata_UISection_Create </h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@Resources.Metadata_ContractId_Contract</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OwnerId, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("OwnerId")
+                    @Html.ValidationMessageFor(model => model.OwnerId)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Code, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Code)
+                    @Html.ValidationMessageFor(model => model.Code)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.AccountId, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("AccountId")
+                    @Html.ValidationMessageFor(model => model.AccountId)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PriceBookId, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("PriceBookId")
+                    @Html.ValidationMessageFor(model => model.PriceBookId)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShrtDesc, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ShrtDesc)
+                    @Html.ValidationMessageFor(model => model.ShrtDesc)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Desc, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Desc)
+                    @Html.ValidationMessageFor(model => model.Desc)
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ContractNo, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ContractNo)
+                    @Html.ValidationMessageFor(model => model.ContractNo)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RefNo, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.RefNo)
+                    @Html.ValidationMessageFor(model => model.RefNo)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OpportunityId, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("OpportunityId", String.Empty)
+                    @Html.ValidationMessageFor(model => model.OpportunityId)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.QuoteId, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("QuoteId", String.Empty)
+                    @Html.ValidationMessageFor(model => model.QuoteId)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustSignedById, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("CustSignedById")
+                    @Html.ValidationMessageFor(model => model.CustSignedById)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustSignedByTitle, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CustSignedByTitle)
+                    @Html.ValidationMessageFor(model => model.CustSignedByTitle)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustSignedByDate, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                   <div class="dateDiv" style="position: relative">
+                        <input class="dateTxt" type="text"  id="CustSignedByDate" name="CustSignedByDate" value="@DateTime.Now"
+                               data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+
+                        @*@if (Thread.CurrentThread.CurrentUICulture.Name == "hi-IN")
+                        {
+                            <input class="dateTxt" type="text"  id="CustSignedByDate" name="CustSignedByDate" value="@DateTime.Now" data-date-format="DD/MM/YYYY  hh:mm A"
+                                   placeholder="25/01/2014" title="DD/MM/YYYY (25/01/2014)" data-toggle="tooltip" data-placement="right" />
+                        }
+                        else if (Thread.CurrentThread.CurrentUICulture.Name == "en-US")
+                        {
+                            <input class="dateTxt" type="text"  id="CustSignedByDate" name="CustSignedByDate" value="@DateTime.Now" data-date-format="MM/DD/YYYY  hh:mm A"
+                                   placeholder="01/25/2014" title="MM/DD/YYYY (01/25/2014)" data-toggle="tooltip" data-placement="right" />
+                        }*@
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ContractStartDate, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                   <div class="dateDiv" style="position: relative">
+                        <input class="dateTxt" type="text"  id="ContractStartDate" name="ContractStartDate" value="@DateTime.Now"
+                               data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+
+                        @*@if (Thread.CurrentThread.CurrentUICulture.Name == "hi-IN")
+                        {
+                            <input class="dateTxt" type="text"  id="ContractStartDate" name="ContractStartDate" value="@DateTime.Now" data-date-format="DD/MM/YYYY  hh:mm A"
+                                   placeholder="25/01/2014" title="DD/MM/YYYY (25/01/2014)" data-toggle="tooltip" data-placement="right" />
+                        }
+                        else if (Thread.CurrentThread.CurrentUICulture.Name == "en-US")
+                        {
+                            <input class="dateTxt" type="text"  id="ContractStartDate" name="ContractStartDate" value="@DateTime.Now" data-date-format="MM/DD/YYYY  hh:mm A"
+                                   placeholder="01/25/2014" title="MM/DD/YYYY (01/25/2014)" data-toggle="tooltip" data-placement="right" />
+                        }*@
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ContractTenure, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ContractTenure)
+                    @Html.ValidationMessageFor(model => model.ContractTenure)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ContractExpirationDate, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                   <div class="dateDiv" style="position: relative">
+                        <input class="dateTxt" type="text"  id="ContractExpirationDate" name="ContractExpirationDate" value="@DateTime.Now"
+                               data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+
+                        @*@if (Thread.CurrentThread.CurrentUICulture.Name == "hi-IN")
+                        {
+                            <input class="dateTxt" type="text"  id="ContractExpirationDate" name="ContractExpirationDate" value="@DateTime.Now" data-date-format="DD/MM/YYYY  hh:mm A"
+                                   placeholder="25/01/2014" title="DD/MM/YYYY (25/01/2014)" data-toggle="tooltip" data-placement="right" />
+                        }
+                        else if (Thread.CurrentThread.CurrentUICulture.Name == "en-US")
+                        {
+                            <input class="dateTxt" type="text"  id="ContractExpirationDate" name="ContractExpirationDate" value="@DateTime.Now" data-date-format="MM/DD/YYYY  hh:mm A"
+                                   placeholder="01/25/2014" title="MM/DD/YYYY (01/25/2014)" data-toggle="tooltip" data-placement="right" />
+                        }*@
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ExpirationNotice, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ExpirationNotice)
+                    @Html.ValidationMessageFor(model => model.ExpirationNotice)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CompanySignedById, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("CompanySignedById")
+                    @Html.ValidationMessageFor(model => model.CompanySignedById)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CompanySignedDate, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                   <div class="dateDiv" style="position: relative">
+                        <input class="dateTxt" type="text"  id="CompanySignedDate" name="CompanySignedDate" value="@DateTime.Now"
+                               data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+
+                        @*@if (Thread.CurrentThread.CurrentUICulture.Name == "hi-IN")
+                        {
+                            <input class="dateTxt" type="text"  id="CompanySignedDate" name="CompanySignedDate" value="@DateTime.Now" data-date-format="DD/MM/YYYY  hh:mm A"
+                                   placeholder="25/01/2014" title="DD/MM/YYYY (25/01/2014)" data-toggle="tooltip" data-placement="right" />
+                        }
+                        else if (Thread.CurrentThread.CurrentUICulture.Name == "en-US")
+                        {
+                            <input class="dateTxt" type="text"  id="CompanySignedDate" name="CompanySignedDate" value="@DateTime.Now" data-date-format="MM/DD/YYYY  hh:mm A"
+                                   placeholder="01/25/2014" title="MM/DD/YYYY (01/25/2014)" data-toggle="tooltip" data-placement="right" />
+                        }*@
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DeliveryTerms, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.DeliveryTerms)
+                    @Html.ValidationMessageFor(model => model.DeliveryTerms)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PaymentTerms, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.PaymentTerms)
+                    @Html.ValidationMessageFor(model => model.PaymentTerms)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SpecialTerms, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.SpecialTerms)
+                    @Html.ValidationMessageFor(model => model.SpecialTerms)
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BillingAddressId, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("BillingAddressId", String.Empty)
+                    @Html.ValidationMessageFor(model => model.BillingAddressId)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BillingAddressToName, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.BillingAddressToName, new { @maxlength = "390", @placeholder = "Mr. John Smith" })
+                    @Html.ValidationMessageFor(model => model.BillingAddressToName)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BillingAddressLine1, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.BillingAddressLine1, new { @maxlength = "390", @placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.BillingAddressLine1)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BillingAddressLine2, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.BillingAddressLine2, new { @maxlength = "390", @placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.BillingAddressLine2)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BillingAddressLine3, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.BillingAddressLine3, new { @maxlength = "390", @placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.BillingAddressLine3)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BillingAddressCity, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.BillingAddressCity, new { @maxlength = "390", @placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.BillingAddressCity)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BillingAddressPin, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.BillingAddressPin, new { @maxlength = "12", @placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.BillingAddressPin)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BillingAddressState, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.BillingAddressState, new { @maxlength = "390", @placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.BillingAddressState)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BillingAddressCountry, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.BillingAddressCountry, new { @maxlength = "390", @placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.BillingAddressCountry)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BillingAddressPhone, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.BillingAddressPhone, new { @maxlength = "390", @placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.BillingAddressPhone)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BillingAddressEMail, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.BillingAddressEMail, new { @maxlength = "390", @placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.BillingAddressEMail)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShippingAddressId, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ShippingAddressId", String.Empty)
+                    @Html.ValidationMessageFor(model => model.ShippingAddressId)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShippingAddressToName, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.ShippingAddressToName, new { @maxlength = "390", @placeholder = "Mr. John Smith" })
+                    @Html.ValidationMessageFor(model => model.ShippingAddressToName)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShippingAddressLine1, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.ShippingAddressLine1, new { @maxlength = "390", @placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.ShippingAddressLine1)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShippingAddressLine2, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.ShippingAddressLine2, new { @maxlength = "390", @placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.ShippingAddressLine2)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShippingAddressLine3, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.ShippingAddressLine3, new { @maxlength = "390", @placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.ShippingAddressLine3)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShippingAddressCity, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.ShippingAddressCity, new { @maxlength = "390", @placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.ShippingAddressCity)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShippingAddressPin, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.ShippingAddressPin, new { @maxlength = "12", @placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.ShippingAddressPin)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShippingAddressState, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.ShippingAddressState, new { @maxlength = "390", @placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.ShippingAddressState)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShippingAddressCountry, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.ShippingAddressCountry, new { @maxlength = "390", @placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.ShippingAddressCountry)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShippingAddressPhone, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.ShippingAddressPhone, new { @maxlength = "390", @placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.ShippingAddressPhone)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShippingAddressEMail, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.ShippingAddressEMail, new { @maxlength = "390", @placeholder = "" })
+                    @Html.ValidationMessageFor(model => model.ShippingAddressEMail)
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Authorized)
+                    @Html.ValidationMessageFor(model => model.Authorized)
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.Active, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Active)
+                    @Html.ValidationMessageFor(model => model.Active)
+                </div>
+            </div>*@
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" accesskey="S" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Contract")
+}

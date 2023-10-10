@@ -1,0 +1,128 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+
+@model Lifetrons.Erp.Data.Product
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Create;
+}
+
+<h2> @Resources.Metadata_UISection_Create </h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Product</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">Basic</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Name)
+                            @Html.ValidationMessageFor(model => model.Name)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Code, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Code)
+                            @Html.ValidationMessageFor(model => model.Code)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShrtDesc, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ShrtDesc, new { @class = "manageMaxLength", @maxlength = "150", @placeholder = "Short Desc" })
+                            @Html.ValidationMessageFor(model => model.ShrtDesc)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Desc, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.Desc, new { @class = "manageMaxLength", @maxlength = "500", @placeholder = "Long Description" })
+                            @Html.ValidationMessageFor(model => model.Desc)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Weight, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Weight, new { @maxlength = "17", @placeholder = "5" })
+                            @Html.ValidationMessageFor(model => model.Weight)
+                            @Html.DropDownList("WeightUnitId", String.Empty)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel panel-default">
+                <div class="panel-heading">@Resources.Metadata_UISection_Relations</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ProductFamilyId, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ProductFamilyId")
+                            @Html.ValidationMessageFor(model => model.ProductFamilyId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ProductTypeId, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ProductTypeId")
+                            @Html.ValidationMessageFor(model => model.ProductTypeId)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">@Resources.Metadata_UISection_SystemInfo</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @(User.IsInRole("ProductsAuthorize") ? Html.EditorFor(model => model.Authorized) : Html.DisplayFor(model => model.Authorized))
+                            @Html.ValidationMessageFor(model => model.Authorized)
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                        @Html.LabelFor(model => model.Active, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Active)
+                            @Html.ValidationMessageFor(model => model.Active)
+                        </div>
+                    </div>*@
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Product")
+}

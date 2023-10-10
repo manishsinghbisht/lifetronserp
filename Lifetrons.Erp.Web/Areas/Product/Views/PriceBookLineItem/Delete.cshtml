@@ -1,0 +1,111 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+
+@model Lifetrons.Erp.Data.PriceBookLineItem
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>@Resources.Metadata_UISection_Delete</h2>
+
+<h3>@Resources.Metadata_ConfirmDelete</h3>
+<div>
+    <h4>Product in price book</h4>
+    @Html.HiddenFor(model => model.Id)
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceBook.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceBook.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ListPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ListPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShrtDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShrtDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Authorized)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Authorized)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.UserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser1.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser1.UserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </dt>
+
+        <dd>
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Details", "PriceBook", new { id = Model.PriceBookId }, null)
+            
+        </div>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/PriceBookLineItem")
+}

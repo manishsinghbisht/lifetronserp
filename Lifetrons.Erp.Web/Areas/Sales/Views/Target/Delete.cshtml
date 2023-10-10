@@ -1,0 +1,146 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.Target
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>@Resources.Metadata_UISection_Delete</h2>
+
+<h3>@Resources.Metadata_ConfirmDelete</h3>
+<div>
+    <h4>Target</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ObjectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ObjectName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ObjectId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ObjectId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TargetDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TargetDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TargetFigure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TargetFigure)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShrtDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShrtDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClosingComments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClosingComments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SharedWith)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SharedWith)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </dt>
+
+        <dd>
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Authorized)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Authorized)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser1.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser1.UserName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

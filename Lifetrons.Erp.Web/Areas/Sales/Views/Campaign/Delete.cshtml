@@ -1,0 +1,175 @@
+﻿@using Resources;
+@model Lifetrons.Erp.Data.Campaign
+@using Lifetrons.Erp.Helpers
+
+@{
+    ViewBag.Title = Resources.Metadata_CampaignId_Campaign;
+}
+
+<h2>@Resources.Metadata_UISection_Delete</h2>
+
+<h3>@Resources.Metadata_ConfirmDelete</h3>
+<div>
+    <h4>@Resources.Metadata_CampaignId_Campaign</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShrtDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShrtDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfEmployees)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfEmployees)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeDetails)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpectedRevenue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpectedRevenue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BudgetCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BudgetCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActualCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActualCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpectedResponsePercent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpectedResponsePercent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumSent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumSent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Delivery)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Delivery)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Competitors)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Competitors)
+        </dd>
+
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.CampaignType.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CampaignType.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CampaignStatu.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CampaignStatu.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Campaign2.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Campaign2.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" })) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Campaign")
+}

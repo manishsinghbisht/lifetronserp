@@ -1,0 +1,193 @@
+﻿@using Resources;
+@model Lifetrons.Erp.Web.Models.JobStatusModel
+@using Lifetrons.Erp.Data
+@using Lifetrons.Erp.Web.Models
+@using Lifetrons.Erp.Helpers
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework
+
+@{
+    ViewBag.Title = "JobStatus";
+}
+
+@if (Request.IsAuthenticated)
+{
+    <form method="post" action="@Url.Action("JobStatus", "PlanControl")">
+        <div>
+            <input type="text" id="JobNo" name="JobNo" />
+            <input type="submit" value="JobStatus" class="btn btn-default" />
+        </div>
+
+    </form>
+
+    if (Model != null)
+    {
+        if (Model.JobProductReceipts.Any() || Model.JobProductIssues.Any())
+        {
+            var applicationUserId = User.Identity.GetUserId();
+            var jobProductIssues = Model.JobProductIssues;
+            var jobProductReceipts = Model.JobProductReceipts;
+            if (Model.JobProductReceipts.Any())
+            {
+                jobProductReceipts = jobProductReceipts.OrderBy(p => p.JobReceiptHead.Date).ThenBy(p => p.JobNo);
+            }
+            if (Model.JobProductIssues.Any())
+            {
+                jobProductIssues = jobProductIssues.OrderBy(p => p.JobIssueHead.Date).ThenBy(p => p.JobNo);
+            }
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Inprocess Job Status (@Model.JobNo)
+                    <br />
+                    <img src="@Url.Action("GetProductImageThumbnailByJobNo", "Media", new { area = "", jobNo = Model.JobNo })" class="img-responsive" alt="Image Not Available"
+                         onerror="this.onerror=null;this.src='@Url.Content("~/Images/ImageNotAvailable.jpg")';" height="50" width="50">
+
+                </div>
+                <div class="panel-body">
+                    @if (Model.JobProductReceipts.Any())
+                    {
+                        <div class="row panel panel-default">
+                            <div class="panel-heading text-center"><b>Receipts &nbsp; </b><span class="badge">@{ var count = jobProductReceipts != null ? jobProductReceipts.ToList().Count.ToString() : "0"; } @count</span></div>
+                            <div class="panel-body" style="height: 200px; overflow: auto;">
+                                <table class="table table-striped  table-hover">
+                                    <tr>
+                                        <th class="hidden">
+
+                                        </th>
+                                        <th>
+                                            Date
+                                        </th>
+                                        <th>
+                                            Receipt By [Process]
+                                        </th>
+                                        <th>
+                                            JobNo
+                                        </th>
+                                        <th>
+                                            Quantity
+                                        </th>
+                                        <th>
+                                            Employee
+                                        </th>
+                                        <th>
+                                            Receipt From [Process]
+                                        </th>
+                                      
+                                    </tr>
+                                    @if (jobProductReceipts != null)
+                                    {
+                                        foreach (var item in jobProductReceipts)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <a id="Detail" href="@Url.Action("Details", "JobReceipt", new { id = item.JobReceiptHead.Id })">
+                                                        @ControllerHelper.ConvertDateTimeFromUtc(item.JobReceiptHead.Date, User.TimeZone())
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.JobReceiptHead.Process.Name)
+                                                </td>
+                                                <td class="hidden">@Html.DisplayFor(modelItem => item.Id)</td>
+                                                <td>
+                                                    <a href="@Url.Action("Details", "JobProductReceiptLineItem", new {id = item.Id})">
+
+                                                        @Html.DisplayFor(modelItem => item.JobNo)
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Quantity)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.JobReceiptHead.Employee.Name)
+                                                </td>
+                                               
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.JobReceiptHead.Process1.Name)
+                                                </td>
+                                            </tr>
+
+                                        }
+                                    }
+                                </table>
+                            </div>
+                        </div>
+
+                    }
+                    @if (Model.JobProductIssues.Any())
+                    {
+                        <div class="row panel panel-default">
+                            <div class="panel-heading text-center"><b>Issues &nbsp; </b><span class="badge">@{ var issueCount = jobProductIssues != null ? jobProductIssues.ToList().Count.ToString() : "0"; } @issueCount</span></div>
+                            <div class="panel-body" style="height: 200px; overflow: auto;">
+                                <table class="table table-striped  table-hover">
+                                    <tr>
+                                        <th class="hidden">
+
+                                        </th>
+                                        <th>
+                                            Date
+                                        </th>
+                                        <th>
+                                            Issued By [Process]
+                                        </th>
+                                        <th>
+                                            JobNo
+                                        </th>
+                                        <th>
+                                            Quantity
+                                        </th>
+                                        <th>
+                                            Employee
+                                        </th>
+                                       
+                                        <th>
+                                            Issued To [Process]
+                                        </th>
+                                       
+                                    </tr>
+                                    @if (jobProductIssues != null)
+                                    {
+                                        foreach (var item in jobProductIssues)
+                                        {
+                                            <tr>
+                                                <td class="hidden">@Html.DisplayFor(modelItem => item.Id)</td>
+                                                <td>
+                                                    <a id="Detail" href="@Url.Action("Details", "JobIssue", new { id = item.JobIssueHead.Id })">
+                                                        @ControllerHelper.ConvertDateTimeFromUtc(item.JobIssueHead.Date, User.TimeZone())
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.JobIssueHead.Process.Name)
+                                                </td>
+                                                <td>
+                                                    <a href="@Url.Action("Details", "JobProductIssueLineItem", new {id = item.Id})">
+
+                                                        @Html.DisplayFor(modelItem => item.JobNo)
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Quantity)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.JobIssueHead.Employee.Name)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.JobIssueHead.Process1.Name)
+                                                </td>
+                                               
+                                            </tr>
+                                        }
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    }
+                </div> <!--Panel Body Close-->
+            </div>
+        }
+        else
+        {
+<text>Job number @Model.JobNo is not in production yet. </text>
+        }
+    }
+}

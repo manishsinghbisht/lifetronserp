@@ -1,0 +1,15 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Page Not Found";
+}
+
+<h3 class="text-danger">@TempData["CustomErrorMessage"]</h3>
+<h4 class="text-danger">@TempData["CustomErrorDetail"]</h4>
+<h1 class="text-danger">Internal Server Error.</h1>
+<h2 class="text-danger">An error occurred while processing your request.</h2>
+
+
+<meta http-equiv="Refresh" content="10;URL=@(Url.Action("Index", "Home"))">
+
+

@@ -1,0 +1,62 @@
+﻿@using Resources;
+@using System.Threading
+@using Microsoft.AspNet.Identity
+@using Lifetrons.Erp.Helpers
+
+
+@{
+    ViewBag.Title = "ParamSubAccountHistory";
+}
+
+
+<h2>Sub Account History Report Parameter Selector</h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.Label("Start Date", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               <div class="dateDiv" style="position: relative">
+                    <input class="dateTxt" type="text"  id="StartDate" name="StartDate" value="@DateTime.Now"
+                           data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("End Date", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               <div class="dateDiv" style="position: relative">
+                    <input class="dateTxt" type="text"  id="EndDate" name="EndDate" value="@DateTime.Now"
+                           data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Sub Account", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @if (ViewBag.AccountId != null && (User.IsInRole("OrganizationLevel") || User.IsInRole("DepartmentLevel") || User.IsInRole("TeamLevel")))
+                {
+                    @Html.DropDownList("AccountId")
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Show Report" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Report")
+}

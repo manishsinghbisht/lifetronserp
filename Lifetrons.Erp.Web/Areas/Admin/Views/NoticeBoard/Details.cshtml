@@ -1,0 +1,141 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.NoticeBoard
+
+@{
+    ViewBag.Title = Resources.Metadata_NoticeBoard;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Notice Board</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShrtDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShrtDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RefNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RefNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpeningDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpeningDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CloseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CloseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClosingComments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClosingComments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SharedWith)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SharedWith)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </dt>
+
+        <dd>
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Authorized)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Authorized)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+
+       <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser1.UserName)
+        </dd>
+
+      
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

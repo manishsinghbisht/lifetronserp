@@ -1,0 +1,173 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.OrderLineItem
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Details;
+}
+
+<div class="row">
+    <h4>Work Order Line Item - @Resources.Metadata_UISection_Details</h4>
+    <hr />
+
+    <div class="row">
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { orderId = Model.OrderId, priceBookId = Model.PriceBookId, productId = Model.ProductId }) |
+            @Html.ActionLink("Back to List", "Details", "WorkOrder", new { id = Model.OrderId }, null)
+        </p>
+    </div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Serial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Serial)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.Name) &nbsp; [@Html.DisplayFor(model => model.Product.Code)]
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.JobNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JobNo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductionQuantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductionQuantity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductionWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductionWeight) &nbsp; @Html.DisplayFor(model => model.WeightUnit1.Name)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShrtDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShrtDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecialInstructions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecialInstructions)
+        </dd>
+
+        @*Start Details - Authorized, Active, Created and Modified*@
+        <dt>
+            @Html.DisplayNameFor(model => model.Authorized)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Authorized)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.UserName)
+            &nbsp;
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser1.UserName)
+            &nbsp;
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+        </dd>
+        @*End Details - Authorized, Active, Created and Modified*@
+
+        <dt>
+            @Html.DisplayName("Image")
+        </dt>
+
+        <dd>
+
+            <div class="form-group">
+                @Html.Label("Media", htmlAttributes: new { @class = "control-label col-md-2" })
+                <section class="content">
+                    <div class="row-fluid">
+                        <div class="span2">
+
+                            <div class="item">
+                                @{
+                                    var media = (ViewBag.Media) as IEnumerable<Lifetrons.Erp.Data.Media>;
+                                    if (media != null)
+                                    {
+                                        foreach (var item in media)
+                                        {
+                                            var imageAddr = "~" + item.MediaPath;
+                                            <a class="fancybox" href="@Url.Content(imageAddr)" data-fancybox-group="gallery" title="@item.ShrtDesc">
+                                                <img src="@Url.Action("GetImageThumbnail", "Media", new { area = "", mediaPath = imageAddr })" alt="Image Not Available"
+                                                     onerror="this.onerror=null;this.src='@Url.Content("~/Images/Product/PersonImageNotAvailable.jpg")';"
+                                                     height="100" width="100">
+                                            </a>
+                                        }
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </dd>
+
+    </dl>
+</div>
+
+<div class="row">
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { orderId = Model.OrderId, priceBookId = Model.PriceBookId, productId = Model.ProductId }) |
+        @Html.ActionLink("Back to List", "Details", "WorkOrder", new { id = Model.OrderId }, null)
+    </p>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @*fancyboxScripts creates issue with Login button in Accounts/Login*@
+    @Scripts.Render("~/Scripts/fancybox/fancyboxScripts")
+}
+

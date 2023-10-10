@@ -1,0 +1,209 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.Process
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div class ="form-horizontal">
+    <h4>Process</h4>
+    <div class="row center-block">
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+
+    <hr />
+    <div class="panel panel-default">
+        <div class="panel-heading">@Resources.Metadata_UISection_References</div>
+        <div class="panel-body">
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Code)
+                    @Html.ValidationMessageFor(model => model.Code)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EnterpriseStageId, "EnterpriseStageId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.EnterpriseStage.Name)
+                    @Html.ValidationMessageFor(model => model.EnterpriseStageId)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShrtDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.ShrtDesc)
+                    @Html.ValidationMessageFor(model => model.ShrtDesc)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Serial, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Serial)
+                    @Html.ValidationMessageFor(model => model.Serial)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Remark, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Remark, new { @class = "manageMaxLength", @maxlength = "140", @placeholder = "Updates" })
+                    @Html.ValidationMessageFor(model => model.Remark)
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">One Process Cycle</div>
+        <div class="panel-body">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CycleTimeInHour, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.CycleTimeInHour)
+                    @Html.ValidationMessageFor(model => model.CycleTimeInHour)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CycleCapacity, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.CycleCapacity)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PerUnitCost, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.PerUnitCost)
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Rates / hour</div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(model => model.LabourRatePerHour, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.LabourRatePerHour)
+                    @Html.ValidationMessageFor(model => model.LabourRatePerHour)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DepreciationRatePerHour, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.DepreciationRatePerHour)
+                    @Html.ValidationMessageFor(model => model.DepreciationRatePerHour)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EnergyRatePerHour, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.EnergyRatePerHour)
+                    @Html.ValidationMessageFor(model => model.EnergyRatePerHour)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OverheadRatePerHour, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.OverheadRatePerHour)
+                    @Html.ValidationMessageFor(model => model.OverheadRatePerHour)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OtherDirectExpensesRatePerHour, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.OtherDirectExpensesRatePerHour)
+                    @Html.ValidationMessageFor(model => model.OtherDirectExpensesRatePerHour)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OtherInDirectExpensesRatePerHour, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.OtherInDirectExpensesRatePerHour)
+                    @Html.ValidationMessageFor(model => model.OtherInDirectExpensesRatePerHour)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.QuantityPerHour, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.QuantityPerHour)
+                    @Html.ValidationMessageFor(model => model.QuantityPerHour)
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">@Resources.Metadata_UISection_SystemInfo</div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Authorized)
+                    @Html.ValidationMessageFor(model => model.Authorized)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.CreatedBy, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.AspNetUser.UserName)
+                    &nbsp;
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ModifiedBy, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.AspNetUser1.UserName)
+                    &nbsp;
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<div class="row center-block">
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Process")
+}

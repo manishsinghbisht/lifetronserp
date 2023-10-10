@@ -1,0 +1,87 @@
+﻿@using Resources;
+@using System.Configuration
+@using Lifetrons.Erp.Models;
+@using Lifetrons.Erp.Helpers
+
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Manage Organization";
+}
+@{
+    string AppName = ConfigurationManager.AppSettings["AppName"];
+    string AppHomeURL = ConfigurationManager.AppSettings["AppHomeURL"];
+    ViewBag.AppName = AppName;
+    ViewBag.AppHomeURL = AppHomeURL;
+    @Html.Hidden("AppName", (string)ViewBag.AppName)
+    @Html.Hidden("AppHomeURL", (string)ViewBag.AppHomeURL)
+}
+<div class="alert alert-info" role="alert">
+    <h3>
+       @Html.Raw(AppName) accociates each user to a unique organization.
+    </h3>
+</div>
+
+<div class="alert alert-info" role="alert">
+    If your organization is already in @Html.Raw(AppName), then you can just join your organization.
+</div>
+
+<div class="alert alert-info" role="alert">
+    If you want to create your own new organization with blank database, then you can create new organization in @Html.Raw(AppName).
+</div>
+@*<div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            Select Action (Create or Join Organization) <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a href="../JoiningRequest/Create">Join Organization</a></li>
+            <li><a href="../Organization/Create">Create Organization</a></li>
+        </ul>
+    </div>*@
+
+<div class="row">
+
+
+    <div class="col-md-6">
+        <p>
+            @*<a class="btn btn-success btn-lg" href="../JoiningRequest/Create" role="button">Join your existing organization in @Html.Raw(AppName)</a>*@
+            @Html.ActionLink("Join your existing organization in " + @Html.Raw(AppName), "Create", "JoiningRequest", new { area = "Admin" }, new { @class = "btn btn-success btn-lg", @role = "button" })
+            <br />
+            <small>Recommended if you want experience | demo use the application. You will be able to see all functionalities with pre filled data . Organization once linked to user can never be changed.</small>
+        </p>
+    </div>
+
+    <div class="col-md-6">
+        <p>
+            @*<a class="btn btn-primary btn-lg" href="../Organization/Create" role="button">Create new organization in @Html.Raw(AppName)</a>*@
+            @Html.ActionLink("Create new organization in " + @Html.Raw(AppName), "Create", "Organization", new { area = "SysAdmin" }, new { @class = "btn btn-primary btn-lg", @role = "button" })
+            <br />
+            <small>NOT recommended if you want to experience | demo use the application. Complete blank application will be created with this button with NO pre filled data. You will not be able to see functionalities as all the data will required to be created again. Organization once linked to user can never be changed.</small>
+        </p>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/HideMenus")
+}
+
+<!-- Google Code for Manage Organization Conversion Page -->
+<script type="text/javascript">
+    /* <![CDATA[ */
+    var google_conversion_id = 965655673;
+    var google_conversion_language = "en";
+    var google_conversion_format = "2";
+    var google_conversion_color = "ffffff";
+    var google_conversion_label = "UBnOCI-M0AgQ-fi6zAM";
+    var google_remarketing_only = false;
+    /* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+    <div style="display:inline;">
+        <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/965655673/?label=UBnOCI-M0AgQ-fi6zAM&amp;guid=ON&amp;script=0" />
+    </div>
+</noscript>

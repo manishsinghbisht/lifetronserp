@@ -1,0 +1,226 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.Task
+
+@{
+    ViewBag.Title = Resources.Metadata_TaskId_Task;
+}
+
+<h3>@Resources.Metadata_TaskId_Task - @Resources.Metadata_UISection_Details</h3>
+
+<div class="row center-block">
+    <p>
+
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) | @Html.ActionLink("Back to List", "Index")
+
+    </p>
+</div>
+
+<div class="row">
+    <dl class="dl-horizontal">
+        <div class="panel panel-default">
+            <div class="panel-heading">References</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.OwnerId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser2.UserName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Code)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Code)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TaskNo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TaskNo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShrtDesc)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShrtDesc)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Desc)
+                </dt>
+
+                <dd>
+                   @Html.TextAreaFor(model => model.Desc, new { @readonly = true })
+                </dd>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_Relations</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.RelatedToObjectName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.RelatedToObjectName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.RelatedToId)
+                </dt>
+
+                <dd>
+                    @TempData["RelatedToIdName"]
+                    @Html.HiddenFor(model => model.RelatedToId)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LeadId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Lead.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ContactId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Contact.Name)
+                </dd>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_FollowUp</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.TaskStatusId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TaskStatu.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PriorityId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Priority.Name)
+                </dd>
+              
+                <dt>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </dt>
+
+                <dd>
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.StartDate, User.TimeZone())
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </dt>
+
+                <dd>
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.EndDate, User.TimeZone())
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsAllDay)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IsAllDay)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Reminder)
+                </dt>
+
+                <dd>
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.Reminder, User.TimeZone())
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProgressPercent)
+                </dt>
+
+                <dd>
+                   @Html.DisplayFor(model => model.ProgressPercent) %
+                </dd>
+              
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProgressDesc)
+                </dt>
+
+                <dd>
+                    @Html.TextAreaFor(model => model.ProgressDesc, new { @readonly = true })
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ReportCompletionToId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUserReportCompletionTo.FirstName) &nbsp;@Html.DisplayFor(model => model.AspNetUserReportCompletionTo.LastName)
+                    &nbsp;(@Html.DisplayFor(model => model.AspNetUserReportCompletionTo.UserName))
+
+                </dd>
+            </div>
+        </div>
+
+
+        @*Start Details - Authorized, Active, Created and Modified*@
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_SystemInfo</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Authorized)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Authorized)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Active)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Active)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser.UserName)
+                    &nbsp; 
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ModifiedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser1.UserName)
+                    &nbsp;
+                   @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+                </dd>
+            </div>
+        </div>
+        @*End Details - Authorized, Active, Created and Modified*@
+
+    </dl>
+</div>
+

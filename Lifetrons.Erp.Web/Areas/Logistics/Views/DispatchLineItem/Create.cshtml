@@ -1,0 +1,117 @@
+﻿@using Resources;
+@model Lifetrons.Erp.Data.DispatchLineItem
+@using System.Threading
+@using Lifetrons.Erp.Helpers
+
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Create;
+}
+
+<h2> @Resources.Metadata_UISection_Create </h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Dispatch Line Item</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DispatchId, "Dispatch", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.DispatchId)
+                @Html.TextBoxFor(model => model.Dispatch.Name, new { Value = ViewData["DispatchName"], @readonly = true })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Serial, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Serial, new { @class = "manageMaxLength", @maxlength = "3", @placeholder = "1" })
+                @Html.ValidationMessageFor(model => model.Serial)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShrtDesc, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ShrtDesc, new { @class = "manageMaxLength", @maxlength = "399", @placeholder = "short description" })
+                @Html.ValidationMessageFor(model => model.ShrtDesc)
+            </div>
+        </div>
+
+        @if (ViewData["IsMultiOrderDispatch"].ToString().ToLower() == "true")
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.OrderId, new {@class = "control-label col-md-2"})
+                <div class="col-md-10">
+                    @Html.DropDownList("OrderId")
+                    @Html.ValidationMessageFor(model => model.OrderId)
+                </div>
+            </div>
+        }
+        else
+        {
+             @Html.HiddenFor(model => model.OrderId, new { Value = ViewData["OrderId"] })
+        }
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrderLineItemId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("OrderLineItemId")
+                @Html.ValidationMessageFor(model => model.OrderLineItemId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Quantity, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "Quantity. Ex: 1" })
+                @Html.ValidationMessageFor(model => model.Quantity)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Weight, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Weight, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "Weight unit. Ex: 5" })
+                @Html.ValidationMessageFor(model => model.Weight)
+                @Html.DropDownList("WeightUnitId", String.Empty)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Remark, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Remark, new { @class = "manageMaxLength", @maxlength = "250", @placeholder = "Updates" })
+                @Html.ValidationMessageFor(model => model.Remark)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @(User.IsInRole("LogisticsAuthorize") ? Html.EditorFor(model => model.Authorized) : Html.DisplayFor(model => model.Authorized))
+                @Html.ValidationMessageFor(model => model.Authorized)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" accesskey="S" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Details", "Dispatch", new { id = ViewData["DispatchId"] }, null)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/DispatchLineItem")
+}

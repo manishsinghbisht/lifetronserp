@@ -1,0 +1,90 @@
+﻿@using Resources;
+@using PagedList.Mvc; 
+@using PagedList; 
+@using Lifetrons.Erp.Helpers
+
+@model IEnumerable<Lifetrons.Erp.Data.Attendance>
+
+@{
+    ViewBag.Title = "Attendance";
+}
+
+<table class="table-condensed">
+    <tr><td><h2>Attendance</h2></td></tr>
+    <tr>
+        <td class="col-xs-4">
+            <p>
+                @Html.ActionLink("Create New", "AttendanceIn")
+            </p>
+        </td>
+
+        <td class="col-xs-4">
+            @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page = page, area = ViewContext.RouteData.DataTokens["area"] }), PagedListRenderOptions.MinimalWithPageCountText)
+        </td>
+        <td class="col-xs-4">
+           @{Html.RenderAction("ShowSearchForm", "Search", new { action = "Search", controller = ViewContext.RouteData.DataTokens["area"] + "/Attendance", area = "", placeholder = "Search name" }); }
+        </td>
+    </tr>
+</table>
+
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th></th>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OutDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AtendanceStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remark)
+        </th>
+       
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a id="Detail" href="@Url.Action("Details", new { id = item.Id })">
+                    <i id="social" class="fa fa-expand fa-2x social-fb"></i>
+                </a>
+            </td>
+
+            <td>
+                <a id="Edit" href="@Url.Action("Edit", new { id = item.Id })">
+                    <i id="social" class="fa fa-edit fa-2x social-em"></i>
+                </a>
+            </td>
+           
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Name)
+            </td>
+            <td>
+                @ControllerHelper.ConvertDateTimeFromUtc(item.InDateTime, User.TimeZone())
+            </td>
+            <td>
+                @ControllerHelper.ConvertDateTimeFromUtc(item.OutDateTime, User.TimeZone())
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Remark)
+            </td>
+            
+        </tr>
+    }
+
+</table>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Attendance")
+}

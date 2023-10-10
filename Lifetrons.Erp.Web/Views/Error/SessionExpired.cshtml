@@ -1,0 +1,22 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+}
+
+<h1 class="text-danger">Session Expired.</h1>
+<h3 class="text-danger">Please login again. </h3>
+<br/>
+<h4 class="text-danger">@DateTime.Now</h4>
+<br />
+<p>
+    You will be transferred to Login page automatically in 5 seconds,
+    unless you decide to click on Back button given below to go back to previous page.
+</p>
+
+<input type="button" onclick="history.go(-1);" value="Back">
+
+<br />
+
+<meta http-equiv="Refresh" content="10;URL=@(Url.Action("Index", "Home"))">
+

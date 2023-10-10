@@ -1,0 +1,181 @@
+﻿@using Resources;
+@using System.Threading
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.ProdPlan
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Details;
+}
+
+<h4> @Resources.Metadata_UISection_Details</h4>
+
+<div class="row">
+
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.TimeStamp)
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+
+                <div class="row">
+                    <div class="col-md-4 pull-left">
+                        Planning
+                    </div>
+                    <div class="col-md-8 pull-right" style="text-align: right">
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) | @Html.ActionLink("Back to List", "Index")
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+
+                <div class="row">
+                   <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.RefNo)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.RefNo)
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.StartDateTime)
+                    </dt>
+                    <dd class="col-md-3">
+                        @ControllerHelper.ConvertDateTimeFromUtc(Model.StartDateTime, User.TimeZone())
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.EndDateTime)
+                    </dt>
+                    <dd class="col-md-3">
+                        @ControllerHelper.ConvertDateTimeFromUtc(Model.EndDateTime, User.TimeZone())
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.JobType)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.JobType)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.CycleTimeInHour)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.CycleTimeInHour)
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.CycleCapacity)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.CycleCapacity)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.QuantityPerHour)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.QuantityPerHour)
+                    </dd>
+                </div>
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.SetupTimeInHrs)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.SetupTimeInHrs)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.AddOnTimeInHrs)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.AddOnTimeInHrs)
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Authorized)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.Authorized)
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Remark)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Remark)
+                    </dd>
+                </div>
+                
+                @*Start Details - Authorized, Active, Created and Modified*@
+                        <div class="row">
+                            <dt class="col-md-3">
+                                @Html.DisplayNameFor(model => model.Authorized)
+                            </dt>
+
+                            <dd class="col-md-3">
+                                @Html.DisplayFor(model => model.Authorized)
+                            </dd>
+                            <dt class="col-md-3">
+                                @Html.DisplayNameFor(model => model.Active)
+                            </dt>
+
+                            <dd class="col-md-3">
+                                @Html.DisplayFor(model => model.Active)
+                            </dd>
+                        </div>
+                        <div class="row">
+                            <dt class="col-md-3">
+                                @Html.DisplayNameFor(model => model.CreatedBy)
+                            </dt>
+                            <dd class="col-md-3">
+                                @Html.DisplayFor(model => model.AspNetUser.UserName)
+                                &nbsp;
+                                @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+                            </dd>
+                            <dt class="col-md-3">
+                                @Html.DisplayNameFor(model => model.ModifiedBy)
+                            </dt>
+                            <dd class="col-md-3">
+                                @Html.DisplayFor(model => model.AspNetUser1.UserName)
+                                &nbsp;
+                                @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+                            </dd>
+                        </div>
+                @*End Details - Authorized, Active, Created and Modified*@
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    @{Html.RenderPartial("../ProdPlanDetail/Index", Model.ProdPlanDetails);}
+</div>
+
+<div class="row center-block">
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) | @Html.ActionLink("Back to List", "Index")
+
+    </p>
+</div>
+
+
+<div class="row">
+    <div><a href="@Url.Action("ProdPlan", "SalesReports", new { area = "Reports", reportFormatType = "PDF", quoteId = Model.Id })"> Print</a></div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/ProdPlan")
+}

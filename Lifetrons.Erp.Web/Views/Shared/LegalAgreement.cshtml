@@ -1,0 +1,126 @@
+﻿@using System.Configuration
+@{
+    ViewBag.Title = "LegalAgreement";
+}
+@{
+    string AppName = ConfigurationManager.AppSettings["AppName"];
+    string AppHomeURL = ConfigurationManager.AppSettings["AppHomeURL"];
+    ViewBag.AppName = AppName;
+    ViewBag.AppHomeURL = AppHomeURL;
+    @Html.Hidden("AppName", (string)ViewBag.AppName)
+    @Html.Hidden("AppHomeURL", (string)ViewBag.AppHomeURL)
+}
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog"> @*modal-dialog modal-lg*@ @*modal-dialog modal-sm*@
+        <div class="modal-content">
+            
+            <h2>Agreement and Terms of Use</h2>
+            <p>
+
+                THIS AGREEMENT AND TERMS OF USE FOR @Html.Raw(AppName) (“TERMS”) ARE LEGALLY BINDING
+                TERMS GOVERNING YOUR USE OF THE @Html.Raw(AppName) SERVICE.
+                <br />
+                IF YOU HAVE ENTERED INTO AN AGREEMENT ACCEPTING FOR OUR ENTERPRISE EDITION, UNLIMITED EDITION OR Lifetrons.Erp.IN FREE EDITION SERVICE, BY ACCEPTING THESE TERMS OR USING THE Lifetrons.Erp.IN SERVICE,
+                YOU AGREE TO THESE TERMS ON BEHALF OF OUR CUSTOMER WITH WHICH YOU ARE EMPLOYED OR ASSOCIATED,
+                <br />
+                REPRESENT THAT YOU HAVE THE AUTHORITY TO BIND THAT CUSTOMER TO THESE TERMS, AND
+                <br />
+                REPRESENT THAT YOU ARE AN LEGALLY AUTHORIZED USER UNDER THE ORGANIZATION YOU CREATED OR JOINED IN @Html.Raw(AppName)
+                <br />
+                IF YOU DO NOT HAVE SUCH AUTHORITY, ARE NOT AN AUTHORIZED USER, OR DO NOT AGREE TO THESE TERMS, YOU MAY NOT USE THE @Html.Raw(AppName) SERVICE.
+            </p>
+
+            <p>
+                <h4>DEFINITIONS</h4>
+
+
+                “@Html.Raw(AppName)” means web-based application service provided via @Html.Raw(AppHomeURL).
+                <br />
+                <br />
+                “Organization” means a unique instance of the Unlimited Edition, Enterprise Edition, Standard Edition, @Html.Raw(AppName) Free Edition service, i.e., a separate set of Your data and Your service customizations held by us in a
+                logically separated database (i.e., a database segregated through password-controlled access).
+                <br />
+                <br />
+                “Users” means individuals who are authorized by You to use the @Html.Raw(AppName) Service, and have been supplied organization joining approval or user identifications and passwords by You (or by Us at Your request). Users may include but are not limited to Your employees, consultants, contractors and agents.
+                <br />
+                <br />
+                “We,” “Our” or “Us” means either @Html.Raw(AppName) or Lifetrons.
+                <br />
+                <br />
+                “You” or “Your” means the company or other legal entity which is Our customer and for which you are accepting these Terms, including its affiliates.
+                <br />
+                <br />
+                Provision of @Html.Raw(AppName)  Free Edition, and all the other editions of Lifetrons.Erp.in  are available to You pursuant to this Agreement and Terms of use.
+                User subscriptions are for designated Users and cannot be shared or used by more than one User but may be reassigned to new Users  replacing former Users who no longer require ongoing use of the @Html.Raw(AppName) Free Edition and all the other editions of Lifetrons.Erp.in .
+                <br />
+                <br />
+                Usage Limitations. Lifetrons.Erp.in  Free Edition and all the other editions of Lifetrons.Erp.in  may be subject to various limitations, such as, for example, limits on disk storage space, and on the number of calls You are permitted to make against our application programming interface, bandwidth limits, Service Request Time Limits,
+                Monthly Page Views Limits and number of Products, PriceBooks, Accounts, Contact, Campaigns, Leads, Opportunities, Tasks, Quotations, Orders, Invoices, Cases that you can create in free edition and all the other editions of @Html.Raw(AppName). You are responsible for monitoring your compliance with these limitations.
+                Please refer to UserGuide for details on limitation on various @Html.Raw(AppName) editions.
+                You and Your Affiliates joined in to your Organization in @Html.Raw(AppName)  collectively shall not  more than one 10- Lifetrons.Erp.in  Free Edition subscription at a time.
+            </p>
+            <p>
+                <h4>Your Responsibilities</h4>
+                You shall (i) be responsible for User's compliance with this Agreement,
+                (ii) be solely responsible for the accuracy, quality, integrity and legality of, and for the means by which You acquired, Your Data and Your Applications,
+                (iii) be responsible for backups of your data which you uploaded on @Html.Raw(AppName) for recovery in case of server crash, accidents, disaster or any other unforeseen reasons, and Lifetrons.Erp.in or Lifetrons will not be responsible for any damage caused due to unavailability of the service or loss of data due to any of the known or unknown reasons.
+                (iv) use commercially reasonable efforts to prevent unauthorized access to or use of the @Html.Raw(AppName) Free Edition, and notify Us promptly of any such unauthorized access or use, and
+                (v) use the @Html.Raw(AppName) only in accordance with the User Guide and applicable laws and government regulations.
+                <br />
+                <br />
+                You shall not
+                (a) make the @Html.Raw(AppName) Free Edition available to anyone other than Users,
+                (b) sell, resell, rent or lease the @Html.Raw(AppName) Free Edition and all the other editions of Lifetrons.Erp.in,
+                (c) use the @Html.Raw(AppName)Free Edition and all the other editions of Lifetrons.Erp.in to store or transmit infringing, libelous, or otherwise unlawful or tortious material, or to store or transmit material in violation of third-party privacy rights,
+                (d) use the @Html.Raw(AppName) to store or transmit malicious code or malware, or to engage in phishing or other fraudulent activity,
+                (e) interfere with or disrupt the integrity or performance of the @Html.Raw(AppName) or third-party data contained therein, or
+                (f) attempt to gain unauthorized access to the @Html.Raw(AppName) or Our systems or networks.
+
+                <br />
+                <br />
+                <h4>FEES </h4>
+                The @Html.Raw(AppName) Free Edition is currently provided at no charge.
+                We reserve the right to change our pricing policies for the @Html.Raw(AppName) Free Edition and all the other editions of Lifetrons.Erp.in at any time on 07 day's notice given through your email address updated in our records or by showing a message in Lifetrons.Erp.in website.
+                We reserve all the rights to change prices and features in @Html.Raw(AppName).
+
+                <br />
+                <br />
+                <h4>Disclaimer </h4>
+
+                THE @Html.Raw(AppName) WEBSITE IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION IMPLIED WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. Lifetrons.Erp.IN OR LEFETRONS MAKES NO REPRESENTATION OR WARRANTY AS TO THE ACCURACY, RELIABILITY, TIMELINESS OR COMPLETENESS OF ANY MATERIAL ON OR ACCESSIBLE THROUGH THE Lifetrons.Erp.IN WEBSITES. ANY RELIANCE ON OR USE OF SUCH MATERIALS SHALL BE AT YOUR SOLE RISK. Lifetrons.Erp.IN AND LIFETRONS MAKES NO REPRESENTATION OR WARRANTY (A) REGARDING THE STATEMENTS, ACTS OR OMISSIONS OF ANY PARTIES; (B) THAT THE Lifetrons.Erp.IN OR LEFETRONS WEBSITES WILL BE AVAILABLE ON A TIMELY BASIS, OR THAT ACCESS TO THE Lifetrons.Erp.IN OR LEFETRONS WEBSITES WILL BE UNINTERRUPTED, ERROR FREE OR SECURE; (C) THAT DEFECTS OR ERRORS WILL BE CORRECTED; OR (D) THAT THE Lifetrons.Erp.IN OR LEFETRONS WEBSITES OR THE SERVERS OR NETWORKS THROUGH WHICH THE Lifetrons.Erp.IN OR LEFETRONS WEBSITES ARE MADE AVAILABLE ARE SECURE OR FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS.
+                While we try to maintain the integrity and security of the @Html.Raw(AppName) OR LEFETRONS WEBSITES and the servers from which the Lifetrons.Erp.IN OR LEFETRONS WEBSITES are operated, the Lifetrons.Erp.IN OR LEFETRONS WEBSITES may include inaccuracies, errors and materials that violate or conflict with this Agreement. Additionally, third parties may make unauthorized alterations to the Lifetrons.Erp.IN OR LEFETRONS WEBSITES. If you become aware of any unauthorized third party alteration to the Lifetrons.Erp.IN OR LEFETRONS WEBSITES, contact us with a description of the material(s) at issue and the URL or location on the applicable Lifetrons.Erp.IN OR LEFETRONS WEBSITE where such material(s) appear.
+
+                <br />
+                <br />
+
+                <h4>Limitation of Liability </h4>
+
+                IN NO EVENT SHALL @Html.Raw(AppName) OR LEFETRONS, ITS SUBSIDIARIES OR AFFILIATES, OR ANY OF THEIR RESPECTIVE EMPLOYEES, OFFICERS, DIRECTORS, AGENTS OR REPRESENTATIVES (THE FOREGOING ENTITIES, COLLECTIVELY, THE "LIFETRONS ENTITIES") BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF (A) THIS AGREEMENT, (B) THE Lifetrons.Erp.IN OR LEFETRONS WEBSITES, (C) YOUR USE OF OR INABILITY TO USE THE Lifetrons.Erp.IN OR LEFETRONS WEBSITES, OR (D) THE ACTS OR OMISSIONS OF Lifetrons.Erp.IN OR LEFETRONS INDEPENDENT PARTIES, IN EACH EVENT, EVEN IF Lifetrons.Erp.IN OR LEFETRONS OR SUCH PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. Lifetrons.Erp.IN OR LEFETRONS IS NOT RESPONSIBLE FOR ANY UNAUTHORIZED ACCESS TO OR ALTERATION OF YOUR SUBMISSIONS, TRANSMISSIONS OR DATA OR FOR ANY MATERIAL OR DATA SENT OR RECEIVED OR NOT SENT OR RECEIVED. Lifetrons.Erp.IN OR LEFETRONS IS NOT RESPONSIBLE OR LIABLE FOR ANY THREATENING, DEFAMATORY, OBSCENE, OFFENSIVE OR ILLEGAL CONTENT OR CONDUCT OF ANY OTHER PARTY (INCLUDING WITHOUT LIMITATION ANY Lifetrons.Erp.IN OR LEFETRONS INDEPENDENT PARTY), OR ANY INFRINGEMENT BY A THIRD PARTY OF ANOTHER'S INTELLECTUAL PROPERTY, PRIVACY OR OTHER RIGHTS. YOU AGREE THAT ANY CONTENT DOWNLOADED OR OTHERWISE OBTAINED BY YOU THROUGH THE USE OF Lifetrons.Erp.IN OR LEFETRONS WEBSITES IS DONE AT YOUR OWN RISK AND THAT YOU WILL BE SOLELY RESPONSIBLE FOR ANY DAMAGE DONE TO YOUR COMPUTER SYSTEM OR LOSS OF DATA THAT RESULTS FROM THE DOWNLOAD OF SUCH CONTENT. WITHOUT PREJUDICE TO WHAT IS STATED HEREINABOVE IN THIS CLAUSE, IN NO EVENT SHALL Lifetrons.Erp.IN OR LEFETRONS'S TOTAL LIABILITY TO YOU FOR ALL DAMAGES, LOSSES AND CAUSES OF ACTION (WHETHER IN CONTRACT, TORT OR OTHERWISE) ARISING FROM OR RELATED TO THIS AGREEMENT, THE Lifetrons.Erp.IN OR LEFETRONS WEBSITES, OR YOUR USE OF OR INABILITY TO USE THE Lifetrons.Erp.IN OR LEFETRONS WEBSITES EXCEED THE AMOUNT PAID BY YOU, IF ANY, FOR USING OR ACCESSING THE Lifetrons.Erp.IN OR LEFETRONS WEBSITES.
+
+                <br />
+                <br />
+
+                <h4>Indemnification </h4>
+
+                You will indemnify and hold the @Html.Raw(AppName) OR LEFETRONS Entities harmless from and against any and all claims, actions, demands, causes of action, costs and expenses including attorney’s fees and other proceedings arising from or related to any of the following (the "Claims"): (a) your use of, inability to use, or activities in connection with the Lifetrons.Erp.IN OR LEFETRONS WEBSITES; (b) any violation of this Agreement or any other Lifetrons.Erp.IN OR LEFETRONS terms, conditions or policies by you or through any account you may have with any Lifetrons.Erp.IN OR LEFETRONS WEBSITE; (c) any Transaction; (d) any allegation that any Submission or other materials that you make available through the Lifetrons.Erp.IN OR LEFETRONS WEBSITES infringe or otherwise violate the intellectual property, privacy, or other rights of any third party; or (e) your violation of any rights of any Lifetrons.Erp.IN OR LEFETRONS WEBSITE visitor, user, or customer, or any other third party; and you agree to reimburse the Lifetrons.Erp.IN OR LEFETRONS Entities on demand for any damages, losses, costs, judgments, fees, fines and other expenses they incur (including attorneys' fees and court costs) as a result of any Claim(s).
+
+                <br />
+                <br />
+
+                <h4>Termination and Enforcement </h4>
+
+                This Agreement is effective until terminated by @Html.Raw(AppName) OR LEFETRONS. You agree that @Html.Raw(AppName) OR LEFETRONS, at its sole discretion, may terminate your access to or use of the Lifetrons.Erp.IN OR LEFETRONS WEBSITES, at any time and for any reason, including without limitation if Lifetrons.Erp.IN OR LEFETRONS believes that you have violated or acted inconsistently with the letter or spirit of this Agreement (including but not limited to your failure to comply with the rules of conduct set forth in Section 5 above). Upon any such termination, your right to use the Lifetrons.Erp.IN OR LEFETRONS WEBSITES will immediately cease. You agree that any termination of your access to or use of the Lifetrons.Erp.IN OR LEFETRONS WEBSITES may be effected without prior notice and that Lifetrons.Erp.IN OR LEFETRONS may immediately deactivate or delete any user name and/or password used by or provided to you, and all related information and files associated therewith, and/or bar any further access to such information or files. You agree that Lifetrons.Erp.IN OR LEFETRONS shall not be liable to you or any third party for any termination of your access to the Lifetrons.Erp.IN OR LEFETRONS WEBSITES or to any such information or files, and shall not be required to make such information or files available to you after any such termination. Lifetrons.Erp.IN OR LEFETRONS reserves the right to takes steps that Lifetrons.Erp.IN OR LEFETRONS believes are necessary or appropriate to enforce and/or verify compliance with this Agreement (including without limitation in connection with any legal process relating to your use of the Lifetrons.Erp.IN OR LEFETRONS WEBSITES and/or a third party claim that your use of the Lifetrons.Erp.IN OR LEFETRONS WEBSITES is unlawful or violates such third party's rights).
+
+                <br />
+                <br />
+
+                <h4>Governing Law</h4>
+
+                This Agreement shall be governed by the laws of India. You agree that any dispute or claim arising out of or relating to this Agreement shall be resolved only by the courts located in Jaipur, India and you hereby consent and submit to the jurisdiction of such courts for the purposes of litigating any such dispute or claim.
+
+            </p>
+
+            <button type="button" class="btn btn-info center-block" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,400 @@
+﻿@using Resources;
+@using System.Threading
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.Account
+
+@{
+    ViewBag.Title = Resources.Metadata_AccountId_Account;
+}
+
+<h2> @Resources.Metadata_UISection_Edit </h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@Resources.Metadata_AccountId_Account</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.TimeStamp)
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_References</div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.OwnerId, "OwnerId", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("OwnerId")
+                        @Html.ValidationMessageFor(model => model.OwnerId)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Name, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "ABC Corporation" })
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Code, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Code, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "ABCC" })
+                        @Html.ValidationMessageFor(model => model.Code)
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IsSupplier, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.IsSupplier)
+                        @Html.ValidationMessageFor(model => model.IsSupplier)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShrtDesc, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ShrtDesc, new { @class = "manageMaxLength", @maxlength = "150", @placeholder = "Short desc" })
+                        @Html.ValidationMessageFor(model => model.ShrtDesc)
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    @Html.Label("Remark History", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <textarea id="historyLongDesc" name="historyLongDesc" readonly> @Model.Remark </textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Remark, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Remark, new { @class = "manageMaxLength", @maxlength = "140", @placeholder = "Remark/Updates" })
+                        @Html.ValidationMessageFor(model => model.Remark)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NumberOfEmployees, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.NumberOfEmployees, new { @class = "manageMaxLength", @maxlength = "10", @placeholder = "25" })
+                        @Html.ValidationMessageFor(model => model.NumberOfEmployees)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NumberOfLocations, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.NumberOfLocations, new { @class = "manageMaxLength", @maxlength = "10", @placeholder = "10" })
+                        @Html.ValidationMessageFor(model => model.NumberOfLocations)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AnnualRevenue, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.AnnualRevenue, new { @class = "manageMaxLength", @maxlength = "18", @placeholder = "2500000" })
+                        @Html.ValidationMessageFor(model => model.AnnualRevenue)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_Relations</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AccountTypeId, "AccountTypeId", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("AccountTypeId")
+                        @Html.ValidationMessageFor(model => model.AccountTypeId)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IndustryId, "IndustryId", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("IndustryId")
+                        @Html.ValidationMessageFor(model => model.IndustryId)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.OwnershipId, "OwnershipId", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("OwnershipId")
+                        @Html.ValidationMessageFor(model => model.OwnershipId)
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_FollowUp</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Priority, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("Priority", new List<SelectListItem>
+                    {
+                        new SelectListItem{ Text="High Value", Value = "High Value" },
+                        new SelectListItem{ Text="Regular", Value = "Regular" },
+                        new SelectListItem{ Text="Price Sensitive", Value = "Price Sensitive" },
+                        new SelectListItem{ Text="Low Value", Value = "Low Value" }
+                    })
+                        @Html.ValidationMessageFor(model => model.Priority)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RatingId, "RatingId", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("RatingId")
+                        @Html.ValidationMessageFor(model => model.RatingId)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AgreementSerialNumber, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.AgreementSerialNumber, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "SN#10007845" })
+                        @Html.ValidationMessageFor(model => model.AgreementSerialNumber)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AgreementExpDate, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                       <div class="dateDiv" style="position: relative">
+                            <input class="dateTxt" type="text"  id="AgreementExpDate" name="AgreementExpDate" value="@ControllerHelper.ConvertDateTimeFromUtc(Model.AgreementExpDate, User.TimeZone())"
+                                   data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_BillingAddress</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BillingAddressId, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("BillingAddressId", String.Empty)
+                        @Html.ValidationMessageFor(model => model.BillingAddressId)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BillingAddressToName, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.BillingAddressToName, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "Mr. John Smith" })
+                        @Html.ValidationMessageFor(model => model.BillingAddressToName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BillingAddressLine1, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.BillingAddressLine1, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.BillingAddressLine1)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BillingAddressLine2, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.BillingAddressLine2, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.BillingAddressLine2)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BillingAddressLine3, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.BillingAddressLine3, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.BillingAddressLine3)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BillingAddressCity, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.BillingAddressCity, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.BillingAddressCity)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BillingAddressPin, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.BillingAddressPin, new { @class = "manageMaxLength", @maxlength = "12", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.BillingAddressPin)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BillingAddressState, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.BillingAddressState, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.BillingAddressState)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BillingAddressCountry, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.BillingAddressCountry, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.BillingAddressCountry)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BillingAddressPhone, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.BillingAddressPhone, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.BillingAddressPhone)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BillingAddressEMail, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.BillingAddressEMail, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.BillingAddressEMail)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_ShippingAddress</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShippingAddressId, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("ShippingAddressId", String.Empty)
+                        @Html.ValidationMessageFor(model => model.ShippingAddressId)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShippingAddressToName, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ShippingAddressToName, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "Mr. John Smith" })
+                        @Html.ValidationMessageFor(model => model.ShippingAddressToName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShippingAddressLine1, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ShippingAddressLine1, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.ShippingAddressLine1)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShippingAddressLine2, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ShippingAddressLine2, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.ShippingAddressLine2)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShippingAddressLine3, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ShippingAddressLine3, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.ShippingAddressLine3)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShippingAddressCity, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ShippingAddressCity, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.ShippingAddressCity)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShippingAddressPin, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ShippingAddressPin, new { @class = "manageMaxLength", @maxlength = "12", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.ShippingAddressPin)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShippingAddressState, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ShippingAddressState, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.ShippingAddressState)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShippingAddressCountry, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ShippingAddressCountry, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.ShippingAddressCountry)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShippingAddressPhone, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ShippingAddressPhone, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.ShippingAddressPhone)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShippingAddressEMail, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ShippingAddressEMail, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.ShippingAddressEMail)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_SystemInfo</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @(User.IsInRole("PeopleAuthorize") ? Html.EditorFor(model => model.Authorized) : Html.DisplayFor(model => model.Authorized))
+                        @Html.ValidationMessageFor(model => model.Authorized)
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @if (!Model.Authorized || User.IsInRole("PeopleAuthorize"))
+                {
+                    <input type="submit" value="Save" class="btn btn-default" accesskey="S" />
+                }
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/SAccount")
+}

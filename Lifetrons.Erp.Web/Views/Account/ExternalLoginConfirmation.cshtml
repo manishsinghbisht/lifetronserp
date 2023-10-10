@@ -1,0 +1,194 @@
+﻿@using System.Threading
+@using Lifetrons.Erp.Helpers
+
+@model Lifetrons.Erp.Models.ExternalLoginConfirmationViewModel
+@{
+    ViewBag.Title = "Register";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>Associate your @ViewBag.LoginProvider account.</h3>
+
+@using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { name = "frm", id = "frm", @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <h4>Association Form</h4>
+    <hr />
+    @Html.ValidationSummary(true)
+    <p class="text-info">
+        You've successfully authenticated with <strong>@ViewBag.LoginProvider</strong>.
+        Please enter a user name for this site below and click the Register button to finish
+        logging in.
+    </p>
+    <div class="alert alert-info" role="alert">
+        For quick registration (in less than 60 seconds), just enter your mobile number, scroll to bottom of page and accept terms by checking checkbox, and click on Register button.
+        <br />
+        You can always change your details by contacting us through contact us page.
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "USERNAME" })
+            @Html.ValidationMessageFor(m => m.UserName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.AuthenticatedEmail, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.AuthenticatedEmail, new { @placeholder = "YourMailId@gmail.com", @class = "form-control", @readonly = true })
+            @Html.ValidationMessageFor(m => m.AuthenticatedEmail)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email@YourCompany.com", @class = "form-control", data_toggle = "tooltip", data_placement = "right", title = "Ex: support@Lifetrons.net" })
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @placeholder = "Sameer" })
+            @Html.ValidationMessageFor(m => m.FirstName)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @placeholder = "Kumar" })
+            @Html.ValidationMessageFor(m => m.LastName)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.BirthDate, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+           <div class="dateDiv" style="position: relative">
+                <input class="dateTxt" type="text"  id="BirthDate" name="BirthDate" value="@DateTime.Now"
+                       data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+
+                @*@if (Thread.CurrentThread.CurrentUICulture.Name == "hi-IN")
+                    {
+                        <input class="dateTxt" type="text"  id="BirthDate" name="BirthDate" value="@DateTime.Now" data-date-format="DD/MM/YYYY  hh:mm A"
+                               placeholder="25/01/2014" title="DD/MM/YYYY (25/01/2014)" data-toggle="tooltip" data-placement="right"/>
+                    }
+                    else if (Thread.CurrentThread.CurrentUICulture.Name == "en-US")
+                    {
+                    <input class="dateTxt" type="text"  id="BirthDate" name="BirthDate" value="@DateTime.Now" data-date-format="MM/DD/YYYY  hh:mm A"
+                           placeholder="01/25/2014" title="MM/DD/YYYY (01/25/2014)" data-toggle="tooltip" data-placement="right"/>
+                    }*@
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="form-group required">
+        @Html.LabelFor(m => m.Mobile, new { @class = "col-md-2 control-label required-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Mobile, new { @maxlength = "15", @placeholder = "Mobile No. (for verification)", @class = "form-control", data_toggle = "tooltip", data_placement = "right", title = "Ex: 9829529565" })
+
+            @Html.ValidationMessageFor(m => m.Mobile)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TimeZone, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("TimeZone", new List<SelectListItem>
+            {
+                new SelectListItem{ Text="UTC", Value = "UTC" },
+                new SelectListItem{ Text="India Standard Time", Value = "India Standard Time" },
+                new SelectListItem{ Text="Central European Standard Time", Value = "Central European Standard Time" },
+            })
+        </div>
+    </div>
+    
+    <div class="form-group">
+        @Html.LabelFor(m => m.AddressLine1, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.AddressLine1, new { @class = "form-control", @placeholder = "Plot No. 55, ABC Road" })
+            @Html.ValidationMessageFor(m => m.AddressLine1)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.AddressLine2, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.AddressLine2, new { @class = "form-control", @placeholder = "ABC Area, Industrial Park" })
+            @Html.ValidationMessageFor(m => m.AddressLine2)
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.City, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.City, new { @class = "form-control", @placeholder = "Mumbai" })
+            @Html.ValidationMessageFor(m => m.City)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.State, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.State, new { @class = "form-control", @placeholder = "Maharashtra" })
+            @Html.ValidationMessageFor(m => m.State)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Country, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Country, new { @placeholder = "India", @class = "form-control", data_toggle = "popover", data_placement = "right", title = "India" })
+            @Html.ValidationMessageFor(m => m.Country)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PostalCode, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.PostalCode, new { @placeholder = "400069", @class = "form-control", data_toggle1 = "popover", data_toggle = "tooltip", data_placement = "right", title = "Ex: 402015" })
+            @Html.ValidationMessageFor(m => m.PostalCode)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Agreement", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @*@Html.ActionLink("Click here to open agreement", "LegalAgreement", new { @class = "alert-link" })*@
+            <a href="" data-toggle="modal" data-target="#myModal">Click here to open agreement</a>
+            <br />
+            By checking you agree that you have read the agreement in full, and <br />
+            agree and accept terms and conditions of the agreement.
+            <br />
+            <input type="checkbox" id="chkAccept" name="chkAccept" />
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Register" />
+        </div>
+    </div>
+
+    Html.RenderAction("LegalAgreement");
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/ExternalLoginConfirmation")
+}
+
+
+
+
+
+
+
+
+
+

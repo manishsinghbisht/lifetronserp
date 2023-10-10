@@ -1,0 +1,116 @@
+﻿@using Resources;
+@using System.Threading
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.NoticeBoard
+
+@{
+    ViewBag.Title = Resources.Metadata_NoticeBoard;
+}
+
+<h2> @Resources.Metadata_UISection_Edit </h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Notice Board</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.TimeStamp)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Name, new { @class = "manageMaxLength", @maxlength = "200", @placeholder = "Name (Unique)" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Code, new { @class = "manageMaxLength", @maxlength = "200", @placeholder = "Code (Unique)" })
+                @Html.ValidationMessageFor(model => model.Code)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShrtDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ShrtDesc, new { @class = "manageMaxLength", @maxlength = "150", @placeholder = " Short description" })
+                @Html.ValidationMessageFor(model => model.ShrtDesc)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RefNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RefNo)
+                @Html.ValidationMessageFor(model => model.RefNo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Desc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Desc, new { @class = "manageMaxLength", @maxlength = "1000", @placeholder = "Notice" })
+                @Html.ValidationMessageFor(model => model.Desc)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OpeningDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               <div class="dateDiv" style="position: relative">
+                    <input class="dateTxt" type="text"  id="OpeningDate" name="OpeningDate" value="@ControllerHelper.ConvertDateTimeFromUtc(Model.OpeningDate, User.TimeZone())"
+                           data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                </div>
+                @Html.ValidationMessageFor(model => model.OpeningDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CloseDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               <div class="dateDiv" style="position: relative">
+                    <input class="dateTxt" type="text"  id="CloseDate" name="CloseDate" value="@Model.CloseDate"
+                           data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                </div>
+                @Html.ValidationMessageFor(model => model.CloseDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClosingComments, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ClosingComments)
+                @Html.ValidationMessageFor(model => model.ClosingComments)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Authorized, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Authorized)
+                @Html.ValidationMessageFor(model => model.Authorized)
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" accesskey="S" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/NoticeBoard")
+}

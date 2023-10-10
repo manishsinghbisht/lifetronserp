@@ -1,0 +1,537 @@
+﻿<style>
+    .bs-wizard {
+        margin-top: 40px;
+    }
+
+    /*Form Wizard*/
+    .bs-wizard {
+        border-bottom: solid 1px #e0e0e0;
+        padding: 0 0 10px 0;
+    }
+
+        .bs-wizard > .bs-wizard-step {
+            padding: 0;
+            position: relative;
+        }
+
+            .bs-wizard > .bs-wizard-step + .bs-wizard-step {
+            }
+
+            .bs-wizard > .bs-wizard-step .bs-wizard-stepnum {
+                color: #595959;
+                font-size: 16px;
+                margin-bottom: 5px;
+                margin-right: 20px;
+            }
+
+            .bs-wizard > .bs-wizard-step .bs-wizard-info {
+                color: #999;
+                font-size: 14px;
+            }
+
+            .bs-wizard > .bs-wizard-step > .bs-wizard-dot {
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                display: block;
+                background: #fbe8aa;
+                top: 45px;
+                left: 50%;
+                margin-top: -15px;
+                margin-left: -15px;
+                border-radius: 50%;
+            }
+
+                .bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {
+                    content: ' ';
+                    width: 14px;
+                    height: 14px;
+                    background: #fbbd19;
+                    border-radius: 50px;
+                    position: absolute;
+                    top: 8px;
+                    left: 8px;
+                }
+
+            .bs-wizard > .bs-wizard-step > .progress {
+                position: relative;
+                border-radius: 0px;
+                height: 8px;
+                box-shadow: none;
+                margin: 20px 0;
+            }
+
+                .bs-wizard > .bs-wizard-step > .progress > .progress-bar {
+                    width: 0px;
+                    box-shadow: none;
+                    background: #fbe8aa;
+                }
+
+            .bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {
+                width: 100%;
+            }
+
+            .bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {
+                width: 50%;
+            }
+
+            .bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {
+                width: 0%;
+            }
+
+            .bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {
+                width: 100%;
+            }
+
+            .bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {
+                background-color: #f5f5f5;
+            }
+
+                .bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {
+                    opacity: 0;
+                }
+
+            .bs-wizard > .bs-wizard-step:first-child > .progress {
+                left: 50%;
+                width: 50%;
+            }
+
+            .bs-wizard > .bs-wizard-step:last-child > .progress {
+                width: 50%;
+            }
+
+            .bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot {
+                pointer-events: none;
+            }
+    /*END Form Wizard*/
+</style>
+
+<div class="container">
+    <div class="badger-left" data-badger="Concepts and Flow">
+        <div class="row center-block">
+            <img src="~/Images/ESFlowChart.jpg" class="img-responsive" alt="Image Not Available" onerror="this.src = '../../Images/ImageNotAvailable.jpg'">
+        </div>
+    </div>
+</div>
+<hr />
+
+
+<div class="container">
+    <div class="row bs-wizard" style="border-bottom:0;">
+
+        <div class="col-xs-3 bs-wizard-step complete">
+            <div class="text-center bs-wizard-stepnum">1. Got a Lead!!</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                Any given "Action" has a "Purpose" behind it.
+                <br />
+
+            </div>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step complete">
+            <!-- complete -->
+            <div class="text-center bs-wizard-stepnum">2. Create Lead</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                Purpose: Anounce it to team
+                <br />
+                Sales -> Lead -> Create
+            </div>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step complete">
+            <!-- complete -->
+            <div class="text-center bs-wizard-stepnum">3. Spending time on something?</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                Purpose: Let your team know about your task
+                <br />
+                Upadate the task with the Purpose: Account / Opportunity / Lead or Contact etc
+                <br />
+                Activity -> Task -> Create
+            </div>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step complete">
+            <!-- complete -->
+            <div class="text-center bs-wizard-stepnum">4. Task in progress or completed?</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                Purpose: Let your team know about your task status
+                <br />
+                1) Upadate the task with the status and updates
+                <br />
+                2) Upadate the Purpose (Account / Opportunity / Lead or Contact) with the status and updates.
+                <br />
+                Activity -> Task -> Edit
+                Sales -> Lead -> Edit
+            </div>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step complete">
+            <!-- complete -->
+            <div class="text-center bs-wizard-stepnum">5. Lead qualified ?</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                Purpose: Let all know that you the Lead is qualified
+                <br />
+                1) Sales -> Lead - > Details -> Convert
+                <br />
+                2) Converting Lead will automatically create a opportunity and a task for you with "Lead" + Name as prefix.
+                <br />
+                <br />
+            </div>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step complete">
+            <!-- complete -->
+            <div class="text-center bs-wizard-stepnum">6. Opportunity</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                Purpose: Let all know that you are working on a qualified lead, which is a "Opportunity" now.
+                <br />
+                1) Sales -> Opporunity
+                <br />
+                2) Fill in the tasks created by "Convert Lead" and create new tasks if required and link it with your "Opportunity".
+                <br />
+                <br />
+            </div>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step complete">
+            <!-- complete -->
+            <div class="text-center bs-wizard-stepnum">7. Quote you prices</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                1) Sales -> Quote
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+
+            </div>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step complete">
+            <!-- complete -->
+            <div class="text-center bs-wizard-stepnum">8. Recieve & Place Order</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                1) Sales -> Order
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+
+            </div>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step complete">
+            <!-- complete -->
+            <div class="text-center bs-wizard-stepnum">9. Create Invoice</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                1) Sales -> Invoice
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+
+            </div>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step complete">
+            <!-- complete -->
+            <div class="text-center bs-wizard-stepnum">10. Handle Cases</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                1) Activity -> Cases
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<hr />
+
+<div class="container">
+    <div class="row bs-wizard" style="border-bottom:0;">
+
+        <div class="col-xs-3 bs-wizard-step complete">
+            <div class="text-center bs-wizard-stepnum">Step 1 (Campaigns)</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                Create Campaigns.
+                <br />
+                A default "Regular" campaign has been automatically added to log daily prospecting, leads opportunities into when you setup your organization.
+                <br />
+                <ul class="pull-left">
+                    <li>
+                        <b>Sales -> Campaign</b>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step complete">
+            <!-- complete -->
+            <div class="text-center bs-wizard-stepnum">Step 2 (Leads)</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                Create Leads.
+                <br />
+                To convert Lead, go to Lead's Detail page.
+                A Lead is be converted into two objects:<br />
+                <ul class="list-group list-unstyled">
+                    <li>
+                        1)  Task <i><small>(A task is created to manage / create new Account (Firm/Company) or Contact (Person))</small></i>
+                    </li>
+                    <li>
+                        2) Opportunity <i><small>(An opportunity is created to track and further on lead towards quotes, orders and invoices)</small></i>
+                    </li>
+                </ul>
+                Lead cannot be edited after conversion. Lead can be of Account(Firm, Organization) Type or Contact(Person) Type
+                <ul class="pull-left">
+                    <li>
+                        <b>Sales -> Leads</b>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step active">
+            <!-- complete -->
+            <div class="text-center bs-wizard-stepnum">Step 3 (Opportunity)</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                Opportunities can be created directly or via "Lead" by Qualified Lead Conversion.
+                <br />
+                For Example :
+                <br />
+                <ul class="list-unstyled text-center">
+                    <li>
+                        1) Opportunity for Sub 10 K instruments
+                    </li>
+                    <li>
+                        2) Lead: Lead Name <i><small>(Auto Opportunity name of the Opportunity created by Lead conversion)</small></i>
+                    </li>
+                </ul>
+
+                <ul class="pull-left">
+                    <li>
+                        <b>Sales -> Opportunity</b>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step disabled">
+            <!-- active -->
+            <div class="text-center bs-wizard-stepnum">Step 4 (Opportunity Line Items)</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                Create Opportunity Line Items or product assiciated with that opportunity.
+                <br />
+                <ul class="pull-left">
+                    <li>
+                        <b>Sales -> Opportunity -> Details -> Opportunity Line Items -> Add</b>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<hr />
+
+<div class="container">
+    <div class="row bs-wizard" style="border-bottom:0;">
+
+        <div class="col-xs-3 bs-wizard-step complete">
+            <div class="text-center bs-wizard-stepnum">Step 1 (Convert Lead)</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                Lead Conversion: Lead should be converted only after they are "Qualified".
+                <br />
+                Navigation Link: Sales -> Lead -> Detail -> Convert
+                <br />
+
+                After conversion Lead will be transformed into two objects:
+                <br />
+                <ul class="list-group list-unstyled">
+                    <li>
+                        1)  Task (Activity -> Task) <i><small>(A task is created to manage / create new Account (Firm/Company) or Contact (Person))</small></i>
+                    </li>
+                    <li>
+                        2) Opportunity (Sales -> Opportunity) <i><small>(An opportunity is created to track lead and work further on lead towards quotes, orders and invoices)</small></i>
+                    </li>
+                </ul>
+                <br />
+            </div>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step complete">
+            <!-- complete -->
+            <div class="text-center bs-wizard-stepnum">Step 2 (Tasks and Cases)</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                Create Cases.
+                <br />
+                You can create Cases to raise customer issues or any problems you are facing
+                <ul class="list-group list-unstyled">
+                    <li>
+                        1)  Competition prices issue
+                    </li>
+                    <li>
+                        2) Product packing issue
+                    </li>
+                    <li>
+                        3) Customer complaint
+                    </li>
+                </ul>
+                <ul class="pull-left">
+                    <li>
+                        <b>Activity -> Case</b>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<hr />
+
+
+<div class="container">
+    <div class="row bs-wizard" style="border-bottom:0;">
+
+        <div class="col-xs-3 bs-wizard-step complete">
+            <div class="text-center bs-wizard-stepnum">Step 1</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                Define classification for your products here in terms of <b>Family</b> and <b>Type</b>.
+
+                Default values for Product Family and Product Type are already setup with your organization setup as
+                <b>Family 1</b> and <b>Type 1</b>.
+                <br />
+                <ul class="pull-left">
+                    <li>
+                        <b>Lists -> Product Family</b>
+                    </li>
+                    <li>
+                        <b>Lists -> Product Type</b>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step complete">
+            <!-- complete -->
+            <div class="text-center bs-wizard-stepnum">Step 2</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                Create your Products now:
+                <br />
+                <ul class="pull-left">
+                    <li>
+                        <b>Lists -> Product</b>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step active">
+            <!-- complete -->
+            <div class="text-center bs-wizard-stepnum">Step 3</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                Create your Price List or Price Book.
+                <br />
+                This is just the Name and Description of the Price Book.
+                For Example :
+                <br />
+                <ul class="list-group">
+                    <li>
+                        <b>October Price Book</b>
+                    </li>
+                    <li>
+                        <b>New Year Special Price Book</b>
+                    </li>
+                </ul>
+                After naming your price book and create it. You can go to PriceBook Detail page and Add Product into your Price Book.
+                <ul class="list-group">
+                    <li>
+                        <b>Lists -> Price Book</b>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-xs-3 bs-wizard-step disabled">
+            <!-- active -->
+            <div class="text-center bs-wizard-stepnum">Step 4</div>
+            <div class="progress"><div class="progress-bar"></div></div>
+            <a href="#" class="bs-wizard-dot"></a>
+            <div class="bs-wizard-info text-left">
+                Add <b>Products</b> to your  <b>Price Book</b> from Price Book Detail page.
+                <ul class="list-group">
+                    <li>
+                        <b>List -> PriceBook</b>
+                    </li>
+                    <li>
+                        <b>Click on "Detail"</b>
+                    </li>
+                    <li>
+                        <b>In bottom of the page, you will see "Price Book Line Item Panel". Click on the "Add" button there.</b>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />

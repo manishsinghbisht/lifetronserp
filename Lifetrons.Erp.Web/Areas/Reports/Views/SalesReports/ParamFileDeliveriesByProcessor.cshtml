@@ -1,0 +1,96 @@
+﻿@using Resources;
+@using System.Threading
+@using Microsoft.AspNet.Identity
+@using Lifetrons.Erp.Helpers
+
+@{
+    ViewBag.Title = "File Report";
+}
+
+
+<h2>File Report Parameter Selector</h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            @Html.Label("Start Date", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               <div class="dateDiv" style="position: relative">
+                    <input class="dateTxt" type="text"  id="StartDate" name="StartDate" value="@DateTime.Now"
+                           data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+
+                    @*@if (Thread.CurrentThread.CurrentUICulture.Name == "hi-IN")
+                    {
+                        <input class="dateTxt" type="text"  id="StartDate" name="StartDate" value="@DateTime.Now" data-date-format="DD/MM/YYYY  hh:mm A"
+                               placeholder="25/01/2014" title="DD/MM/YYYY (25/01/2014)" data-toggle="tooltip" data-placement="right" />
+                    }
+                    else if (Thread.CurrentThread.CurrentUICulture.Name == "en-US")
+                    {
+                        <input class="dateTxt" type="text"  id="StartDate" name="StartDate" value="@DateTime.Now" data-date-format="MM/DD/YYYY  hh:mm A"
+                               placeholder="01/25/2014" title="MM/DD/YYYY (01/25/2014)" data-toggle="tooltip" data-placement="right" />
+                    }*@
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("End Date", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               <div class="dateDiv" style="position: relative">
+                    <input class="dateTxt" type="text"  id="EndDate" name="EndDate" value="@DateTime.Now"
+                           data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+
+                    @*@if (Thread.CurrentThread.CurrentUICulture.Name == "hi-IN")
+                    {
+                        <input class="dateTxt" type="text"  id="EndDate" name="EndDate" value="@DateTime.Now" data-date-format="DD/MM/YYYY  hh:mm A"
+                               placeholder="25/01/2014" title="DD/MM/YYYY (25/01/2014)" data-toggle="tooltip" data-placement="right" />
+                    }
+                    else if (Thread.CurrentThread.CurrentUICulture.Name == "en-US")
+                    {
+                        <input class="dateTxt" type="text"  id="EndDate" name="EndDate" value="@DateTime.Now" data-date-format="MM/DD/YYYY  hh:mm A"
+                               placeholder="01/25/2014" title="MM/DD/YYYY (01/25/2014)" data-toggle="tooltip" data-placement="right" />
+                    }*@
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Processor", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @if (ViewBag.ProcessorId != null && (User.IsInRole("OrganizationLevel") || User.IsInRole("DepartmentLevel") || User.IsInRole("TeamLevel")))
+                {
+                    @Html.DropDownList("ProcessorId")
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Report Format", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("reportFormatType", new List<SelectListItem>
+                {
+                    new SelectListItem{ Text="PDF", Value = "PDF" },
+                    new SelectListItem{ Text="Excel", Value = "Excel" },
+                    new SelectListItem{ Text="Word", Value = "Word" },
+                    new SelectListItem{ Text="Image", Value = "Image" },
+                })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Show Report" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Report")
+}

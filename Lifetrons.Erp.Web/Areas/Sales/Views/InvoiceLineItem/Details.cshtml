@@ -1,0 +1,169 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.InvoiceLineItem
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Details;
+}
+
+<h2>Details</h2>
+
+<div class="row">
+    <h4>Invoice Line Item</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Serial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Serial)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InvoiceId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Invoice.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceBookId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceBook.Name)
+        </dd>
+
+       <dt>
+            @Html.DisplayNameFor(model => model.SalesPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscountPercent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscountPercent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscountAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscountAmount)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.LineItemPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LineItemPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weight) &nbsp; @Html.DisplayFor(model => model.WeightUnit.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LineItemAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LineItemAmount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShrtDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShrtDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecialInstructions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecialInstructions)
+        </dd>
+
+        @*Start Details - Authorized, Active, Created and Modified*@
+        <dt>
+            @Html.DisplayNameFor(model => model.Authorized)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Authorized)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.UserName)
+            &nbsp;
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser1.UserName)
+            &nbsp;
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+        </dd>
+        @*End Details - Authorized, Active, Created and Modified*@
+        
+        <dt>
+            @Html.DisplayName("Image")
+        </dt>
+
+        <dd>
+            <img src="@Url.Action("GetProductImageThumbnail", "Media", new { area = "", productId = Model.ProductId })" class="img-responsive" alt="Image Not Available"
+                 onerror="this.onerror=null;this.src='@Url.Content("~/Images/ImageNotAvailable.jpg")';" height="50" width="50">
+        </dd>
+    </dl>
+</div>
+<div class="row">
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { invoiceId = Model.InvoiceId, priceBookId = Model.PriceBookId, productId = Model.ProductId }) |
+        @Html.ActionLink("Back to List", "Details", "Invoice", new { id = Model.InvoiceId }, null)
+    </p>
+</div>

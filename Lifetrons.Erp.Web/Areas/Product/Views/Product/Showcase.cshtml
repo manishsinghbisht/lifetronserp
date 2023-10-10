@@ -1,0 +1,97 @@
+﻿@using Resources;
+@using PagedList.Mvc;
+@using PagedList;
+@using Lifetrons.Erp.Helpers
+
+@model IEnumerable<Lifetrons.Erp.Data.Product>
+
+@{
+    ViewBag.Title = "Showcase";
+}
+
+<table class="table-condensed">
+    <tr><td><h2>@Resources.Metadata_Products Showcase</h2></td></tr>
+    <tr>
+
+        <td class="col-xs-4">
+            @Html.PagedListPager((IPagedList)Model, page => Url.Action("Showcase", new { page = page, area = "" }), PagedListRenderOptions.MinimalWithPageCountText)
+        </td>
+        <td class="col-xs-4">
+            <form id="frmShowcaseSearch" name="frmShowcaseSearch" class="navbar-form navbar-left" role="search" action="ShowcaseSearch">
+                <div class="form-group">
+                    <input id="searchParam" name="searchParam" type="text" class="form-control" placeholder="Search Name or Code">
+                </div>
+                <button id="btnShowcaseSearch" name="btnShowcaseSearch" type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th>
+            @Html.DisplayName("Image")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductFamily)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShrtDesc)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="@Url.Action("GetProductImageThumbnail", "Media", new { area = "", productId = item.Id })" class="img-responsive" alt="Image Not Available"
+                     onerror="this.onerror=null;this.src='@Url.Content("~/Images/ImageNotAvailable.jpg")';" height="100" width="100">
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Weight) &nbsp; @Html.DisplayFor(modelItem => item.WeightUnit.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductFamily.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductType.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ShrtDesc)
+            </td>
+
+            <td>
+                <a id="Detail" href="@Url.Action("ShowcaseDetails", new { id = item.Id })">
+                    <i id="social" class="fa fa-expand fa-2x social-fb"></i>
+                </a>
+            </td>
+        </tr>
+    }
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Product")
+}

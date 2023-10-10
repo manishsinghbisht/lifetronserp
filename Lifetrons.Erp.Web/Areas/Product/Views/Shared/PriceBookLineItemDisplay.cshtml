@@ -1,0 +1,35 @@
+﻿@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.PriceBookLineItemSelectorModel
+
+@*
+    How to get current URL:
+    - Without querystring: Request.Url.GetLeftPart(UriPartial.Path)
+    - With querystring: Request.Url.PathAndQuery*@
+
+
+<div class="form-horizontal" id="divPriceBookLineItemDisplay" name="divPriceBookLineItemDisplay">
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.HiddenFor(model => model.PriceBookId, new { Value = ViewData["PriceBookId"] })
+            @Html.TextBoxFor(model => model.PriceBookName, new { Value = ViewData["PriceBookName"], @readonly = true })
+            <br />
+            @if (Convert.ToBoolean(TempData["showSelectLink"]))
+            {
+                @Html.DropDownList("ProductId")
+                @Html.ActionLink("Select", "PriceBookLineItemSelector", "PriceBookLineItemSelector",
+                        new
+                        {
+                            priceBookId = ViewData["PriceBookId"],
+                            returnAction = "ActioName",
+                            returnController = "ControllerName",
+                            returnUrl = Request.Url.PathAndQuery
+                        }, null)
+            }
+            else
+            {
+                @Html.HiddenFor(model => model.ProductId, new { Value = ViewData["ProductId"] })
+                @Html.TextBoxFor(model => model.ProductId, new { Value = ViewData["ProductName"], @readonly = true })
+            }
+        </div>
+    </div>
+</div>

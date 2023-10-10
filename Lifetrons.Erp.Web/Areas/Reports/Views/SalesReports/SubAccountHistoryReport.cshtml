@@ -1,0 +1,380 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Data
+@using Lifetrons.Erp.Helpers
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework
+@using Lifetrons.Erp.Helpers
+
+@{
+    ViewBag.Title = "AccountHistoryReport";
+}
+
+@if (Request.IsAuthenticated)
+{
+    var applicationUserId = User.Identity.GetUserId();
+
+    var contacts = TempData["AccountContacts"] as IEnumerable<Lifetrons.Erp.Data.Contact>;
+    var opportunities = TempData["AccountOpportunities"] as IEnumerable<Lifetrons.Erp.Data.Opportunity>;
+    var quotes = TempData["AccountQuotes"] as IEnumerable<Lifetrons.Erp.Data.Quote>;
+    var orders = TempData["AccountOrders"] as IEnumerable<Lifetrons.Erp.Data.Order>;
+    var cases = TempData["AccountCases"] as IEnumerable<Lifetrons.Erp.Data.Case>;
+    var tasks = TempData["AccountTasks"] as IEnumerable<Lifetrons.Erp.Data.Task>;
+
+
+    <div class="row text-center">
+        <h3>@TempData["AccountName"]</h3>
+    </div>
+
+          <!--Work Section-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Account History (@TempData["AccountName"])
+        </div>
+        <div class="panel-body">
+
+            <div class="row panel panel-default">
+                <div class="panel-heading text-center"><b>Contacts &nbsp; </b><span class="badge">@{ var contactCount = contacts != null ? contacts.ToList().Count.ToString() : "0";} @contactCount</span></div>
+                <div class="panel-body" style="height: 200px; overflow:auto;">
+                    <table class="table table-striped  table-hover">
+                        <tr>
+                            <th class="hidden">
+
+                            </th>
+
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Department
+                            </th>
+                            <th>
+                                Title
+                            </th>
+                            <th>
+                                Level
+                            </th>
+                            <th>
+                                Owner
+                            </th>
+                        </tr>
+                        @if (contacts != null)
+                        {
+                            foreach (var item in contacts)
+                             {
+                                 <tr>
+                                     <td class="hidden">@Html.DisplayFor(modelItem => item.Id)</td>
+                                     <td>
+                                         <a href="@Url.Action("Details", "Contact", new {id = item.Id})">
+
+                                             @Html.DisplayFor(modelItem => item.Name)
+                                         </a>
+                                     </td>
+                                     <td>
+                                         @Html.DisplayFor(modelItem => item.Department)
+                                     </td>
+                                     <td>
+                                         @Html.DisplayFor(modelItem => item.Title)
+                                     </td>
+                                     <td>
+                                         @Html.DisplayFor(modelItem => item.Level.Name)
+                                     </td>
+                                     <td>
+                                         @Html.DisplayFor(modelItem => item.AspNetUser2.Name)
+                                     </td>
+                                 </tr>
+
+                             }
+                        }
+                    </table>
+                </div>
+            </div>
+        
+            <div class="row panel panel-default">
+                <div class="panel-heading text-center"><b>Opportunities &nbsp; </b><span class="badge">@{ var opportunitiesCount = opportunities != null ? opportunities.ToList().Count.ToString() : "0";} @opportunitiesCount</span></div>
+                <div class="panel-body" style="height: 200px; overflow:auto;">
+                    <table class="table table-striped  table-hover">
+                        <tr>
+                            <th class="hidden">
+
+                            </th>
+
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Ref No
+                            </th>
+                            <th>
+                                Expected Revenue
+                            </th>
+                            <th>
+                                Stage
+                            </th>
+                            <th>
+                                Close Date
+                            </th>
+                        </tr>
+                        @if (opportunities != null)
+                        {
+                            foreach (var item in opportunities)
+                            {
+                                <tr>
+                                    <td class="hidden">@Html.DisplayFor(modelItem => item.Id)</td>
+                                    <td>
+                                        <a href="@Url.Action("Details", "Opportunity", new {id = item.Id})">
+
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RefNo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ExpectedRevenue)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Stage.Name)
+                                    </td>
+                                    <td>
+                                        @ControllerHelper.ConvertDateTimeFromUtc(Convert.ToDateTime(item.CloseDate.ToString()), User.TimeZone())
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+        
+            <div class="row panel panel-default">
+                <div class="panel-heading text-center"><b>Quotes &nbsp; </b><span class="badge">@{ var quotesCount = quotes != null ? quotes.ToList().Count.ToString() : "0";} @quotesCount</span></div>
+                <div class="panel-body" style="height: 200px; overflow:auto;">
+                    <table class="table table-striped  table-hover">
+                        <tr>
+                            <th class="hidden">
+
+                            </th>
+
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Ref No
+                            </th>
+                            <th>
+                                FollowUp Date
+                            </th>
+                            <th>
+                                Expiration Date
+                            </th>
+                            <th>
+                                Contact
+                            </th>
+                        </tr>
+                        @if (quotes != null)
+                        {
+                            foreach (var item in quotes)
+                            {
+                                <tr>
+                                    <td class="hidden">@Html.DisplayFor(modelItem => item.Id)</td>
+                                    <td>
+                                        <a href="@Url.Action("Details", "Quote", new {id = item.Id})">
+
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RefNo)
+                                    </td>
+                                    <td>
+                                        @ControllerHelper.ConvertDateTimeFromUtc(Convert.ToDateTime(item.FollowUpDate.ToString()), User.TimeZone())
+                                    </td>
+                                    <td>
+                                        @ControllerHelper.ConvertDateTimeFromUtc(Convert.ToDateTime(item.ExpirationDate.ToString()), User.TimeZone())
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Contact.Name)
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+        
+            <div class="row panel panel-default">
+                <div class="panel-heading text-center"><b>Orders &nbsp; </b><span class="badge">@{ var ordersCount = orders != null ? orders.ToList().Count.ToString() : "0";} @ordersCount</span></div>
+                <div class="panel-body" style="height: 200px; overflow:auto;">
+                    <table class="table table-striped  table-hover">
+                        <tr>
+                            <th class="hidden">
+
+                            </th>
+
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Ref No
+                            </th>
+                            <th>
+                                Start Date
+                            </th>
+                            <th>
+                                Delivery Date
+                            </th>
+                            <th>
+                                Delivery Status
+                            </th>
+                        </tr>
+                        @if (orders != null)
+                        {
+                            foreach (var item in orders)
+                            {
+                                <tr>
+                                    <td class="hidden">@Html.DisplayFor(modelItem => item.Id)</td>
+                                    <td>
+                                        <a href="@Url.Action("Details", "Order", new {id = item.Id})">
+
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RefNo)
+                                    </td>
+                                    <td>
+                                        @ControllerHelper.ConvertDateTimeFromUtc(Convert.ToDateTime(item.StartDate.ToString()), User.TimeZone())
+                                    </td>
+                                    <td>
+                                        @ControllerHelper.ConvertDateTimeFromUtc(Convert.ToDateTime(item.DeliveryDate.ToString()), User.TimeZone())
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DeliveryStatu.Name)
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+        
+            <div class="row panel panel-default">
+                <div class="panel-heading text-center"><b>Cases &nbsp; </b><span class="badge">@{ var casesCount = cases != null ? cases.ToList().Count.ToString() : "0";} @casesCount</span></div>
+                <div class="panel-body" style="height: 200px; overflow:auto;">
+                    <table class="table table-striped  table-hover">
+                        <tr>
+                            <th class="hidden">
+
+                            </th>
+
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Ref No
+                            </th>
+                            <th>
+                                Opening Date
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th>
+                                Close Date
+                            </th>
+                            <th>
+                                Closing Comments
+                            </th>
+                        </tr>
+                        @if (cases != null)
+                        {
+                            foreach (var item in cases)
+                            {
+                                <tr>
+                                    <td class="hidden">@Html.DisplayFor(modelItem => item.Id)</td>
+                                    <td>
+                                        <a href="@Url.Action("Details", "Case", new {id = item.Id})">
+
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.RefNo)
+                                    </td>
+                                    <td>
+                                        @ControllerHelper.ConvertDateTimeFromUtc(item.OpeningDate, User.TimeZone())
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CaseStatu.Name)
+                                    </td>
+                                    <td>
+                                        @ControllerHelper.ConvertDateTimeFromUtc(Convert.ToDateTime(item.CloseDate.ToString()), User.TimeZone())
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ClosingComments)
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+        
+            <div class="row panel panel-default">
+                <div class="panel-heading text-center"><b>Tasks &nbsp; </b><span class="badge">@{ var tasksCount = tasks != null ? tasks.ToList().Count.ToString() : "0";} @tasksCount</span></div>
+                <div class="panel-body" style="height: 200px; overflow:auto;">
+                    <table class="table table-striped  table-hover">
+                        <tr>
+                            <th class="hidden">
+
+                            </th>
+
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Owner
+                            </th>
+                            <th>
+                                Start Date
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th>
+                                End Date
+                            </th>
+                        </tr>
+                        @if (tasks != null)
+                        {
+                            foreach (var item in tasks)
+                            {
+                                <tr>
+                                    <td class="hidden">@Html.DisplayFor(modelItem => item.Id)</td>
+                                    <td>
+                                        <a href="@Url.Action("Details", "Task", new {id = item.Id, area = "Activity" })">
+
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </a>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.AspNetUser2.Name)
+                                    </td>
+                                    <td>
+                                        @ControllerHelper.ConvertDateTimeFromUtc(Convert.ToDateTime(item.StartDate.ToString()), User.TimeZone())
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TaskStatu.Name)
+                                    </td>
+                                    <td>
+                                        @ControllerHelper.ConvertDateTimeFromUtc(Convert.ToDateTime(item.EndDate.ToString()), User.TimeZone())
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+
+        </div> <!--Panel Body Close-->
+    </div> <!--Panel Close-->
+}

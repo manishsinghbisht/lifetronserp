@@ -1,0 +1,140 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+
+@model Lifetrons.Erp.Data.OrderLineItem
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Edit;
+}
+
+<h2> @Resources.Metadata_UISection_Edit </h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Work Order Line Item</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.OrderId)
+        @Html.HiddenFor(model => model.TimeStamp)
+        
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.PriceBookId, "Price Book Line Item", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{
+            Html.RenderAction("PriceBookLineItemDisplay", "PriceBookLineItemSelector",
+                        new { area = "Product", priceBookId = Model.PriceBookId, selectedProductId = Model.ProductId, showSelectLink = false });
+                }
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Serial, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Serial, new { @class = "manageMaxLength", @maxlength = "3", @placeholder = "1" })
+                @Html.ValidationMessageFor(model => model.Serial)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShrtDesc, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ShrtDesc, new { @class = "manageMaxLength", @maxlength = "150", @placeholder = "Short description" })
+                @Html.ValidationMessageFor(model => model.ShrtDesc)
+            </div>
+        </div>
+       
+        <div class="form-group">
+            @Html.LabelFor(model => model.Desc, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Desc, new { @class = "manageMaxLength", @maxlength = "500", @placeholder = "Updates" })
+                @Html.ValidationMessageFor(model => model.Desc)
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.JobNo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.JobNo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Quantity, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "1" })
+                @Html.ValidationMessageFor(model => model.Quantity)
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Weight, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Weight) @Html.DisplayFor(model => model.WeightUnit.Name)
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SpecialInstructions, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.SpecialInstructions, new { @placeholder = "Anything you want to emphasize" })
+                @Html.ValidationMessageFor(model => model.SpecialInstructions)
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductionQuantity, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ProductionQuantity, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "1" })
+                @Html.ValidationMessageFor(model => model.ProductionQuantity)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductionWeight, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ProductionWeight, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "5" })
+                @Html.DropDownList("ProductionWeightUnitId", String.Empty)
+                @Html.ValidationMessageFor(model => model.ProductionWeight)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductionInstructions, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.ProductionInstructions, new { @placeholder = "Production instructions" })
+                @Html.ValidationMessageFor(model => model.ProductionInstructions)
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Authorized)
+                @Html.ValidationMessageFor(model => model.Authorized)
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @if (!Model.Authorized || User.IsInRole("WorksAuthorize"))
+                {
+                    <input type="submit" value="Save" class="btn btn-default" accesskey="S" />
+                }
+            </div>
+        </div>
+    </div>
+}
+
+<div class="row">
+    @Html.ActionLink("Back to List", "Details", "WorkOrder", new { id = Model.OrderId }, null)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/OrderLineItem")
+}

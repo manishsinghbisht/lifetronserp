@@ -1,0 +1,30 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+
+@{
+    ViewBag.Title = "SelectUserToManageUserRoles";
+}
+
+<h2>Select User</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Manage User Roles</h4>
+        <hr />
+        <div class="form-group">
+            @Html.Label("User", new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DropDownList("UserId")             
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Show User Roles" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

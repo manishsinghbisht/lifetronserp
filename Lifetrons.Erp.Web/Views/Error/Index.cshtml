@@ -1,0 +1,54 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Page Not Found";
+}
+<h3 class="text-danger">Error</h3>
+
+@if (Request.IsAuthenticated)
+{
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Error Detail</div>
+        <div class="panel-body">
+            <h3 class="text-danger">@TempData["CustomErrorMessage"]</h3>
+            <h4 class="text-danger">@TempData["CustomErrorDetail"]</h4>
+            <h4 class="text-danger">
+                This may be due to a failed business validation or incorrect data entry.
+                Make sure you have sufficient sharing rights and roles for required data. For example: PriceBooks access, Sharing access etc.
+            </h4>
+
+            <h4 class="text-danger">@DateTime.Now</h4>
+        </div>
+    </div>
+    <meta http-equiv="Refresh" content="120;URL=@(Url.Action("Index", "Home"))">
+    <input type="button" onclick="history.go(-1);" value="Back">
+}
+else
+{
+    <h3 class="text-info">This may occur due to sesson expiry or busy server or a dropped connection.</h3>
+    <h3 class="text-info">Please try back in few seconds. You will be automatically redirected back to login page.</h3>
+    <p>
+        <h3>Possible reasons why this may have occured: </h3>
+
+        <ul class="list-group">
+            <li>
+                <b>Your session expired. Please log in again.</b>
+            </li>
+            <li>
+                <b>Too busy servers or Dropped connection. Please try again.</b>
+            </li>
+            <li>
+                <b>You don't have required roles / permissions to visit the requested area.</b>
+            </li>
+            <li>
+                <b>Invalid request URL. If typed your URL or got here through some search engine link.</b>
+            </li>
+        </ul>
+
+        You will be transferred to Home page automatically in 10 seconds,
+        unless you decide to click on Back button given below to go back to previous page.
+    </p>
+    <h4 class="text-info">@DateTime.Now</h4>
+    <meta http-equiv="Refresh" content="5;URL=@(Url.Action("Index", "Home"))">
+}

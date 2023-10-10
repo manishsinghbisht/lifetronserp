@@ -1,0 +1,106 @@
+﻿@using Resources;
+@using PagedList.Mvc; 
+@using PagedList; 
+@using Lifetrons.Erp.Helpers
+
+@model IEnumerable<Lifetrons.Erp.Data.StockIssueHead>
+
+@{
+    ViewBag.Title = "StockIssue";
+}
+
+<table class="table-condensed">
+    <tr><td><h2>Stock Issues</h2></td></tr>
+    <tr>
+        <td class="col-xs-4">
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+        </td>
+
+        <td class="col-xs-4">
+            @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page = page, area = ViewContext.RouteData.DataTokens["area"] }), PagedListRenderOptions.MinimalWithPageCountText)
+        </td>
+        <td class="col-xs-4">
+           @{Html.RenderAction("ShowSearchForm", "Search", new { action = "Search", controller = ViewContext.RouteData.DataTokens["area"] + "/StockIssue", area = "", placeholder = "Search name or code" }); }
+        </td>
+    </tr>
+</table>
+
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th></th>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RefNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IssuedToProcessId)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.Authorized)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a id="Detail" href="@Url.Action("Details", new { id = item.Id })">
+                    <i id="social" class="fa fa-expand fa-2x social-fb"></i>
+                </a>
+            </td>
+
+            <td>
+                <a id="Edit" href="@Url.Action("Edit", new { id = item.Id })">
+                    <i id="social" class="fa fa-edit fa-2x social-em"></i>
+                </a>
+            </td>
+           
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RefNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Process1.Name) [@Html.DisplayFor(modelItem => item.EnterpriseStage1.Name)]
+            </td>
+            
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Authorized)
+            </td>
+           
+            <td>
+                <a id="Delete" href="@Url.Action("Delete", new { id = item.Id })">
+                    <i id="social" class="fa fa-trash-o fa-2x social-gp"></i>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/StockIssueHead")
+}

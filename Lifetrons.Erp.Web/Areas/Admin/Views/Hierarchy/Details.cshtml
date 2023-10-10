@@ -1,0 +1,58 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.Hierarchy
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Details;
+}
+
+<div>
+    <h4>@Resources.Metadata_Hierarchy - @Resources.Metadata_UISection_Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportsTo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser1.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartmentId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.Name)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.TeamId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Team.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Designation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Designation)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

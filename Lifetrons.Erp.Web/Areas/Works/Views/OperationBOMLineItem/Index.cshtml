@@ -1,0 +1,83 @@
+﻿@using Resources;
+@model IEnumerable<Lifetrons.Erp.Data.OperationBOMLineItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">Operation Items</h4>
+
+    </div>
+    <p>
+        @Html.ActionLink("Add BOM Items For Operation", "Create", new { productId = (string)ViewBag.ProductId, enterpriseStageId = (string)ViewBag.EnterpriseStageId, processId = (string)ViewBag.ProcessId, operationId = (string)ViewBag.OperationId })
+    </p>
+    <div class="panel-body" style="overflow:auto;">
+        <table class="table table-striped table-hover">
+            <tr>
+                <th></th>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Serial)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Weight)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShrtDesc)
+                </th>
+                <th>Image</th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a id="Detail" href="@Url.Action("Details", new { productId = (string)ViewBag.ProductId, enterpriseStageId = (string)ViewBag.EnterpriseStageId, processId = (string)ViewBag.ProcessId, itemId = item.ItemId })">
+                    <i id="social" class="fa fa-expand fa-2x social-fb"></i>
+                </a>
+            </td>
+
+            <td>
+                <a id="Edit" href="@Url.Action("Edit", new { productId = (string)ViewBag.ProductId, enterpriseStageId = (string)ViewBag.EnterpriseStageId, processId = (string)ViewBag.ProcessId, itemId = item.ItemId })">
+                    <i id="social" class="fa fa-edit fa-2x social-em"></i>
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Serial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BOMLineItem.Item.Name)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WeightUnit.Name) &nbsp; @Html.DisplayFor(modelItem => item.WeightUnit1.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BOMLineItem.ShrtDesc)
+            </td>
+            <td>
+                <img src="@Url.Action("GetItemImageThumbnail", "Media", new { area = "", itemId = item.ItemId })" class="img-responsive" alt="Image Not Available"
+                     onerror="this.onerror=null;this.src='@Url.Content("~/Images/ImageNotAvailable.jpg")';" height="50" width="50">
+            </td>
+            <td>
+                <a id="Delete" href="@Url.Action("Delete", new { productId = (string)ViewBag.ProductId, enterpriseStageId = (string)ViewBag.EnterpriseStageId, processId = (string)ViewBag.ProcessId, itemId = item.ItemId })">
+                    <i id="social" class="fa fa-trash-o fa-2x social-gp"></i>
+                </a>
+            </td>
+        </tr>
+    }
+
+        </table>
+    </div>
+</div>

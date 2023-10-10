@@ -1,0 +1,1146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="HomeChooseYourRegion" xml:space="preserve">
+    <value>Zvolte region</value>
+  </data>
+  <data name="HomeCol1Header" xml:space="preserve">
+    <value>Začínáme</value>
+  </data>
+  <data name="HomeCol1Text" xml:space="preserve">
+    <value>Stačí definovat vlastní přizpůsobené výrobní proces / fáze a spravovat své produkce na cestách!</value>
+  </data>
+  <data name="HomeCol2Header" xml:space="preserve">
+    <value>Rychlé triky</value>
+  </data>
+  <data name="HomeCol2Text" xml:space="preserve">
+    <value>Nuget je zdarma rozšíření Visual Studio, který umožňuje snadno přidávat, odebírat a aktualizovat knihovny a nástroje ve studiu projektů Visual.</value>
+  </data>
+  <data name="HomeCol3Header" xml:space="preserve">
+    <value>Lifetrons.Erp.in</value>
+  </data>
+  <data name="HomeCol3Text" xml:space="preserve">
+    <value>Můžete snadno najít web hosting společnost, která nabízí správnou kombinaci funkcí a ceny pro vaše aplikace.</value>
+  </data>
+  <data name="HomeP2" xml:space="preserve">
+    <value>Pro podnikatele, malé</value>
+  </data>
+  <data name="AccountController_Login_Invalid_username_or_password_" xml:space="preserve">
+    <value>Neplatné uživatelské jméno nebo heslo.</value>
+  </data>
+  <data name="ApplicationUser_AuthenticatedEmail_Invalid_Authenticated_Email_Address" xml:space="preserve">
+    <value>Invalid Ověřený e-mailová adresa</value>
+  </data>
+  <data name="ApplicationUser_AuthenticatedEmail_Authenticated_Email" xml:space="preserve">
+    <value>Ověřený e-mail</value>
+  </data>
+  <data name="ApplicationUser_OrganizationName_Invalid_organization_name" xml:space="preserve">
+    <value>Neplatný název organizace</value>
+  </data>
+  <data name="ApplicationUser_OrganizationName_Organization_Name" xml:space="preserve">
+    <value>JoinOrganization Name</value>
+  </data>
+  <data name="ApplicationUser_Email_Invalid_Email_Address" xml:space="preserve">
+    <value>Neplatná e-mailová adresa</value>
+  </data>
+  <data name="ApplicationUser_Email_Work_Email" xml:space="preserve">
+    <value>Pracovní e-mail</value>
+  </data>
+  <data name="ApplicationUser_BirthDate_Invalid_birth_date" xml:space="preserve">
+    <value>Neplatné datum narození</value>
+  </data>
+  <data name="ApplicationUser_BirthDate_Birth_Date" xml:space="preserve">
+    <value>Datum narození</value>
+  </data>
+  <data name="ApplicationUser_Mobile_Invalid_mobile_number" xml:space="preserve">
+    <value>Neplatné číslo mobilního telefonu</value>
+  </data>
+  <data name="ApplicationUser_Mobile_Invalid_mobile_number_format_" xml:space="preserve">
+    <value>Neplatný formát mobilní číslo.</value>
+  </data>
+  <data name="ApplicationUser_AddressLine1_Invalid_address_line_1" xml:space="preserve">
+    <value>Neplatná adresa řádek 1</value>
+  </data>
+  <data name="ApplicationUser_AddressLine1_Address_Line_1" xml:space="preserve">
+    <value>Adresa 1</value>
+  </data>
+  <data name="ApplicationUser_AddressLine2_Invalid_address_line_2" xml:space="preserve">
+    <value>Neplatná adresa řádek 2</value>
+  </data>
+  <data name="ApplicationUser_AddressLine2_Address_Line_2" xml:space="preserve">
+    <value>2. řádek adresy</value>
+  </data>
+  <data name="ApplicationUser_City_Invalid_city_name" xml:space="preserve">
+    <value>Neplatný název města</value>
+  </data>
+  <data name="ApplicationUser_City_City" xml:space="preserve">
+    <value>Město</value>
+  </data>
+  <data name="ApplicationUser_State_Invalid_state_name" xml:space="preserve">
+    <value>Neplatný název státu</value>
+  </data>
+  <data name="ApplicationUser_State_State" xml:space="preserve">
+    <value>Stav</value>
+  </data>
+  <data name="ApplicationUser_Country_Country" xml:space="preserve">
+    <value>Země</value>
+  </data>
+  <data name="ApplicationUser_Country_Invalid_country_name" xml:space="preserve">
+    <value>Neplatný název země</value>
+  </data>
+  <data name="ApplicationUser_PostalCode_Invalid_postal_code" xml:space="preserve">
+    <value>Neplatné poštovní směrovací číslo</value>
+  </data>
+  <data name="ApplicationUser_PostalCode_Postal_Code" xml:space="preserve">
+    <value>PSČ</value>
+  </data>
+  <data name="ApplicationUser_Mobile_Mobile__10_digit_" xml:space="preserve">
+    <value>Mobile (10 číslic)</value>
+  </data>
+  <data name="ApplicationUser_LastName_Last_Name" xml:space="preserve">
+    <value>Příjmení</value>
+  </data>
+  <data name="ApplicationUser_LastName_Invalid_last_name" xml:space="preserve">
+    <value>Neplatný příjmení</value>
+  </data>
+  <data name="ApplicationUser_FirstName_Invalid_first_name" xml:space="preserve">
+    <value>Neplatné jméno</value>
+  </data>
+  <data name="ApplicationUser_FirstName_First_Name" xml:space="preserve">
+    <value>Jméno</value>
+  </data>
+  <data name="ManageUserViewModel_OldPassword_Current_password" xml:space="preserve">
+    <value>Aktuální heslo</value>
+  </data>
+  <data name="ManageUserViewModel_NewPassword_New_password" xml:space="preserve">
+    <value>Nové heslo</value>
+  </data>
+  <data name="ManageUserViewModel_ConfirmPassword_The_new_password_and_confirmation_password_do_not_match_" xml:space="preserve">
+    <value>Nové heslo a potvrzení hesla se neshodují.</value>
+  </data>
+  <data name="ManageUserViewModel_ConfirmPassword_Confirm_new_password" xml:space="preserve">
+    <value>Potvrzení nového hesla</value>
+  </data>
+  <data name="LoginViewModel_UserName_User_name" xml:space="preserve">
+    <value>Uživatelské jméno</value>
+  </data>
+  <data name="LoginViewModel_Password_Password" xml:space="preserve">
+    <value>Heslo</value>
+  </data>
+  <data name="LoginViewModel_RememberMe_Remember_me_" xml:space="preserve">
+    <value>Pamatuj si mě?</value>
+  </data>
+  <data name="RegisterViewModel_ConfirmPassword_The_password_and_confirmation_password_do_not_match_" xml:space="preserve">
+    <value>Hesla a potvrzení hesla se neshodují.</value>
+  </data>
+  <data name="RegisterViewModel_ConfirmPassword_Confirm_password" xml:space="preserve">
+    <value>Potvrzení hesla</value>
+  </data>
+  <data name="RegisterViewModel_AuthenticatedEmail_Invalid_Authenticated_Email_Address" xml:space="preserve">
+    <value>Invalid Ověřený e-mailová adresa</value>
+  </data>
+  <data name="RegisterViewModel_AuthenticatedEmail_Authenticated_Email" xml:space="preserve">
+    <value>Ověřený e-mail</value>
+  </data>
+  <data name="RegisterViewModel_OrganizationName_Invalid_organization_name" xml:space="preserve">
+    <value>Neplatný název organizace</value>
+  </data>
+  <data name="RegisterViewModel_OrganizationName_Organization_Name" xml:space="preserve">
+    <value>JoinOrganization Name</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_PostalCode_Postal_Code" xml:space="preserve">
+    <value>PSČ</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_PostalCode_Invalid_postal_code" xml:space="preserve">
+    <value>Neplatné poštovní směrovací číslo</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_Country_Invalid_country_name" xml:space="preserve">
+    <value>Neplatný název země</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_Country_Country" xml:space="preserve">
+    <value>Země</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_State_Invalid_state_name" xml:space="preserve">
+    <value>Neplatný název státu</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_State_State" xml:space="preserve">
+    <value>Stav</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_City_City" xml:space="preserve">
+    <value>Město</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_City_Invalid_city_name" xml:space="preserve">
+    <value>Neplatný název města</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_AddressLine2_Address_Line_2" xml:space="preserve">
+    <value>2. řádek adresy</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_AddressLine2_Invalid_address_line_2" xml:space="preserve">
+    <value>Neplatná adresa řádek 2</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_AddressLine1_Address_Line_1" xml:space="preserve">
+    <value>Adresa 1</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_AddressLine1_Invalid_address_line_1" xml:space="preserve">
+    <value>Neplatná adresa řádek 1</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_BirthDate_Birth_Date" xml:space="preserve">
+    <value>Datum narození</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_BirthDate_Invalid_birth_date" xml:space="preserve">
+    <value>Neplatné datum narození</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_LastName_Invalid_last_name" xml:space="preserve">
+    <value>Neplatný příjmení</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_LastName_Last_Name" xml:space="preserve">
+    <value>Příjmení</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_Email_Work_Email" xml:space="preserve">
+    <value>Pracovní e-mail</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_Email_Invalid_Email_Address" xml:space="preserve">
+    <value>Neplatná e-mailová adresa</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_FirstName_Invalid_first_name" xml:space="preserve">
+    <value>Neplatné jméno</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_FirstName_First_Name" xml:space="preserve">
+    <value>Jméno</value>
+  </data>
+  <data name="HomeP3" xml:space="preserve">
+    <value>Přeplňovaný prodeje a obchodní aktivity snadno a efektivně.</value>
+  </data>
+  <data name="MainMenuAbout" xml:space="preserve">
+    <value>O</value>
+  </data>
+  <data name="MainMenuContactUs" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="MainMenuHome" xml:space="preserve">
+    <value>Domácí</value>
+  </data>
+  <data name="Metadata_ShrtDesc_Description" xml:space="preserve">
+    <value>Popis</value>
+  </data>
+  <data name="Metadata_Desc_Updates" xml:space="preserve">
+    <value>Aktualizace</value>
+  </data>
+  <data name="Metadata_Name_Name" xml:space="preserve">
+    <value>Název</value>
+  </data>
+  <data name="Metadata_NoticeBoard" xml:space="preserve">
+    <value>Vývěsní tabule</value>
+  </data>
+  <data name="Metadata_Code_Code" xml:space="preserve">
+    <value>Kód</value>
+  </data>
+  <data name="Metadata_OwnerId_Owner" xml:space="preserve">
+    <value>Majitel</value>
+  </data>
+  <data name="Metadata_CreatedBy_Created_By" xml:space="preserve">
+    <value>Vytvořeno By</value>
+  </data>
+  <data name="Metadata_CreatedDate_Created_Date" xml:space="preserve">
+    <value>Datum vytvoření</value>
+  </data>
+  <data name="Metadata_ModifiedBy_Modified_By" xml:space="preserve">
+    <value>Změnil</value>
+  </data>
+  <data name="Metadata_ModifiedDate_Modified_Date" xml:space="preserve">
+    <value>Datum úpravy</value>
+  </data>
+  <data name="Metadata_AccountId_Account" xml:space="preserve">
+    <value>Účet</value>
+  </data>
+  <data name="Metadata_ContactId_Contact" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="Metadata_ProductId_Product" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="Metadata_Products" xml:space="preserve">
+    <value>Výrobky</value>
+  </data>
+  <data name="Metadata_ContractId_Contract" xml:space="preserve">
+    <value>Smlouva</value>
+  </data>
+  <data name="Metadata_CampaignId_Campaign" xml:space="preserve">
+    <value>Kampaň</value>
+  </data>
+  <data name="Metadata_CampaignMember" xml:space="preserve">
+    <value>Kampaň Člen</value>
+  </data>
+  <data name="Metadata_OpportunityId_Opportunity" xml:space="preserve">
+    <value>Příležitost</value>
+  </data>
+  <data name="Metadata_QuoteId_Quote" xml:space="preserve">
+    <value>Citát</value>
+  </data>
+  <data name="Metadata_CaseId_Case" xml:space="preserve">
+    <value>Pouzdro</value>
+  </data>
+  <data name="Metadata_TaskId_Task" xml:space="preserve">
+    <value>Úkol</value>
+  </data>
+  <data name="Metadata_OrderId_Order" xml:space="preserve">
+    <value>Objednat</value>
+  </data>
+  <data name="Metadata_InvoiceId_Invoice" xml:space="preserve">
+    <value>Faktura</value>
+  </data>
+  <data name="Metadata_Status" xml:space="preserve">
+    <value>Postavení</value>
+  </data>
+  <data name="CaseMetadata_ClosingComments_Closing_Comments" xml:space="preserve">
+    <value>Závěrečný Komentáře</value>
+  </data>
+  <data name="CaseMetadata_CloseDate_Close_Date" xml:space="preserve">
+    <value>Close Datum</value>
+  </data>
+  <data name="CaseMetadata_ReportCompletionToId_Report_Completion_To" xml:space="preserve">
+    <value>Report vyplnění</value>
+  </data>
+  <data name="CaseMetadata_OpeningDate_Opening_Date" xml:space="preserve">
+    <value>Datum otevření</value>
+  </data>
+  <data name="CaseMetadata_CaseReasonId_Reason" xml:space="preserve">
+    <value>Důvod</value>
+  </data>
+  <data name="CaseMetadata_PriorityId_Priority" xml:space="preserve">
+    <value>Priorita</value>
+  </data>
+  <data name="CaseMetadata_InternalComments_Internal_Comments" xml:space="preserve">
+    <value>Vnitřní Comments</value>
+  </data>
+  <data name="Metadata_ReferenceNumber" xml:space="preserve">
+    <value>Referenční číslo</value>
+  </data>
+  <data name="CaseMetadata_Subject_Subject" xml:space="preserve">
+    <value>Předmět</value>
+  </data>
+  <data name="MainMenuAccount" xml:space="preserve">
+    <value>Účet</value>
+  </data>
+  <data name="MainMenuActivity" xml:space="preserve">
+    <value>Činnost</value>
+  </data>
+  <data name="MainMenuAddress" xml:space="preserve">
+    <value>Adresář</value>
+  </data>
+  <data name="MainMenuCampaign" xml:space="preserve">
+    <value>Kampaň</value>
+  </data>
+  <data name="MainMenuCase" xml:space="preserve">
+    <value>Pouzdro</value>
+  </data>
+  <data name="MainMenuContact" xml:space="preserve">
+    <value>Kontakt</value>
+  </data>
+  <data name="MainMenuContract" xml:space="preserve">
+    <value>Smlouva</value>
+  </data>
+  <data name="SalesDashboard" xml:space="preserve">
+    <value>Palubní deska</value>
+  </data>
+  <data name="MainMenuDepartments" xml:space="preserve">
+    <value>Oddělení</value>
+  </data>
+  <data name="MainMenuEmailSettings" xml:space="preserve">
+    <value>Nastavení e-mailu</value>
+  </data>
+  <data name="MainMenuHierarchy" xml:space="preserve">
+    <value>Hierarchie</value>
+  </data>
+  <data name="MainMenuInvoice" xml:space="preserve">
+    <value>Faktura</value>
+  </data>
+  <data name="MainMenuJoiningRequest" xml:space="preserve">
+    <value>Spojení Poptávka</value>
+  </data>
+  <data name="MainMenuLead" xml:space="preserve">
+    <value>Olovo</value>
+  </data>
+  <data name="MainMenuLists" xml:space="preserve">
+    <value>Seznamy</value>
+  </data>
+  <data name="MainMenuNoticeBoard" xml:space="preserve">
+    <value>Vývěsní tabule</value>
+  </data>
+  <data name="MainMenuOpportunity" xml:space="preserve">
+    <value>Příležitost</value>
+  </data>
+  <data name="MainMenuOrder" xml:space="preserve">
+    <value>Objednat</value>
+  </data>
+  <data name="MainMenuOrganization" xml:space="preserve">
+    <value>Organizace</value>
+  </data>
+  <data name="MainMenuPriceBook" xml:space="preserve">
+    <value>Cena Book</value>
+  </data>
+  <data name="MainMenuProcessSteps" xml:space="preserve">
+    <value>Procesní kroky</value>
+  </data>
+  <data name="MainMenuProduct" xml:space="preserve">
+    <value>Produkt</value>
+  </data>
+  <data name="MainMenuProductFamily" xml:space="preserve">
+    <value>Rodina produktů</value>
+  </data>
+  <data name="MainMenuProductType" xml:space="preserve">
+    <value>Typ výrobku</value>
+  </data>
+  <data name="MainMenuQuote" xml:space="preserve">
+    <value>Citát</value>
+  </data>
+  <data name="MainMenuReports" xml:space="preserve">
+    <value>Zprávy</value>
+  </data>
+  <data name="MainMenuSales" xml:space="preserve">
+    <value>Odbyt</value>
+  </data>
+  <data name="MainMenuSettings" xml:space="preserve">
+    <value>Nastavení</value>
+  </data>
+  <data name="MainMenuShowcase" xml:space="preserve">
+    <value>Showcase</value>
+  </data>
+  <data name="MainMenuTargets" xml:space="preserve">
+    <value>Cíle</value>
+  </data>
+  <data name="MainMenuTask" xml:space="preserve">
+    <value>Úkol</value>
+  </data>
+  <data name="MainMenuTeams" xml:space="preserve">
+    <value>Tým</value>
+  </data>
+  <data name="MainMenuUserIndex" xml:space="preserve">
+    <value>Uživatel Index</value>
+  </data>
+  <data name="MainMenuUserRoles" xml:space="preserve">
+    <value>Uživatelské role</value>
+  </data>
+  <data name="MainMenuVideoHelp" xml:space="preserve">
+    <value>Video Help</value>
+  </data>
+  <data name="LeadMetadata_PrimaryPhone_Primary_Phone" xml:space="preserve">
+    <value>Primární Phone</value>
+  </data>
+  <data name="LeadMetadata_PrimaryEMail_Primary_Email" xml:space="preserve">
+    <value>Primární e-mail</value>
+  </data>
+  <data name="LeadMetadata_CompanyName_Company" xml:space="preserve">
+    <value>Společnost</value>
+  </data>
+  <data name="LeadMetadata_Department_Department" xml:space="preserve">
+    <value>Oddělení</value>
+  </data>
+  <data name="LeadMetadata_AnnualRevenue_Annual_Revenue" xml:space="preserve">
+    <value>Roční příjmy</value>
+  </data>
+  <data name="LeadMetadata_Title_Designation" xml:space="preserve">
+    <value>Označení</value>
+  </data>
+  <data name="LeadMetadata_NumberOfEmployees_Number_Of_Employees" xml:space="preserve">
+    <value>Počet zaměstnanců</value>
+  </data>
+  <data name="LeadMetadata_LeadSourceId_Lead_Source" xml:space="preserve">
+    <value>Olovo Source</value>
+  </data>
+  <data name="LeadMetadata_LeadStatusId_Lead_Status" xml:space="preserve">
+    <value>Lead Status</value>
+  </data>
+  <data name="LeadMetadata_RatingId_Rating" xml:space="preserve">
+    <value>Rating</value>
+  </data>
+  <data name="LeadMetadata_CampaignId_Campaign" xml:space="preserve">
+    <value>Kampaň</value>
+  </data>
+  <data name="LeadMetadata_IsConverted_Converted" xml:space="preserve">
+    <value>Převedené</value>
+  </data>
+  <data name="LeadMetadata_AddressId_Address" xml:space="preserve">
+    <value>Adresa</value>
+  </data>
+  <data name="LeadMetadata_AddressToName_Address_To_Name" xml:space="preserve">
+    <value>Adresa na jméno</value>
+  </data>
+  <data name="LeadMetadata_AddressLine1_Address_Line_1" xml:space="preserve">
+    <value>Adresa 1</value>
+  </data>
+  <data name="LeadMetadata_AddressLine2_Address_Line_2" xml:space="preserve">
+    <value>2. řádek adresy</value>
+  </data>
+  <data name="LeadMetadata_AddressLine3_Address_Line_3" xml:space="preserve">
+    <value>Adresa Řádek 3</value>
+  </data>
+  <data name="LeadMetadata_AddressCity_City" xml:space="preserve">
+    <value>Město</value>
+  </data>
+  <data name="LeadMetadata_AddressPin_PIN" xml:space="preserve">
+    <value>PIN</value>
+  </data>
+  <data name="LeadMetadata_AddressState_State" xml:space="preserve">
+    <value>Stav</value>
+  </data>
+  <data name="LeadMetadata_AddressCountry_Country" xml:space="preserve">
+    <value>Země</value>
+  </data>
+  <data name="LeadMetadata_AddressPhone_Address_Phone" xml:space="preserve">
+    <value>Adresa Phone</value>
+  </data>
+  <data name="LeadMetadata_AddressEMail_Address_E_Mail" xml:space="preserve">
+    <value>Adresa E-Mail</value>
+  </data>
+  <data name="ProductMetadata_ProductFamilyId_Product_Family" xml:space="preserve">
+    <value>Rodina produktů</value>
+  </data>
+  <data name="ProductMetadata_ProductTypeId_Product_Type" xml:space="preserve">
+    <value>Typ výrobku</value>
+  </data>
+  <data name="Metadata_Authorized" xml:space="preserve">
+    <value>Autorizovaný</value>
+  </data>
+  <data name="Metadata_Active" xml:space="preserve">
+    <value>Aktivní</value>
+  </data>
+  <data name="Metadata_SharedWith" xml:space="preserve">
+    <value>Sdílené S</value>
+  </data>
+  <data name="Metadata_PriceBookId_PriceBook" xml:space="preserve">
+    <value>PriceBook</value>
+  </data>
+  <data name="OrderMetadata_RefNo_Ref_No" xml:space="preserve">
+    <value>Ref No</value>
+  </data>
+  <data name="Metadata_SubAccount" xml:space="preserve">
+    <value>Sub Account</value>
+  </data>
+  <data name="OrderMetadata_DeliveryTerms_Delivery_Terms" xml:space="preserve">
+    <value>Dodací podmínky</value>
+  </data>
+  <data name="OrderMetadata_PaymentTerms_Payment_Terms" xml:space="preserve">
+    <value>Platební podmínky</value>
+  </data>
+  <data name="OrderMetadata_SpecialTerms_Special_Terms" xml:space="preserve">
+    <value>Zvláštní podmínky</value>
+  </data>
+  <data name="OrderMetadata_ProgressPercent_Progress____" xml:space="preserve">
+    <value>Progress (%)</value>
+  </data>
+  <data name="OrderMetadata_ProgressDesc_Progress_Updates_" xml:space="preserve">
+    <value>Aktualizace Progress</value>
+  </data>
+  <data name="OrderMetadata_ReportCompletionToId_On_Completion_Report_To" xml:space="preserve">
+    <value>Na dokončení zpráva pro</value>
+  </data>
+  <data name="OrderMetadata_ContractId_Contract" xml:space="preserve">
+    <value>Smlouva</value>
+  </data>
+  <data name="OrderMetadata_PriorityId_Priority" xml:space="preserve">
+    <value>Priorita</value>
+  </data>
+  <data name="OrderMetadata_DeliveryStatusId_Order_Status" xml:space="preserve">
+    <value>Stav objednávky</value>
+  </data>
+  <data name="OrderMetadata_StartDate_Start_Date" xml:space="preserve">
+    <value>Datum zahájení</value>
+  </data>
+  <data name="OrderMetadata_ActivatedDate_Activated_Date" xml:space="preserve">
+    <value>Aktivované Datum</value>
+  </data>
+  <data name="OrderMetadata_ActivatedById_Activated_By" xml:space="preserve">
+    <value>Aktivuje se</value>
+  </data>
+  <data name="OrderMetadata_DeliveryDate_Delivery_Date" xml:space="preserve">
+    <value>Dodávka Datum</value>
+  </data>
+  <data name="OrderMetadata_CompanySignedById_Company_Signed_By" xml:space="preserve">
+    <value>Společnost podepsán</value>
+  </data>
+  <data name="OrderMetadata_CustSignedById_Customer_Signed_By" xml:space="preserve">
+    <value>Zákazník podepsán</value>
+  </data>
+  <data name="OrderMetadata_CustSignedByDate_Customer_Signed_Date" xml:space="preserve">
+    <value>Zákazník Podpis Datum</value>
+  </data>
+  <data name="OrderMetadata_BillingAddressId_Billing_Address" xml:space="preserve">
+    <value>Fakturační adresa</value>
+  </data>
+  <data name="OrderMetadata_BillingAddressToName_Bill_To_Name" xml:space="preserve">
+    <value>Bill na jméno</value>
+  </data>
+  <data name="Metadata_AddressLine1" xml:space="preserve">
+    <value>Adresa 1</value>
+  </data>
+  <data name="Metadata_AddressLine2" xml:space="preserve">
+    <value>2. řádek adresy</value>
+  </data>
+  <data name="Metadata_AddressLine3" xml:space="preserve">
+    <value>Adresa Řádek 3</value>
+  </data>
+  <data name="Metadata_AddressCity" xml:space="preserve">
+    <value>Město</value>
+  </data>
+  <data name="Metadata_AddressPin" xml:space="preserve">
+    <value>PIN</value>
+  </data>
+  <data name="Metadata_AddressState" xml:space="preserve">
+    <value>Stav</value>
+  </data>
+  <data name="Metadata_AddressCountry" xml:space="preserve">
+    <value>Země</value>
+  </data>
+  <data name="Metadata_Phone" xml:space="preserve">
+    <value>Fakturace Phone</value>
+  </data>
+  <data name="Metadata_EMail" xml:space="preserve">
+    <value>Billing E-Mail</value>
+  </data>
+  <data name="OrderMetadata_ShippingAddressId_Shipping_Address" xml:space="preserve">
+    <value>Shipping Address</value>
+  </data>
+  <data name="OrderMetadata_ShippingAddressToName_Ship_To_Name" xml:space="preserve">
+    <value>Loď na jméno</value>
+  </data>
+  <data name="QuoteMetadata_FollowUpDate_Follow_up_Date" xml:space="preserve">
+    <value>Následná Datum</value>
+  </data>
+  <data name="QuoteMetadata_ExpirationDate_Expiry_Date" xml:space="preserve">
+    <value>Datum vypršení platnosti</value>
+  </data>
+  <data name="QuoteMetadata_BillingAddressId_Billing_Address" xml:space="preserve">
+    <value>Fakturační adresa</value>
+  </data>
+  <data name="QuoteMetadata_BillingAddressToName_Bill_To_Name" xml:space="preserve">
+    <value>Bill na jméno</value>
+  </data>
+  <data name="QuoteMetadata_BillingAddressLine1_Address_Line_1" xml:space="preserve">
+    <value>Adresa 1</value>
+  </data>
+  <data name="QuoteMetadata_BillingAddressLine2_Address_Line_2" xml:space="preserve">
+    <value>2. řádek adresy</value>
+  </data>
+  <data name="QuoteMetadata_ShippingAddressId_Shipping_Address" xml:space="preserve">
+    <value>Shipping Address</value>
+  </data>
+  <data name="QuoteMetadata_ShippingAddressToName_Ship_To_Name" xml:space="preserve">
+    <value>Loď na jméno</value>
+  </data>
+  <data name="CampaignMetadata_CampaignTypeId_Campaign_Type" xml:space="preserve">
+    <value>Typ kampaně</value>
+  </data>
+  <data name="CampaignMetadata_CampaignStatusId_Campaign_Status" xml:space="preserve">
+    <value>Stav kampaně</value>
+  </data>
+  <data name="CampaignMetadata_ParentCampaignId_Parent_Campaign" xml:space="preserve">
+    <value>Parent kampaně</value>
+  </data>
+  <data name="CampaignMetadata_ExpectedResponsePercent_Response_Expectation____" xml:space="preserve">
+    <value>Odpověď očekávání (%)</value>
+  </data>
+  <data name="CampaignMetadata_NumSent_Target_Approach" xml:space="preserve">
+    <value>Target přístup</value>
+  </data>
+  <data name="CampaignMetadata_StartDate_Start_Date" xml:space="preserve">
+    <value>Datum zahájení</value>
+  </data>
+  <data name="CampaignMetadata_EndDate_End_Date" xml:space="preserve">
+    <value>Datum ukončení</value>
+  </data>
+  <data name="CampaignMetadata_ExpectedRevenue_Expected_Revenue" xml:space="preserve">
+    <value>Očekává, že příjmy</value>
+  </data>
+  <data name="CampaignMetadata_BudgetCost_Budget_Cost" xml:space="preserve">
+    <value>Rozpočet nákladů</value>
+  </data>
+  <data name="CampaignMetadata_ActualCost_Actual_Cost" xml:space="preserve">
+    <value>Skutečné náklady</value>
+  </data>
+  <data name="CampaignMetadata_NumberOfEmployees_Number_Of_Employees" xml:space="preserve">
+    <value>Počet zaměstnanců</value>
+  </data>
+  <data name="Metadata_LeadId_Lead" xml:space="preserve">
+    <value>Olovo</value>
+  </data>
+  <data name="ContactMetadata_NamePrefix_Prefix" xml:space="preserve">
+    <value>Prefix</value>
+  </data>
+  <data name="ContactMetadata_MiddleName_Middle_Name" xml:space="preserve">
+    <value>Druhé jméno</value>
+  </data>
+  <data name="ContactMetadata_LastName_Last_Name" xml:space="preserve">
+    <value>Příjmení</value>
+  </data>
+  <data name="ContactMetadata_LevelId_Level" xml:space="preserve">
+    <value>Úroveň</value>
+  </data>
+  <data name="ContactMetadata_PrimaryPhone_Primary_Phone" xml:space="preserve">
+    <value>Primární Phone</value>
+  </data>
+  <data name="ContactMetadata_PrimaryEMail_Primary_Email" xml:space="preserve">
+    <value>Primární e-mail</value>
+  </data>
+  <data name="ContactMetadata_CompanyName_Company" xml:space="preserve">
+    <value>Společnost</value>
+  </data>
+  <data name="ContactMetadata_LeadSourceId_Lead_Source" xml:space="preserve">
+    <value>Olovo Source</value>
+  </data>
+  <data name="Metadata_Birthdate" xml:space="preserve">
+    <value>Datum narození</value>
+  </data>
+  <data name="ContactMetadata_IsProspect_Is_Prospect" xml:space="preserve">
+    <value>Je Prospect</value>
+  </data>
+  <data name="ContactMetadata_IsEndorsement_Is_Endorsement" xml:space="preserve">
+    <value>Je o schválení</value>
+  </data>
+  <data name="ContactMetadata_MailingAddressId_Mailing_Address" xml:space="preserve">
+    <value>Adresa</value>
+  </data>
+  <data name="Metadata_AddressToName" xml:space="preserve">
+    <value>Adresované jména</value>
+  </data>
+  <data name="ContactMetadata_OtherAddressId_Other_Address" xml:space="preserve">
+    <value>Další adresa</value>
+  </data>
+  <data name="ContractMetadata_DeliveryTerms_Delivery_Terms" xml:space="preserve">
+    <value>Dodací podmínky</value>
+  </data>
+  <data name="ContractMetadata_PaymentTerms_Payment_Terms" xml:space="preserve">
+    <value>Platební podmínky</value>
+  </data>
+  <data name="ContractMetadata_SpecialTerms_Special_Terms" xml:space="preserve">
+    <value>Zvláštní podmínky</value>
+  </data>
+  <data name="ContractMetadata_CompanySignedById_Company_Signed_By" xml:space="preserve">
+    <value>Společnost podepsán</value>
+  </data>
+  <data name="ContractMetadata_CustSignedById_Customer_Signed_By" xml:space="preserve">
+    <value>Zákazník podepsán</value>
+  </data>
+  <data name="ContractMetadata_CustSignedByTitle_Customer_Designation" xml:space="preserve">
+    <value>Zákazník Označení</value>
+  </data>
+  <data name="ContractMetadata_CustSignedByDate_Customer_Signed_Date" xml:space="preserve">
+    <value>Zákazník Podpis Datum</value>
+  </data>
+  <data name="ContractMetadata_ContractNo_Contract_Number" xml:space="preserve">
+    <value>Smlouva Number</value>
+  </data>
+  <data name="ContractMetadata_ContractStartDate_Contract_Start_Date" xml:space="preserve">
+    <value>Smlouva Datum zahájení</value>
+  </data>
+  <data name="ContractMetadata_ContractTenure_Contract_Tenure__Months_" xml:space="preserve">
+    <value>Smlouva vlastnictví (měsíce)</value>
+  </data>
+  <data name="ContractMetadata_ExpirationNotice_Expiry_Notice__Months_" xml:space="preserve">
+    <value>Konec platnosti Oznámení (měsíce)</value>
+  </data>
+  <data name="ContractMetadata_ContractExpirationDate_Expiry_Date" xml:space="preserve">
+    <value>Datum vypršení platnosti</value>
+  </data>
+  <data name="ContractMetadata_BillingAddressId_Billing_Address" xml:space="preserve">
+    <value>Fakturační adresa</value>
+  </data>
+  <data name="ContractMetadata_BillingAddressToName_Bill_To_Name" xml:space="preserve">
+    <value>Bill na jméno</value>
+  </data>
+  <data name="ContractMetadata_ShippingAddressId_Shipping_Address" xml:space="preserve">
+    <value>Shipping Address</value>
+  </data>
+  <data name="OpportunityMetadata_OpportunityTypeId_Type" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="OpportunityMetadata_NumberOfEmployees_Number_Of_Employees" xml:space="preserve">
+    <value>Počet zaměstnanců</value>
+  </data>
+  <data name="OpportunityMetadata_ExpectedRevenue_Expected_Revenue" xml:space="preserve">
+    <value>Očekává, že příjmy</value>
+  </data>
+  <data name="OpportunityMetadata_CloseDate_Close_date" xml:space="preserve">
+    <value>Close datum</value>
+  </data>
+  <data name="OpportunityMetadata_StageId_Stage" xml:space="preserve">
+    <value>Stupeň</value>
+  </data>
+  <data name="OpportunityMetadata_ProbabilityPercent_Probability____" xml:space="preserve">
+    <value>Pravděpodobnost (%)</value>
+  </data>
+  <data name="OpportunityMetadata_DeliveryStatusId_Order_Status" xml:space="preserve">
+    <value>Stav objednávky</value>
+  </data>
+  <data name="OpportunityMetadata_Competitors_Competitors" xml:space="preserve">
+    <value>Závodníci</value>
+  </data>
+  <data name="OpportunityMetadata_OrderNo_Order_No" xml:space="preserve">
+    <value>Vyhláška č</value>
+  </data>
+  <data name="OpportunityMetadata_LeadSourceId_Lead_Source" xml:space="preserve">
+    <value>Olovo Source</value>
+  </data>
+  <data name="Metadata_Quantity" xml:space="preserve">
+    <value>Množství</value>
+  </data>
+  <data name="Metadata_TotalWeight" xml:space="preserve">
+    <value>Celková hmotnost</value>
+  </data>
+  <data name="Metadata_WeightUnit" xml:space="preserve">
+    <value>Hmotnost Jednotka</value>
+  </data>
+  <data name="Metadata_DiscountPercent_Per_Item_Discount" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Metadata_DiscountAmount_Per_Item_Discount" xml:space="preserve">
+    <value>Za položku Sleva</value>
+  </data>
+  <data name="Metadata_SalesPrice" xml:space="preserve">
+    <value>Ceník</value>
+  </data>
+  <data name="Metadata_LineItemPrice" xml:space="preserve">
+    <value>Čisté linie zboží Cena</value>
+  </data>
+  <data name="Metadata_LineItemAmount" xml:space="preserve">
+    <value>Čisté linie Položka Částka</value>
+  </data>
+  <data name="Metadata_Serial" xml:space="preserve">
+    <value>Sériový</value>
+  </data>
+  <data name="Metadata_SpecialInstructions" xml:space="preserve">
+    <value>Speciální pokyny</value>
+  </data>
+  <data name="OpportunityMetadata_NextStep_Next_Step" xml:space="preserve">
+    <value>Další krok</value>
+  </data>
+  <data name="OpportunityMetadata_Private_Private" xml:space="preserve">
+    <value>Soukromý</value>
+  </data>
+  <data name="JoiningRequestMetadata_RequestComments_Request_Comments" xml:space="preserve">
+    <value>Poptávka Comments</value>
+  </data>
+  <data name="JoiningRequestMetadata_SubmittedTo_Submit_To_Username" xml:space="preserve">
+    <value>Odeslat To (Uživatelské jméno)</value>
+  </data>
+  <data name="NoticeBoardMetadata_Name_Subject" xml:space="preserve">
+    <value>Předmět</value>
+  </data>
+  <data name="NoticeBoardMetadata_OpeningDate_Opening_Date" xml:space="preserve">
+    <value>Datum otevření</value>
+  </data>
+  <data name="NoticeBoardMetadata_CloseDate_Close_Date" xml:space="preserve">
+    <value>Close Datum</value>
+  </data>
+  <data name="NoticeBoardMetadata_ClosingComments_Close_Comments" xml:space="preserve">
+    <value>Zavřít Komentáře</value>
+  </data>
+  <data name="AddressMetadata_AddressType_Address_Type" xml:space="preserve">
+    <value>Typ adresy</value>
+  </data>
+  <data name="Metadata_Address" xml:space="preserve">
+    <value>Adresa</value>
+  </data>
+  <data name="AddressMetadata_AddressToTitle_Person_Designation" xml:space="preserve">
+    <value>Osoba Označení</value>
+  </data>
+  <data name="Metadata_AddressMilestone" xml:space="preserve">
+    <value>Mezník</value>
+  </data>
+  <data name="Metadata_AddressFallBackContact" xml:space="preserve">
+    <value>Záložní Kontakt</value>
+  </data>
+  <data name="AccountMetadata_AccountTypeId_Account_Type" xml:space="preserve">
+    <value>Typ účtu</value>
+  </data>
+  <data name="AccountMetadata_IndustryId_Industry" xml:space="preserve">
+    <value>Průmysl</value>
+  </data>
+  <data name="AccountMetadata_OwnershipId_Ownership" xml:space="preserve">
+    <value>Vlastnictví</value>
+  </data>
+  <data name="AccountMetadata_AnnualRevenue_Revenue" xml:space="preserve">
+    <value>Příjem</value>
+  </data>
+  <data name="AccountMetadata_NumberOfEmployees_Employees" xml:space="preserve">
+    <value>Zaměstnanci</value>
+  </data>
+  <data name="AccountMetadata_NumberOfLocations_Locations" xml:space="preserve">
+    <value>Místa</value>
+  </data>
+  <data name="AccountMetadata_RatingId_Rating" xml:space="preserve">
+    <value>Rating</value>
+  </data>
+  <data name="AccountMetadata_AgreementSerialNumber_Agreement_Number" xml:space="preserve">
+    <value>Dohoda Number</value>
+  </data>
+  <data name="AccountMetadata_AgreementExpDate_Agreement_Exp__Dt_" xml:space="preserve">
+    <value>Dohoda Exp.</value>
+  </data>
+  <data name="AccountMetadata_Priority_Priority" xml:space="preserve">
+    <value>Priorita</value>
+  </data>
+  <data name="DepartmentMetadata_Name_Department_Name" xml:space="preserve">
+    <value>Jméno Oddělení</value>
+  </data>
+  <data name="DepartmentMetadata_Code_Code" xml:space="preserve">
+    <value>Kód</value>
+  </data>
+  <data name="Metadata_Organization" xml:space="preserve">
+    <value>Organizace</value>
+  </data>
+  <data name="Metadata_DepartmentId_Department" xml:space="preserve">
+    <value>Oddělení</value>
+  </data>
+  <data name="Metadata_Hierarchy" xml:space="preserve">
+    <value>Hierarchie</value>
+  </data>
+  <data name="Metadata_TeamId_Team" xml:space="preserve">
+    <value>Tým</value>
+  </data>
+  <data name="HierarchyMetadata_ReportsTo_Reports_To" xml:space="preserve">
+    <value>Zprávy, které mají</value>
+  </data>
+  <data name="HierarchyMetadata_Designation_Designation" xml:space="preserve">
+    <value>Označení</value>
+  </data>
+  <data name="TeamMetadata_Name_Team_Name" xml:space="preserve">
+    <value>Jméno týmu</value>
+  </data>
+  <data name="TeamMetadata_DepartmentId_Parent_Department" xml:space="preserve">
+    <value>Parent oddělení</value>
+  </data>
+  <data name="TaskMetadata_RelatedToObjectName_Related_Area" xml:space="preserve">
+    <value>Související Area</value>
+  </data>
+  <data name="TaskMetadata_RelatedToId_Related_Record" xml:space="preserve">
+    <value>Související Record</value>
+  </data>
+  <data name="TaskMetadata_StartDate_Start_Date" xml:space="preserve">
+    <value>Datum zahájení</value>
+  </data>
+  <data name="TaskMetadata_EndDate_End_Date" xml:space="preserve">
+    <value>Datum ukončení</value>
+  </data>
+  <data name="TaskMetadata_IsAllDay_All_Day" xml:space="preserve">
+    <value>Celý den</value>
+  </data>
+  <data name="TaskMetadata_PriorityId_Priority" xml:space="preserve">
+    <value>Priorita</value>
+  </data>
+  <data name="TaskMetadata_Reminder_Remimder_Date" xml:space="preserve">
+    <value>Remimder Datum</value>
+  </data>
+  <data name="TaskMetadata_ProgressPercent_ProgressPercent" xml:space="preserve">
+    <value>Progress (%)</value>
+  </data>
+  <data name="TaskMetadata_ProgressDesc_Progress_Updates" xml:space="preserve">
+    <value>Aktualizace Progress</value>
+  </data>
+  <data name="TaskMetadata_ReportCompletionToId_Report_Completion_To" xml:space="preserve">
+    <value>Report vyplnění</value>
+  </data>
+  <data name="Metadata_UISection_BillingAddress" xml:space="preserve">
+    <value>Fakturační adresa</value>
+  </data>
+  <data name="Metadata_UISection_Details" xml:space="preserve">
+    <value>Podrobnosti</value>
+  </data>
+  <data name="Metadata_UISection_Add" xml:space="preserve">
+    <value>Přidat</value>
+  </data>
+  <data name="Metadata_UISection_Create" xml:space="preserve">
+    <value>Vytvořit</value>
+  </data>
+  <data name="Metadata_Report" xml:space="preserve">
+    <value>Zpráva</value>
+  </data>
+  <data name="Metadata_OrganizationLevelReports" xml:space="preserve">
+    <value>Organizace Zprávy Level</value>
+  </data>
+  <data name="Metadata_DepartmentLevelReports" xml:space="preserve">
+    <value>Oddělení Zprávy Level</value>
+  </data>
+  <data name="Metadata_TeamLevelReports" xml:space="preserve">
+    <value>Zprávy Team Level</value>
+  </data>
+  <data name="Metadata_UserLevelReports" xml:space="preserve">
+    <value>Zprávy uživatelské úrovni</value>
+  </data>
+  <data name="Metadata_OccupancyReport" xml:space="preserve">
+    <value>Obsazení Report</value>
+  </data>
+  <data name="Metadata_OrderSummaryReport" xml:space="preserve">
+    <value>Objednávka Souhrnná zpráva</value>
+  </data>
+  <data name="Metadata_AccountHistory" xml:space="preserve">
+    <value>Historie účtu</value>
+  </data>
+  <data name="Metadata_SubAccountHistory" xml:space="preserve">
+    <value>Sub Historie účtu</value>
+  </data>
+  <data name="Metadata_UISection_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Metadata_UISection_Delete" xml:space="preserve">
+    <value>Vymazat</value>
+  </data>
+  <data name="Metadata_UISection_Submit" xml:space="preserve">
+    <value>Předložit</value>
+  </data>
+  <data name="Metadata_UISection_Index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="Metadata_UISection_FollowUp" xml:space="preserve">
+    <value>Navazující</value>
+  </data>
+  <data name="Metadata_UISection_References" xml:space="preserve">
+    <value>Reference</value>
+  </data>
+  <data name="Metadata_UISection_Relations" xml:space="preserve">
+    <value>Vztahy</value>
+  </data>
+  <data name="Metadata_UISection_ShippingAddress" xml:space="preserve">
+    <value>Shipping Address</value>
+  </data>
+  <data name="Metadata_UISection_SystemInfo" xml:space="preserve">
+    <value>System Info</value>
+  </data>
+  <data name="Metadata_UISection_TermsConds" xml:space="preserve">
+    <value>Podmínky</value>
+  </data>
+  <data name="Metadata_UISection_Dashboard" xml:space="preserve">
+    <value>Palubní deska</value>
+  </data>
+  <data name="Metadata_InvoiceLineItem" xml:space="preserve">
+    <value>Faktura řádkové položky</value>
+  </data>
+  <data name="Metadata_OpportunityLineItem" xml:space="preserve">
+    <value>Příležitost řádkové položky</value>
+  </data>
+  <data name="Metadata_OrderLineItem" xml:space="preserve">
+    <value>Objednávky řádkové položky</value>
+  </data>
+  <data name="Metadata_QuoteLineItem" xml:space="preserve">
+    <value>Quote řádkové položky</value>
+  </data>
+  <data name="Metadata_ConfirmDelete" xml:space="preserve">
+    <value>Jste si jisti, že chcete smazat?</value>
+  </data>
+</root>

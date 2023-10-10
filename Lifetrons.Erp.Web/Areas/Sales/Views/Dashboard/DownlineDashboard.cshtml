@@ -1,0 +1,298 @@
+﻿@using Resources;
+@using System.Collections
+@using Lifetrons.Erp.Helpers;
+@using Microsoft.AspNet.Identity
+@using Resources;
+
+@{
+    ViewBag.Title = Resources.Metadata_Hierarchy + " - " + Resources.Metadata_UISection_Dashboard;
+}
+
+@if (Request.IsAuthenticated)
+{
+    var openLeads = TempData["OpenLeads"] as IEnumerable<Lifetrons.Erp.Data.spUserOpenWork_Result>;
+    var openOpportunities = TempData["OpenOpportunities"] as IEnumerable<Lifetrons.Erp.Data.spUserOpenWork_Result>;
+    var openTasks = TempData["OpenTasks"] as IEnumerable<Lifetrons.Erp.Data.spUserOpenWork_Result>;
+    var openCases = TempData["OpenCases"] as IEnumerable<Lifetrons.Erp.Data.spUserOpenWork_Result>;
+    var openQuotes = TempData["OpenQuotes"] as IEnumerable<Lifetrons.Erp.Data.spUserOpenWork_Result>;
+    var openOrders = TempData["OpenOrders"] as IEnumerable<Lifetrons.Erp.Data.spUserOpenWork_Result>;
+
+    <div class="row text-center">
+        <h3>Dashboard (@TempData["downlineUsername"])</h3>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4 panel panel-default">
+            <div class="panel-heading text-center"><b>Open Leads</b></div>
+            <div class="panel-body" style="height: 200px; overflow:auto;">
+                <table class="table table-striped  table-hover">
+                    <tr>
+                        <th class="hidden">
+
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                    </tr>
+                    @foreach (var item in openLeads)
+                    {
+                        <tr>
+                            <td class="hidden">@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>
+                                <a href="@Url.Action("Details", "Lead",  new { id = item.Id })">
+
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @ControllerHelper.ConvertDateTimeFromUtc(item.Date, User.TimeZone())
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-4 panel panel-default">
+            <div class="panel-heading text-center"><b>Open Opportunities</b></div>
+            <div class="panel-body" style="height: 200px; overflow:auto;">
+                <table class="table table-striped table-hover">
+
+                    <tr>
+                        <th class="hidden">
+
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                    </tr>
+                    @foreach (var item in openOpportunities)
+                    {
+                        <tr>
+                            <td class="hidden">@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>
+                                <a href="@Url.Action("Details", "Opportunity",  new { id = item.Id })">
+
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @ControllerHelper.ConvertDateTimeFromUtc(item.Date, User.TimeZone())
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-4 panel panel-default">
+            <div class="panel-heading text-center"><b>Open Tasks</b></div>
+            <div class="panel-body" style="height: 200px; overflow:auto;">
+                <table class="table table-striped table-hover">
+
+                    <tr>
+
+                        <th class="hidden">
+
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                    </tr>
+                    @foreach (var item in openTasks)
+                    {
+                        <tr>
+                            <td class="hidden">@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>
+                                <a href="@Url.Action("Details", "Task",  new { id = item.Id, area = "Activity" })">
+
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @ControllerHelper.ConvertDateTimeFromUtc(item.Date, User.TimeZone())
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4 panel panel-default">
+            <div class="panel-heading text-center"><b>Open Cases</b></div>
+            <div class="panel-body" style="height: 200px; overflow:auto;">
+                <table class="table table-striped table-hover">
+                    <tr>
+                        <th class="hidden">
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                    </tr>
+                    @foreach (var item in openCases)
+                    {
+                        <tr>
+                            <td class="hidden">@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>
+                                <a href="@Url.Action("Details", "Case",  new { id = item.Id })">
+
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @ControllerHelper.ConvertDateTimeFromUtc(item.Date, User.TimeZone())
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-4 panel panel-default">
+            <div class="panel-heading text-center"><b>Open Quotes</b></div>
+            <div class="panel-body" style="height: 200px; overflow:auto;">
+                <table class="table table-striped table-hover">
+
+                    <tr>
+                        <th class="hidden">
+
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                    </tr>
+                    @foreach (var item in openQuotes)
+                    {
+                        <tr>
+                            <td class="hidden">@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>
+                                <a href="@Url.Action("Details", "Quote",  new { id = item.Id })">
+
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @ControllerHelper.ConvertDateTimeFromUtc(item.Date, User.TimeZone())
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-4 panel panel-default">
+            <div class="panel-heading text-center"><b>Open Orders</b></div>
+            <div class="panel-body" style="height: 200px; overflow:auto;">
+                <table class="table table-striped table-hover">
+
+                    <tr>
+
+                        <th class="hidden">
+
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                    </tr>
+                    @foreach (var item in openOrders)
+                    {
+                        <tr>
+                            <td class="hidden">@Html.DisplayFor(modelItem => item.Id)</td>
+                            <td>
+                                <a href="@Url.Action("Details", "Order",  new { id = item.Id })">
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status)
+                            </td>
+                            <td>
+                                @ControllerHelper.ConvertDateTimeFromUtc(item.Date, User.TimeZone())
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            @{ Html.RenderAction("LeadComparisonChart", new { userId = TempData["downlineUserId"] }); }
+        </div>
+        <div class="col-md-4">
+            @{ Html.RenderAction("OpportunityComparisonChart", new { userId = TempData["downlineUserId"] }); }
+        </div>
+        <div class="col-md-4">
+            @{ Html.RenderAction("OrderComparisonChart", new { userId = TempData["downlineUserId"] }); }
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Home")
+}

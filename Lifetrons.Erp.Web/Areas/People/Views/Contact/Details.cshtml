@@ -1,0 +1,469 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.Contact
+
+@{
+    ViewBag.Title = Resources.Metadata_ContactId_Contact;
+}
+
+<h2>@Resources.Metadata_ContactId_Contact - @Resources.Metadata_UISection_Details</h2>
+
+
+<div class="row center-block">
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) | @Html.ActionLink("Back to List", "Index")  | @Html.ActionLink("Create Task", "CreateTask", new { id = Model.Id })
+
+    </p>
+</div>
+
+
+<div class="row">
+
+    <dl class="dl-horizontal">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Basic Contact</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.OwnerId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser2.UserName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PreferredOwnerId)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser3.UserName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.NamePrefix)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NamePrefix)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.MiddleName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MiddleName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Code)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Code)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShrtDesc)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShrtDesc)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Remark)
+                </dt>
+
+                <dd>
+                    @Html.TextAreaFor(model => model.Remark, new { @readonly = true })
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Birthdate)
+                </dt>
+
+                <dd>
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.Birthdate, User.TimeZone())
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AnniversaryDate)
+                </dt>
+
+                <dd>
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.AnniversaryDate, User.TimeZone())
+                </dd>
+
+            </div>
+        </div>
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_Relations</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccountId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Account.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LeadSourceId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LeadSource.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsEmployee)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IsEmployee)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsProspect)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IsProspect)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IsEndorsement)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IsEndorsement)
+                </dd>
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.LevelId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Level.Name)
+                </dd>
+            </div>
+        </div>
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Work Info</div>
+            <div class="panel-body">
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Department)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Department)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ReportsTo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Contact2.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PrimaryPhone)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PrimaryPhone)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PrimaryEMail)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PrimaryEMail)
+                    @{
+
+                        <a href="@Url.Action("Compose", "Email", new {  area = "", toEmailAddress = Model.PrimaryEMail })">
+                            <span class="glyphicon glyphicon-envelope">     </span>
+                        </a>
+                    }
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CompanyName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CompanyName)
+                </dd>
+
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Mailing Address</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.MailingAddressToName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MailingAddressToName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.MailingAddressLine1)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MailingAddressLine1)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.MailingAddressLine2)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MailingAddressLine2)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.MailingAddressLine3)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MailingAddressLine3)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.MailingAddressCity)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MailingAddressCity)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.MailingAddressPin)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MailingAddressPin)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.MailingAddressState)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MailingAddressState)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.MailingAddressCountry)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MailingAddressCountry)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.MailingAddressPhone)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MailingAddressPhone)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.MailingAddressEMail)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.MailingAddressEMail)
+                    @{
+
+                        <a href="@Url.Action("Compose", "Email", new {  area = "", toEmailAddress = Model.MailingAddressEMail })">
+                            <span class="glyphicon glyphicon-envelope">     </span>
+                        </a>
+                    }
+                </dd>
+            </div>
+        </div>
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Other Address</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.OtherAddressToName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OtherAddressToName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OtherAddressLine1)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OtherAddressLine1)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OtherAddressLine2)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OtherAddressLine2)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OtherAddressLine3)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OtherAddressLine3)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OtherAddressCity)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OtherAddressCity)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OtherAddressPin)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OtherAddressPin)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OtherAddressState)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OtherAddressState)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OtherAddressCountry)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OtherAddressCountry)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OtherAddressPhone)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OtherAddressPhone)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.OtherAddressEMail)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OtherAddressEMail)
+                   @{
+
+                    <a href="@Url.Action("Compose", "Email", new {  area = "", toEmailAddress = Model.OtherAddressEMail })">
+                        <span class="glyphicon glyphicon-envelope">     </span>
+                    </a>
+                }
+                </dd>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_SystemInfo</div>
+            <div class="panel-body">
+                @*Start Details - Authorized, Active, Created and Modified*@
+                <dt>
+                    @Html.DisplayNameFor(model => model.Authorized)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Authorized)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Active)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Active)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser.UserName)
+                    &nbsp;
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ModifiedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser1.UserName)
+                    &nbsp;
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+                </dd>
+                @*End Details - Authorized, Active, Created and Modified*@
+
+            </div>
+        </div>
+        
+        <dt>
+            @Html.DisplayName("Image")
+        </dt>
+
+        <dd>
+            @{
+                string imageAddr = Model.Organization.ImagePath + Model.Code + ".jpg";
+            }
+            @*<img src="@imageAddr"  alt="Image not available"/>*@
+            <img src="@imageAddr" class="img-responsive" alt="Image Not Available" onerror="this.src = '../../../Images/PersonImageNotAvailable.jpg'">
+        </dd>
+
+    </dl>
+</div>
+

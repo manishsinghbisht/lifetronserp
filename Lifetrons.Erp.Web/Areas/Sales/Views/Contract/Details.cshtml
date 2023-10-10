@@ -1,0 +1,255 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.Contract
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Details;
+}
+
+<h2>Details</h2>
+
+<div class="row">
+    <h4>@Resources.Metadata_ContractId_Contract</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser2.UserName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AccountId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceBookId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceBook.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShrtDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShrtDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RefNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RefNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustSignedByTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustSignedByTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustSignedByDate)
+        </dt>
+
+        <dd>
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.CustSignedByDate, User.TimeZone())
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractStartDate)
+        </dt>
+
+        <dd>
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.ContractStartDate, User.TimeZone())
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractTenure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContractTenure)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContractExpirationDate)
+        </dt>
+
+        <dd>
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.ContractExpirationDate, User.TimeZone())
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpirationNotice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpirationNotice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanySignedDate)
+        </dt>
+
+        <dd>
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.CompanySignedDate, User.TimeZone())
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryTerms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryTerms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentTerms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentTerms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecialTerms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecialTerms)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BillingAddressId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShippingAddressId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address1.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CompanySignedById)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUserCmpSignedBy.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustSignedById)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contact.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpportunityId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opportunity.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuoteId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quote.Name)
+        </dd>
+
+        @*Start Details - Authorized, Active, Created and Modified*@
+        <dt>
+            @Html.DisplayNameFor(model => model.Authorized)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Authorized)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.UserName)
+            &nbsp;
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser1.UserName)
+            &nbsp;
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+        </dd>
+        @*End Details - Authorized, Active, Created and Modified*@
+
+
+    </dl>
+</div>
+<div class="row">
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>

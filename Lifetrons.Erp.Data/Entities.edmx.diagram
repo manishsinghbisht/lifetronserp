@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="63057a3a33064e03a0eab0b2e00984f6" Name="Diagram1" ZoomLevel="58">
+        <EntityTypeShape EntityType="LtSysDb1Model.AccountType" Width="1.5" PointX="7.5" PointY="67.625" />
+        <EntityTypeShape EntityType="LtSysDb1Model.AspNetRole" Width="1.5" PointX="0.75" PointY="64.25" />
+        <EntityTypeShape EntityType="LtSysDb1Model.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="91" />
+        <EntityTypeShape EntityType="LtSysDb1Model.AspNetUser" Width="1.5" PointX="3" PointY="57.125" />
+        <EntityTypeShape EntityType="LtSysDb1Model.CampaignStatu" Width="1.5" PointX="5.25" PointY="85.375" />
+        <EntityTypeShape EntityType="LtSysDb1Model.CampaignType" Width="1.5" PointX="5.25" PointY="82.25" />
+        <EntityTypeShape EntityType="LtSysDb1Model.CaseReason" Width="1.5" PointX="17.75" PointY="75" />
+        <EntityTypeShape EntityType="LtSysDb1Model.CaseStatu" Width="1.5" PointX="17.75" PointY="78.75" />
+        <EntityTypeShape EntityType="LtSysDb1Model.DeliveryStatu" Width="1.5" PointX="31" PointY="90.625" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Industry" Width="1.5" PointX="7.5" PointY="71.5" />
+        <EntityTypeShape EntityType="LtSysDb1Model.JoiningRequest" Width="1.5" PointX="7.625" PointY="53.375" />
+        <EntityTypeShape EntityType="LtSysDb1Model.LargeData" Width="1.5" PointX="7.5" PointY="91" />
+        <EntityTypeShape EntityType="LtSysDb1Model.LeadSource" Width="1.5" PointX="15.5" PointY="98.625" />
+        <EntityTypeShape EntityType="LtSysDb1Model.LeadStatu" Width="1.5" PointX="15.5" PointY="95.375" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Level" Width="1.5" PointX="20.5" PointY="76.875" />
+        <EntityTypeShape EntityType="LtSysDb1Model.OpportunityType" Width="1.5" PointX="22.75" PointY="75.25" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Ownership" Width="1.5" PointX="7.5" PointY="63.75" />
+        <EntityTypeShape EntityType="LtSysDb1Model.PriceBookLineItem" Width="1.5" PointX="17" PointY="82.625" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Priority" Width="1.5" PointX="17.75" PointY="71.375" />
+        <EntityTypeShape EntityType="LtSysDb1Model.QuoteStatu" Width="1.5" PointX="34" PointY="92.75" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Rating" Width="1.5" PointX="15.5" PointY="102.125" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Stage" Width="1.5" PointX="22.75" PointY="92.375" />
+        <EntityTypeShape EntityType="LtSysDb1Model.TaskStatu" Width="1.5" PointX="28.75" PointY="91.75" />
+        <EntityTypeShape EntityType="LtSysDb1Model.WeightUnit" Width="1.5" PointX="34" PointY="75.625" />
+        <AssociationConnector Association="LtSysDb1Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="LtSysDb1Model.FK__LargeData__Creat__3BA0BFE9" />
+        <AssociationConnector Association="LtSysDb1Model.FK__LargeData__Modif__3D89085B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__PriceBook__Creat__53433F50" />
+        <AssociationConnector Association="LtSysDb1Model.FK__PriceBook__Modif__552B87C2" />
+        <AssociationConnector Association="LtSysDb1Model.FK_JoiningRequest_AspNetUsers" />
+        <AssociationConnector Association="LtSysDb1Model.FK_JoiningRequest_AspNetUsers1" />
+        <AssociationConnector Association="LtSysDb1Model.FK_JoiningRequest_AspNetUsers2" />
+        <AssociationConnector Association="LtSysDb1Model.AspNetUserRoles" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Quote" Width="1.5" PointX="41.5" PointY="80.75" />
+        <EntityTypeShape EntityType="LtSysDb1Model.QuoteLineItem" Width="1.5" PointX="43.75" PointY="81.5" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Quote__CreatedBy__196BA376" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Quote__ModifiedB__1B53EBE8" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Quote__OwnerId__0FE2393C" />
+        <AssociationConnector Association="LtSysDb1Model.FK__QuoteLine__Creat__29A20B3F" />
+        <AssociationConnector Association="LtSysDb1Model.FK__QuoteLine__Modif__2B8A53B1" />
+        <AssociationConnector Association="LtSysDb1Model.FK_QuoteLineItem_PriceBookLineItem" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Quote__QuoteStat__13B2CA20" />
+        <AssociationConnector Association="LtSysDb1Model.FK__QuoteLine__Quote__24DD5622" />
+        <AssociationConnector Association="LtSysDb1Model.FK__QuoteLine__Weigh__27B9C2CD" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Contract" Width="1.5" PointX="46.75" PointY="79.875" />
+        <EntityTypeShape EntityType="LtSysDb1Model.OrderLineItem" Width="1.5" PointX="51.25" PointY="81.625" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contract__Compan__0DC4E6A0" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contract__Create__11957784" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contract__Modifi__137DBFF6" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contract__OwnerI__0717E911" />
+        <AssociationConnector Association="LtSysDb1Model.FK__OrderLine__Creat__37BB206C" />
+        <AssociationConnector Association="LtSysDb1Model.FK__OrderLine__Modif__39A368DE" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contract__QuoteI__09003183" />
+        <AssociationConnector Association="LtSysDb1Model.FK__OrderLine__Weigh__35D2D7FA" />
+        <AssociationConnector Association="LtSysDb1Model.FK_OrderLineItem_PriceBookLineItem" />
+        <EntityTypeShape EntityType="LtSysDb1Model.InvoiceStatu" Width="1.5" PointX="52" PointY="68.125" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Organization" Width="1.5" PointX="5.25" PointY="59.75" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Organizat__Creat__1CF15040" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Organizat__Modif__1ED998B2" />
+        <AssociationConnector Association="LtSysDb1Model.FK_AspNetUsers_Organization" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contract__OrgId__10A1534B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__LargeData__OrgId__3AAC9BB0" />
+        <AssociationConnector Association="LtSysDb1Model.FK__OrderLine__OrgId__36C6FC33" />
+        <AssociationConnector Association="LtSysDb1Model.FK__PriceBook__OrgId__339589CD" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Quote__OrgId__18777F3D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__QuoteLine__OrgId__28ADE706" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Case" Width="1.5" PointX="56.5" PointY="69.125" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Case__AssignedTo__56FEC19B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Case__CreatedBy__617C500E" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Case__ModifiedBy__63649880" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Case__OwnerId__560A9D62" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Case__CaseReason__532E30B7" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Case__CaseStatus__55167929" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Case__OrgId__60882BD5" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Case__PriorityId__523A0C7E" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Case__QuoteId__5CB79AF1" />
+        <EntityTypeShape EntityType="LtSysDb1Model.InvoiceLineItem" Width="1.5" PointX="59.5" PointY="72" />
+        <AssociationConnector Association="LtSysDb1Model.FK__InvoiceLi__Creat__70BE939E" />
+        <AssociationConnector Association="LtSysDb1Model.FK__InvoiceLi__Modif__72A6DC10" />
+        <AssociationConnector Association="LtSysDb1Model.FK__InvoiceLi__OrgId__6FCA6F65" />
+        <AssociationConnector Association="LtSysDb1Model.FK__InvoiceLi__Weigh__6ED64B2C" />
+        <AssociationConnector Association="LtSysDb1Model.FK_InvoiceLineItem_PriceBookLineItem" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Opportunity" Width="1.5" PointX="36.25" PointY="76.625" />
+        <EntityTypeShape EntityType="LtSysDb1Model.PriceBook" Width="1.5" PointX="14.75" PointY="78.625" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Product" Width="1.5" PointX="14.75" PointY="85" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Task" Width="1.5" PointX="34" PointY="79.875" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Opportuni__Creat__6EB64F9B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Opportuni__Modif__709E980D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Opportuni__Owner__63449CEF" />
+        <AssociationConnector Association="LtSysDb1Model.FK__PriceBook__Creat__5CD6CB2B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__PriceBook__Modif__5EBF139D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Product__Created__5165187F" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Product__Modifie__534D60F1" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Task__CreatedBy__1CE72E9F" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Task__ModifiedBy__1ECF7711" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Task__OwnerId__1269A02C" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Task__ReportComp__1AFEE62D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Case__Opportunit__3D09E56E" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Case__ProductId__3B219CFC" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contract__Opport__080C0D4A" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contract__PriceB__0AE879F5" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Opportuni__Deliv__6CCE0729" />
+        <AssociationConnector Association="LtSysDb1Model.FK__InvoiceLi__Price__243E37A4" />
+        <AssociationConnector Association="LtSysDb1Model.FK__InvoiceLi__Produ__25325BDD" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Opportuni__LeadS__69F19A7E" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Opportuni__Oppor__68FD7645" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Opportuni__OrgId__6DC22B62" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Opportuni__Stage__6BD9E2F0" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Quote__Opportuni__10D65D75" />
+        <AssociationConnector Association="LtSysDb1Model.FK__OrderLine__Price__33EA8F88" />
+        <AssociationConnector Association="LtSysDb1Model.FK__OrderLine__Produ__34DEB3C1" />
+        <AssociationConnector Association="LtSysDb1Model.FK__PriceBook__OrgId__5BE2A6F2" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Product__OrgId__5070F446" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Task__OrgId__1BF30A66" />
+        <AssociationConnector Association="LtSysDb1Model.FK__PriceBook__Price__30B91D22" />
+        <AssociationConnector Association="LtSysDb1Model.FK__QuoteLine__Price__25D17A5B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__PriceBook__Produ__31AD415B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Task__PriorityId__19169DBB" />
+        <AssociationConnector Association="LtSysDb1Model.FK__QuoteLine__Produ__26C59E94" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Task__TaskStatus__18227982" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Campaign" Width="1.5" PointX="10.5" PointY="68.75" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Campaign__Create__451F3D2B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Campaign__Modifi__4707859D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Campaign__OwnerI__3E723F9C" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Campaign__Campai__3F6663D5" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Campaign__Campai__405A880E" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Campaign__OrgId__442B18F2" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Campaign__Parent__4336F4B9" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Case__CampaignId__3C15C135" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Opportuni__Campa__652CE561" />
+        <EntityTypeShape EntityType="LtSysDb1Model.ProductImage" Width="1.5" PointX="20" PointY="71.5" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProductIm__Creat__605321AB" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProductIm__Modif__623B6A1D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProductIm__OrgId__5F5EFD72" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProductIm__Produ__5E6AD939" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Lead" Width="1.5" PointX="20.75" PointY="80.125" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Lead__CreatedBy__0BB1B5A5" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Lead__ModifiedBy__0D99FE17" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Lead__OwnerId__05F8DC4F" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Lead__CampaignId__1798699D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Lead__LeadSource__06ED0088" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Lead__LeadStatus__07E124C1" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Lead__OrgId__0ABD916C" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Lead__RatingId__08D548FA" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Opportuni__LeadI__6621099A" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Task__LeadId__135DC465" />
+        <EntityTypeShape EntityType="LtSysDb1Model.CampaignMemberStatu" Width="1.5" PointX="27.25" PointY="67" />
+        <EntityTypeShape EntityType="LtSysDb1Model.CampaignMember" Width="1.5" PointX="29.5" PointY="71.75" />
+        <AssociationConnector Association="LtSysDb1Model.FK__CampaignM__Creat__7365F61F" />
+        <AssociationConnector Association="LtSysDb1Model.FK__CampaignM__Modif__754E3E91" />
+        <AssociationConnector Association="LtSysDb1Model.FK__CampaignM__Campa__6EA14102" />
+        <AssociationConnector Association="LtSysDb1Model.FK__CampaignM__Campa__717DADAD" />
+        <AssociationConnector Association="LtSysDb1Model.FK__CampaignM__LeadI__6F95653B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__CampaignM__OrgId__7271D1E6" />
+        <EntityTypeShape EntityType="LtSysDb1Model.ProductFamily" Width="1.5" PointX="10.5" PointY="63.25" />
+        <EntityTypeShape EntityType="LtSysDb1Model.ProductType" Width="1.5" PointX="7.5" PointY="58.25" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProductFa__Creat__38996AB5" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProductFa__Modif__3A81B327" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProductTy__Creat__440B1D61" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProductTy__Modif__45F365D3" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProductFa__OrgId__37A5467C" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProductTy__OrgId__4316F928" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Product__Product__4E88ABD4" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Product__Product__4F7CD00D" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Address" Width="1.5" PointX="13.5" PointY="61.375" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Address__Created__395884C4" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Address__Modifie__3B40CD36" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Address__OrgId__3864608B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contract__Billin__0EB90AD9" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contract__Shippi__0FAD2F12" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Lead__AddressId__09C96D33" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Quote__BillingAd__14A6EE59" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Quote__ShippingA__159B1292" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Department" Width="1.5" PointX="10.5" PointY="58" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Team" Width="1.5" PointX="15.75" PointY="62.875" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Departmen__Creat__4D0B430D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Departmen__Modif__4EF38B7F" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Team__CreatedBy__5A653E2B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Team__ModifiedBy__5C4D869D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Departmen__OrgId__4C171ED4" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Team__Department__587CF5B9" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Team__OrgId__597119F2" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Hierarchy" Width="1.5" PointX="18" PointY="65.5" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Hierarchy__Repor__68B35D82" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Hierarchy__UserI__65D6F0D7" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Hierarchy__Depar__66CB1510" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Hierarchy__OrgId__69A781BB" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Hierarchy__TeamI__67BF3949" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Audit" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Invoice" Width="1.5" PointX="54.25" PointY="68.625" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Invoice__Billing__15F0184D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Invoice__Shippin__16E43C86" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Invoice__Created__18CC84F8" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Invoice__Modifie__1AB4CD6A" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Invoice__OwnerId__0E4EF685" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Case__InvoiceId__3FE65219" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Invoice__Invoice__1407CFDB" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Invoice__Opportu__112B6330" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Invoice__OrgId__17D860BF" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Invoice__QuoteId__121F8769" />
+        <AssociationConnector Association="LtSysDb1Model.FK__InvoiceLi__Invoi__234A136B" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Target" Width="1.5" PointX="16.5" PointY="55.625" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Target__CreatedB__054F9C30" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Target__Modified__0737E4A2" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Target__OwnerId__036753BE" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Target__OrgId__045B77F7" />
+        <EntityTypeShape EntityType="LtSysDb1Model.EmailConfig" Width="1.5" PointX="7.5" PointY="75.125" />
+        <AssociationConnector Association="LtSysDb1Model.FK__EmailConf__UserI__3E88198C" />
+        <AssociationConnector Association="LtSysDb1Model.FK__EmailConf__OrgId__41648637" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Product__WeightU__07F6FEB1" />
+        <EntityTypeShape EntityType="LtSysDb1Model.NoticeBoard" Width="1.5" PointX="13.5" PointY="55.25" />
+        <AssociationConnector Association="LtSysDb1Model.FK__NoticeBoa__Creat__20C2AC7B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__NoticeBoa__Modif__22AAF4ED" />
+        <AssociationConnector Association="LtSysDb1Model.FK__NoticeBoa__OrgId__1FCE8842" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Case__ReportComp__412F7C0D" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Colour" Width="1.5" PointX="34" PointY="64.125" />
+        <EntityTypeShape EntityType="LtSysDb1Model.CostingGroup" Width="1.5" PointX="34" PointY="89.5" />
+        <EntityTypeShape EntityType="LtSysDb1Model.CostingSubGroup" Width="1.5" PointX="34" PointY="96.375" />
+        <EntityTypeShape EntityType="LtSysDb1Model.ItemCategory" Width="1.5" PointX="34" PointY="72.75" />
+        <EntityTypeShape EntityType="LtSysDb1Model.ItemClassification" Width="1.5" PointX="34" PointY="58.75" />
+        <EntityTypeShape EntityType="LtSysDb1Model.ItemGroup" Width="1.5" PointX="34" PointY="53" />
+        <EntityTypeShape EntityType="LtSysDb1Model.ItemSubGroup" Width="1.5" PointX="34" PointY="69.625" />
+        <EntityTypeShape EntityType="LtSysDb1Model.ItemType" Width="1.5" PointX="34" PointY="99.5" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Nature" Width="1.5" PointX="34" PointY="56" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Shape" Width="1.5" PointX="34" PointY="61.5" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Style" Width="1.5" PointX="34" PointY="66.875" />
+        <AssociationConnector Association="LtSysDb1Model.FK__CostingSu__Costi__6FEA6AF6" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ItemSubGr__Group__675524F5" />
+        <EntityTypeShape EntityType="LtSysDb1Model.BOM" Width="1.5" PointX="42.25" PointY="73.125" />
+        <AssociationConnector Association="LtSysDb1Model.FK__BOM__CreatedBy__233504D2" />
+        <AssociationConnector Association="LtSysDb1Model.FK__BOM__ModifiedBy__251D4D44" />
+        <AssociationConnector Association="LtSysDb1Model.FK__BOM__OwnerId__214CBC60" />
+        <AssociationConnector Association="LtSysDb1Model.FK__BOM__OrgId__2240E099" />
+        <AssociationConnector Association="LtSysDb1Model.FK__BOM__ProductId__1D7C2B7C" />
+        <AssociationConnector Association="LtSysDb1Model.FK__BOM__WeightUnitI__20589827" />
+        <EntityTypeShape EntityType="LtSysDb1Model.BOMLineItem" Width="1.5" PointX="44.5" PointY="66" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Item" Width="1.5" PointX="39.25" PointY="68" />
+        <EntityTypeShape EntityType="LtSysDb1Model.OperationBOMLineItem" Width="1.5" PointX="46.75" PointY="66" />
+        <EntityTypeShape EntityType="LtSysDb1Model.OpportunityLineItem" Width="1.5" PointX="44.5" PointY="73.625" />
+        <AssociationConnector Association="LtSysDb1Model.FK__BOMLineIt__Creat__18EC8089" />
+        <AssociationConnector Association="LtSysDb1Model.FK__BOMLineIt__Modif__1AD4C8FB" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Item__CreatedBy__7B5C1DA2" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Item__ModifiedBy__7D446614" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Item__OwnerId__7973D530" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Operation__Creat__2B0B30C4" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Operation__Modif__2CF37936" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Opportuni__Creat__68C86C1B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Opportuni__Modif__6AB0B48D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__BOMLineIt__Produ__0F63164F" />
+        <AssociationConnector Association="LtSysDb1Model.FK__BOMLineIt__Allow__17043817" />
+        <AssociationConnector Association="LtSysDb1Model.FK__BOMLineIt__ItemI__10573A88" />
+        <AssociationConnector Association="LtSysDb1Model.FK__BOMLineIt__OrgId__17F85C50" />
+        <AssociationConnector Association="LtSysDb1Model.FK__BOMLineIt__Weigh__1333A733" />
+        <AssociationConnector Association="LtSysDb1Model.FK_OperationBOMLineItem_BOMLineItem" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Item__ColourId__0B92856B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Item__CostingGro__07C1F487" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Item__CostingSub__08B618C0" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Item__CategoryId__02FD3F6A" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Item__Classifica__02091B31" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Item__GroupId__05D9AC15" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Item__LotWeightU__0114F6F8" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Item__NatureId__09AA3CF9" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Item__OrgId__7A67F969" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Item__ShapeId__0A9E6132" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Item__StyleId__04E587DC" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Item__SubGroupId__06CDD04E" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Item__TypeId__03F163A3" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Operation__Allow__2922E852" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Operation__OrgId__2A170C8B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Operation__Weigh__26467BA7" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Opportuni__Oppor__6403B6FE" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Opportuni__OrgId__67D447E2" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Opportuni__Price__64F7DB37" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Opportuni__Produ__65EBFF70" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Opportuni__Weigh__66E023A9" />
+        <AssociationConnector Association="LtSysDb1Model.FK_OpportunityLineItem_PriceBookLineItem" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Employee" Width="1.5" PointX="36.5" PointY="61.875" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Employee__Create__44CB02C7" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Employee__Modifi__46B34B39" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Employee__Depart__3B41988D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Employee__OrgId__43D6DE8E" />
+        <AssociationConnector Association="LtSysDb1Model.FK__OrderLine__Produ__38652BE2" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Dispatch" Width="1.5" PointX="57.25" PointY="59.125" />
+        <EntityTypeShape EntityType="LtSysDb1Model.DispatchLineItem" Width="1.5" PointX="59.5" PointY="63.875" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Dispatch__Create__473D5B1E" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Dispatch__Modifi__4925A390" />
+        <AssociationConnector Association="LtSysDb1Model.FK__DispatchL__Creat__6B7ABB94" />
+        <AssociationConnector Association="LtSysDb1Model.FK__DispatchL__Modif__6D630406" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Dispatch__Delive__455512AC" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Dispatch__OrgId__464936E5" />
+        <AssociationConnector Association="LtSysDb1Model.FK__DispatchL__Dispt__64CDBE05" />
+        <AssociationConnector Association="LtSysDb1Model.FK__DispatchL__OrgId__6A86975B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__DispatchL__Price__67AA2AB0" />
+        <AssociationConnector Association="LtSysDb1Model.FK__DispatchL__Produ__689E4EE9" />
+        <AssociationConnector Association="LtSysDb1Model.FK__DispatchL__Weigh__69927322" />
+        <AssociationConnector Association="LtSysDb1Model.FK_DispatchLineItem_OrderLineItem" />
+        <EntityTypeShape EntityType="LtSysDb1Model.JobIssueHead" Width="1.5" PointX="47.75" PointY="58.75" />
+        <EntityTypeShape EntityType="LtSysDb1Model.JobItemIssue" Width="1.5" PointX="55" PointY="61.875" />
+        <EntityTypeShape EntityType="LtSysDb1Model.JobItemReceipt" Width="1.5" PointX="50.5" PointY="59.875" />
+        <EntityTypeShape EntityType="LtSysDb1Model.JobProductIssue" Width="1.5" PointX="52" PointY="72" />
+        <EntityTypeShape EntityType="LtSysDb1Model.JobProductReceipt" Width="1.5" PointX="41" PointY="57.875" />
+        <EntityTypeShape EntityType="LtSysDb1Model.JobReceiptHead" Width="1.5" PointX="38.75" PointY="60.75" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobIssueH__Creat__7F81B441" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobIssueH__Modif__0169FCB3" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobItemIs__Creat__22CAF07E" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobItemIs__Modif__24B338F0" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobItemRe__Creat__5832DCF6" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobItemRe__Modif__5A1B2568" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobProduc__Creat__10AC4043" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobProduc__Creat__45200882" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobProduc__Modif__129488B5" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobProduc__Modif__470850F4" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobReceip__Creat__320D340E" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobReceip__Modif__33F57C80" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobIssueH__Emplo__7D996BCF" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobReceip__Emplo__3024EB9C" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobItemIs__ItemI__1D121728" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobItemRe__ItemI__5185DF67" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobIssueH__OrgId__7E8D9008" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobItemIs__JobIs__1B29CEB6" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobProduc__JobIs__090B1E7B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobItemIs__OrgId__21D6CC45" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobItemIs__Weigh__1FEE83D3" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobItemRe__JobRe__4F9D96F5" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobItemRe__OrgId__573EB8BD" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobItemRe__Weigh__54624C12" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobProduc__OrgId__0FB81C0A" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobProduc__Weigh__0CDBAF5F" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobProduc__JobRe__3B969E48" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobProduc__OrgId__442BE449" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobProduc__Weigh__3F672F2C" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobReceip__OrgId__31190FD5" />
+        <EntityTypeShape EntityType="LtSysDb1Model.StockIssueHead" Width="1.5" PointX="41.75" PointY="65.5" />
+        <EntityTypeShape EntityType="LtSysDb1Model.StockReceiptHead" Width="1.5" PointX="44.75" PointY="58.5" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockIssu__Creat__7350E786" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockIssu__Modif__75392FF8" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockRece__Creat__50FBCF82" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockRece__Modif__52E417F4" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockIssu__Emplo__71689F14" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockRece__Emplo__4F138710" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockIssu__OrgId__725CC34D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockRece__OrgId__5007AB49" />
+        <EntityTypeShape EntityType="LtSysDb1Model.EnterpriseStage" Width="1.5" PointX="12.75" PointY="50.25" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Operation" Width="1.5" PointX="23.25" PointY="62.25" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Process" Width="1.5" PointX="21" PointY="61.125" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Operation__Creat__5907059E" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Operation__Modif__5AEF4E10" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Process__Created__48D09DD5" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Process__Modifie__4AB8E647" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Enterpris__Depar__4D6048C8" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Operation__Enter__54425081" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Process__Enterpr__45000CF1" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockIssu__Issue__6D980E30" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockIssu__Issue__6F8056A2" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockRece__Recei__4B42F62C" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockRece__Recei__4D2B3E9E" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobIssueH__Issue__7BB1235D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobIssueH__Issue__7CA54796" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobReceip__Recei__2E3CA32A" />
+        <AssociationConnector Association="LtSysDb1Model.FK__JobReceip__Recei__2F30C763" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Operation__OrgId__5812E165" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Operation__Proce__553674BA" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Operation__Produ__534E2C48" />
+        <AssociationConnector Association="LtSysDb1Model.FK_OperationBOMLineItem_Operation" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Process__OrgId__47DC799C" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockIssu__Issue__6E8C3269" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockIssu__Issue__70747ADB" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockRece__Recei__4C371A65" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockRece__Recei__4E1F62D7" />
+        <EntityTypeShape EntityType="LtSysDb1Model.ProdPlanDetail" Width="1.5" PointX="62.5" PointY="70.75" />
+        <EntityTypeShape EntityType="LtSysDb1Model.ProdPlanRawBooking" Width="1.5" PointX="64.75" PointY="69.25" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProdPlanD__Creat__45750E3D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProdPlanD__Modif__475D56AF" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProdPlanR__Creat__5887E2B1" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProdPlanR__Modif__5A702B23" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProdPlanR__Owner__50E6C0E9" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProdPlanR__ItemI__53C32D94" />
+        <AssociationConnector Association="LtSysDb1Model.FK_ProdPlanDetail_OrderLineItem" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProdPlanD__OrgId__4480EA04" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProdPlanR__OrgId__5793BE78" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProdPlanD__Price__344A823B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProdPlanD__Proce__316E1590" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProdPlanD__Produ__353EA674" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProdPlanD__Weigh__390F3758" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProdPlanR__ProdP__51DAE522" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProdPlanR__Weigh__569F9A3F" />
+        <EntityTypeShape EntityType="LtSysDb1Model.ProcessTimeConfig" Width="1.5" PointX="30.25" PointY="64.875" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProcessTi__Creat__149CCCB8" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProcessTi__Modif__1685152A" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProcessTi__OrgId__13A8A87F" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProcessTi__Proce__0EE3F362" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Account" Width="1.5" PointX="25" PointY="70.75" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Contact" Width="1.5" PointX="27.25" PointY="70.375" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Account__Account__0307610B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Account__Billing__59A6241C" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Account__Campaig__1A74D648" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Account__Created__09B45E9A" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Account__Industr__03FB8544" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Account__LeadId__1980B20F" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Account__Modifie__0B9CA70C" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Account__OrgId__08C03A61" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Account__OwnerId__011F1899" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Account__Ownersh__04EFA97D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Account__RatingI__05E3CDB6" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Account__Shippin__5A9A4855" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Case__AccountId__3939548A" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contact__Account__26509D48" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contract__Accoun__09F455BC" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Dispatch__Accoun__418481C8" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Dispatch__SubAcc__4278A601" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Invoice__Account__0F431ABE" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Opportuni__Accou__6809520C" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Quote__AccountId__11CA81AE" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contact__Mailing__57BDDBAA" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contact__OtherAd__58B1FFE3" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contact__Created__7B7B4DDC" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contact__Modifie__7D63964E" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contact__OwnerId__73DA2C14" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contact__Campaig__1C5D1EBA" />
+        <AssociationConnector Association="LtSysDb1Model.FK__CampaignM__Conta__717DADAD" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Case__ContactId__3A2D78C3" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contact__LeadId__1B68FA81" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contact__LeadSou__74CE504D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contact__LevelId__7993056A" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contact__OrgId__7A8729A3" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contract__CustSi__0BDC9E2E" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Dispatch__Contac__436CCA3A" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Employee__Id__3A4D7454" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Employee__Manage__3C35BCC6" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Invoice__Contact__10373EF7" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Opportuni__Conta__67152DD3" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Quote__ContactId__12BEA5E7" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Task__ContactId__1451E89E" />
+        <AssociationConnector Association="LtSysDb1Model.FK_Contact_ReportsTo" />
+        <EntityTypeShape EntityType="LtSysDb1Model.ProcurementOrder" Width="1.5" PointX="29.5" PointY="48.875" />
+        <EntityTypeShape EntityType="LtSysDb1Model.ProcurementOrderDetail" Width="1.5" PointX="69.25" PointY="65.625" />
+        <EntityTypeShape EntityType="LtSysDb1Model.ProcurementRequest" Width="1.5" PointX="38.75" PointY="83.25" />
+        <EntityTypeShape EntityType="LtSysDb1Model.ProcurementRequestDetail" Width="1.5" PointX="67" PointY="70" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Accou__17CE3F1E" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Billi__1AAAABC9" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Shipp__1B9ED002" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Suppl__19B68790" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Creat__0B686839" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Creat__1D871874" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Creat__2DBD803D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Creat__785593C5" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Modif__0D50B0AB" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Modif__1F6F60E6" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Modif__2FA5C8AF" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Modif__7A3DDC37" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Conta__18C26357" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Depar__7579271A" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Emplo__766D4B53" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__ItemI__04BB6AAA" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__ItemI__29ECEF59" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__OrgId__0A744400" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__OrgId__1C92F43B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__OrgId__2CC95C04" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__OrgId__77616F8C" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Procu__2804A6E7" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Procu__28F8CB20" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Weigh__2AE11392" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Procu__02D32238" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__ProdP__03C74671" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Procureme__Weigh__0797D755" />
+        <EntityTypeShape EntityType="LtSysDb1Model.StockItemIssue" Width="1.5" PointX="54" PointY="83.625" />
+        <EntityTypeShape EntityType="LtSysDb1Model.StockItemReceipt" Width="1.5" PointX="57" PointY="81.625" />
+        <EntityTypeShape EntityType="LtSysDb1Model.StockProductIssue" Width="1.5" PointX="49" PointY="86.5" />
+        <EntityTypeShape EntityType="LtSysDb1Model.StockProductReceipt" Width="1.5" PointX="60" PointY="80.5" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockItem__Creat__094B159D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockItem__Creat__63256CB5" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockItem__Modif__0B335E0F" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockItem__Modif__650DB527" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockProd__Creat__1D520E4A" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockProd__Creat__76384129" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockProd__Modif__1F3A56BC" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockProd__Modif__7820899B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockItem__ItemI__01A9F3D5" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockItem__ItemI__5B844AED" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockItem__OrgId__0856F164" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockItem__OrgId__6231487C" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockProd__OrgId__1C5DEA11" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockProd__OrgId__75441CF0" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockProd__Produ__15B0EC82" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockProd__Produ__6E971F61" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockItem__Stock__00B5CF9C" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockProd__Stock__14BCC849" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockItem__Weigh__057A84B9" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockItem__Stock__5A9026B4" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockItem__Weigh__5F54DBD1" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockProd__Weigh__19817D66" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockProd__Stock__6DA2FB28" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockProd__Weigh__7267B045" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockRece__Procu__4A24B4C1" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Order" Width="1.5" PointX="49" PointY="66.75" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Order__AccountId__1FE396DB" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Order__SubAccoun__02732F85" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Order__BillingAd__259C7031" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Order__ShippingA__2690946A" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Order__Activated__23B427BF" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Order__CompanySi__22C00386" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Order__CreatedBy__2878DCDC" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Order__ModifiedB__2A61254E" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Order__OwnerId__1C1305F7" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Order__ReportCom__3EBD23B6" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Case__OrderId__3EF22DE0" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Order__CustSigne__21CBDF4D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Order__ContractI__1D072A30" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Order__DeliveryS__24A84BF8" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Dispatch__OrderI__4460EE73" />
+        <AssociationConnector Association="LtSysDb1Model.FK__DispatchL__Order__66B60677" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Invoice__OrderId__1313ABA2" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Order__Opportuni__1DFB4E69" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Order__OrgId__2784B8A3" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Order__PriorityI__20D7BB14" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Order__QuoteId__1EEF72A2" />
+        <AssociationConnector Association="LtSysDb1Model.FK__OrderLine__Order__32F66B4F" />
+        <AssociationConnector Association="LtSysDb1Model.FK__ProdPlanD__Order__33565E02" />
+        <AssociationConnector Association="LtSysDb1Model.FK__StockRece__Order__4B18D8FA" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Attendance" Width="1.5" PointX="46.75" PointY="73.5" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Attendanc__Creat__302FD894" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Attendanc__Modif__32182106" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Attendanc__Emplo__2C5F47B0" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Attendanc__OrgId__2F3BB45B" />
+        <EntityTypeShape EntityType="LtSysDb1Model.WorkMonth" Width="1.5" PointX="10.5" PointY="79.875" />
+        <AssociationConnector Association="LtSysDb1Model.FK__WorkMonth__Creat__3D89D3B2" />
+        <AssociationConnector Association="LtSysDb1Model.FK__WorkMonth__Modif__3F721C24" />
+        <AssociationConnector Association="LtSysDb1Model.FK__WorkMonth__OrgId__3C95AF79" />
+        <EntityTypeShape EntityType="LtSysDb1Model.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="56.75" />
+        <AssociationConnector Association="LtSysDb1Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_User_Id" />
+        <EntityTypeShape EntityType="LtSysDb1Model.Media" Width="1.5" PointX="7.5" PointY="81.125" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Media__CreatedBy__5AE52C6F" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Media__MarkedAbu__58FCE3FD" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Media__ModifiedB__5CCD74E1" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Media__OrgId__59F10836" />
+        <AssociationConnector Association="LtSysDb1Model.FK__Contact__Preferr__26FB7415" />
+        <EntityTypeShape EntityType="LtSysDb1Model.File" Width="1.5" PointX="29.5" PointY="77.625" />
+        <EntityTypeShape EntityType="LtSysDb1Model.FileRateTable" Width="1.5" PointX="36.5" PointY="89.375" />
+        <AssociationConnector Association="LtSysDb1Model.FK__File__AccountId__096B112E" />
+        <AssociationConnector Association="LtSysDb1Model.FK__File__SubAccount__0A5F3567" />
+        <AssociationConnector Association="LtSysDb1Model.FK__FileRateT__Accou__19A178F7" />
+        <AssociationConnector Association="LtSysDb1Model.FK__FileRateT__SubAc__1A959D30" />
+        <AssociationConnector Association="LtSysDb1Model.FK__File__ApproverId__0C477DD9" />
+        <AssociationConnector Association="LtSysDb1Model.FK__File__CreatedBy__0F23EA84" />
+        <AssociationConnector Association="LtSysDb1Model.FK__File__ModifiedBy__110C32F6" />
+        <AssociationConnector Association="LtSysDb1Model.FK__File__ProcessorI__0B5359A0" />
+        <AssociationConnector Association="LtSysDb1Model.FK__FileRateT__Creat__1F5A524D" />
+        <AssociationConnector Association="LtSysDb1Model.FK__FileRateT__Modif__21429ABF" />
+        <AssociationConnector Association="LtSysDb1Model.FK__File__ContactId__27EF984E" />
+        <AssociationConnector Association="LtSysDb1Model.FK__FileRateT__Conta__28E3BC87" />
+        <AssociationConnector Association="LtSysDb1Model.FK__File__OrgId__0E2FC64B" />
+        <AssociationConnector Association="LtSysDb1Model.FK__FileRateT__OrgId__1E662E14" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,187 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+
+@model Lifetrons.Erp.Data.OrderLineItem
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>@Resources.Metadata_UISection_Delete</h2>
+
+<h3>@Resources.Metadata_ConfirmDelete</h3>
+<div>
+    <h4>@Resources.Metadata_OrderLineItem</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Serial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Serial)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceBookId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceBook.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscountPercent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscountPercent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiscountAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiscountAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LineItemPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LineItemPrice)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weight) &nbsp; @Html.DisplayFor(model => model.WeightUnit.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LineItemAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LineItemAmount)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShrtDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShrtDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SpecialInstructions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SpecialInstructions)
+        </dd>
+
+        @*Start Details - Authorized, Active, Created and Modified*@
+        <dt>
+            @Html.DisplayNameFor(model => model.Authorized)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Authorized)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.UserName)
+            &nbsp;
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser1.UserName)
+            &nbsp;
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+        </dd>
+        @*End Details - Authorized, Active, Created and Modified*@
+
+        <dt>
+            @Html.DisplayName("Image")
+        </dt>
+
+        <dd>
+            @{
+                string imageAddr = Model.Organization.ImagePath + Model.Product.Code + ".jpg";
+            }
+            @*<img src="@imageAddr"  alt="Image not available"/>*@
+            <img src="@imageAddr" class="img-responsive" alt="Image Not Available" onerror="this.src = '../../Images/ImageNotAvailable.jpg'">
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.OrderId)
+        @Html.HiddenFor(model => model.PriceBookId)
+        @Html.HiddenFor(model => model.ProductId)
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Details", "Details", new { orderId = Model.OrderId, priceBookId = Model.PriceBookId, productId = Model.ProductId })
+        </div>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Order")
+}

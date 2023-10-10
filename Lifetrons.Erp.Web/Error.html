@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Error</title>
+</head>
+<body>
+    <h2 class="text-danger">Possibly, session is expired, network or internal Server error.</h2>
+    <h2 class="text-danger">Also check if, you have required roles / permissions to visit the requested area. </h2>
+    <h3 class="text-danger"> Please Log off, and try again. </h3>
+
+    <br />
+
+    <p>
+        <h3>Possible reasons why this may have occured: </h3>
+        
+        <ul class="list-group">
+            <li>
+                <b>Your session expired. Please log in again.</b>
+            </li>
+            <li>
+                <b>Too busy servers or Dropped connection. Please try again.</b>
+            </li>
+            <li>
+                <b>You don't have required roles / permissions to visit the requested area.</b>
+            </li>
+            <li>
+                <b>Invalid request URL. If typed your URL or got here through some search engine link.</b>
+            </li>
+        </ul>
+
+        You will be transferred to Home page automatically in 10 seconds,
+        unless you decide to click on Back button given below to go back to previous page.
+    </p>
+    
+    <br />
+
+    <input type="button" onclick="history.go(-1);" value="Back">
+
+    <br />
+
+    <meta http-equiv="Refresh" content="5;URL=http://EasySales.in">
+</body>
+</html>

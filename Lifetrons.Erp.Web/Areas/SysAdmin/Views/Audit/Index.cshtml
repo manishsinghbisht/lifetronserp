@@ -1,0 +1,93 @@
+﻿@using Resources;
+@using PagedList
+@using PagedList.Mvc
+@using Lifetrons.Erp.Helpers
+
+@model IEnumerable<Lifetrons.Erp.Models.Audit>
+
+@*@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}*@
+
+@*<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Audit Records</title>
+    <style type="text/css">
+        th {
+            padding-right: 20px;
+        }
+    </style>
+</head>
+    <body>*@
+@{
+    ViewBag.Title = "Audit Index";
+}
+
+        <table class="table-condensed">
+            <tr><td><h2>Audit</h2></td></tr>
+            <tr>
+               
+                <td class="col-xs-6">
+                    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page = page, area = ViewContext.RouteData.DataTokens["area"] }), PagedListRenderOptions.MinimalWithPageCountText)
+                </td>
+                <td class="col-xs-6">
+                   @{Html.RenderAction("ShowSearchForm", "Search", new { action = "Search", controller = ViewContext.RouteData.DataTokens["area"] + "/Audit", area = "", placeholder = "Search name or code" }); }
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UrlAccessed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TimeAccessed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SessionId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IpAddress)
+                </th>
+          
+                <th>
+                    @Html.DisplayNameFor(model => model.Data)
+                </th>
+            </tr>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UrlAccessed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TimeAccessed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SessionId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IpAddress)
+                    </td>
+                
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data)
+                    </td>
+                </tr>
+            }
+        </table>
+    @*</body>
+</html>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Audit")
+}

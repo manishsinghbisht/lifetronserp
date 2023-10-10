@@ -1,0 +1,27 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Page Not Found";
+}
+
+<h1 class="text-danger">Page Not Found.</h1>
+<h3 class="text-danger">An error occurred while processing your request. </h3>
+<h3 class="text-danger">Possible resons can be UnAuthorized request url or Insuffcient rights to execute the request. </h3>
+
+<br/>
+
+
+
+<h4 class="text-danger">@DateTime.Now</h4>
+<br />
+<p>
+    You will be transferred to Login page automatically in 10 seconds,
+    unless you decide to click on Back button given below to go back to previous page.
+</p>
+
+<input type="button" onclick="history.go(-1);" value="Back">
+
+<br />
+
+<meta http-equiv="Refresh" content="10;URL=@(Url.Action("Login", "Account"))">
+

@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Lifetrons.Erp.DbScripts</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{8ce482e5-883f-4bc7-b59d-a85c71f5c9a5}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Lifetrons.Erp.DbScripts</RootNamespace>
+    <AssemblyName>Lifetrons.Erp.DbScripts</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <TargetDatabase>EasyERPDBScripts</TargetDatabase>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- VS10 without SP1 will not have VisualStudioVersion set, so do that here -->
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <!-- Default to the v10.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Common" />
+    <Folder Include="DBBackup" />
+    <Folder Include="Org n User Start up" />
+    <Folder Include="Production" />
+    <Folder Include="Sps Functions Views" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Case.sql" />
+    <None Include="Common\Standard Columns.txt" />
+    <None Include="Org n User Start up\ProductFamilynTypeSetup.sql" />
+    <None Include="Hierarchy.sql" />
+    <None Include="Common\Audits.sql" />
+    <None Include="DBBackup\DBRestore Helpers.sql" />
+    <None Include="Common\10 EmailConfig.sql" />
+    <None Include="DBBackup\Rename DB.sql" />
+    <None Include="Production\JobIssueReceipt.sql" />
+    <None Include="Production\Dispatch.sql" />
+    <None Include="Sps Functions Views\fnDispatchLineItemsAmount.sql" />
+    <None Include="Sps Functions Views\CheckJobProductIssue.sql" />
+    <None Include="Sps Functions Views\CheckStockIssue.sql" />
+    <None Include="Production\ProdPlanning.sql" />
+    <None Include="DBBackup\LtSysDb1_Bk_20150203.rar" />
+    <None Include="DBBackup\LtSysDb1_Bk_20150207.rar" />
+    <None Include="DBBackup\LtSysDB1_Bk_20150211" />
+    <None Include="DBBackup\LtSysDB1_Bk_20150211.rar" />
+    <None Include="DBBackup\LtSysDb1_Bk_20150212" />
+    <None Include="DBBackup\LtSysDb1_Bk_20150212.rar" />
+    <None Include="DBBackup\LtSysDb1_BK_20150214" />
+    <None Include="DBBackup\LtSysDb1_BK_20150214.rar" />
+    <None Include="Production\Inventory.sql" />
+    <None Include="DBBackup\LtSysDb1_Bk_20150218" />
+    <None Include="DBBackup\LtSysDb1_Bk_20150218.rar" />
+    <None Include="DBBackup\LtSysDb1_Bk_20140227.rar" />
+    <None Include="DBBackup\LtSysDb1_Bk_20140227" />
+    <None Include="DBBackup\LtSysDb1_Bk_20150310.rar" />
+    <None Include="DBBackup\LtSysDb1_Bk_20150310" />
+    <None Include="Common\14 SMS.sql" />
+    <None Include="Common\DemoDateSetup.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Script1.sql" />
+    <None Include="1 AccountType.sql" />
+    <None Include="1 Address.sql" />
+    <None Include="1 CampaignStatus.sql" />
+    <None Include="1 CampaignType.sql" />
+    <None Include="1 CaseReason.sql" />
+    <None Include="1 CaseStatus.sql" />
+    <None Include="1 Industry.sql" />
+    <None Include="1 LeadSource.sql" />
+    <None Include="1 LeadStatus.sql" />
+    <None Include="1 Level.sql" />
+    <None Include="1 OpportunityType.sql" />
+    <None Include="1 Ownership.sql" />
+    <None Include="1 Priority.sql" />
+    <None Include="1 Rating.sql" />
+    <None Include="1 Stage.sql" />
+    <None Include="2 Campaign.sql" />
+    <None Include="3 Lead.sql" />
+    <None Include="4 Account.sql" />
+    <None Include="5 Contact.sql" />
+    <None Include="CampaignMember.sql" />
+    <None Include="Contract.sql" />
+    <None Include="DeliveryStatus.sql" />
+    <None Include="Opportunity.sql" />
+    <None Include="OpportunityLineItem.sql" />
+    <None Include="Order.sql" />
+    <None Include="OrderLineItem.sql" />
+    <None Include="Quote.sql" />
+    <None Include="QuoteLineItem.sql" />
+    <None Include="QuoteStatus.sql" />
+    <None Include="Common\1 AspNetUsers.sql" />
+    <None Include="Common\2 Organization.sql" />
+    <None Include="Common\3 AspNetRoles.sql" />
+    <None Include="Common\4 AspNetUserLogins.sql" />
+    <None Include="Common\5 AspNetUserRoles.sql" />
+    <None Include="Common\6 AspNetUserClaims.sql" />
+    <None Include="Common\7 JoiningRequest.sql" />
+    <None Include="Common\8 ProductFamily.sql" />
+    <None Include="Common\9 ProductType.sql" />
+    <None Include="Common\10 Product.sql" />
+    <None Include="Common\11 PriceBook.sql" />
+    <None Include="Common\ELMAH-1.2-db-SQLServer.sql" />
+    <None Include="Task.sql" />
+    <None Include="LargeData.sql" />
+    <None Include="1 TaskStatus.sql" />
+    <None Include="Invoice.sql" />
+    <None Include="InvoiceStatus.sql" />
+    <None Include="InvoiceLineItem.sql" />
+    <None Include="ProductImage.sql" />
+    <None Include="CampaignMemberStatus.sql" />
+    <None Include="Org n User Start up\Assign Roles.sql" />
+    <None Include="Org n User Start up\Create Campaign.sql" />
+    <None Include="Org n User Start up\Create Department.sql" />
+    <None Include="Target.sql" />
+    <None Include="Org n User Start up\AfterInsertOrgTrigger.sql" />
+    <None Include="Org n User Start up\spSetupOrg.sql" />
+    <None Include="Common\1 WeightUnit.sql" />
+    <None Include="NoticeBoard.sql" />
+    <None Include="Production\1 Item.sql" />
+    <None Include="Production\4 EnterpriseStage.sql" />
+    <None Include="Production\5 Process.sql" />
+    <None Include="Production\3 BillOfMaterial.sql" />
+    <None Include="Production\2 fnBOMLineItemsAmount.sql" />
+    <None Include="Production\6 ListOfOperation.sql" />
+    <None Include="Sps Functions Views\fnOrderLineItemsQuantity.sql" />
+    <None Include="Sps Functions Views\fnOrderLineItemsAmount.sql" />
+    <None Include="Sps Functions Views\fnOpportunityLineItemsQuantity.sql" />
+    <None Include="Sps Functions Views\fnOpportunityLineItemsAmount.sql" />
+    <None Include="Sps Functions Views\fnInvoiceLineItemsQuantity.sql" />
+    <None Include="Sps Functions Views\fnInvoiceLineItemsAmount.sql" />
+    <None Include="Sps Functions Views\dPriceBookLineItemPreventWholeDelete.sql" />
+    <None Include="Sps Functions Views\dOrganizationPreventWholeDelete.sql" />
+    <None Include="Sps Functions Views\dAspNetUsersPreventWholeDelete.sql" />
+    <None Include="Sps Functions Views\uPriceBookLineItemPreventWholeUpdate.sql" />
+    <None Include="Sps Functions Views\uOrganizationPreventWholeUpdate.sql" />
+    <None Include="Sps Functions Views\uAspNetUsersPreventWholeUpdate.sql" />
+    <None Include="Sps Functions Views\sViewQuote.sql" />
+    <None Include="Sps Functions Views\spUserPerformanceComaprisonMonthly.sql" />
+    <None Include="Sps Functions Views\spUserOpenWork.sql" />
+    <None Include="Sps Functions Views\spTeamPerformanceComaprisonMonthly.sql" />
+    <None Include="Sps Functions Views\spTeamOpenWork.sql" />
+    <None Include="Sps Functions Views\spOrgPerformanceComaprisonMonthly.sql" />
+    <None Include="Sps Functions Views\spOrgOpenWork.sql" />
+    <None Include="Sps Functions Views\spDepartmentPerformanceComaprisonMonthly.sql" />
+    <None Include="Sps Functions Views\spDepartmentOpenWork.sql" />
+    <None Include="Sps Functions Views\spConvertLeadToTasknOpp.sql" />
+    <None Include="DBBackup\Create Database.sql" />
+    <None Include="Common\Server Execeution Scripts.sql" />
+    <None Include="Sps Functions Views\2 fncCheckUserProductOrg.sql" />
+    <None Include="Sps Functions Views\1 fncCheckUserOrg.sql" />
+    <None Include="Common\12 PriceBookLineItem.sql" />
+    <None Include="Production\Employee.sql" />
+    <None Include="Production\Stock.sql" />
+    <Build Include="Sps Functions Views\fnDispatchLineItemsQuantity.sql" />
+    <Build Include="Sps Functions Views\fnDispatchLineItemsAmount.sql" />
+    <None Include="Sps Functions Views\fnGetOrderLineItemPrice.sql">
+      <CopyToOutputDirectory>DoNotCopy</CopyToOutputDirectory>
+    </None>
+    <Build Include="Sps Functions Views\CheckJobItemIssue.sql" />
+    <None Include="Sps Functions Views\CheckProdPlanRawBooking.sql" />
+    <None Include="Sps Functions Views\CheckProcessTimeConfig.sql" />
+    <None Include="Production\Procurement.sql" />
+    <None Include="Sps Functions Views\fnProcurementOrderDetailQuantity.sql" />
+    <None Include="Sps Functions Views\fnProcurementOrderDetailAmount.sql" />
+    <None Include="Sps Functions Views\CheckAttendance.sql" />
+    <None Include="Common\12 Media.sql" />
+    <None Include="Common\13 File.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+</Project>

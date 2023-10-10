@@ -1,0 +1,90 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+
+@model Lifetrons.Erp.Data.PriceBookLineItem
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Edit;
+}
+
+<h2> @Resources.Metadata_UISection_Edit </h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Price Book Line Item</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PriceBookId, "Price List", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*Declare a hidden variable because dropdown below is disabled and will not bind PriceBookId with MVC binder.
+                    If you want to bind dropdown with MVC binder, Rename dropdown to "PriceBookId", Remove disabled attribute and Remove Hidden field.*@
+                @*@Html.DropDownList("PriceBookIdDropdown", (SelectList)ViewData["PriceBookId"], new { @disabled = "disabled" })*@
+
+                @Html.HiddenFor(model => model.PriceBookId)
+                <input type="text" value="@ViewData["PriceBookName"]" readonly>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductId, "Product", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*Declare a hidden variable because dropdown below is disabled and will not bind ProductId with MVC binder.
+                    If you want to bind dropdown with MVC binder, Rename dropdown to "ProductId", Remove disabled attribute and Remove Hidden field.*@
+                @*@Html.DropDownList("ProductIdDropdown", (SelectList)ViewData["ProductId"], new { @disabled = "disabled" })*@
+
+                @Html.HiddenFor(model => model.ProductId)
+                <input type="text" value="@Model.Product.Name" readonly>
+
+                @Html.ValidationMessageFor(model => model.ProductId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ListPrice, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ListPrice, new { @placeholder = "255.35" })
+                @Html.ValidationMessageFor(model => model.ListPrice)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShrtDesc, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ShrtDesc)
+                @Html.ValidationMessageFor(model => model.ShrtDesc)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @(User.IsInRole("ProductsAuthorize") ? Html.EditorFor(model => model.Authorized) : Html.DisplayFor(model => model.Authorized))
+                @Html.ValidationMessageFor(model => model.Authorized)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @if (!Model.Authorized || User.IsInRole("ProductsAuthorize"))
+                {
+                    <input type="submit" value="Save" class="btn btn-default" accesskey="S" />
+                }
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Details", "PriceBook", new { id = Model.PriceBookId }, null)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/PriceBookLineItem")
+}

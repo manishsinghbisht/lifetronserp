@@ -1,0 +1,52 @@
+﻿@using Resources;
+@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<Lifetrons.Erp.Data.Hierarchy>
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Index;
+}
+
+<div class="panel-body" style="overflow:auto;">
+    <table class="table">
+
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeamId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Designation)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AspNetUser.Name) <text> - </text> @Html.DisplayFor(modelItem => item.AspNetUser.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Department.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Team.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Designation)
+        </td>
+        <td>
+            <a href="@Url.Action("Index", "Dashboard", new { userId = item.AspNetUser.Id, orgId = item.AspNetUser.OrgId})">   <span class="glyphicon glyphicon-dashboard">     </span> Dashboard</a>
+        </td>
+    </tr>
+    }
+
+    </table>
+</div>

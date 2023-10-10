@@ -1,0 +1,91 @@
+﻿@using Resources;
+@using System.Threading
+@using Lifetrons.Erp.Helpers
+
+@model Lifetrons.Erp.Data.Attendance
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Create;
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Attendance In</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">@Resources.Metadata_UISection_References</div>
+                <div class="panel-body">
+                   
+                     <div class="form-group">
+                        @Html.LabelFor(model => model.EmployeeId, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("EmployeeId")
+                            @Html.ValidationMessageFor(model => model.EmployeeId)
+                        </div>
+                    </div>
+                    
+                    @if (Model == null)
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InDateTime, new {@class = "control-label col-md-2"})
+                            <div class="col-md-10">
+                               <div class="dateDiv" style="position: relative">
+                                    <input class="dateTxt" type="text"  id="InDateTime" name="InDateTime" value="@DateTime.Now"
+                                           data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InDateTime, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                               <div class="dateDiv" style="position: relative">
+                                    @ControllerHelper.ConvertDateTimeFromUtc(Model.InDateTime, User.TimeZone())
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AtendanceStatus, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("AtendanceStatus", new List<SelectListItem>
+                            {
+                                new SelectListItem{ Text="Present", Value = "P", Selected = true},
+                                new SelectListItem{ Text="Leave", Value = "L" },
+                                new SelectListItem{ Text="Absent", Value = "A" },
+                                new SelectListItem{ Text="Half Day", Value = "HD" },
+                            })
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" accesskey="S" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Attendance")
+}

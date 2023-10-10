@@ -1,0 +1,150 @@
+﻿@using Resources;
+@model Lifetrons.Erp.Data.StockItemIssue
+@using System.Threading
+@using Lifetrons.Erp.Helpers
+
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Edit;
+}
+
+<h2> @Resources.Metadata_UISection_Edit </h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Stock Issue Line Item</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.TimeStamp)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StockIssueId, "Stock Issue", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.StockIssueId)
+                @Html.TextBoxFor(model => model.StockIssueHead.Name, new { Value = ViewData["StockIssueHeadName"], @readonly = true })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Serial, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Serial, new { @class = "manageMaxLength", @maxlength = "3", @placeholder = "1" })
+                @Html.ValidationMessageFor(model => model.Serial)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JobNo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.JobNo, new { @class = "manageMaxLength", @maxlength = "15", @placeholder = "Short description" })
+                @Html.ValidationMessageFor(model => model.JobNo)
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.CaseNo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.CaseNo, new { @class = "manageMaxLength", @maxlength = "15", @placeholder = "123456" })
+                @Html.ValidationMessageFor(model => model.CaseNo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TaskNo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.TaskNo, new { @class = "manageMaxLength", @maxlength = "15", @placeholder = "123456" })
+                @Html.ValidationMessageFor(model => model.TaskNo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ItemId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ItemId")
+                @Html.ValidationMessageFor(model => model.ItemId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Quantity, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "Quantity. Ex: 1" })
+                @Html.ValidationMessageFor(model => model.Quantity)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Weight, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Weight, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "Weight unit. Ex: 5" })
+                @Html.ValidationMessageFor(model => model.Weight)
+                @Html.DropDownList("WeightUnitId", String.Empty)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ExtraQuantity, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ExtraQuantity, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "Extra qty" })
+                @Html.ValidationMessageFor(model => model.ExtraQuantity)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DeliveryDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               <div class="dateDiv" style="position: relative">
+                    <input class="dateTxt" type="text"  id="DeliveryDate" name="DeliveryDate" value="@ControllerHelper.ConvertDateTimeFromUtc(Model.DeliveryDate, User.TimeZone())"
+                           data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                    <span class="glyphicon glyphicon-remove-circle"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Remark History", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <textarea id="historyProgressRemark" name="historyProgressRemark" readonly> @Model.Remark </textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Remark, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Remark, new { @class = "manageMaxLength", @maxlength = "250", @placeholder = "Updates" })
+                @Html.ValidationMessageFor(model => model.Remark)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @(User.IsInRole("StockAuthorize") ? Html.EditorFor(model => model.Authorized) : Html.DisplayFor(model => model.Authorized))
+                @Html.ValidationMessageFor(model => model.Authorized)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @if (!Model.Authorized || User.IsInRole("StockAuthorize"))
+                {
+                    <input type="submit" value="Save" class="btn btn-default" accesskey="S" />
+                }
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Details", "StockIssue", new { id = Model.StockIssueId }, null)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/StockItemIssueLineItem")
+}

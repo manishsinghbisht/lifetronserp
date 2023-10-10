@@ -1,0 +1,21 @@
+﻿@using System.Threading;
+@using Lifetrons.Erp.Helpers;
+
+@{
+    ViewBag.Title = "Upload";
+}
+
+<h2>Upload</h2>
+
+<input type="file" name="FileUpload1" id="fileUpload" /><br />
+<input id="btnUploadFile" type="button" value="Upload File" />
+<input type="hidden" id="id" name="id" value="@TempData["id"].ToString()"/>
+<br />
+<br />
+@Html.ActionLink("Dashboard", "Index")
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/File")
+}

@@ -1,0 +1,225 @@
+﻿@using Resources;
+@model Lifetrons.Erp.Data.Campaign
+@using Lifetrons.Erp.Helpers
+
+@{
+    ViewBag.Title = Resources.Metadata_CampaignId_Campaign;
+}
+
+<h2>@Resources.Metadata_CampaignId_Campaign - @Resources.Metadata_UISection_Details</h2>
+
+
+<div class="row center-block">
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) | @Html.ActionLink("Back to List", "Index") | @Html.ActionLink("Create Task", "CreateTask", new { id = Model.Id })
+    </p>
+</div>
+
+
+<div class="row">
+    <dl class="dl-horizontal">
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_References</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.OwnerId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser2.UserName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Code)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Code)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShrtDesc)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShrtDesc)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Desc)
+                </dt>
+
+                <dd>
+                    @Html.TextAreaFor(model => model.Desc, new { @readonly = true })
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CampaignTypeId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CampaignType.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.NumberOfEmployees)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NumberOfEmployees)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EmployeeDetails)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.EmployeeDetails)
+                </dd>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_Relations</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ParentCampaignId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Campaign2.Name)
+                </dd>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_FollowUp</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.StartDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.EndDate)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ExpectedRevenue)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ExpectedRevenue)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BudgetCost)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BudgetCost)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ActualCost)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ActualCost)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ExpectedResponsePercent)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ExpectedResponsePercent)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.NumSent)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NumSent)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Delivery)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Delivery)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Competitors)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Competitors)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CampaignStatusId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CampaignStatu.Name)
+                </dd>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_SystemInfo</div>
+            <div class="panel-body">
+                @*Start Details - Authorized, Active, Created and Modified*@
+                <dt>
+                    @Html.DisplayNameFor(model => model.Authorized)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Authorized)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Active)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Active)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser.UserName)
+                    &nbsp;
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ModifiedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser1.UserName)
+                    &nbsp;
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+                </dd>
+                @*End Details - Authorized, Active, Created and Modified*@
+
+            </div>
+        </div>
+    </dl>
+</div>
+
+<div class="row">
+    @{Html.RenderAction("Index", "CampaignMember", new { campaignId = Model.Id });}
+</div>

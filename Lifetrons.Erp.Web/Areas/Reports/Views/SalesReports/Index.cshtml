@@ -1,0 +1,393 @@
+﻿@using Resources;
+@using System.Collections
+@using Lifetrons.Erp.Helpers;
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework
+@using Resources;
+@{
+    ViewBag.Title = Resources.Metadata_Report;
+}
+`
+@if (Request.IsAuthenticated)
+{
+    var applicationUserId = User.Identity.GetUserId();
+    var username = User.Identity.Name;
+    var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>());
+    var userRoles = userManager.GetRoles(applicationUserId.ToString());
+
+    <div class="row text-center">
+        <h3>Sales & Services @Resources.Metadata_Report &nbsp; @Resources.Metadata_UISection_Index &nbsp; (@username)</h3>
+    </div>
+
+    if (userRoles.Contains("OrganizationLevel"))
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading text-center text-primary">
+                <b>@Resources.Metadata_OrganizationLevelReports</b>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="list-group">
+                            <a class="list-group-item" href="@Url.Action("ParamOccupancyReport", "SalesReports", new { ReportName = "OccupancyReport.rdlc" })">@Resources.Metadata_OccupancyReport</a>
+                            <a class="list-group-item" href="@Url.Action("ParamOccupancyReport", "SalesReports", new { ReportName = "AccountwiseOccupancyReport.rdlc" })">Relation wise Occupancy Report</a>
+                            <a class="list-group-item" href="@Url.Action("ParamOrdersByOrg", "SalesReports")">@Resources.Metadata_OrderSummaryReport</a>
+                            <a class="list-group-item" href="@Url.Action("ParamAccountHistory", "SalesReports")">@Resources.Metadata_AccountHistory</a>
+                            <a class="list-group-item" href="@Url.Action("ParamSubAccountHistory", "SalesReports")">@Resources.Metadata_SubAccountHistory</a>
+                            <a class="list-group-item" href="@Url.Action("ParamFileReportForAccount", "SalesReports", new { ReportName = "FileReportForAccount.rdlc" })">File Report For Account</a>
+                            <a class="list-group-item" href="@Url.Action("ParamFileDeliveriesByDate", "SalesReports", new { ReportName = "FileDeliveriesByDate.rdlc" })">File Deliveries By Date</a>
+                            <a class="list-group-item" href="@Url.Action("ParamFileDeliveriesByProcessor", "SalesReports", new { ReportName = "FileDeliveriesByProcessor.rdlc" })">File Deliveries By Processor</a>
+                            <a href="#" class="list-group-item"></a>
+                            <li class="dropdown list-group-item">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    More Reports
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        Adding up...
+                                        @*<a href="@Url.Action("ParamOrdersByOwner", "Report")">
+                        <span class="glyphicon glyphicon-pushpin"> </span>
+                        Order Summary
+                    </a>*@
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <li class="dropdown list-group-item">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    More Reports
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        Adding up...
+                                        @*<a href="@Url.Action("ParamOrdersByOwner", "Report")">
+                        <span class="glyphicon glyphicon-pushpin"> </span>
+                        Order Summary
+                    </a>*@
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <li class="dropdown list-group-item">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    More Reports
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        Adding up...
+                                        @*<a href="@Url.Action("ParamOrdersByOwner", "Report")">
+                                                <span class="glyphicon glyphicon-pushpin"> </span>
+                                                Order Summary
+                                            </a>*@
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <p></p>
+                </div>
+
+            </div>
+        </div>
+    }
+
+    if (userRoles.Contains("OrganizationLevel") || (userRoles.Contains("DepartmentLevel") && null != TempData["DepartmentId"]))
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading text-center text-primary">
+                <b>@Resources.Metadata_DepartmentLevelReports</b>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="list-group">
+                            <a class="list-group-item" href="@Url.Action("ParamOccupancyReport", "SalesReports", new { ReportName = "OccupancyReport.rdlc" })">@Resources.Metadata_OccupancyReport</a>
+                            <a class="list-group-item" href="@Url.Action("ParamOccupancyReport", "SalesReports", new { ReportName = "AccountwiseOccupancyReport.rdlc" })">Relation wise Occupancy Report</a>
+                            <a class="list-group-item"  href="@Url.Action("ParamOrdersByDepartment", "SalesReports")">@Resources.Metadata_OrderSummaryReport (@Resources.Metadata_DepartmentId_Department)</a>
+                            
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <li class="dropdown list-group-item">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    More Reports
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        Adding up...
+                                        @*<a href="@Url.Action("ParamOrdersByOwner", "Report")">
+                            <span class="glyphicon glyphicon-pushpin"> </span>
+                            Order Summary
+                        </a>*@
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <li class="dropdown list-group-item">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    More Reports
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        Adding up...
+                                        @*<a href="@Url.Action("ParamOrdersByOwner", "Report")">
+                            <span class="glyphicon glyphicon-pushpin"> </span>
+                            Order Summary
+                        </a>*@
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <li class="dropdown list-group-item">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    More Reports
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        Adding up...
+                                        @*<a href="@Url.Action("ParamOrdersByOwner", "Report")">
+                            <span class="glyphicon glyphicon-pushpin"> </span>
+                            Order Summary
+                        </a>*@
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <p></p>
+                </div>
+
+            </div>
+        </div>
+    }
+
+
+    if (userRoles.Contains("OrganizationLevel") || (userRoles.Contains("TeamLevel") && null != TempData["TeamId"]))
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading text-center text-primary">
+                <b>@Resources.Metadata_TeamLevelReports</b>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="list-group">
+                            <a class="list-group-item" href="@Url.Action("ParamOccupancyReport", "SalesReports", new { ReportName = "OccupancyReport.rdlc" })">@Resources.Metadata_OccupancyReport</a>
+                            <a class="list-group-item" href="@Url.Action("ParamOccupancyReport", "SalesReports", new { ReportName = "AccountwiseOccupancyReport.rdlc" })">Relation wise Occupancy Report</a>
+                            <a class="list-group-item" href="@Url.Action("ParamOrdersByTeam", "SalesReports")">@Resources.Metadata_OrderSummaryReport (@Resources.Metadata_TeamId_Team)</a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <li class="dropdown list-group-item">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    More Reports
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        Adding up...
+                                        @*<a href="@Url.Action("ParamOrdersByOwner", "Report")">
+                            <span class="glyphicon glyphicon-pushpin"> </span>
+                            Order Summary
+                        </a>*@
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <li class="dropdown list-group-item">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    More Reports
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        Adding up...
+                                        @*<a href="@Url.Action("ParamOrdersByOwner", "Report")">
+                            <span class="glyphicon glyphicon-pushpin"> </span>
+                            Order Summary
+                        </a>*@
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <a href="#" class="list-group-item"></a>
+                            <li class="dropdown list-group-item">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    More Reports
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        Adding up...
+                                        @*<a href="@Url.Action("ParamOrdersByOwner", "Report")">
+                            <span class="glyphicon glyphicon-pushpin"> </span>
+                            Order Summary
+                        </a>*@
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <p></p>
+                </div>
+
+            </div>
+        </div>
+    }
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading text-center text-primary">
+            <b>@Resources.Metadata_UserLevelReports</b>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="list-group">
+                        <a class="list-group-item" href="@Url.Action("ParamOccupancyReport", "SalesReports", new { ReportName = "OccupancyReport.rdlc" })">@Resources.Metadata_OccupancyReport</a>
+                        <a class="list-group-item" href="@Url.Action("ParamOccupancyReport", "SalesReports", new { ReportName = "AccountwiseOccupancyReport.rdlc" })">Relation wise Occupancy Report</a>
+                        <a class="list-group-item" href="@Url.Action("ParamOrdersByOwner", "SalesReports")">@Resources.Metadata_OrderSummaryReport</a>
+                        <a href="#" class="list-group-item"></a>
+                        <a href="#" class="list-group-item"></a>
+                        <a href="#" class="list-group-item"></a>
+                        <li class="dropdown list-group-item">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                More Reports
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    Adding up...
+                                    @*<a href="@Url.Action("ParamOrdersByOwner", "Report")">
+                            <span class="glyphicon glyphicon-pushpin"> </span>
+                            Order Summary
+                        </a>*@
+                                </li>
+                            </ul>
+                        </li>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item"></a>
+                        <a href="#" class="list-group-item"></a>
+                        <a href="#" class="list-group-item"></a>
+                        <a href="#" class="list-group-item"></a>
+                        <a href="#" class="list-group-item"></a>
+                        <li class="dropdown list-group-item">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                More Reports
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    Adding up...
+                                    @*<a href="@Url.Action("ParamOrdersByOwner", "Report")">
+                            <span class="glyphicon glyphicon-pushpin"> </span>
+                            Order Summary
+                        </a>*@
+                                </li>
+                            </ul>
+                        </li>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item"></a>
+                        <a href="#" class="list-group-item"></a>
+                        <a href="#" class="list-group-item"></a>
+                        <a href="#" class="list-group-item"></a>
+                        <a href="#" class="list-group-item"></a>
+                        <li class="dropdown list-group-item">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                More Reports
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    Adding up...
+                                    @*<a href="@Url.Action("ParamOrdersByOwner", "Report")">
+                            <span class="glyphicon glyphicon-pushpin"> </span>
+                            Order Summary
+                        </a>*@
+                                </li>
+                            </ul>
+                        </li>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <p></p>
+            </div>
+
+        </div>
+    </div>
+
+    @*@Html.MvcReportViewer(
+        "/Rdlc/Report1",
+        new { Height = 900, Width = 900, style = "border: none" })*@
+
+}

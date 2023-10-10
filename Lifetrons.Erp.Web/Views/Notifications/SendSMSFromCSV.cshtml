@@ -1,0 +1,18 @@
+﻿@using System.Threading;
+@using Lifetrons.Erp.Helpers;
+@using Resources;
+@using System.Collections;
+@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.EntityFramework;
+
+@{
+    ViewBag.Title = "Message Summary (CSV)";
+}
+<h2>@ViewBag.SMSMessage</h2>
+
+@using (Html.BeginForm("SendSMSFromCsv", "Notifications"))
+{
+    <input type="text" multiple="" maxlength="130" name="body" id="body" value="" />
+        <button type="submit" class="btn btn-primary">Send Message</button>
+}
+

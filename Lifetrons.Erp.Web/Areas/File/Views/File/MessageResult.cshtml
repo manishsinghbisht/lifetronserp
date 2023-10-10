@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Message Result";
+}
+
+<h2>Message Result</h2>
+<div>
+   
+    <label>@TempData["MessageResult"]</label>
+</div>
+<div>
+    @Html.ActionLink("Dashboard", "Index")
+</div>
+
+<div>
+    @if (User.IsInRole("FileAdmin"))
+    {
+        @Html.ActionLink("Files", "JobsinQueue")
+    }
+</div>
+

@@ -1,0 +1,92 @@
+﻿@using Resources;
+@using System.Threading
+@using Lifetrons.Erp.Helpers
+@using Lifetrons.Erp.Data
+
+@model Lifetrons.Erp.Data.File
+
+@{
+    ViewBag.Title = "File Edit Page Count";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>File Edit Page Count</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">@Resources.Metadata_UISection_References</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Sender Email/File Name</label>
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.OriginSenderEmail)
+                            <br />
+                            @Html.DisplayFor(model => model.FileName)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Model.Status
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NumberOfPagesRecieved, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.NumberOfPagesRecieved, new { @class = "manageMaxLength", @maxlength = "4", @placeholder = "Pages Recieved" })
+                            @Html.ValidationMessageFor(model => model.NumberOfPagesRecieved)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NumberOfPagesSubmitted, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.NumberOfPagesSubmitted, new { @class = "manageMaxLength", @maxlength = "4", @placeholder = "Pages Submitted" })
+                            @Html.ValidationMessageFor(model => model.NumberOfPagesSubmitted)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShrtDesc, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.ShrtDesc, new { @class = "manageMaxLength", @maxlength = "300", @placeholder = "Short description" })
+                            @Html.ValidationMessageFor(model => model.ShrtDesc)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Desc, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.Desc, new { @class = "manageMaxLength", @maxlength = "500", @placeholder = "Remarks" })
+                            @Html.ValidationMessageFor(model => model.Desc)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" accesskey="S" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/File")
+}

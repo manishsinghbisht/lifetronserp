@@ -1,0 +1,57 @@
+﻿@using Resources;
+@using PagedList.Mvc;
+@using PagedList;
+@using Lifetrons.Erp.Helpers
+
+@model IEnumerable<Lifetrons.Erp.Data.Media>
+
+@{
+    ViewBag.Title = "Gallery";
+}
+
+<h2>Gallery</h2>
+
+<div class="flex-container">
+    <p class="hidden">
+        <a class="imageGallery btn btn-primary" data-fancybox-type="iframe"
+           href="@Url.Action("UploadImage", "Media")">Upload New Image</a>
+    </p>
+    <div class="hidden" style="border-bottom:1px solid Red;"></div>
+    <section class="content">
+        <div class="row-fluid">
+            <div class="span2">
+                <div class="item">
+                    @foreach (var image in Model)
+                    {
+                        if (!image.Tags.ToLower().Contains("scoresheet"))
+                        {
+                            var imageText = image.ShrtDesc + "\n" + image.Desc + "\nTags: " + image.Tags;
+
+                            <a class="fancybox" href="@Url.Content("~" + image.MediaPath)" data-fancybox-group="gallery" title="@image.ShrtDesc">
+                                <img src="@Url.Content("~" + image.MediaPath)" alt="" class="imgBox" title="@imageText"
+                                     onerror="this.onerror=null;this.src='@Url.Content("~/Images/PersonImageNotAvailable.jpg")';" />
+                            </a>
+
+
+                            @*<a id="Delete" href="@Url.Action("Delete", new { id = image.Id })">
+                                <i id="social" class="fa fa-trash-o fa-2x social-gp"></i>
+                            </a>*@
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/fancybox/fancyboxScripts")
+}
+
+@*
+    <script src="~/Scripts/jquery.mousewheel-3.0.6.pack.js"></script>
+    <script src="~/Scripts/jquery.fancybox.js?v=2.1.3"></script>
+    <link href="~/Content/jquery.fancybox.css?v=2.1.2" rel="stylesheet" media="screen" />
+    <link href="~/Content/jquery.fancybox.css" rel="stylesheet" />*@

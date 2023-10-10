@@ -1,0 +1,198 @@
+﻿@using Resources;
+@using System.Web.UI.WebControls
+@using Lifetrons.Erp.Helpers
+
+@model Lifetrons.Erp.Data.Organization
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Create;
+}
+
+<h2> @Resources.Metadata_UISection_Create </h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Organization</h4>
+        <div class="alert alert-info" role="alert">
+            To quickly create new Organization (in less than 60 seconds), just enter your Organization name, and press Enter key (or scroll to bottom of page, and click on Create button).
+            <br />
+            You can always change your organization details by contacting us through contact us page.
+        </div>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.Id, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Id, new { @readonly = true, @placeholder="New Id" })
+                    @Html.ValidationMessageFor(model => model.Id)
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Name, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "Name (Unique)" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Code, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Code, new { @class = "manageMaxLength", @maxlength = "4", @placeholder = "Code (Unique)" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShortName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ShortName, new { @class = "manageMaxLength", @maxlength = "50" })
+                @Html.ValidationMessageFor(model => model.ShortName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Slogan, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Slogan, new { @class = "manageMaxLength", @maxlength = "200", @placeholder = "Exploring potentials" })
+                @Html.ValidationMessageFor(model => model.Slogan)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Phone1, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Phone1, new { @class = "manageMaxLength", @maxlength = "30", @placeholder = "9829529565" })
+                @Html.ValidationMessageFor(model => model.Phone1)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Phone2, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Phone2, new { @class = "manageMaxLength", @maxlength = "30", @placeholder = "9829529565" })
+                @Html.ValidationMessageFor(model => model.Phone2)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email1, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Email1, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "abc@abc.com" })
+                @Html.ValidationMessageFor(model => model.Email1)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email2, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Email2, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "abc@abc.com" })
+                @Html.ValidationMessageFor(model => model.Email2)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressLine1, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.AddressLine1, new { @class = "manageMaxLength", @maxlength = "200", @placeholder = "Plot No 42, ABC Park" })
+                @Html.ValidationMessageFor(model => model.AddressLine1)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddressLine2, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.AddressLine2, new { @class = "manageMaxLength", @maxlength = "200", @placeholder = "Moving Road, Near Water Tank" })
+                @Html.ValidationMessageFor(model => model.AddressLine2)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.City, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.City, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "Mumbai" })
+                @Html.ValidationMessageFor(model => model.City)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.State, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.State, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "Maharashtra" })
+                @Html.ValidationMessageFor(model => model.State)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Country, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Country, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "India" })
+                @Html.ValidationMessageFor(model => model.Country)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PostalCode, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.PostalCode, new { @class = "manageMaxLength", @maxlength = "10", @placeholder = "302019" })
+                @Html.ValidationMessageFor(model => model.PostalCode)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ApproverEMail, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ApproverEMail, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "approver@ABC.com" })
+                @Html.ValidationMessageFor(model => model.ApproverEMail)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ApproverPhone, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ApproverPhone, new { @class = "manageMaxLength", @maxlength = "30", @placeholder = "9829529565" })
+                @Html.ValidationMessageFor(model => model.ApproverPhone)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TIN, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.TIN, new { @class = "manageMaxLength", @maxlength = "25", @placeholder = "10289786" })
+                @Html.ValidationMessageFor(model => model.TIN)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.RegistrationNumber, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.RegistrationNumber, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "LP9756328" })
+                @Html.ValidationMessageFor(model => model.RegistrationNumber)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Website, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Website, new { @class = "manageMaxLength", @maxlength = "150", @placeholder = "www.Lifetrons.Erp.in" })
+                @Html.ValidationMessageFor(model => model.Website)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" accesskey="S" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @*@Html.ActionLink("Back to List", "Index")*@
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Organization")
+    @Scripts.Render("~/bundles/ESCustomScript")
+    @Scripts.Render("~/bundles/HideMenus")
+}

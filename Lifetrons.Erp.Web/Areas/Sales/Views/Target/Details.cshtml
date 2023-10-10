@@ -1,0 +1,120 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.Target
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Details;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Target</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ObjectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ObjectName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ObjectId)
+        </dt>
+
+        <dd>
+            @TempData["ObjectIdName"]
+            @Html.HiddenFor(model => model.ObjectId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TargetDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TargetDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TargetFigure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TargetFigure)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.OwnerId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser2.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShrtDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShrtDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClosingComments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClosingComments)
+        </dd>
+
+        @*Start Details - Authorized, Active, Created and Modified*@
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_SystemInfo</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Authorized)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Authorized)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Active)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Active)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser.UserName)
+                    &nbsp;
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ModifiedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser1.UserName)
+                    &nbsp;
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+                </dd>
+            </div>
+        </div>
+        @*End Details - Authorized, Active, Created and Modified*@
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,109 @@
+USE [Easy]
+GO
+
+/****** Object:  Table [dbo].[TableName]    Script Date: 4/21/2014 3:00:00 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[TableName](
+	[Id] [UniqueIdentifier] PRIMARY KEY,
+	[Name] [nvarchar](400) NOT NULL UNIQUE,
+	[Code] [nvarchar](400) NOT NULL UNIQUE,	
+	[ShrtDesc] [nvarchar](400) NULL,
+	[Desc] [nvarchar](max) NULL,
+	[OwnerId] [nvarchar](128) NULL FOREIGN KEY REFERENCES AspNetUsers(Id),
+	[OrgId] [UniqueIdentifier] NOT NULL FOREIGN KEY REFERENCES Organization(Id),
+	[CreatedBy] [nvarchar](128) NOT NULL FOREIGN KEY REFERENCES AspNetUsers(Id),
+	[CreatedDate] [DateTime] NOT NULL DEFAULT GETDATE(),
+	[ModifiedBy] [nvarchar](128) NOT NULL FOREIGN KEY AspNetUsers(Id),
+	[ModifiedDate] [DateTime] NOT NULL DEFAULT GETDATE(),
+	[Authorized][Bit] NOT NULL DEFAULT 0,
+	[Active][Bit] NOT NULL DEFAULT 1,
+	[TimeStamp] [Timestamp] NOT NUll,
+	[JsonData] [ntext] NULL,
+	[Notes] [ntext] NULL,
+	[CustomColumn1] [nvarchar](max),
+	[CustomColumn2] [nvarchar](max),
+	[ColExtensionId] [UniqueIdentifier] NULL) ON [FILEGROUP]
+
+GO
+
+ALTER TABLE [dbo].[TableName]
+  ADD CONSTRAINT UQ_TableName_Name_OrgId UNIQUE(Name, OrgId);
+
+ALTER TABLE [dbo].[TableName]
+  ADD CONSTRAINT UQ_TableName_Code_OrgId UNIQUE(Code, OrgId);
+
+ALTER TABLE [dbo].[TableName] WITH CHECK 
+	ADD  CONSTRAINT [CK_TableName_ModifiedBy] CHECK  (([dbo].[fncCheckUserOrg]([ModifiedBy],[OrgId])=(1)));
+
+==================================
+ALTER TABLE table_name
+ADD column_name datatype
+
+ALTER TABLE table_name
+DROP COLUMN column_name
+
+ALTER TABLE table_name
+ALTER COLUMN column_name datatype
+
+EXEC sp_RENAME 'Operation.Desc', 'Reamrk', 'COLUMN'
+
+ALTER TABLE T ADD [id] [uniqueidentifier] DEFAULT(NEWSEQUENTIALID()) NOT NULL PRIMARY KEY CLUSTERED
+
+ALTER TABLE T NOCHECK CONSTRAINT all
+------------------------------------------------------
+ALTER TABLE dbo.ProductFamily
+ALTER COLUMN [Active][Bit] NOT NULL;
+
+ALTER TABLE dbo.ProductFamily ADD CONSTRAINT C_ProductFamily_Active_Default DEFAULT 1 FOR [Active]; 
+
+ALTER TABLE dbo.ProductFamily
+ALTER COLUMN [Authorized][Bit] NOT NULL;
+
+ALTER TABLE dbo.ProductFamily ADD CONSTRAINT C_ProductFamily_Authorized_Default DEFAULT 0 FOR [Authorize]; 
+----------------------------------------------------------------------------------
+ALTER TABLE MyTable ADD CONSTRAINT NewColumnDefault DEFAULT 0 FOR NewColumn 
+
+Use [EasySales]
+ALTER TABLE AspNetUsers ADD [CreatedDate] [DateTime] NOT NULL DEFAULT GETDATE();
+---------------------------------------------------------
+
+ALTER USER OrphanUser WITH LOGIN = correctedLoginName
+Use EasySales
+ALTER USER msb WITH LOGIN = msb
+OR
+EXEC sp_change_users_login 'UPDATE_ONE','msb','msb'
+
+GRANT EXECUTE ON [dbo].[spConvertLeadToTasknOpp] TO [msb]
+GRANT EXECUTE ON [dbo].[sViewDashboardOpenWork] TO [msb]
+GRANT EXECUTE ON [dbo].[sViewDashboardMonthlyLeadOppComaprison] TO [msb]
+
+----------------------------------------------------------
+Update [Lead] Set 
+CreatedDate=DateAdd(mm,1,CreatedDate), 
+ModifiedDate=DateAdd(mm,1,ModifiedDate) 
+where OrgId='ED9D0CED-9587-408A-A474-3BE9C9FDFE4D'
+
+Update [Opportunity] Set 
+CreatedDate=DateAdd(mm,1,CreatedDate), 
+ModifiedDate=DateAdd(mm,1,ModifiedDate) 
+where OrgId='ED9D0CED-9587-408A-A474-3BE9C9FDFE4D'
+
+Update [Order] Set 
+CreatedDate=DateAdd(mm,1,CreatedDate), 
+ModifiedDate=DateAdd(mm,1,ModifiedDate) 
+where OrgId='ED9D0CED-9587-408A-A474-3BE9C9FDFE4D'
+
+----------------------------------------------------------
+Use EasySales
+update q
+set q.ReportCompletionToId = a.OwnerId
+from [Case] q
+inner join [Case] a
+on q.Id = a.Id
+where q.ReportCompletionToId is null
+---------------------------------------------------------

@@ -1,0 +1,67 @@
+﻿@using Resources;
+@model Lifetrons.Erp.Data.Media
+@using Lifetrons.Erp.Helpers
+
+@{
+    ViewBag.Title = "Delete Image";
+}
+
+
+<div>
+    <h4>Delete Image</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            "Photo"
+        </dt>
+        <dd>
+            <img src="@Url.Action("GetImageThumbnail", "Media", new { area = "", mediaPath = Model.MediaPath })" class="img-responsive" alt="Image Not Available" onerror="this.src = '../../Images/PersonImageNotAvailable.jpg';">
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ParentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParentType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShrtDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShrtDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tags)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tags)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desc)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to Gallery", "Gallery", "Media")
+        </div>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Media")
+}

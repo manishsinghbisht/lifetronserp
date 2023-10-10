@@ -1,0 +1,105 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+
+@model IEnumerable<Lifetrons.Erp.Data.OrderLineItem>
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Index;
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">Work Order Line Item - @Resources.Metadata_Products</h4>
+    </div>
+   
+    <div class="panel-body" style="overflow:auto;">
+        <table class="table table-striped table-hover">
+            <tr>
+                <th></th>
+                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Serial)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.JobNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductionQuantity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductionWeight)
+                </th>
+               
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShrtDesc)
+                </th>
+                <th>
+                    @Html.DisplayName("Image")
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a id="Detail" href="@Url.Action("Details", new { orderId = item.OrderId, priceBookId = item.PriceBookId, productId = item.ProductId })">
+                        <i id="social" class="fa fa-expand fa-2x social-fb"></i>
+                    </a>
+                </td>
+                <td>
+                    <a id="Edit" href="@Url.Action("Edit", new { orderId = item.OrderId, priceBookId = item.PriceBookId, productId = item.ProductId })">
+                        <i id="social" class="fa fa-edit fa-2x social-em"></i>
+                    </a>
+                </td>
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Serial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductionQuantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductionWeight) &nbsp; @Html.DisplayFor(modelItem => item.WeightUnit1.Name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShrtDesc)
+                </td>
+                <td>
+                    <img src="@Url.Action("GetProductImageThumbnail", "Media", new { area = "", productId = item.ProductId })" class="img-responsive" alt="Image Not Available"
+                         onerror="this.onerror=null;this.src='@Url.Content("~/Images/ImageNotAvailable.jpg")';" height="50" width="50">
+                </td>
+
+                <td>
+                       
+                </td>
+            </tr>
+        }
+
+        </table>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @*fancyboxScripts creates issue with Login button in Accounts/Login*@
+    @Scripts.Render("~/Scripts/fancybox/fancyboxScripts")
+}
+

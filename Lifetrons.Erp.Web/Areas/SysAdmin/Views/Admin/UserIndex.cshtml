@@ -1,0 +1,118 @@
+﻿@using Resources;
+@using PagedList.Mvc;
+@using PagedList;
+@using Lifetrons.Erp.Helpers
+
+@model IEnumerable<Lifetrons.Erp.Data.AspNetUser>
+
+@{
+    ViewBag.Title = "User Index";
+}
+<table class="table-condensed">
+    <tr>
+        <td class="col-xs-8"><h2>Sys Admin</h2></td>
+    </tr>
+   <tr>
+
+        <td class="col-xs-4">
+            <a href="@Url.Action("Index", "Audit")"> Audit Log</a>
+        </td>
+        <td class="col-xs-4">
+            <a href="~/admin/elmah"> Error Logs</a>
+            <a href="~/secure/admin/errors"> &nbsp; Path Error Log</a>
+        </td>
+    </tr>
+</table>
+
+<table class="table-condensed">
+    <tr><td><h4>Users</h4></td></tr>
+    <tr>
+        <td class="col-xs-4">
+            @Html.PagedListPager((IPagedList)Model, page => Url.Action("UserIndex", new { page = page, area = ViewContext.RouteData.DataTokens["area"] }), PagedListRenderOptions.MinimalWithPageCountText)
+        </td>
+        <td class="col-xs-4">
+           @{Html.RenderAction("ShowSearchForm", "Search", new { action = "Search", controller = ViewContext.RouteData.DataTokens["area"] + "/Admin", area = "", placeholder = "Search name or code" }); }
+        </td>
+    </tr>
+</table>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrgId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AuthenticatedEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </th>
+       
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Organization.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthenticatedEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mobile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostalCode)
+            </td>
+        
+        </tr>
+    }
+
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/AspNetUser")
+}
+

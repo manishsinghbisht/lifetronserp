@@ -1,0 +1,197 @@
+﻿@using Resources;
+@using System.Configuration
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.Product
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Details;
+}
+@{
+    string AppName = ConfigurationManager.AppSettings["AppName"];
+    string AppHomeURL = ConfigurationManager.AppSettings["AppHomeURL"];
+    string AppSupportEmail = ConfigurationManager.AppSettings["AppSupportEmail"];
+    ViewBag.AppName = AppName;
+    ViewBag.AppHomeURL = AppHomeURL;
+    ViewBag.AppSupportEmail = AppSupportEmail;
+    @Html.Hidden("AppName", (string)ViewBag.AppName)
+    @Html.Hidden("AppHomeURL", (string)ViewBag.AppHomeURL)
+    @Html.Hidden("AppSupportEmail", (string)ViewBag.AppSupportEmail)
+}
+<h3>Product - Details</h3>
+
+<div class="row center-block">
+    <p>
+
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) | @Html.ActionLink("Back to List", "Index")
+        @if (AppName == "EasySales.in")
+        {
+        <text>|</text>
+        @Html.ActionLink("Bill Of Material", "Details", "BOM", new {id = Model.Id}, null)
+        <text>|</text>
+        @Html.ActionLink("List Of Operations", "Index", "Operation", new {productId = Model.Id, area = "Works" }, null)
+        }
+
+    </p>
+</div>
+
+<div class="row">
+    <dl class="dl-horizontal">
+        <div class="panel panel-default">
+            <div class="panel-heading">Basic</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Code)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Code)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShrtDesc)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShrtDesc)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Desc)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Desc)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Weight)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Weight) &nbsp; @Html.DisplayFor(model => model.WeightUnit.Name)
+                </dd>
+            </div>
+        </div>
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_Relations</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductFamily.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ProductFamily.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductType.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ProductType.Name)
+                </dd>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_SystemInfo</div>
+            <div class="panel-body">
+                @*Start Details - Authorized, Active, Created and Modified*@
+                <dt>
+                    @Html.DisplayNameFor(model => model.Authorized)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Authorized)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Active)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Active)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser.UserName)
+                    &nbsp;
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ModifiedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser1.UserName)
+                    &nbsp;
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+                </dd>
+                @*End Details - Authorized, Active, Created and Modified*@
+
+            </div>
+        </div>
+
+        <dt>
+            @Html.DisplayName("Image")
+        </dt>
+    </dl>
+</div>
+
+<div class="form-group">
+    @Html.Label("Media", htmlAttributes: new { @class = "control-label col-md-2" })
+    @if (Request.IsAuthenticated)
+    {
+        <a href="@Url.Action("UploadImage", "Media", new { ParentType = "Product", ParentId = Model.Id, SystemTags = "Product", returnURL = Request.Url.AbsoluteUri, area = "" })">
+            Upload pictures
+        </a>
+    }
+    <section class="content">
+        <div class="row-fluid">
+            <div class="span2">
+
+                <div class="item">
+                    @{
+                        var media = (ViewBag.Media) as IEnumerable<Lifetrons.Erp.Data.Media>;
+                        if (media != null)
+                        {
+                            foreach (var item in media)
+                            {
+                                var imageAddr = "~" + item.MediaPath;
+                                <a class="fancybox" href="@Url.Content(imageAddr)" data-fancybox-group="gallery" title="@item.ShrtDesc">
+                                    <img src="@Url.Action("GetImageThumbnail", "Media", new {  area = "", mediaPath = imageAddr })" alt="Image Not Available"
+                                         onerror="this.onerror=null;this.src='@Url.Content("~/Images/ImageNotAvailable.jpg")';"
+                                         height="100" width="100">
+                                </a>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @*fancyboxScripts creates issue with Login button in Accounts/Login*@
+    @Scripts.Render("~/Scripts/fancybox/fancyboxScripts")
+}
+
+
+
+
+
+

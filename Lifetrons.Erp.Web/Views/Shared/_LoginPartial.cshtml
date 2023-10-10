@@ -1,0 +1,74 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { area = "", id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                @* Commnetin the link for user name as we are not managing user locallly *@
+                @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user"> </span>
+
+                    @{
+                        var username = User.Identity.GetUserName();
+                        username = username.Substring(0, username.Length < 9 ? username.Length : 8);
+                        <text> @username </text>    
+                    }
+
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { area = "", title = "Manage" })
+                    </li>
+                    <li>
+                        <a href="javascript:document.getElementById('logoutForm').submit()">
+                            <span class="glyphicon glyphicon-log-out"> </span>
+                            Log off
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Modules", "Home", new { area = "" })"><span class="glyphicon glyphicon-bookmark">     </span> Modules </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("OpenEmailConfiguration", "Email")">
+                            <span class="glyphicon glyphicon-envelope"> </span>
+                            @Resources.MainMenuEmailSettings
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="@Url.Action("About", "Home", new { area = "" })">   <span class="glyphicon glyphicon-info-sign">     </span> @Resources.MainMenuAbout </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Contact", "Home", new { area = "" })"><span class="glyphicon glyphicon-pencil">     </span> @Resources.MainMenuContactUs </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("VideoHelp", "Home", new { area = "" })"><span class="glyphicon glyphicon-hd-video">     </span> @Resources.MainMenuVideoHelp </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ProcessSteps", "Home", new { area = "" })"><span class="glyphicon glyphicon-arrow-right">     </span> @Resources.MainMenuProcessSteps </a>
+                    </li>
+                  
+                </ul>
+
+            </li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li class="hidden">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { area = "", id = "registerLink" })</li>
+
+        <li>
+
+            @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { area = "", id = "loginLink" })
+
+        </li>
+
+    </ul>
+} 

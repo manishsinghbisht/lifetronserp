@@ -1,0 +1,426 @@
+﻿@using System.Threading;
+@using Lifetrons.Erp.Helpers;
+@using Resources;
+@using System.Collections;
+@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.EntityFramework;
+
+
+@{ ViewBag.Title = "Files"; }
+
+@if (Request.IsAuthenticated)
+{
+    var applicationUserId = User.Identity.GetUserId();
+    var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>());
+    var userRoles = userManager.GetRoles(TempData["UserId"].ToString());
+    var notices = TempData["noticeBoard"] as IEnumerable<Lifetrons.Erp.Data.NoticeBoard>;
+    var files = TempData["Files"] as List<Lifetrons.Erp.Data.File>;
+    var submittedFiles = TempData["SubmittedFiles"] as List<Lifetrons.Erp.Data.File>;
+    var deliveredFiles = TempData["DeliveredFiles"] as List<Lifetrons.Erp.Data.File>;
+
+    <h2>File Dashboard</h2>
+    <div class="row text-center">
+        <h3>Dashboard (@TempData["Username"])</h3>
+    </div>
+
+    <!--Show Notice Board. Expand accordian if there is a new notice, else remain collapsed-->
+    <div class="panel-group" id="accordionNoticeBoard" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default">
+            <div class="panel-heading text-center text-capitalize" role="tab" id="headingNoticeBoard">
+                <h3 class="panel-title">
+
+                    <a data-toggle="collapse" data-parent="#accordionNoticeBoard" href="#collapseNoticeBoard" aria-expanded="true" aria-controls="collapseNoticeBoard">
+                        <b>Notice Board</b>
+                    </a>
+                </h3>
+            </div>
+            @if (TempData["NewNoticeExists"].ToString().ToUpper() == "TRUE")
+            {
+                TempData["ExpandClass"] = "in";
+            }
+            else
+            {
+                TempData["ExpandClass"] = "";
+            }
+            <div id="collapseNoticeBoard" class="panel-collapse collapse @TempData["ExpandClass"]" role="tabpanel" aria-labelledby="headingNoticeBoard">
+                <div class="panel-body">
+                    <table class="table table-striped table-hover">
+
+                        <tr>
+                            <th class="hidden">
+
+                            </th>
+
+                            <th>
+                                Subject
+                            </th>
+
+                            <th>
+                                Notice Date
+                            </th>
+
+                            <th>
+                                Notice
+                            </th>
+                        </tr>
+                        @foreach (var item in notices)
+                        {
+                            <tr>
+                                <td class="hidden">@Html.DisplayFor(modelItem => item.Id)</td>
+                                <td>
+                                    <a href="@Url.Action("Details", "NoticeBoard", new { id = item.Id })">
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </a>
+                                </td>
+                                <td>
+                                    @ControllerHelper.ConvertDateTimeFromUtc(item.OpeningDate, User.TimeZone())
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Desc)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Work Section-->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="row text-center text-uppercase">
+                <b> @TempData["Username"]</b>
+            </div>
+            <div class="row bg-info text-center text-uppercase has-success">
+                @if ((userRoles.Contains("FileUpload") || userRoles.Contains("FileDownload")) && applicationUserId == TempData["UserId"].ToString())
+                {
+                    <div class="col-md-4">
+                        @if (files.Count == 0)
+                        {
+                            @Html.ActionLink("Get Assignment", "AssignFiles", "File")
+                        }
+                    </div>
+
+                    <div class="col-md-4">
+
+                    </div>
+                    <div class="col-md-4">
+
+                    </div>
+                }
+
+                @if ((userRoles.Contains("OrganizationLevel") || userRoles.Contains("FileAdmin")) && applicationUserId == TempData["UserId"].ToString())
+                {
+                    <div class="col-md-4">
+                        @Html.ActionLink("Download Jobs", "RunDownloadJob", "File")
+                    </div>
+                    <div class="col-md-4">
+
+                    </div>
+                    <div class="col-md-4">
+
+                    </div>
+                }
+             
+              
+            </div>
+
+        </div>
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-md-12 panel panel-default">
+                    <div class="panel-heading text-center"><b>Assignments &nbsp; </b><span class="badge">@files.Count</span></div>
+                    <div class="panel-body" style="height: 200px; overflow:auto;">
+                        <table class="table table-striped  table-hover">
+                            <tr>
+                                <th class="hidden">
+
+                                </th>
+
+                                <th>
+                                    Origin
+                                </th>
+                                <th>
+                                    Date
+                                </th>
+                                <th>
+                                    Message
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                                <th>
+                                    File
+                                </th>
+                                <th>
+                                    Pages Rcvd
+                                </th>
+                                <th>
+                                    Template
+                                </th>
+                                <th>
+                                    Upload
+                                </th>
+                            </tr>
+                            @foreach (var item in files)
+                            {
+                            <tr>
+                                <td class="hidden">@Html.DisplayFor(modelItem => item.Id)</td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Origin)
+                                </td>
+                                <td>
+                                    @ControllerHelper.ConvertDateTimeFromUtc(item.FileSentDate, User.TimeZone())
+                                </td>
+                                <td>
+                                    <b>@Html.DisplayFor(modelItem => item.RcvdFileEmailSubject)</b>
+                                    <br />
+                                    @Html.DisplayFor(modelItem => item.RcvdFileEmailBody)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td>
+                                    @Html.ActionLink(item.FileName, "DownloadFile", "File", new { id = item.Id }, null)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NumberOfPagesRecieved)
+                                </td>
+                                <td>
+                                    @Html.ActionLink(item.TemplateName, "DownloadTemplate", "File", new { id = item.Id }, null)
+                                    <br />
+                                    <text>@Html.DisplayFor(modelItem => item.RateType)</text>
+                                </td>
+                                <td>
+                                    @if (string.IsNullOrEmpty(item.SubmittedFileName))
+                                        {
+                                        @Html.ActionLink("Upload", "ManageUpload", "File", new { fName = item.Id, uName = applicationUserId }, null)
+                                        }
+                                </td>
+                            </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 panel panel-default">
+                    <div class="panel-heading text-center"><b>Submitted Assignments &nbsp; </b><span class="badge">@submittedFiles.Count</span></div>
+                    <div class="panel-body" style="height: 200px; overflow:auto;">
+                        <table class="table table-striped  table-hover">
+                            <tr>
+                                <th class="hidden">
+
+                                </th>
+
+                                <th>
+                                    Origin
+                                </th>
+                                <th>
+                                    Date
+                                </th>
+                                <th>
+                                    Message
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+                                <th>
+                                    File
+                                </th>
+                                <th>
+                                    Pages Rcvd
+                                </th>
+                                <th>
+                                    Template
+                                </th>
+                                <th>
+                                    Upload
+                                </th>
+                                <th>
+                                    Pages Submitted
+                                </th>
+                                <th>
+                                    Dispatch
+                                </th>
+                                <th>
+                                    Edit Page Count
+                                </th>
+                                <th></th>
+                            </tr>
+                            @foreach (var item in submittedFiles)
+                            {
+                            <tr>
+                                <td class="hidden">@Html.DisplayFor(modelItem => item.Id)</td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Origin)
+                                </td>
+                                <td>
+                                    @ControllerHelper.ConvertDateTimeFromUtc(item.FileSentDate, User.TimeZone())
+                                </td>
+                                <td>
+                                    <b>@Html.DisplayFor(modelItem => item.RcvdFileEmailSubject)</b>
+                                    <br />
+                                    @Html.DisplayFor(modelItem => item.RcvdFileEmailBody)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Status)
+                                </td>
+                                <td>
+                                    @Html.ActionLink(item.FileName, "DownloadFile", "File", new { id = item.Id }, null)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NumberOfPagesRecieved)
+                                </td>
+                                <td>
+                                    @Html.ActionLink(item.TemplateName, "DownloadTemplate", "File", new { id = item.Id }, null)
+                                    <br />
+                                    <text>@Html.DisplayFor(modelItem => item.RateType)</text>
+                                </td>
+                                <td>
+                                    @if (string.IsNullOrEmpty(item.SubmittedFileName))
+                                        {
+                                        @Html.ActionLink("Upload", "ManageUpload", "File", new { fName = item.Id, uName = applicationUserId }, null)
+                                        }
+                                        else
+                                        {
+                                        @Html.ActionLink(item.SubmittedFileName, "DownloadSubmittedFile", "File", new { id = item.Id }, null)
+                                        <br />
+                                        @ControllerHelper.ConvertDateTimeFromUtc(item.SubmittedDate, User.TimeZone())
+                                            if (item.Status != Lifetrons.Erp.Data.Helper.FileStatus.Delivered.ToString())
+                                            {
+                                        <br />
+                                        @Html.ActionLink("Upload Again", "ManageUpload", "File", new { fName = item.Id, uName = applicationUserId }, null)
+                                            }
+                                        }
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NumberOfPagesSubmitted)
+                                </td>
+                                <td>
+                                    @if (item.Status == Lifetrons.Erp.Data.Helper.FileStatus.Submitted.ToString() && item.NumberOfPagesSubmitted > 0)
+                                        {
+                                        @Html.ActionLink("Dispatch", "DispatchFile", "File", new { fileId = item.Id }, null)
+                                        }
+                                </td>
+                                <td>
+                                    @if (item.Status != Lifetrons.Erp.Data.Helper.FileStatus.Delivered.ToString())
+                                        {
+                                        @Html.ActionLink("Edit", "EditPageCount", "File", new { id = item.Id }, null)
+                                        }
+                                </td>
+
+                            </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 panel panel-default">
+                    <div class="panel-heading text-center"><b>Delivered Assignments &nbsp; </b><span class="badge">@deliveredFiles.Count</span></div>
+                    <div class="panel-body" style="height: 200px; overflow:auto;">
+                        <table class="table table-striped  table-hover">
+                            <tr>
+                                <th class="hidden">
+
+                                </th>
+
+                                <th>
+                                    Origin
+                                </th>
+                                <th>
+                                    Date
+                                </th>
+                                <th>
+                                    Message
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+                                <th>
+                                    File
+                                </th>
+                                <th>
+                                    Pages Rcvd
+                                </th>
+                                <th>
+                                    Template
+                                </th>
+                                <th>
+                                    File Submitted
+                                </th>
+                                <th>
+                                    Pages Submitted
+                                </th>
+                                <th>
+                                    Delivered Date
+                                </th>
+                            </tr>
+                            @foreach (var item in deliveredFiles)
+                            {
+                                <tr>
+                                    <td class="hidden">@Html.DisplayFor(modelItem => item.Id)</td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Origin)
+                                    </td>
+                                    <td>
+                                        @ControllerHelper.ConvertDateTimeFromUtc(item.FileSentDate, User.TimeZone())
+                                    </td>
+                                    <td>
+                                        <b>@Html.DisplayFor(modelItem => item.RcvdFileEmailSubject)</b>
+                                        <br />
+                                        @Html.DisplayFor(modelItem => item.RcvdFileEmailBody)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Status)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink(item.FileName, "DownloadFile", "File", new { id = item.Id }, null)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NumberOfPagesRecieved)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink(item.TemplateName, "DownloadTemplate", "File", new { id = item.Id }, null)
+                                        <br />
+                                        <text>@Html.DisplayFor(modelItem => item.RateType)</text>
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink(item.SubmittedFileName, "DownloadSubmittedFile", "File", new { id = item.Id }, null)
+                                        
+                                        <br />
+                                        @ControllerHelper.ConvertDateTimeFromUtc(item.SubmittedDate, User.TimeZone())
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NumberOfPagesSubmitted)
+                                    </td>
+                                    <td>
+                                        @ControllerHelper.ConvertDateTimeFromUtc(item.DeliveredDate, User.TimeZone())
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/File")
+
+}

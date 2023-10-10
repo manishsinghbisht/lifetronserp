@@ -1,0 +1,125 @@
+﻿@using Resources;
+@using System.Threading
+@using Lifetrons.Erp.Helpers
+@using Lifetrons.Erp.Data
+
+@model Lifetrons.Erp.Data.File
+
+@{
+    ViewBag.Title = "File Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>File Edit</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">@Resources.Metadata_UISection_References</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Sender Email/File Name</label>
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.OriginSenderEmail)
+                            <br />
+                            @Html.DisplayFor(model => model.FileName)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FileType, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("FileType", new List<SelectListItem>
+                            {
+                                new SelectListItem{ Text=Lifetrons.Erp.Data.Helper.FileType.CV.ToString(), Value = Lifetrons.Erp.Data.Helper.FileType.CV.ToString(), Selected = true},
+                                new SelectListItem{ Text=Lifetrons.Erp.Data.Helper.FileType.Transcription.ToString(), Value = Lifetrons.Erp.Data.Helper.FileType.Transcription.ToString()},
+                                new SelectListItem{ Text=Lifetrons.Erp.Data.Helper.FileType.Video.ToString(), Value = Lifetrons.Erp.Data.Helper.FileType.Video.ToString()},
+                                new SelectListItem{ Text=Lifetrons.Erp.Data.Helper.FileType.Image.ToString(), Value = Lifetrons.Erp.Data.Helper.FileType.Image.ToString()}
+                            })
+                        </div>
+                    </div>
+
+                    @if (Model.Status == Lifetrons.Erp.Data.Helper.FileStatus.Submitted.ToString()
+                            || Model.Status == Lifetrons.Erp.Data.Helper.FileStatus.Delivered.ToString()
+                            || Model.Status == Lifetrons.Erp.Data.Helper.FileStatus.Approved.ToString())
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Model.Status
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("Status", new List<SelectListItem>
+                            {
+                                new SelectListItem{ Text=Lifetrons.Erp.Data.Helper.FileStatus.Queued.ToString(), Value = Lifetrons.Erp.Data.Helper.FileStatus.Queued.ToString(), Selected = true},
+                                new SelectListItem{ Text=Lifetrons.Erp.Data.Helper.FileStatus.Review.ToString(), Value = Lifetrons.Erp.Data.Helper.FileStatus.Review.ToString()},
+                                new SelectListItem{ Text=Lifetrons.Erp.Data.Helper.FileStatus.Rejected.ToString(), Value = Lifetrons.Erp.Data.Helper.FileStatus.Rejected.ToString()}
+                            })
+                            </div>
+                        </div>
+
+                    }
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ContactId, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ContactId")
+                            @Html.ValidationMessageFor(model => model.ContactId)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NumberOfPagesRecieved, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.NumberOfPagesRecieved, new { @class = "manageMaxLength", @maxlength = "4", @placeholder = "Pages Recieved" })
+                            @Html.ValidationMessageFor(model => model.NumberOfPagesRecieved)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NumberOfPagesSubmitted, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.NumberOfPagesSubmitted, new { @class = "manageMaxLength", @maxlength = "4", @placeholder = "Pages Submitted" })
+                            @Html.ValidationMessageFor(model => model.NumberOfPagesSubmitted)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Desc, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.Desc, new { @class = "manageMaxLength", @maxlength = "500", @placeholder = "Remarks" })
+                            @Html.ValidationMessageFor(model => model.Desc)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" accesskey="S" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/File")
+}

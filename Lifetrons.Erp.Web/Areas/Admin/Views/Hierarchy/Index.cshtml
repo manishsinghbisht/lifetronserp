@@ -1,0 +1,80 @@
+﻿@using Resources;
+@using PagedList
+@using PagedList.Mvc
+@using Lifetrons.Erp.Helpers
+@model IEnumerable<Lifetrons.Erp.Data.Hierarchy>
+
+@{
+    ViewBag.Title = "Hierarchy";
+}
+
+<h2>Index</h2>
+
+<table class="table-condensed">
+    <tr><td><h2>@Resources.Metadata_Hierarchy - @Resources.Metadata_UISection_Index</h2></td></tr>
+    <tr>
+        <td class="col-xs-4">
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+        </td>
+
+        <td class="col-xs-4">
+            @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page = page, area = ViewContext.RouteData.DataTokens["area"] }), PagedListRenderOptions.MinimalWithPageCountText)
+        </td>
+        <td class="col-xs-4">
+           @{Html.RenderAction("ShowSearchForm", "Search", new { action = "Search", controller = ViewContext.RouteData.DataTokens["area"] + "/Hierarchy", area = "", placeholder = "Search name or code" }); }
+        </td>
+    </tr>
+</table>
+
+<table class="table">
+    
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+           @Html.DisplayNameFor(model => model.DepartmentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TeamId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportsTo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Designation)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.AspNetUser.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Team.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AspNetUser1.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Designation)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.UserId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
+            </td>
+        </tr>
+    }
+
+</table>

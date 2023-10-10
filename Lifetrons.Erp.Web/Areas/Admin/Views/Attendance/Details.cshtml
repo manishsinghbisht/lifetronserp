@@ -1,0 +1,135 @@
+﻿@using Resources;
+@using System.Threading
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.Attendance
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Details;
+}
+
+<h4>@Resources.Metadata_UISection_Details</h4>
+
+<div class="row">
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-4 pull-left">
+                        Attendance
+                    </div>
+                    <div class="col-md-8 pull-right" style="text-align: right">
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) | @Html.ActionLink("Back to List", "Index")
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.EmployeeId)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Employee.Name)
+                    </dd>
+                    
+                </div>
+                <div class="row">
+                    
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.InDateTime)
+                    </dt>
+                    <dd class="col-md-3">
+                        @ControllerHelper.ConvertDateTimeFromUtc(Model.InDateTime, User.TimeZone())
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.OutDateTime)
+                    </dt>
+                    <dd class="col-md-3">
+                        @ControllerHelper.ConvertDateTimeFromUtc(Model.OutDateTime, User.TimeZone())
+                    </dd>
+
+                </div>
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.WorkHours)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.WorkHours)
+                    </dd>
+                </div>
+                <div class="row">
+                   
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.AtendanceStatus)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.AtendanceStatus)
+                    </dd>
+                </div>
+                <div class="row">
+
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Remark)
+                    </dt>
+                    <dd class="col-md-9">
+                       @Html.DisplayFor(model => model.Remark)
+                    </dd>
+                </div>
+                @*Start Details - Authorized, Active, Created and Modified*@
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Authorized)
+                    </dt>
+
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.Authorized)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Active)
+                    </dt>
+
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.Active)
+                    </dd>
+                </div>
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.CreatedBy)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.AspNetUser.UserName)
+                        &nbsp;
+                        @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ModifiedBy)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.AspNetUser1.UserName)
+                        &nbsp;
+                        @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+                    </dd>
+                </div>
+                @*End Details - Authorized, Active, Created and Modified*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row center-block">
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) | @Html.ActionLink("Back to List", "Index")
+
+    </p>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Attendance")
+}

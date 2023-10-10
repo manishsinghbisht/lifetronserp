@@ -1,0 +1,116 @@
+﻿@using Resources;
+@model Lifetrons.Erp.Data.ProcurementRequestDetail
+@using System.Threading
+@using Lifetrons.Erp.Helpers
+
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Delete;
+}
+
+<h2> @Resources.Metadata_UISection_Delete </h2>
+
+<div class="row">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Request Line Item</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.TimeStamp)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProcurementRequestId, "Procurement Request", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.ProcurementRequestId)
+                @Html.DisplayFor(model => model.ProcurementRequest.Name, new { Value = ViewData["ProcurementRequestName"], @readonly = true })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Serial, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Serial, new { @class = "manageMaxLength", @maxlength = "3", @placeholder = "1" })
+                @Html.ValidationMessageFor(model => model.Serial)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ItemId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Item.Name)
+                @Html.ValidationMessageFor(model => model.ItemId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Quantity, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "Quantity. Ex: 1" })
+                @Html.ValidationMessageFor(model => model.Quantity)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Weight, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Weight, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "Weight unit. Ex: 5" })
+                @Html.ValidationMessageFor(model => model.Weight)
+                @Html.DisplayFor(model => model.WeightUnit.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EstimatedCost, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.EstimatedCost, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "Estimated unit cost" })
+                @Html.ValidationMessageFor(model => model.EstimatedCost)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RequiredByDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               <div class="dateDiv" style="position: relative">
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.RequiredByDate, User.TimeZone())
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Remark, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Remark, new { @class = "manageMaxLength", @maxlength = "250", @placeholder = "Updates" })
+                @Html.ValidationMessageFor(model => model.Remark)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @(User.IsInRole("ProcurementAuthorize") ? Html.DisplayFor(model => model.Authorized) : Html.DisplayFor(model => model.Authorized))
+                @Html.ValidationMessageFor(model => model.Authorized)
+            </div>
+        </div>
+
+        
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.Id)
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Details", "ProcurementRequest", new { id = Model.ProcurementRequestId }, null)
+            </div>
+        }
+    </div>
+
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/ProcurementRequestDetail")
+}

@@ -1,0 +1,195 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+
+@model Lifetrons.Erp.Data.Organization
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Details;
+}
+
+<h2>Details</h2>
+<h3 class="text-info"> Organization & Roles successfully created. If you are here for the first time, please log off and log in again to continue.  </h3>
+<h4 class="text-info"> To edit organization info, roles, department, teams etc. please log off and log in again.  </h4>
+
+<div>
+    <h4>Organization</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Slogan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Slogan)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email1)
+            @{
+
+                <a href="@Url.Action("Compose", "Email", new {  area = "", toEmailAddress = Model.Email1 })">
+                    <span class="glyphicon glyphicon-envelope">     </span>
+                </a>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email2)
+            @{
+
+                <a href="@Url.Action("Compose", "Email", new {  area = "", toEmailAddress = Model.Email2 })">
+                    <span class="glyphicon glyphicon-envelope">     </span>
+                </a>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressLine1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressLine1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressLine2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressLine2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostalCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostalCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApproverEMail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApproverEMail)
+            @{
+
+                <a href="@Url.Action("Compose", "Email", new {  area = "", toEmailAddress = Model.ApproverEMail })">
+                    <span class="glyphicon glyphicon-envelope">     </span>
+                </a>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApproverPhone)
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.ApproverPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RegistrationNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegistrationNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Website)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Website)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (Request.IsAuthenticated)
+    {
+        if (User.IsInRole("OrganizationLevel") || User.IsInRole("SuperAdmin"))
+        {
+            @Html.ActionLink("Edit", "Edit", new {id = Model.Id})
+        }
+    }
+   </p>

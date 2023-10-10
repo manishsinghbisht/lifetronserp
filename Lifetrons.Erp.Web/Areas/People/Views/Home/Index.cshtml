@@ -1,0 +1,95 @@
+﻿@using Resources;
+@using System.Configuration
+@using Lifetrons.Erp.Helpers;
+@using Microsoft.AspNet.Identity
+@using Resources;
+@{
+    ViewBag.Title = "Home";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+@{
+    string AppName = ConfigurationManager.AppSettings["AppName"];
+    string AppHomeURL = ConfigurationManager.AppSettings["AppHomeURL"];
+    string AppSupportEmail = ConfigurationManager.AppSettings["AppSupportEmail"];
+    ViewBag.AppName = AppName;
+    ViewBag.AppHomeURL = AppHomeURL;
+    ViewBag.AppSupportEmail = AppSupportEmail;
+    @Html.Hidden("AppName", (string)ViewBag.AppName)
+    @Html.Hidden("AppHomeURL", (string)ViewBag.AppHomeURL)
+    @Html.Hidden("AppSupportEmail", (string)ViewBag.AppSupportEmail)
+}
+@helper Selected(string c, string culture)
+{
+    if (c == culture)
+    {
+        @:checked="checked"
+    }
+}
+
+<div class="jumbotron">
+
+    <h2>@Html.Raw(AppName) - People module</h2>
+
+    <p class="lead">
+        @Resources.HomeP2
+    </p>
+    <p class="lead">
+        @*<span class="glyphicon glyphicon-question-sign">     </span>*@ @Resources.HomeP3
+    </p>
+    <p class="lead">
+        Email: @Html.Raw(AppSupportEmail)
+    </p>
+    <div class="text-left">
+        <p class="txt-railway">
+            <a href="http://www.Facebook.com/EasySales.in"><i id="social" class="fa fa-facebook-square fa-3x social-fb"></i></a>
+            @*<a href="http://www.Linkedin.com/company/easysales-in"><i id="social" class="fa fa-linkedin-square fa-3x social-fb"></i></a>*@
+            <a href="https://twitter.com/EasySales"><i id="social" class="fa fa-twitter-square fa-3x social-tw"></i></a>
+            <a href="https://plus.google.com/104973514093256983975" rel="publisher"><i id="social" class="fa fa-google-plus-square fa-3x social-gp"></i></a>
+            <a href="mailto:Support@EasySales.in"><i id="social" class="fa fa-envelope-square fa-3x social-em"></i></a>
+        </p>
+        <a href="@Url.Action("Modules", "Home", new { area = "" })"><span class="glyphicon glyphicon-bookmark">     </span> Change Module</a>
+    </div>
+    <div class="hidden">
+        <a href="https://plus.google.com/104973514093256983975" rel="publisher">Google+</a>
+    </div>
+</div>
+
+@if (Request.IsAuthenticated)
+{
+    <div class="row">
+        <p>
+            Hello @User.Identity.GetUserName()! 
+        </p>
+        @*<meta http-equiv="Refresh" content="10;URL=@(Url.Action("Index", "Dashboard"))">*@
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Getting started</h2>
+            <p>
+                @Html.Raw(AppName) an integrated ERP-CRM System, Master Production Schedule (MPS) and Material Requirements Planning (MRP) for the entire enterprise; constraint-based production schedules and material plans.
+            </p>
+            @*<p><a class="btn btn-default" href="http://www.Lifetrons.net" data-toggle="tooltip" data-placement="right" title="Tooltip on right">Learn more &raquo;</a></p>*@
+        </div>
+        <div class="col-md-4">
+            <h2>EasySales.in</h2>
+            <p>Discreet manufacturing solution, Production Planning, Stock, Bill Of Material, Raw material demand note for Orders, Operation Cost control, In-process Job tracking, Dispatch and logistics etc.</p>
+            @*<p><a class="btn btn-default" href="http://www.Lifetrons.net">Learn more &raquo;</a></p>*@
+        </div>
+        <div class="col-md-4">
+            <h2>Quick tricks & features</h2>
+            <p>With the power of fully loaded CRM module, you can develop and manage Contacts, Campaigns, Leads, Opportunities.<br /> Create professional Price List(Book), Quotes and Invoices. </p>
+            @*<p><a class="btn btn-default" href="http://www.Lifetrons.net">Learn more &raquo;</a></p>*@
+
+        </div>
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Home")
+}

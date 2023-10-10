@@ -1,0 +1,160 @@
+﻿@using Resources;
+@using System.Threading
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.Target
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Edit;
+}
+
+<h2> @Resources.Metadata_UISection_Edit </h2>
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Task</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.TimeStamp)
+
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">References</div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ObjectName, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @*@Html.DropDownList("RelatedToObjectName", new List<SelectListItem>
+                            {
+                                new SelectListItem{ Text="", Value = "" },
+                                new SelectListItem{ Text="Account", Value = "User" },
+                                new SelectListItem{ Text="Opportunity", Value = "Team" },
+                                new SelectListItem{ Text="Order", Value = "Department" },
+                                new SelectListItem{ Text="Quote", Value = "Organization" },
+                            })*@
+                        @Html.HiddenFor(model => model.ObjectName)
+                        @Html.DisplayFor(model => model.ObjectName)
+                        @Html.ValidationMessageFor(model => model.ObjectName)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ObjectId, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.HiddenFor(model => model.ObjectId)
+                        @TempData["ObjectIdName"]
+                        @*@Html.DropDownList("ObjectId", new List<SelectListItem>
+                        {
+                            new SelectListItem{ Text="", Value = "" },
+
+                        })*@
+                        @Html.ValidationMessageFor(model => model.ObjectId)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TargetDate, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                       <div class="dateDiv" style="position: relative">
+                            @*Target date is always in UTC*@
+                            <input class="dateTxt" type="text"  id="TargetDate" name="TargetDate" value="@Model.TargetDate"
+                                   data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+
+                            @*@if (Thread.CurrentThread.CurrentUICulture.Name == "hi-IN")
+                            {
+                                <input class="dateTxt" type="text"  id="TargetDate" name="TargetDate" value="@Model.TargetDate" data-date-format="DD/MM/YYYY  hh:mm A"
+                                       placeholder="25/01/2014" title="DD/MM/YYYY (25/01/2014)" data-toggle="tooltip" data-placement="right" />
+                            }
+                            else if (Thread.CurrentThread.CurrentUICulture.Name == "en-US")
+                            {
+                                <input class="dateTxt" type="text"  id="TargetDate" name="TargetDate" value="@Model.TargetDate" data-date-format="MM/DD/YYYY  hh:mm A"
+                                       placeholder="01/25/2014" title="MM/DD/YYYY (01/25/2014)" data-toggle="tooltip" data-placement="right" />
+                            }*@
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TargetFigure, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.TargetFigure, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "Ex: 50000.00" })
+                        @Html.ValidationMessageFor(model => model.TargetFigure)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.OwnerId, "Owner", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("OwnerId", String.Empty)
+                        @Html.ValidationMessageFor(model => model.OwnerId)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ShrtDesc, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.ShrtDesc, new { @class = "manageMaxLength", @maxlength = "150", @placeholder = "Short desc" })
+                        @Html.ValidationMessageFor(model => model.ShrtDesc)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Desc, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Desc, new { @class = "manageMaxLength", @maxlength = "140", @placeholder = "Updates" })
+                        @Html.ValidationMessageFor(model => model.Desc)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_FollowUp</div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ClosingComments, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.ClosingComments, new { @class = "manageMaxLength", @maxlength = "500", @placeholder = "Closing comments" })
+                        @Html.ValidationMessageFor(model => model.ClosingComments)
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_SystemInfo</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @(User.IsInRole("SalesAuthorize") ? Html.EditorFor(model => model.Authorized) : Html.DisplayFor(model => model.Authorized))
+                        @Html.ValidationMessageFor(model => model.Authorized)
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @if (!Model.Authorized || User.IsInRole("SalesAuthorize"))
+                {
+                    <input type="submit" value="Save" class="btn btn-default" accesskey="S" />
+                }
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Target")
+}

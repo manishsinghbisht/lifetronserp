@@ -1,0 +1,200 @@
+﻿@using System.Configuration
+@using Lifetrons.Erp.Helpers;
+@using Microsoft.AspNet.Identity
+@using Resources;
+@{
+    ViewBag.Title = "Home";
+    var culture = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant();
+}
+@{
+    string AppName = ConfigurationManager.AppSettings["AppName"];
+    string AppHomeURL = ConfigurationManager.AppSettings["AppHomeURL"];
+    string AppSupportEmail = ConfigurationManager.AppSettings["AppSupportEmail"];
+    ViewBag.AppName = AppName;
+    ViewBag.AppHomeURL = AppHomeURL;
+    ViewBag.AppSupportEmail = AppSupportEmail;
+    @Html.Hidden("AppName", (string)ViewBag.AppName)
+    @Html.Hidden("AppHomeURL", (string)ViewBag.AppHomeURL)
+    @Html.Hidden("AppSupportEmail", (string)ViewBag.AppSupportEmail)
+}
+@helper Selected(string c, string culture)
+{
+if (c == culture)
+{
+        @:checked="checked"
+    }
+}
+<style>
+    .ds-btn li {
+        list-style: none;
+        float: left;
+        padding: 2px;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+
+        .ds-btn li a span {
+            padding-left: 15px;
+            padding-right: 5px;
+            width: 100%;
+            display: inline-block;
+            text-align: left;
+        }
+
+            .ds-btn li a span small {
+                width: 100%;
+                display: inline-block;
+                text-align: left;
+            }
+</style>
+<style>
+    .ds-btn a span {
+        padding-left: 15px;
+        padding-right: 5px;
+        width: 100%;
+        display: inline-block;
+        text-align: left;
+    }
+
+        .ds-btn a span small {
+            width: 100%;
+            display: inline-block;
+            text-align: left;
+        }
+</style>
+
+@if (Request.IsAuthenticated)
+{
+    
+
+        <div class="row">
+            &nbsp;
+        </div>
+        <div class="row">
+            &nbsp;
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span class="glyphicon glyphicon-bookmark"></span> 
+                            EasySales Modules
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <div class="row">
+                            <div class="col-md-8 ds-btn">
+                                <a class="btn btn-lg btn-primary" style="width: 100%;" href="@Url.Action("Index", "Home", new {area = "People"})">
+                                    <i class="glyphicon glyphicon-user pull-left"></i><span> People <br><small>Accounts, Contacts, <br />Addresses...</small></span>
+                                </a>
+                            </div>
+                        </div>
+                        @if (Lifetrons.Erp.Data.Helper.AppHomeURL.ToLower() == "http://lifetrons.easysales.in")
+                        {
+                        <div class="row">
+                            <div class="col-md-8 ds-btn">
+                                <a class="btn btn-lg btn-primary" style="width: 100%;" href="@Url.Action("Index", "Home", new { area = "File" })">
+                                    <i class="glyphicon glyphicon-file pull-left"></i><span> Files <br><small>Files Management <br />Download / Upload...</small></span>
+                                </a>
+                            </div>
+                        </div>
+                        }
+                        <div class="row">
+                            <div class="col-md-8  ds-btn">
+                                <a class="btn btn-lg btn-primary" style="width: 100%;" href="@Url.Action("Index", "Home", new {area = "Product"})">
+                                    <i class="glyphicon glyphicon-th-list pull-left"></i><span>Products<br><small>Showcases, Pricebooks...</small></span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8 ds-btn">
+                                <a class="btn btn-lg btn-primary" style="width: 100%;" href="@Url.Action("Index", "Home", new {area = "Sales"})">
+                                    <i class="glyphicon glyphicon-thumbs-up pull-left"></i><span>Sales & Marketing<br><small>Campaigns, Leads, <br /> Opportunities,<br /> Quotations, Orders...</small></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8  ds-btn">
+                                <a class="btn btn-lg btn-primary" style="width: 100%;" href="@Url.Action("Index", "Home", new {area = "Activity"})">
+                                    <i class="glyphicon glyphicon-comment pull-left"></i><span>Services & Activities<br><small>Tasks & Cases</small></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 ds-btn">
+                                <a class="btn btn-lg btn-primary" style="width: 100%;" href="@Url.Action("Index", "Home", new {area = "Stock"})">
+                                    <i class="glyphicon glyphicon-save pull-left"></i><span>Stock<br><small>Inventory management</small></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 ds-btn">
+                                <a class="btn btn-lg btn-primary" style="width: 100%;" href="@Url.Action("Index", "Home", new {area = "Procurement"})">
+                                    <i class="glyphicon glyphicon-shopping-cart pull-left"></i><span>Procurement<br><small>Purchases...</small></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 ds-btn">
+                                <a class="btn btn-lg btn-primary" style="width: 100%;" href="@Url.Action("Index", "Home", new {area = "Works"})">
+                                    <i class="glyphicon glyphicon-cog pull-left"></i><span>Works<br><small>Planning & Control, <br /> MRP, MPS, <br /> Jobs, Quality...</small></span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8 ds-btn">
+                                <a class="btn btn-lg btn-primary" style="width: 100%;" href="@Url.Action("Index", "Home", new {area = "Logistics"})">
+                                    <i class="glyphicon glyphicon-map-marker pull-left"></i><span>Logistics<br><small>Dispatches, documentation...</small></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 ds-btn">
+                                <a class="btn btn-lg btn-primary" style="width: 100%;" href="@Url.Action("Index", "Home", new {area = "Reports"})">
+                                    <i class="glyphicon glyphicon-signal pull-left"></i><span>Reports<br><small>Reporting hub</small></span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8 ds-btn">
+                                <a class="btn btn-lg btn-primary" style="width: 100%;" href="@Url.Action("Index", "Home", new {area = "Admin"})">
+                                    <i class="glyphicon glyphicon-paperclip pull-left"></i><span>HR & Admin<br><small>Employees, Admin...</small></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-8 ds-btn">
+                                <a class="btn btn-lg btn-primary" style="width: 100%;" href="@Url.Action("Index", "Home", new {area = "SysAdmin"})">
+                                    <i class="glyphicon glyphicon-wrench pull-left"></i><span>Systems<br><small>System administrator</small></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 ds-btn">
+                                <a href="http://www.EasySales.in/" class="btn btn-success btn-lg" role="button" style="width: 100%;" >
+                                   <i class="glyphicon glyphicon-globe"></i> EasySales.in </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+}
+else
+{
+    <h2>User not logged in. Redirecting to login page.</h2>
+    <meta http-equiv="Refresh" content="3;URL=@(Url.Action("Login", "Account"))">
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Home")
+}

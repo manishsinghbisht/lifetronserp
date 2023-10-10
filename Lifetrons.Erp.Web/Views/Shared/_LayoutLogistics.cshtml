@@ -1,0 +1,314 @@
+﻿@using System.Configuration
+<!DOCTYPE html>
+<html>
+<head>
+    @{
+        string AppName = ConfigurationManager.AppSettings["AppName"];
+        string AppHomeURL = ConfigurationManager.AppSettings["AppHomeURL"];
+        string AppSupportEmail = ConfigurationManager.AppSettings["AppSupportEmail"];
+        ViewBag.AppName = AppName;
+        ViewBag.AppHomeURL = AppHomeURL;
+        ViewBag.AppSupportEmail = AppSupportEmail;
+
+        @Html.Hidden("AppName", (string)ViewBag.AppName)
+        @Html.Hidden("AppHomeURL", (string)ViewBag.AppHomeURL)
+        @Html.Hidden("AppSupportEmail", (string)ViewBag.AppSupportEmail)
+    }
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Html.Raw(AppName) [Logistics] @ViewBag.Title</title>
+
+    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">*@
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/esCustoms")
+    @Styles.Render("~/Scripts/fancybox/fancyboxCss")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <script>
+        window.onload = function () {
+            window.localStorage.setItem('AppHomeURL', AppHomeURL);
+        }
+    </script>
+</head>
+
+<body>
+    @*<div class="navbar navbar-inverse navbar-fixed-top">*@
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @if (!Request.IsAuthenticated)
+                {
+                    @Html.ActionLink(AppName, "Index", "Home", null, new { @class = "navbar-brand" })
+                }
+                else
+                {
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown">
+                                @Html.Raw(AppName)  &nbsp; <small>[Logistics]</small>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="@Url.Action("Index", "Home")">   <span class="glyphicon glyphicon-home">     </span> @Resources.MainMenuHome</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("About", "Home")">   <span class="glyphicon glyphicon-info-sign">     </span> @Resources.MainMenuAbout </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Contact", "Home")"><span class="glyphicon glyphicon-pencil">     </span> @Resources.MainMenuContactUs </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("VideoHelp", "Home")"><span class="glyphicon glyphicon-hd-video">     </span> @Resources.MainMenuVideoHelp </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("ProcessSteps", "Home")"><span class="glyphicon glyphicon-arrow-right">     </span> @Resources.MainMenuProcessSteps </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                }
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul id="MainMenuList" name="MainMenuList" class="nav navbar-nav">
+                    @if (!Request.IsAuthenticated)
+                    {
+                        //Menu for new and non authenticated users
+                        <li>
+                            <a href="@Url.Action("Index", "Home")">   <span class="glyphicon glyphicon-home">     </span> @Resources.MainMenuHome</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("About", "Home")">   <span class="glyphicon glyphicon-info-sign">     </span> @Resources.MainMenuAbout </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Contact", "Home")"><span class="glyphicon glyphicon-pencil">     </span> @Resources.MainMenuContactUs</a>
+                        </li>
+                    }
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        if (AppName == "EasySales.in")
+                        {
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span class="glyphicon glyphicon-map-marker">     </span>
+                                    Logistics
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="@Url.Action("Index", "Dispatch")">
+                                            <span class="glyphicon glyphicon-chevron-right"> </span>
+                                            Dispatch
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="trigger right-caret"><span class="glyphicon glyphicon-chevron-right"> </span> Export </a>
+                                        <ul class="dropdown-menu sub-menu">
+                                            <li>
+                                                <a href="@Url.Action("Proforma", "Export")">
+                                                    <span class="glyphicon glyphicon-chevron-right"> </span>
+                                                    Proforma Invoice
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <a class="trigger right-caret">Logistics Reports</a>
+                                        <ul class="dropdown-menu sub-menu">
+                                            <li><a href="#">Logistics Summary</a></li>
+                                            <li>
+                                                <a class="trigger right-caret">Export</a>
+                                                <ul class="dropdown-menu sub-menu">
+                                                    <li><a href="#"> Report 1</a></li>
+                                                    <li><a href="#"> Report 2</a></li>
+                                                    <li><a href="#"> Report 3</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a class="trigger right-caret">Domestic</a>
+                                                <ul class="dropdown-menu sub-menu">
+                                                    <li><a href="#"> Report 1</a></li>
+                                                    <li><a href="#"> Report 2</a></li>
+                                                    <li><a href="#"> Report 3</a></li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a class="trigger right-caret">Others</a>
+                                                <ul class="dropdown-menu sub-menu">
+                                                    <li><a href="#">Report 1</a></li>
+                                                    <li><a href="#">Report 2</a></li>
+                                                    <li><a href="#">Report 3</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span class="glyphicon glyphicon-link">     </span>
+                                    Quick Links
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="@Url.Action("Index", "SAccount", new { area = "People" })">
+                                            <span class="glyphicon glyphicon-eye-open"> </span>
+                                            @Resources.MainMenuAccount
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index", "Contact", new { area = "People" })">
+                                            <span class="glyphicon glyphicon-user"> </span>
+                                            @Resources.MainMenuContact
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="@Url.Action("Index", "Address", new { area = "People" })">
+                                            <span class="glyphicon glyphicon-globe"> </span>
+                                            @Resources.MainMenuAddress
+                                        </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="@Url.Action("Index", "ProcurementRequest", new { area = "Procurement" })">
+                                            <span class="glyphicon glyphicon-shopping-cart"> </span>
+                                            Procurement Request
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                    }
+
+                </ul>
+
+                @*@Html.Partial("_LoginPartial")*@
+                @{ Html.RenderAction("LoginPartial", "Account", new { area = "" }); }
+
+            </div> @*navbar-collapse div ends*@
+        </div> @*container div ends*@
+    </div> @*navbar navbar-default navbar-fixed-top div ends*@
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                    &copy; @DateTime.Now.Year - @Html.Raw(AppName)
+                </div>
+                <div class="col-md-4">
+                    <style>
+                        /*Remove Google icon and "linky" behavior from language selector:*/
+                        .goog-te-gadget-icon {
+                            display: none;
+                        }
+
+                        .goog-te-gadget-simple a {
+                            text-decoration: none !important;
+                        }
+
+                        /*Remove the Google translate toolbar:*/
+                        .goog-te-banner-frame.skiptranslate {
+                            display: none !important;
+                        }
+
+                        body {
+                            top: 0px !important;
+                        }
+                    </style>
+
+                </div>
+            </div>
+
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.Render("~/bundles/bootstrap" + (CultureHelper.IsRighToLeft() ? "-rtl" : ""))*@
+    @RenderSection("scripts", required: false)
+
+    <style>
+        /*Multi Level Menu starts*/
+        .dropdown-menu > li {
+            position: relative;
+            -webkit-user-select: none; /* Chrome/Safari */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE10+ */
+            /* Rules below not implemented in browsers yet */
+            -o-user-select: none;
+            user-select: none;
+            cursor: pointer;
+        }
+
+        .dropdown-menu .sub-menu {
+            left: 100%;
+            position: absolute;
+            top: 0;
+            display: none;
+            margin-top: -1px;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-left-color: #fff;
+            box-shadow: none;
+        }
+
+        .right-caret:after, .left-caret:after {
+            content: "";
+            border-bottom: 5px solid transparent;
+            border-top: 5px solid transparent;
+            display: inline-block;
+            height: 0;
+            vertical-align: middle;
+            width: 0;
+            margin-left: 5px;
+        }
+
+        .right-caret:after {
+            border-left: 5px solid #ffaf46;
+        }
+
+        .left-caret:after {
+            border-right: 5px solid #ffaf46;
+        }
+        /*Multi Level Menu ends*/
+    </style>
+
+    <script>
+        // Multi Level Menu starts
+        $(function () {
+            $(".dropdown-menu > li > a.trigger").on("click", function (e) {
+                var current = $(this).next();
+                var grandparent = $(this).parent().parent();
+                if ($(this).hasClass('left-caret') || $(this).hasClass('right-caret'))
+                    $(this).toggleClass('right-caret left-caret');
+                grandparent.find('.left-caret').not(this).toggleClass('right-caret left-caret');
+                grandparent.find(".sub-menu:visible").not(current).hide();
+                current.toggle();
+                e.stopPropagation();
+            });
+            $(".dropdown-menu > li > a:not(.trigger)").on("click", function () {
+                var root = $(this).closest('.dropdown');
+                root.find('.left-caret').toggleClass('right-caret left-caret');
+                root.find('.sub-menu:visible').hide();
+            });
+        });
+        // Multi Level Menu ends
+
+    </script>
+</body>
+</html>

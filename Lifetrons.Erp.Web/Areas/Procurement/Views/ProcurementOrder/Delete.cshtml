@@ -1,0 +1,439 @@
+﻿@using Resources;
+@model Lifetrons.Erp.Data.ProcurementOrder
+@using Lifetrons.Erp.Helpers
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>@Resources.Metadata_UISection_Delete</h2>
+
+<h3>@Resources.Metadata_ConfirmDelete</h3>
+<div class="row">
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.TimeStamp)
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-4 pull-left">
+                        Procurement Order
+                    </div>
+                    <div class="col-md-8 pull-right" style="text-align: right">
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) | @Html.ActionLink("Back to List", "Index")
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Code)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.Code)
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.RefNo)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.RefNo)
+                    </dd>
+
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Date)
+                    </dt>
+                    <dd class="col-md-3">
+                        @ControllerHelper.ConvertDateTimeFromUtc(Model.Date, User.TimeZone())
+                    </dd>
+
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.AccountId)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.Account.Name)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ContactId)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.Contact.Name)
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.DeliveryDate)
+                    </dt>
+                    <dd class="col-md-3">
+                        @ControllerHelper.ConvertDateTimeFromUtc(Model.Date, User.TimeZone())
+                    </dd>
+                    <dt class="col-md-3">
+
+                    </dt>
+                    <dd class="col-md-3">
+
+                    </dd>
+                </div>
+                @*Supplier Address Starts*@
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.SupplierAddressToName)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.SupplierAddressToName)
+                    </dd>
+                    <dt class="col-md-3">
+
+                    </dt>
+                    <dd class="col-md-3">
+
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.SupplierAddressLine1)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.SupplierAddressLine1)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.SupplierAddressLine2)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.SupplierAddressLine2)
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.SupplierAddressLine3)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.SupplierAddressLine3)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.SupplierAddressCity)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.SupplierAddressCity)
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.SupplierAddressPin)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.SupplierAddressPin)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.SupplierAddressState)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.SupplierAddressState)
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.SupplierAddressCountry)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.SupplierAddressCountry)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.SupplierAddressPhone)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.SupplierAddressPhone)
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.SupplierAddressEMail)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.SupplierAddressEMail)
+                    </dd>
+                    <dt class="col-md-3">
+
+                    </dt>
+                    <dd class="col-md-3">
+
+                    </dd>
+                </div>
+                @*Supplier Address Ends*@
+
+                @*Billing Address Starts*@
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.BillingAddressToName)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.BillingAddressToName)
+                    </dd>
+                    <dt class="col-md-3">
+
+                    </dt>
+                    <dd class="col-md-3">
+
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.BillingAddressLine1)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.BillingAddressLine1)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.BillingAddressLine2)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.BillingAddressLine2)
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.BillingAddressLine3)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.BillingAddressLine3)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.BillingAddressCity)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.BillingAddressCity)
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.BillingAddressPin)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.BillingAddressPin)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.BillingAddressState)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.BillingAddressState)
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.BillingAddressCountry)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.BillingAddressCountry)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.BillingAddressPhone)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.BillingAddressPhone)
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.BillingAddressEMail)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.BillingAddressEMail)
+                    </dd>
+                    <dt class="col-md-3">
+
+                    </dt>
+                    <dd class="col-md-3">
+
+                    </dd>
+                </div>
+                @*Billing Address Ends*@
+
+                @*Shipping Address Starts*@
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ShippingAddressToName)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.ShippingAddressToName)
+                    </dd>
+                    <dt class="col-md-3">
+
+                    </dt>
+                    <dd class="col-md-3">
+
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ShippingAddressLine1)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.ShippingAddressLine1)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ShippingAddressLine2)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.ShippingAddressLine2)
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ShippingAddressLine3)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.ShippingAddressLine3)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ShippingAddressCity)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.ShippingAddressCity)
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ShippingAddressPin)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.ShippingAddressPin)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ShippingAddressState)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.ShippingAddressState)
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ShippingAddressCountry)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.ShippingAddressCountry)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ShippingAddressPhone)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.ShippingAddressPhone)
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ShippingAddressEMail)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.ShippingAddressEMail)
+                    </dd>
+                    <dt class="col-md-3">
+
+                    </dt>
+                    <dd class="col-md-3">
+
+                    </dd>
+                </div>
+                @*Shipping Address Ends*@
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ReceiptDetails)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.ReceiptDetails)
+                    </dd>
+                </div>
+
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Remark)
+                    </dt>
+                    <dd class="col-md-9">
+                        @Html.DisplayFor(model => model.Remark)
+                    </dd>
+                </div>
+                @*Start Details - Authorized, Active, Created and Modified*@
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Authorized)
+                    </dt>
+
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.Authorized)
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.Active)
+                    </dt>
+
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.Active)
+                    </dd>
+                </div>
+                <div class="row">
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.CreatedBy)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.AspNetUser.UserName)
+                        &nbsp;
+                        @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+                    </dd>
+                    <dt class="col-md-3">
+                        @Html.DisplayNameFor(model => model.ModifiedBy)
+                    </dt>
+                    <dd class="col-md-3">
+                        @Html.DisplayFor(model => model.AspNetUser1.UserName)
+                        &nbsp;
+                        @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+                    </dd>
+                </div>
+                @*End Details - Authorized, Active, Created and Modified*@
+
+            </div>
+        </div>
+
+    </div>
+</div>
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/ProcurementOrder")
+}

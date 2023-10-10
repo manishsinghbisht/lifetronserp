@@ -1,0 +1,78 @@
+﻿@using System.Threading;
+@using Lifetrons.Erp.Helpers;
+@using Resources;
+@using System.Collections;
+@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.EntityFramework;
+
+@{
+    ViewBag.Title = "Files Summary";
+}
+
+@if (Request.IsAuthenticated)
+{
+    var applicationUserId = User.Identity.GetUserId();
+    var queuedFiles = TempData["QueuedFiles"] as List<Lifetrons.Erp.Data.File>;
+    var reviewFiles = TempData["ReviewFiles"] as List<Lifetrons.Erp.Data.File>;
+    var assignedFiles = TempData["AssignedFiles"] as List<Lifetrons.Erp.Data.File>;
+    var submittedFiles = TempData["SubmittedFiles"] as List<Lifetrons.Erp.Data.File>;
+    var deliveredFiles = TempData["DeliveredFiles"] as List<Lifetrons.Erp.Data.File>;
+    var rejectedFiles = TempData["RejectedFiles"] as List<Lifetrons.Erp.Data.File>;
+
+    <h2>Files</h2>
+
+ <!--Work Section-->
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+            <div class="row">
+                <div class="col-md-12 panel panel-default">
+                    <div class="panel-heading text-center"><b>Queued &nbsp; </b><span class="badge">@queuedFiles.Count</span></div>
+                    
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 panel panel-default">
+                    <div class="panel-heading text-center"><b>Review &nbsp; </b><span class="badge">@reviewFiles.Count</span></div>
+                    
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 panel panel-default">
+                    <div class="panel-heading text-center"><b>Assigned &nbsp; </b><span class="badge">@assignedFiles.Count</span></div>
+                    
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 panel panel-default">
+                    <div class="panel-heading text-center"><b>Submitted &nbsp; </b><span class="badge">@submittedFiles.Count</span></div>
+                    
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 panel panel-default">
+                    <div class="panel-heading text-center"><b>Delivered &nbsp; </b><span class="badge">@deliveredFiles.Count</span></div>
+                    
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 panel panel-default">
+                    <div class="panel-heading text-center"><b>Rejected &nbsp; </b><span class="badge">@rejectedFiles.Count</span></div>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    using (Html.BeginForm("SendSMSFromCsv", "Notifications", new { area = "" }))
+    {
+        <input type="hidden" name="body" id="body" value="Queued: @queuedFiles.Count | Review: @reviewFiles.Count | AssignedFiles: @assignedFiles.Count" />
+        <button type="submit" class="btn btn-primary">Send Message</button>
+    }
+}

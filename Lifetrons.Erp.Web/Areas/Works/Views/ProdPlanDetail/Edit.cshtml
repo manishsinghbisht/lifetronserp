@@ -1,0 +1,186 @@
+﻿@using Resources;
+@model Lifetrons.Erp.Data.ProdPlanDetail
+@using System.Threading
+@using Lifetrons.Erp.Helpers
+
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Edit;
+    
+}
+
+<h2> @Resources.Metadata_UISection_Edit </h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Master Production Schedule</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.TimeStamp)
+
+       <div class="form-group">
+            @Html.LabelFor(model => model.StartDateTime, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               <div class="dateDiv" style="position: relative">
+                    <input class="dateTxt" type="text"  id="StartDateTime" name="StartDateTime" value="@ControllerHelper.ConvertDateTimeFromUtc(Model.StartDateTime, User.TimeZone())"
+                           data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                    <span class="glyphicon glyphicon-remove-circle"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndDateTime, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               <div class="dateDiv" style="position: relative">
+                    <input class="dateTxt" type="text"  id="EndDateTime" name="EndDateTime" value="@ControllerHelper.ConvertDateTimeFromUtc(Model.EndDateTime, User.TimeZone())"
+                           data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                    <span class="glyphicon glyphicon-remove-circle"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Serial, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Serial, new { @class = "manageMaxLength", @maxlength = "3", @placeholder = "1" })
+                @Html.ValidationMessageFor(model => model.Serial)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JobNo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.JobNo, new { @class = "manageMaxLength", @maxlength = "15", @placeholder = "123456" })
+                @Html.ValidationMessageFor(model => model.JobNo)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Quantity, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "Quantity. Ex: 1" })
+                @Html.ValidationMessageFor(model => model.Quantity)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Weight, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Weight, new { @class = "manageMaxLength", @maxlength = "17", @placeholder = "Weight unit. Ex: 5" })
+                @Html.ValidationMessageFor(model => model.Weight)
+                @Html.DropDownList("WeightUnitId", String.Empty)
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.JobType, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("JobType", new List<SelectListItem>
+                {
+                    new SelectListItem{ Text="Internal", Value = "I", Selected = true},
+                    new SelectListItem{ Text="External", Value = "E" },
+                })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CycleTimeInHour, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CycleTimeInHour)
+                @Html.ValidationMessageFor(model => model.CycleTimeInHour)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CycleCapacity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CycleCapacity)
+                @Html.ValidationMessageFor(model => model.CycleCapacity)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SetupTimeInHrs, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SetupTimeInHrs)
+                @Html.ValidationMessageFor(model => model.SetupTimeInHrs)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AddOnTimeInHrs, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AddOnTimeInHrs)
+                @Html.ValidationMessageFor(model => model.AddOnTimeInHrs)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ActualStartDateTime, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               <div class="dateDiv" style="position: relative">
+                    <input class="dateTxt" type="text"  id="ActualStartDateTime" name="ActualStartDateTime" value="@ControllerHelper.ConvertDateTimeFromUtc(Model.ActualStartDateTime, User.TimeZone())"
+                           data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                    <span class="glyphicon glyphicon-remove-circle"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ActualEndDateTime, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               <div class="dateDiv" style="position: relative">
+                    <input class="dateTxt" type="text"  id="ActualEndDateTime" name="ActualEndDateTime" value="@ControllerHelper.ConvertDateTimeFromUtc(Model.ActualEndDateTime, User.TimeZone())"
+                           data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                    <span class="glyphicon glyphicon-remove-circle"></span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.Label("Remark History", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <textarea id="historyProgressRemark" name="historyProgressRemark" readonly> @Model.Remark </textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Remark, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Remark, new { @class = "manageMaxLength", @maxlength = "250", @placeholder = "Updates" })
+                @Html.ValidationMessageFor(model => model.Remark)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @(User.IsInRole("WorksAuthorize") ? Html.EditorFor(model => model.Authorized) : Html.DisplayFor(model => model.Authorized))
+                @Html.ValidationMessageFor(model => model.Authorized)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @if (!Model.Authorized || User.IsInRole("WorksAuthorize"))
+                {
+                    <input type="submit" value="Save" class="btn btn-default" accesskey="S" />
+                }
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "ProdPlanDetail")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/ProdPlanDetail")
+}

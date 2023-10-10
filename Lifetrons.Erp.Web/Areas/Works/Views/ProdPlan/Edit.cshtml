@@ -1,0 +1,176 @@
+﻿@using Resources;
+@using System.Threading
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.ProdPlan
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Edit;
+}
+
+<h2> @Resources.Metadata_UISection_Edit </h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Planning</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.TimeStamp)
+        @Html.HiddenFor(model => model.ProcessId, new { Value = ViewData["ProcessId"] })
+
+        @*<div class="panel panel-default">
+            <div class="panel-heading">Planning For process</div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ProcessId, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("ProcessId")
+                        @Html.ValidationMessageFor(model => model.ProcessId)
+                    </div>
+                </div>
+
+                
+
+            </div>
+        </div>*@
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Consolidated figures for all operations to be done in production</div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CycleTimeInHour, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CycleTimeInHour)
+                        @Html.ValidationMessageFor(model => model.CycleTimeInHour)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CycleCapacity, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CycleCapacity)
+                        @Html.ValidationMessageFor(model => model.CycleCapacity)
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Additional Time</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SetupTimeInHrs, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.SetupTimeInHrs)
+                        @Html.ValidationMessageFor(model => model.SetupTimeInHrs)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.AddOnTimeInHrs, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.AddOnTimeInHrs)
+                        @Html.ValidationMessageFor(model => model.AddOnTimeInHrs)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_FollowUp</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RefNo, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.RefNo, new { @class = "manageMaxLength", @maxlength = "50", @placeholder = "RefNo (Unique)" })
+                        @Html.ValidationMessageFor(model => model.RefNo)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.StartDateTime, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                       <div class="dateDiv" style="position: relative">
+                            <input class="dateTxt" type="text"  id="StartDateTime" name="StartDateTime" value="@ControllerHelper.ConvertDateTimeFromUtc(Model.StartDateTime, User.TimeZone())"
+                                   data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EndDateTime, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                       <div class="dateDiv" style="position: relative">
+                            <input class="dateTxt" type="text"  id="EndDateTime" name="EndDateTime" value="@ControllerHelper.ConvertDateTimeFromUtc(Model.EndDateTime, User.TimeZone())"
+                                   data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                            <span class="glyphicon glyphicon-remove-circle"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.JobType, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("JobType", new List<SelectListItem>
+                        {
+                            new SelectListItem{ Text="Internal", Value = "I", Selected = true},
+                            new SelectListItem{ Text="External", Value = "E" },
+                        })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Remark History", new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <textarea id="historyProgressRemark" name="historyProgressRemark" readonly> @Model.Remark </textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Remark, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Remark, new { @class = "manageMaxLength", @maxlength = "500", @placeholder = "Remarks" })
+                        @Html.ValidationMessageFor(model => model.Remark)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_SystemInfo</div>
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @(User.IsInRole("WorksAuthorize") ? Html.EditorFor(model => model.Authorized) : Html.DisplayFor(model => model.Authorized))
+                        @Html.ValidationMessageFor(model => model.Authorized)
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @if (!Model.Authorized || User.IsInRole("WorksAuthorize"))
+                {
+                    <input type="submit" value="Save" class="btn btn-default" accesskey="S" />
+                }
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/ProdPlan")
+}

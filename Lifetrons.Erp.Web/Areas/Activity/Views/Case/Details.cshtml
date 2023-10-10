@@ -1,0 +1,283 @@
+﻿@using Lifetrons.Erp.Helpers
+@using Resources;
+
+@model Lifetrons.Erp.Data.Case
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Details;
+}
+
+<h2>@Resources.Metadata_CaseId_Case - @Resources.Metadata_UISection_Details</h2>
+
+
+<div class="row center-block">
+    <p>
+
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) | @Html.ActionLink("Back to List", "Index") | @Html.ActionLink("Create Task", "CreateTask", new { id = Model.Id })
+
+    </p>
+</div>
+
+<div class="row">
+
+    <dl class="dl-horizontal">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_References</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.OwnerId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser2.Name)
+                </dd>
+                @*<dt>
+                    @Html.DisplayNameFor(model => model.AssignedToId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AssignedTo.Name)
+                </dd>*@
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Code)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Code)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CaseNo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CaseNo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.RefNo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.RefNo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Subject)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Subject)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShrtDesc)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShrtDesc)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Desc)
+                </dt>
+
+                <dd>
+                    @Html.TextAreaFor(model => model.Desc, new { @readonly = true })
+                </dd>
+
+            </div>
+        </div>
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_Relations</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccountId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Account.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ContactId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Contact.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProductId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Product.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CampaignId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Campaign.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.OpportunityId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Opportunity.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.QuoteId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Quote.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OrderId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Order.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.InvoiceId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Invoice.Name)
+                </dd>
+
+
+            </div>
+        </div>
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_FollowUp</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.CaseReasonId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CaseReason.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PriorityId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Priority.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.InternalComments)
+                </dt>
+
+                <dd>
+                    @Html.TextAreaFor(model => model.InternalComments, new { @readonly = true })
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OpeningDate)
+                </dt>
+
+                <dd>
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.OpeningDate, User.TimeZone())
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CaseStatusId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CaseStatu.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ReportCompletionToId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUserReportCompletionTo.FirstName) &nbsp;@Html.DisplayFor(model => model.AspNetUserReportCompletionTo.LastName)
+                    &nbsp;(@Html.DisplayFor(model => model.AspNetUserReportCompletionTo.UserName))
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CloseDate)
+                </dt>
+
+                <dd>
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.CloseDate, User.TimeZone())
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ClosingComments)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ClosingComments)
+                </dd>
+
+
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_SystemInfo</div>
+            <div class="panel-body">
+                @*Start Details - Authorized, Active, Created and Modified*@
+                <dt>
+                    @Html.DisplayNameFor(model => model.Authorized)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Authorized)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Active)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Active)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser.UserName)
+                    &nbsp;
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ModifiedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser1.UserName)
+                    &nbsp;
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+                </dd>
+                @*End Details - Authorized, Active, Created and Modified*@
+
+            </div>
+        </div>
+    </dl>
+</div>
+
+<div class="row center-block">
+    <p>
+
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) | @Html.ActionLink("Back to List", "Index") | @Html.ActionLink("Create Task", "CreateTask", new { id = Model.Id })
+
+    </p>
+</div>

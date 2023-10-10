@@ -1,0 +1,83 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.Media
+
+@*@{  WebImage photo = null;
+        var newFileName = "";
+        var imagePath = "";
+        var imageURL = "";
+
+        if (IsPost)
+        {
+            photo = WebImage.GetImageFromRequest();
+            if (photo != null)
+            {
+                newFileName = Guid.NewGuid().ToString() + "_" +
+                    Path.GetFileName(photo.FileName);
+                imagePath = @"images\cricket\" + newFileName;
+
+
+                photo.Save(@"~\" + imagePath);
+                imageURL = @Url.Content("~/images/cricket/" + newFileName);
+            }
+        }
+    }*@
+
+
+@{
+    ViewBag.Title = "Photo Upload";
+}
+
+<form action="" method="post" enctype="multipart/form-data">
+    <h3>Uploaded Image</h3>
+
+    <fieldset>
+        <legend> Photo </legend>
+        @Html.ValidationSummary(true)
+        <label for="Image">Image</label>
+        <input type="file" accept="image/png, image/jpeg" name="imageStream" id="imageStream" />
+        <br />
+        @Html.LabelFor(model => model.ShrtDesc)
+        <br />
+        @Html.TextBoxFor(model => model.ShrtDesc, new { @class = "manageMaxLength", @maxlength = "100", @Value = ViewData["Enjoying!"] })
+        <br />
+        <br />
+        @Html.LabelFor(model => model.Desc)
+        <br />
+        @Html.TextAreaFor(model => model.Desc, new { @class = "manageMaxLength", @maxlength = "300" })
+        <br />
+        <br />
+        @Html.LabelFor(model => model.Tags)
+        <br />
+
+        @if (ViewData["SystemTags"] != null)
+        {
+            if (ViewData["SystemTags"].ToString().ToLower().Contains("scoresheet"))
+            {
+                @Html.Raw(ViewData["SystemTags"].ToString())
+
+
+
+                @Html.HiddenFor(model => model.Tags, new { @Value = ViewData["SystemTags"] })
+            }
+            else
+            {
+                @Html.TextBoxFor(model => model.Tags, new { @class = "manageMaxLength", @maxlength = "50", @placeholder = "Marylebone Cricket Club", @Value = ViewData["SystemTags"] })
+            }
+        }
+
+        <br />
+        <br />
+        @*<input type="submit" value="Upload" />*@
+        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-upload"></span> Upload</button>
+    </fieldset>
+</form>
+
+@*@if (imageURL != "")
+    {
+        <div class="result">
+            <img src="@imageURL" alt="image" width="300px" />
+
+        </div>
+    }*@
+

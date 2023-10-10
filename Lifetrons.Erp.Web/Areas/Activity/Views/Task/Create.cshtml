@@ -1,0 +1,249 @@
+﻿@using Resources;
+@using System.Threading
+@using Lifetrons.Erp.Helpers
+
+@model Lifetrons.Erp.Data.Task
+
+@{
+    ViewBag.Title = Resources.Metadata_TaskId_Task;
+}
+
+<h2>@Resources.Metadata_UISection_Create</h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="form-horizontal">
+        <h4>@Resources.Metadata_TaskId_Task</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">References</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OwnerId, "Owner", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("OwnerId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.OwnerId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Name, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "Name (Unique)" })
+                            @Html.ValidationMessageFor(model => model.Name)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Code, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Code, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "Code (Unique)" })
+                            @Html.ValidationMessageFor(model => model.Code)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ShrtDesc, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.ShrtDesc, new { @class = "manageMaxLength", @maxlength = "150", @placeholder = "Short desc" })
+                            @Html.ValidationMessageFor(model => model.ShrtDesc)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Desc, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.Desc, new { @class = "manageMaxLength", @maxlength = "140", @placeholder = "Long Desc" })
+                            @Html.ValidationMessageFor(model => model.Desc)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">@Resources.Metadata_UISection_Relations</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RelatedToObjectName, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("RelatedToObjectName", new List<SelectListItem>
+                            {
+                                new SelectListItem{ Text="", Value = "" },
+                                new SelectListItem{ Text=Resources.Metadata_AccountId_Account, Value = "Account" },
+                                new SelectListItem{ Text=Resources.Metadata_OpportunityId_Opportunity, Value = "Opportunity" },
+                                new SelectListItem{ Text=Resources.Metadata_OrderId_Order, Value = "Order" },
+                                new SelectListItem{ Text=Resources.Metadata_QuoteId_Quote, Value = "Quote" },
+                                new SelectListItem{ Text=Resources.Metadata_CampaignId_Campaign, Value = "Campaign" },
+                                new SelectListItem{ Text=Resources.Metadata_CaseId_Case, Value = "Case" },
+                                new SelectListItem{ Text="Dispatch", Value = "Dispatch" }
+                            })
+                            <small>Select carefully. Cannot be edited later after record creation.</small>
+                            @Html.ValidationMessageFor(model => model.RelatedToObjectName)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RelatedToId, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("RelatedToId", new List<SelectListItem>
+                            {
+                                new SelectListItem{ Text="", Value = "" },
+
+                            })<small>Select carefully. Cannot be edited later after record creation.</small>
+                            @Html.ValidationMessageFor(model => model.RelatedToId)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LeadId, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("LeadId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.LeadId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ContactId, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ContactId", String.Empty)
+                            @Html.ValidationMessageFor(model => model.ContactId)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">@Resources.Metadata_UISection_FollowUp</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.StartDate, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                           <div class="dateDiv" style="position: relative">
+                                <input class="dateTxt" type="text"  id="StartDate" name="StartDate" value="@DateTime.Now"
+                                       data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EndDate, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                           <div class="dateDiv" style="position: relative">
+                                <input class="dateTxt" type="text"  id="EndDate" name="EndDate" value="@DateTime.Now"
+                                       data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IsAllDay, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.IsAllDay)
+                            @Html.ValidationMessageFor(model => model.IsAllDay)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TaskStatusId, "TaskStatus", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("TaskStatusId")
+                            @Html.ValidationMessageFor(model => model.TaskStatusId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Priority, "Priority", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("PriorityId")
+                            @Html.ValidationMessageFor(model => model.Priority)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Reminder, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                           <div class="dateDiv" style="position: relative">
+                                <input class="dateTxt" type="text"  id="Reminder" name="Reminder" value="@DateTime.Now"
+                                       data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                                @*@if (Thread.CurrentThread.CurrentUICulture.Name == "hi-IN")
+                                    {
+                                        <input class="dateTxt" type="text"  id="Reminder" name="Reminder" value="@DateTime.Now" data-date-format="DD/MM/YYYY  hh:mm A"
+                                               placeholder="25/01/2014" title="DD/MM/YYYY (25/01/2014)" data-toggle="tooltip" data-placement="right" />
+                                    }
+                                    else if (Thread.CurrentThread.CurrentUICulture.Name == "en-US")
+                                    {
+                                        <input class="dateTxt" type="text"  id="Reminder" name="Reminder" value="@DateTime.Now" data-date-format="MM/DD/YYYY  hh:mm A"
+                                               placeholder="01/25/2014" title="MM/DD/YYYY (01/25/2014)" data-toggle="tooltip" data-placement="right" />
+                                    }*@
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ProgressPercent, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group col-md-2">
+                                <input name="ProgressPercent" id="ProgressPercent" type="text" class="form-control manageMaxLength" maxlength="17" placeholder="Ex: 5">
+                                <span class="input-group-addon">
+                                    %
+                                </span>
+                                @Html.ValidationMessageFor(model => model.ProgressPercent)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ProgressDesc, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.ProgressDesc, new { @class = "manageMaxLength", @maxlength = "250", @placeholder = "Progress desc" })
+                            @Html.ValidationMessageFor(model => model.ProgressDesc)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ReportCompletionToId, "Report Completion To", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ReportCompletionToId")
+                            @Html.ValidationMessageFor(model => model.ReportCompletionToId)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">@Resources.Metadata_UISection_SystemInfo</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @(User.IsInRole("ServicesAuthorize") ? Html.EditorFor(model => model.Authorized) : Html.DisplayFor(model => model.Authorized))
+                            @Html.ValidationMessageFor(model => model.Authorized)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" accesskey="S" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Task")
+}

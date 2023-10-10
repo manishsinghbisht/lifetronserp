@@ -1,0 +1,112 @@
+﻿@using Resources;
+@model Lifetrons.Erp.Data.DispatchLineItem
+@using System.Threading
+@using Lifetrons.Erp.Helpers
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Details;
+}
+
+<h2> Dispatch QR Response </h2>
+
+<div class="row">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Dispatch Line Item</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.TimeStamp)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DispatchId, "Dispatch", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.DispatchId)
+                @Html.Display("DispatchName", ViewData["DispatchName"])
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Serial, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Serial)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShrtDesc, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ShrtDesc)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrderId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Order.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrderLineItemId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.OrderLineItem.Product.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Quantity)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Weight, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Weight)
+                @Html.DisplayFor(model => model.WeightUnit.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Image", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <img src="@Url.Action("GetProductImageThumbnail", "Media", new { area = "", productId = Model.ProductId })" class="img-responsive" alt="Image Not Available"
+                     onerror="this.onerror=null;this.src='@Url.Content("~/Images/PersonImageNotAvailable.jpg")';" height="50" width="50">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Remark, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Remark)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Authorized)
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Details", "Dispatch", new { id = Model.DispatchId }, null)
+    </p>
+</div>
+
+@section Scripts
+            {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/DispatchLineItem")
+    @*fancyboxScripts creates issue with Login button in Accounts/Login*@
+    @Scripts.Render("~/Scripts/fancybox/fancyboxScripts")
+}
+

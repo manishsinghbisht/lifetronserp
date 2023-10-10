@@ -1,0 +1,8 @@
+﻿@model Lifetrons.Erp.Web.Models.Search
+
+<form id="frmSearch" name="frmSearch" class="navbar-form navbar-left" role="search"action="@Url.Action(Model.Action, Model.Controller)">
+    <div class="form-group">
+        <input id="searchParam" name="searchParam" type="text" class="form-control" placeholder="@Model.Placeholder">
+    </div>
+    <button id="btnSearch" name="btnSearch" type="submit" class="btn btn-default">Submit</button>
+</form>

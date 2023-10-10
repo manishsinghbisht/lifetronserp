@@ -1,0 +1,272 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.Opportunity
+
+@{
+    ViewBag.Title = Resources.Metadata_OpportunityId_Opportunity;
+}
+
+<h2>@Resources.Metadata_OpportunityId_Opportunity - @Resources.Metadata_UISection_Details</h2>
+
+
+<div class="row center-block">
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) | @Html.ActionLink("Back to List", "Index") | @Html.ActionLink("Create Task", "CreateTask", new { id = Model.Id }) 
+
+    </p>
+</div>
+
+<div class="row">
+
+    <dl class="dl-horizontal">
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_References</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.OwnerId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser2.UserName)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.OpportunityNo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OpportunityNo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Code)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Code)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.RefNo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.RefNo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShrtDesc)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShrtDesc)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Remark)
+                </dt>
+
+                <dd>
+                    @Html.TextAreaFor(model => model.Remark, new { @readonly = true })
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Private)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Private)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.OpportunityTypeId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OpportunityType.Name)
+                </dd>
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_Relations</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.CampaignId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Campaign.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ContactId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Contact.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccountId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Account.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.LeadSourceId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LeadSource.Name)
+                </dd>
+                @*<dt>
+                        @Html.DisplayNameFor(model => model.LeadId)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Lead.Name)
+                    </dd>*@
+                <dt>
+                    @Html.DisplayNameFor(model => model.Competitors)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Competitors)
+                </dd>
+
+
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_FollowUp</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.NumberOfEmployees)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NumberOfEmployees)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ExpectedRevenue)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ExpectedRevenue)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CloseDate)
+                </dt>
+
+                <dd>
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.CloseDate, User.TimeZone())
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.NextStep)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NextStep)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.StageId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Stage.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProbabilityPercent)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ProbabilityPercent)
+                </dd>
+             
+                <dt>
+                    @Html.DisplayNameFor(model => model.OrderNo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OrderNo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.DeliveryStatusId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.DeliveryStatu.Name)
+                </dd>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_SystemInfo</div>
+            <div class="panel-body">
+
+                @*Start Details - Authorized, Active, Created and Modified*@
+                <dt>
+                    @Html.DisplayNameFor(model => model.Authorized)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Authorized)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Active)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Active)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser.UserName)
+                    &nbsp;
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ModifiedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser1.UserName)
+                    &nbsp;
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+                </dd>
+                @*End Details - Authorized, Active, Created and Modified*@
+
+            </div>
+        </div>
+
+    </dl>
+</div>
+
+
+<div class="row">
+    @*Pass Id and PriceBookId here to "Index" page and then store "Id" and "PriceBookId" in ViewBag in Controller's Index method *@
+    @{Html.RenderAction("Index", "OpportunityLineItem", new { opportunityId = Model.Id });}
+</div>
+
+
+<div class="row center-block">
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) | @Html.ActionLink("Back to List", "Index") | @Html.ActionLink("Create Task", "CreateTask", new { id = Model.Id })
+
+    </p>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Opportunity")
+}

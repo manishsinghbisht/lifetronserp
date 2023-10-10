@@ -1,0 +1,39 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+}
+<h3 class="text-danger">Error - Unauthorized request</h3>
+
+@if (Request.IsAuthenticated)
+{
+    <h4 class="text-danger">
+        
+    </h4>
+    <div class="panel panel-default">
+        <div class="panel-heading">Error Detail</div>
+        <div class="panel-body">
+            <h4 class="text-danger">
+                Make sure you have sufficient sharing rights and roles for required data. For example: PriceBooks access, Sharing access etc.
+            </h4>
+            <h3 class="text-danger">@TempData["CustomErrorMessage"]</h3>
+            <h4 class="text-danger">@TempData["CustomErrorDetail"]</h4>
+            <h4 class="text-danger">@DateTime.Now</h4>
+        </div>
+    </div>
+    
+    <input type="button" onclick="history.go(-1);" value="Back">
+}
+else
+{
+    <h3 class="text-info">This may occur due to sesson expiry or busy server or a dropped connection.</h3>
+    <h3 class="text-info">Please try back in few seconds. You will be automatically redirected back to login page.</h3>
+    <h3 class="text-info">@DateTime.Now</h3>
+    <meta http-equiv="Refresh" content="5;URL=@(Url.Action("Login", "Account"))">
+}
+
+@*<script type="text/javascript">
+        window.setTimeout(function() {
+            window.location.href = '@Url.Action("Index", "Home")';
+        }, 5000);
+    </script>*@

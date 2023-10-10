@@ -1,0 +1,1005 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountController_Login_Invalid_username_or_password_" xml:space="preserve">
+    <value>Invalid username or password.</value>
+  </data>
+  <data name="AccountMetadata_AccountTypeId_Account_Type" xml:space="preserve">
+    <value>Account Type</value>
+  </data>
+  <data name="AccountMetadata_AgreementExpDate_Agreement_Exp__Dt_" xml:space="preserve">
+    <value>Agreement Exp. Dt.</value>
+  </data>
+  <data name="AccountMetadata_AgreementSerialNumber_Agreement_Number" xml:space="preserve">
+    <value>Agreement Number</value>
+  </data>
+  <data name="AccountMetadata_AnnualRevenue_Revenue" xml:space="preserve">
+    <value>Revenue</value>
+  </data>
+  <data name="AccountMetadata_IndustryId_Industry" xml:space="preserve">
+    <value>Industry</value>
+  </data>
+  <data name="AccountMetadata_NumberOfEmployees_Employees" xml:space="preserve">
+    <value>Employees</value>
+  </data>
+  <data name="AccountMetadata_NumberOfLocations_Locations" xml:space="preserve">
+    <value>Locations</value>
+  </data>
+  <data name="AccountMetadata_OwnershipId_Ownership" xml:space="preserve">
+    <value>Ownership</value>
+  </data>
+  <data name="AccountMetadata_Priority_Priority" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="AccountMetadata_RatingId_Rating" xml:space="preserve">
+    <value>Rating</value>
+  </data>
+  <data name="AddressMetadata_AddressToTitle_Person_Designation" xml:space="preserve">
+    <value>Person Designation</value>
+  </data>
+  <data name="AddressMetadata_AddressType_Address_Type" xml:space="preserve">
+    <value>Address Type</value>
+  </data>
+  <data name="ApplicationUser_AddressLine1_Address_Line_1" xml:space="preserve">
+    <value>Address Line 1</value>
+  </data>
+  <data name="ApplicationUser_AddressLine1_Invalid_address_line_1" xml:space="preserve">
+    <value>Invalid address line 1</value>
+  </data>
+  <data name="ApplicationUser_AddressLine2_Address_Line_2" xml:space="preserve">
+    <value>Address Line 2</value>
+  </data>
+  <data name="ApplicationUser_AddressLine2_Invalid_address_line_2" xml:space="preserve">
+    <value>Invalid address line 2</value>
+  </data>
+  <data name="ApplicationUser_AuthenticatedEmail_Authenticated_Email" xml:space="preserve">
+    <value>Authenticated Email</value>
+  </data>
+  <data name="ApplicationUser_AuthenticatedEmail_Invalid_Authenticated_Email_Address" xml:space="preserve">
+    <value>Invalid Authenticated Email Address</value>
+  </data>
+  <data name="ApplicationUser_BirthDate_Birth_Date" xml:space="preserve">
+    <value>Birth Date</value>
+  </data>
+  <data name="ApplicationUser_BirthDate_Invalid_birth_date" xml:space="preserve">
+    <value>Invalid birth date</value>
+  </data>
+  <data name="ApplicationUser_City_City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="ApplicationUser_City_Invalid_city_name" xml:space="preserve">
+    <value>Invalid city name</value>
+  </data>
+  <data name="ApplicationUser_Country_Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="ApplicationUser_Country_Invalid_country_name" xml:space="preserve">
+    <value>Invalid country name</value>
+  </data>
+  <data name="ApplicationUser_Email_Invalid_Email_Address" xml:space="preserve">
+    <value>Invalid Email Address</value>
+  </data>
+  <data name="ApplicationUser_Email_Work_Email" xml:space="preserve">
+    <value>Work Email</value>
+  </data>
+  <data name="ApplicationUser_FirstName_First_Name" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="ApplicationUser_FirstName_Invalid_first_name" xml:space="preserve">
+    <value>Invalid first name</value>
+  </data>
+  <data name="ApplicationUser_LastName_Invalid_last_name" xml:space="preserve">
+    <value>Invalid last name</value>
+  </data>
+  <data name="ApplicationUser_LastName_Last_Name" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="ApplicationUser_Mobile_Invalid_mobile_number" xml:space="preserve">
+    <value>Invalid mobile number</value>
+  </data>
+  <data name="ApplicationUser_Mobile_Invalid_mobile_number_format_" xml:space="preserve">
+    <value>Invalid mobile number format.</value>
+  </data>
+  <data name="ApplicationUser_Mobile_Mobile__10_digit_" xml:space="preserve">
+    <value>Mobile (10 digit)</value>
+  </data>
+  <data name="ApplicationUser_OrganizationName_Invalid_organization_name" xml:space="preserve">
+    <value>Invalid organization name</value>
+  </data>
+  <data name="ApplicationUser_OrganizationName_Organization_Name" xml:space="preserve">
+    <value>JoinOrganization Name</value>
+  </data>
+  <data name="ApplicationUser_PostalCode_Invalid_postal_code" xml:space="preserve">
+    <value>Invalid postal code</value>
+  </data>
+  <data name="ApplicationUser_PostalCode_Postal_Code" xml:space="preserve">
+    <value>Postal Code</value>
+  </data>
+  <data name="ApplicationUser_State_Invalid_state_name" xml:space="preserve">
+    <value>Invalid state name</value>
+  </data>
+  <data name="ApplicationUser_State_State" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="CampaignMetadata_ActualCost_Actual_Cost" xml:space="preserve">
+    <value>Actual Cost</value>
+  </data>
+  <data name="CampaignMetadata_BudgetCost_Budget_Cost" xml:space="preserve">
+    <value>Budget Cost</value>
+  </data>
+  <data name="CampaignMetadata_CampaignStatusId_Campaign_Status" xml:space="preserve">
+    <value>Campaign Status</value>
+  </data>
+  <data name="CampaignMetadata_CampaignTypeId_Campaign_Type" xml:space="preserve">
+    <value>Campaign Type</value>
+  </data>
+  <data name="CampaignMetadata_EndDate_End_Date" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="CampaignMetadata_ExpectedResponsePercent_Response_Expectation____" xml:space="preserve">
+    <value>Response Expectation (%)</value>
+  </data>
+  <data name="CampaignMetadata_ExpectedRevenue_Expected_Revenue" xml:space="preserve">
+    <value>Expected Revenue</value>
+  </data>
+  <data name="CampaignMetadata_NumberOfEmployees_Number_Of_Employees" xml:space="preserve">
+    <value>Number Of Employees</value>
+  </data>
+  <data name="CampaignMetadata_NumSent_Target_Approach" xml:space="preserve">
+    <value>Target Approach</value>
+  </data>
+  <data name="CampaignMetadata_ParentCampaignId_Parent_Campaign" xml:space="preserve">
+    <value>Parent Campaign</value>
+  </data>
+  <data name="CampaignMetadata_StartDate_Start_Date" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="CaseMetadata_CaseReasonId_Reason" xml:space="preserve">
+    <value>Reason</value>
+  </data>
+  <data name="CaseMetadata_CloseDate_Close_Date" xml:space="preserve">
+    <value>Close Date</value>
+  </data>
+  <data name="CaseMetadata_ClosingComments_Closing_Comments" xml:space="preserve">
+    <value>Closing Comments</value>
+  </data>
+  <data name="CaseMetadata_InternalComments_Internal_Comments" xml:space="preserve">
+    <value>Internal Comments</value>
+  </data>
+  <data name="CaseMetadata_OpeningDate_Opening_Date" xml:space="preserve">
+    <value>Opening Date</value>
+  </data>
+  <data name="CaseMetadata_PriorityId_Priority" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="CaseMetadata_ReportCompletionToId_Report_Completion_To" xml:space="preserve">
+    <value>Report Completion To</value>
+  </data>
+  <data name="CaseMetadata_Subject_Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="ContactMetadata_CompanyName_Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="ContactMetadata_IsEndorsement_Is_Endorsement" xml:space="preserve">
+    <value>Is Endorsement</value>
+  </data>
+  <data name="ContactMetadata_IsProspect_Is_Prospect" xml:space="preserve">
+    <value>Is Prospect</value>
+  </data>
+  <data name="ContactMetadata_LastName_Last_Name" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="ContactMetadata_LeadSourceId_Lead_Source" xml:space="preserve">
+    <value>Lead Source</value>
+  </data>
+  <data name="ContactMetadata_LevelId_Level" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="ContactMetadata_MailingAddressId_Mailing_Address" xml:space="preserve">
+    <value>Mailing Address</value>
+  </data>
+  <data name="ContactMetadata_MiddleName_Middle_Name" xml:space="preserve">
+    <value>Middle Name</value>
+  </data>
+  <data name="ContactMetadata_NamePrefix_Prefix" xml:space="preserve">
+    <value>Prefix</value>
+  </data>
+  <data name="ContactMetadata_OtherAddressId_Other_Address" xml:space="preserve">
+    <value>Other Address</value>
+  </data>
+  <data name="ContactMetadata_PrimaryEMail_Primary_Email" xml:space="preserve">
+    <value>Primary Email</value>
+  </data>
+  <data name="ContactMetadata_PrimaryPhone_Primary_Phone" xml:space="preserve">
+    <value>Primary Phone</value>
+  </data>
+  <data name="ContractMetadata_BillingAddressId_Billing_Address" xml:space="preserve">
+    <value>Billing Address</value>
+  </data>
+  <data name="ContractMetadata_BillingAddressToName_Bill_To_Name" xml:space="preserve">
+    <value>Bill To Name</value>
+  </data>
+  <data name="ContractMetadata_CompanySignedById_Company_Signed_By" xml:space="preserve">
+    <value>Company Signed By</value>
+  </data>
+  <data name="ContractMetadata_ContractExpirationDate_Expiry_Date" xml:space="preserve">
+    <value>Expiry Date</value>
+  </data>
+  <data name="ContractMetadata_ContractNo_Contract_Number" xml:space="preserve">
+    <value>Contract Number</value>
+  </data>
+  <data name="ContractMetadata_ContractStartDate_Contract_Start_Date" xml:space="preserve">
+    <value>Contract Start Date</value>
+  </data>
+  <data name="ContractMetadata_ContractTenure_Contract_Tenure__Months_" xml:space="preserve">
+    <value>Contract Tenure (Months)</value>
+  </data>
+  <data name="ContractMetadata_CustSignedByDate_Customer_Signed_Date" xml:space="preserve">
+    <value>Customer Signed Date</value>
+  </data>
+  <data name="ContractMetadata_CustSignedById_Customer_Signed_By" xml:space="preserve">
+    <value>Customer Signed By</value>
+  </data>
+  <data name="ContractMetadata_CustSignedByTitle_Customer_Designation" xml:space="preserve">
+    <value>Customer Designation</value>
+  </data>
+  <data name="ContractMetadata_DeliveryTerms_Delivery_Terms" xml:space="preserve">
+    <value>Delivery Terms</value>
+  </data>
+  <data name="ContractMetadata_ExpirationNotice_Expiry_Notice__Months_" xml:space="preserve">
+    <value>Expiry Notice (Months)</value>
+  </data>
+  <data name="ContractMetadata_PaymentTerms_Payment_Terms" xml:space="preserve">
+    <value>Payment Terms</value>
+  </data>
+  <data name="ContractMetadata_ShippingAddressId_Shipping_Address" xml:space="preserve">
+    <value>Shipping Address</value>
+  </data>
+  <data name="ContractMetadata_SpecialTerms_Special_Terms" xml:space="preserve">
+    <value>Special Terms</value>
+  </data>
+  <data name="DepartmentMetadata_Code_Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="DepartmentMetadata_Name_Department_Name" xml:space="preserve">
+    <value>Department Name</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_AddressLine1_Address_Line_1" xml:space="preserve">
+    <value>Address Line 1</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_AddressLine1_Invalid_address_line_1" xml:space="preserve">
+    <value>Invalid address line 1</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_AddressLine2_Address_Line_2" xml:space="preserve">
+    <value>Address Line 2</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_AddressLine2_Invalid_address_line_2" xml:space="preserve">
+    <value>Invalid address line 2</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_BirthDate_Birth_Date" xml:space="preserve">
+    <value>Birth Date</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_BirthDate_Invalid_birth_date" xml:space="preserve">
+    <value>Invalid birth date</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_City_City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_City_Invalid_city_name" xml:space="preserve">
+    <value>Invalid city name</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_Country_Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_Country_Invalid_country_name" xml:space="preserve">
+    <value>Invalid country name</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_Email_Invalid_Email_Address" xml:space="preserve">
+    <value>Invalid Email Address</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_Email_Work_Email" xml:space="preserve">
+    <value>Work Email</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_FirstName_First_Name" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_FirstName_Invalid_first_name" xml:space="preserve">
+    <value>Invalid first name</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_LastName_Invalid_last_name" xml:space="preserve">
+    <value>Invalid last name</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_LastName_Last_Name" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_PostalCode_Invalid_postal_code" xml:space="preserve">
+    <value>Invalid postal code</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_PostalCode_Postal_Code" xml:space="preserve">
+    <value>Postal Code</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_State_Invalid_state_name" xml:space="preserve">
+    <value>Invalid state name</value>
+  </data>
+  <data name="ExternalLoginConfirmationViewModel_State_State" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="HierarchyMetadata_Designation_Designation" xml:space="preserve">
+    <value>Designation</value>
+  </data>
+  <data name="HierarchyMetadata_ReportsTo_Reports_To" xml:space="preserve">
+    <value>Reports To</value>
+  </data>
+  <data name="HomeChooseYourRegion" xml:space="preserve">
+    <value>Choose your region</value>
+  </data>
+  <data name="HomeCol1Header" xml:space="preserve">
+    <value>Getting started</value>
+  </data>
+  <data name="HomeCol1Text" xml:space="preserve">
+    <value>Just define your own customized production process/stages and manage your production on the move!</value>
+  </data>
+  <data name="HomeCol2Header" xml:space="preserve">
+    <value>Quick tricks &amp; features</value>
+  </data>
+  <data name="HomeCol2Text" xml:space="preserve">
+    <value>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</value>
+  </data>
+  <data name="HomeCol3Header" xml:space="preserve">
+    <value>Lifetrons.Erp.in</value>
+  </data>
+  <data name="HomeCol3Text" xml:space="preserve">
+    <value>You can easily find a web hosting company that offers the right mix of features and price for your applications.</value>
+  </data>
+  <data name="HomeP2" xml:space="preserve">
+    <value>Plan. Analyze. Execute. Monitor.</value>
+  </data>
+  <data name="HomeP3" xml:space="preserve">
+    <value>Integrate your people, processes and systems with a complete solution for business.</value>
+  </data>
+  <data name="JoiningRequestMetadata_RequestComments_Request_Comments" xml:space="preserve">
+    <value>Request Comments</value>
+  </data>
+  <data name="JoiningRequestMetadata_SubmittedTo_Submit_To_Username" xml:space="preserve">
+    <value>Submit To (Username)</value>
+  </data>
+  <data name="LeadMetadata_AddressCity_City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="LeadMetadata_AddressCountry_Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="LeadMetadata_AddressEMail_Address_E_Mail" xml:space="preserve">
+    <value>Address E-Mail</value>
+  </data>
+  <data name="LeadMetadata_AddressId_Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="LeadMetadata_AddressLine1_Address_Line_1" xml:space="preserve">
+    <value>Address Line 1</value>
+  </data>
+  <data name="LeadMetadata_AddressLine2_Address_Line_2" xml:space="preserve">
+    <value>Address Line 2</value>
+  </data>
+  <data name="LeadMetadata_AddressLine3_Address_Line_3" xml:space="preserve">
+    <value>Address Line 3</value>
+  </data>
+  <data name="LeadMetadata_AddressPhone_Address_Phone" xml:space="preserve">
+    <value>Address Phone</value>
+  </data>
+  <data name="LeadMetadata_AddressPin_PIN" xml:space="preserve">
+    <value>PIN</value>
+  </data>
+  <data name="LeadMetadata_AddressState_State" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="LeadMetadata_AddressToName_Address_To_Name" xml:space="preserve">
+    <value>Address To Name</value>
+  </data>
+  <data name="LeadMetadata_AnnualRevenue_Annual_Revenue" xml:space="preserve">
+    <value>Annual Revenue</value>
+  </data>
+  <data name="LeadMetadata_CampaignId_Campaign" xml:space="preserve">
+    <value>Campaign</value>
+  </data>
+  <data name="LeadMetadata_CompanyName_Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="LeadMetadata_Department_Department" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="LeadMetadata_IsConverted_Converted" xml:space="preserve">
+    <value>Converted</value>
+  </data>
+  <data name="LeadMetadata_LeadSourceId_Lead_Source" xml:space="preserve">
+    <value>Lead Source</value>
+  </data>
+  <data name="LeadMetadata_LeadStatusId_Lead_Status" xml:space="preserve">
+    <value>Lead Status</value>
+  </data>
+  <data name="LeadMetadata_NumberOfEmployees_Number_Of_Employees" xml:space="preserve">
+    <value>Number Of Employees</value>
+  </data>
+  <data name="LeadMetadata_PrimaryEMail_Primary_Email" xml:space="preserve">
+    <value>Primary Email</value>
+  </data>
+  <data name="LeadMetadata_PrimaryPhone_Primary_Phone" xml:space="preserve">
+    <value>Primary Phone</value>
+  </data>
+  <data name="LeadMetadata_RatingId_Rating" xml:space="preserve">
+    <value>Rating</value>
+  </data>
+  <data name="LeadMetadata_Title_Designation" xml:space="preserve">
+    <value>Designation</value>
+  </data>
+  <data name="LoginViewModel_Password_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="LoginViewModel_RememberMe_Remember_me_" xml:space="preserve">
+    <value>Remember me?</value>
+  </data>
+  <data name="LoginViewModel_UserName_User_name" xml:space="preserve">
+    <value>User name</value>
+  </data>
+  <data name="MainMenuAbout" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="MainMenuAccount" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="MainMenuActivity" xml:space="preserve">
+    <value>Activity</value>
+  </data>
+  <data name="MainMenuAddress" xml:space="preserve">
+    <value>Address Book</value>
+  </data>
+  <data name="MainMenuCampaign" xml:space="preserve">
+    <value>Campaign</value>
+  </data>
+  <data name="MainMenuCase" xml:space="preserve">
+    <value>Case</value>
+  </data>
+  <data name="MainMenuContact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="MainMenuContactUs" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
+  <data name="MainMenuContract" xml:space="preserve">
+    <value>Contract</value>
+  </data>
+  <data name="SalesDashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="MainMenuDepartments" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="MainMenuEmailSettings" xml:space="preserve">
+    <value>Email Settings</value>
+  </data>
+  <data name="MainMenuHierarchy" xml:space="preserve">
+    <value>Hierarchy</value>
+  </data>
+  <data name="MainMenuHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="MainMenuInvoice" xml:space="preserve">
+    <value>Invoice</value>
+  </data>
+  <data name="MainMenuJoiningRequest" xml:space="preserve">
+    <value>Joining Request</value>
+  </data>
+  <data name="MainMenuLead" xml:space="preserve">
+    <value>Lead</value>
+  </data>
+  <data name="MainMenuLists" xml:space="preserve">
+    <value>Lists</value>
+  </data>
+  <data name="MainMenuNoticeBoard" xml:space="preserve">
+    <value>Notice Board</value>
+  </data>
+  <data name="MainMenuOpportunity" xml:space="preserve">
+    <value>Opportunity</value>
+  </data>
+  <data name="MainMenuOrder" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="MainMenuOrganization" xml:space="preserve">
+    <value>Organization</value>
+  </data>
+  <data name="MainMenuPriceBook" xml:space="preserve">
+    <value>Price Book</value>
+  </data>
+  <data name="MainMenuProcessSteps" xml:space="preserve">
+    <value>Process Steps</value>
+  </data>
+  <data name="MainMenuProduct" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="MainMenuProductFamily" xml:space="preserve">
+    <value>Product Family</value>
+  </data>
+  <data name="MainMenuProductType" xml:space="preserve">
+    <value>Product Type</value>
+  </data>
+  <data name="MainMenuQuote" xml:space="preserve">
+    <value>Quote</value>
+  </data>
+  <data name="MainMenuReports" xml:space="preserve">
+    <value>Reports</value>
+  </data>
+  <data name="MainMenuSales" xml:space="preserve">
+    <value>Sales</value>
+  </data>
+  <data name="MainMenuSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="MainMenuShowcase" xml:space="preserve">
+    <value>Showcase</value>
+  </data>
+  <data name="MainMenuTargets" xml:space="preserve">
+    <value>Targets</value>
+  </data>
+  <data name="MainMenuTask" xml:space="preserve">
+    <value>Task</value>
+  </data>
+  <data name="MainMenuTeams" xml:space="preserve">
+    <value>Team</value>
+  </data>
+  <data name="MainMenuUserIndex" xml:space="preserve">
+    <value>User Index</value>
+  </data>
+  <data name="MainMenuUserRoles" xml:space="preserve">
+    <value>User Roles</value>
+  </data>
+  <data name="MainMenuVideoHelp" xml:space="preserve">
+    <value>Video Help</value>
+  </data>
+  <data name="ManageUserViewModel_ConfirmPassword_Confirm_new_password" xml:space="preserve">
+    <value>Confirm new password</value>
+  </data>
+  <data name="ManageUserViewModel_ConfirmPassword_The_new_password_and_confirmation_password_do_not_match_" xml:space="preserve">
+    <value>The new password and confirmation password do not match.</value>
+  </data>
+  <data name="ManageUserViewModel_NewPassword_New_password" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="ManageUserViewModel_OldPassword_Current_password" xml:space="preserve">
+    <value>Current password</value>
+  </data>
+  <data name="Metadata_AccountId_Account" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="Metadata_Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Metadata_AddressCity" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="Metadata_AddressCountry" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="Metadata_AddressFallBackContact" xml:space="preserve">
+    <value>Fallback Contact</value>
+  </data>
+  <data name="Metadata_AddressLine1" xml:space="preserve">
+    <value>Address Line 1</value>
+  </data>
+  <data name="Metadata_AddressLine2" xml:space="preserve">
+    <value>Address Line 2</value>
+  </data>
+  <data name="Metadata_AddressLine3" xml:space="preserve">
+    <value>Address Line 3</value>
+  </data>
+  <data name="Metadata_AddressMilestone" xml:space="preserve">
+    <value>Milestone</value>
+  </data>
+  <data name="Metadata_AddressPin" xml:space="preserve">
+    <value>PIN</value>
+  </data>
+  <data name="Metadata_AddressState" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="Metadata_AddressToName" xml:space="preserve">
+    <value>Addressed To Name</value>
+  </data>
+  <data name="Metadata_Authorized" xml:space="preserve">
+    <value>Authorized</value>
+  </data>
+  <data name="Metadata_Birthdate" xml:space="preserve">
+    <value>Birthdate</value>
+  </data>
+  <data name="Metadata_CampaignId_Campaign" xml:space="preserve">
+    <value>Campaign</value>
+  </data>
+  <data name="Metadata_Code_Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="Metadata_ContactId_Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Metadata_CreatedBy_Created_By" xml:space="preserve">
+    <value>Created By</value>
+  </data>
+  <data name="Metadata_CreatedDate_Created_Date" xml:space="preserve">
+    <value>Created Date</value>
+  </data>
+  <data name="Metadata_DepartmentId_Department" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="Metadata_Desc_Updates" xml:space="preserve">
+    <value>Updates</value>
+  </data>
+  <data name="Metadata_DiscountAmount_Per_Item_Discount" xml:space="preserve">
+    <value>Per Item Discount</value>
+  </data>
+  <data name="Metadata_DiscountPercent_Per_Item_Discount" xml:space="preserve">
+    <value> Per Item Discount (%)</value>
+  </data>
+  <data name="Metadata_EMail" xml:space="preserve">
+    <value>Billing E-Mail</value>
+  </data>
+  <data name="Metadata_InvoiceId_Invoice" xml:space="preserve">
+    <value>Invoice</value>
+  </data>
+  <data name="Metadata_LeadId_Lead" xml:space="preserve">
+    <value>Lead</value>
+  </data>
+  <data name="Metadata_LineItemAmount" xml:space="preserve">
+    <value>Net Line Item Amount</value>
+  </data>
+  <data name="Metadata_LineItemPrice" xml:space="preserve">
+    <value>Net Line Item Price</value>
+  </data>
+  <data name="Metadata_ModifiedBy_Modified_By" xml:space="preserve">
+    <value>Modified By</value>
+  </data>
+  <data name="Metadata_ModifiedDate_Modified_Date" xml:space="preserve">
+    <value>Modified Date</value>
+  </data>
+  <data name="Metadata_Name_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Metadata_OpportunityId_Opportunity" xml:space="preserve">
+    <value>Opportunity</value>
+  </data>
+  <data name="Metadata_OrderId_Order" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="Metadata_Organization" xml:space="preserve">
+    <value>Organization</value>
+  </data>
+  <data name="Metadata_OwnerId_Owner" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="Metadata_Phone" xml:space="preserve">
+    <value>Billing Phone</value>
+  </data>
+  <data name="Metadata_PriceBookId_PriceBook" xml:space="preserve">
+    <value>PriceBook</value>
+  </data>
+  <data name="Metadata_ProductId_Product" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="Metadata_Quantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="Metadata_QuoteId_Quote" xml:space="preserve">
+    <value>Quote</value>
+  </data>
+  <data name="Metadata_ReferenceNumber" xml:space="preserve">
+    <value>Reference Number</value>
+  </data>
+  <data name="Metadata_SalesPrice" xml:space="preserve">
+    <value>List Price</value>
+  </data>
+  <data name="Metadata_Serial" xml:space="preserve">
+    <value>Serial</value>
+  </data>
+  <data name="Metadata_SharedWith" xml:space="preserve">
+    <value>Shared With</value>
+  </data>
+  <data name="Metadata_ShrtDesc_Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Metadata_SpecialInstructions" xml:space="preserve">
+    <value>Special Instructions</value>
+  </data>
+  <data name="Metadata_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Metadata_SubAccount" xml:space="preserve">
+    <value>Sub Account</value>
+  </data>
+  <data name="Metadata_TeamId_Team" xml:space="preserve">
+    <value>Team</value>
+  </data>
+  <data name="Metadata_TotalWeight" xml:space="preserve">
+    <value>Total Weight</value>
+  </data>
+  <data name="Metadata_WeightUnit" xml:space="preserve">
+    <value>Weight Unit</value>
+  </data>
+  <data name="NoticeBoardMetadata_CloseDate_Close_Date" xml:space="preserve">
+    <value>Close Date</value>
+  </data>
+  <data name="NoticeBoardMetadata_ClosingComments_Close_Comments" xml:space="preserve">
+    <value>Close Comments</value>
+  </data>
+  <data name="NoticeBoardMetadata_Name_Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="NoticeBoardMetadata_OpeningDate_Opening_Date" xml:space="preserve">
+    <value>Opening Date</value>
+  </data>
+  <data name="OpportunityMetadata_CloseDate_Close_date" xml:space="preserve">
+    <value>Close date</value>
+  </data>
+  <data name="OpportunityMetadata_Competitors_Competitors" xml:space="preserve">
+    <value>Competitors</value>
+  </data>
+  <data name="OpportunityMetadata_DeliveryStatusId_Order_Status" xml:space="preserve">
+    <value>Order Status</value>
+  </data>
+  <data name="OpportunityMetadata_ExpectedRevenue_Expected_Revenue" xml:space="preserve">
+    <value>Expected Revenue</value>
+  </data>
+  <data name="OpportunityMetadata_LeadSourceId_Lead_Source" xml:space="preserve">
+    <value>Lead Source</value>
+  </data>
+  <data name="OpportunityMetadata_NextStep_Next_Step" xml:space="preserve">
+    <value>Next Step</value>
+  </data>
+  <data name="OpportunityMetadata_NumberOfEmployees_Number_Of_Employees" xml:space="preserve">
+    <value>Number Of Employees</value>
+  </data>
+  <data name="OpportunityMetadata_OpportunityTypeId_Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="OpportunityMetadata_OrderNo_Order_No" xml:space="preserve">
+    <value>Order No</value>
+  </data>
+  <data name="OpportunityMetadata_Private_Private" xml:space="preserve">
+    <value>Private</value>
+  </data>
+  <data name="OpportunityMetadata_ProbabilityPercent_Probability____" xml:space="preserve">
+    <value>Probability (%)</value>
+  </data>
+  <data name="OpportunityMetadata_StageId_Stage" xml:space="preserve">
+    <value>Stage</value>
+  </data>
+  <data name="OrderMetadata_ActivatedById_Activated_By" xml:space="preserve">
+    <value>Activated By</value>
+  </data>
+  <data name="OrderMetadata_ActivatedDate_Activated_Date" xml:space="preserve">
+    <value>Activated Date</value>
+  </data>
+  <data name="OrderMetadata_BillingAddressId_Billing_Address" xml:space="preserve">
+    <value>Billing Address</value>
+  </data>
+  <data name="OrderMetadata_BillingAddressToName_Bill_To_Name" xml:space="preserve">
+    <value>Bill To Name</value>
+  </data>
+  <data name="OrderMetadata_CompanySignedById_Company_Signed_By" xml:space="preserve">
+    <value>Company Signed By</value>
+  </data>
+  <data name="OrderMetadata_ContractId_Contract" xml:space="preserve">
+    <value>Contract</value>
+  </data>
+  <data name="OrderMetadata_CustSignedByDate_Customer_Signed_Date" xml:space="preserve">
+    <value>Customer Signed Date</value>
+  </data>
+  <data name="OrderMetadata_CustSignedById_Customer_Signed_By" xml:space="preserve">
+    <value>Customer Signed By</value>
+  </data>
+  <data name="OrderMetadata_DeliveryDate_Delivery_Date" xml:space="preserve">
+    <value>Delivery Date</value>
+  </data>
+  <data name="OrderMetadata_DeliveryStatusId_Order_Status" xml:space="preserve">
+    <value>Order Status</value>
+  </data>
+  <data name="OrderMetadata_DeliveryTerms_Delivery_Terms" xml:space="preserve">
+    <value>Delivery Terms</value>
+  </data>
+  <data name="OrderMetadata_PaymentTerms_Payment_Terms" xml:space="preserve">
+    <value>Payment Terms</value>
+  </data>
+  <data name="OrderMetadata_PriorityId_Priority" xml:space="preserve">
+    <value>Priority</value>
+  </data>
+  <data name="OrderMetadata_ProgressDesc_Progress_Updates_" xml:space="preserve">
+    <value>Progress Updates </value>
+  </data>
+  <data name="OrderMetadata_ProgressPercent_Progress____" xml:space="preserve">
+    <value>Progress (%)</value>
+  </data>
+  <data name="OrderMetadata_RefNo_Ref_No" xml:space="preserve">
+    <value>Ref No</value>
+  </data>
+  <data name="OrderMetadata_ReportCompletionToId_On_Completion_Report_To" xml:space="preserve">
+    <value>On Completion Report To</value>
+  </data>
+  <data name="OrderMetadata_ShippingAddressId_Shipping_Address" xml:space="preserve">
+    <value>Shipping Address</value>
+  </data>
+  <data name="OrderMetadata_ShippingAddressToName_Ship_To_Name" xml:space="preserve">
+    <value>Ship To Name</value>
+  </data>
+  <data name="OrderMetadata_SpecialTerms_Special_Terms" xml:space="preserve">
+    <value>Special Terms</value>
+  </data>
+  <data name="OrderMetadata_StartDate_Start_Date" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="ProductMetadata_ProductFamilyId_Product_Family" xml:space="preserve">
+    <value>Product Family</value>
+  </data>
+  <data name="ProductMetadata_ProductTypeId_Product_Type" xml:space="preserve">
+    <value>Product Type</value>
+  </data>
+  <data name="QuoteMetadata_BillingAddressId_Billing_Address" xml:space="preserve">
+    <value>Billing Address</value>
+  </data>
+  <data name="QuoteMetadata_BillingAddressLine1_Address_Line_1" xml:space="preserve">
+    <value>Address Line 1</value>
+  </data>
+  <data name="QuoteMetadata_BillingAddressLine2_Address_Line_2" xml:space="preserve">
+    <value>Address Line 2</value>
+  </data>
+  <data name="QuoteMetadata_BillingAddressToName_Bill_To_Name" xml:space="preserve">
+    <value>Bill To Name</value>
+  </data>
+  <data name="QuoteMetadata_ExpirationDate_Expiry_Date" xml:space="preserve">
+    <value>Expiry Date</value>
+  </data>
+  <data name="QuoteMetadata_FollowUpDate_Follow_up_Date" xml:space="preserve">
+    <value>Follow up Date</value>
+  </data>
+  <data name="QuoteMetadata_ShippingAddressId_Shipping_Address" xml:space="preserve">
+    <value>Shipping Address</value>
+  </data>
+  <data name="QuoteMetadata_ShippingAddressToName_Ship_To_Name" xml:space="preserve">
+    <value>Ship To Name</value>
+  </data>
+  <data name="RegisterViewModel_AuthenticatedEmail_Authenticated_Email" xml:space="preserve">
+    <value>Authenticated Email</value>
+  </data>
+  <data name="RegisterViewModel_AuthenticatedEmail_Invalid_Authenticated_Email_Address" xml:space="preserve">
+    <value>Invalid Authenticated Email Address</value>
+  </data>
+  <data name="RegisterViewModel_ConfirmPassword_Confirm_password" xml:space="preserve">
+    <value>Confirm password</value>
+  </data>
+  <data name="RegisterViewModel_ConfirmPassword_The_password_and_confirmation_password_do_not_match_" xml:space="preserve">
+    <value>The password and confirmation password do not match.</value>
+  </data>
+  <data name="RegisterViewModel_OrganizationName_Invalid_organization_name" xml:space="preserve">
+    <value>Invalid organization name</value>
+  </data>
+  <data name="RegisterViewModel_OrganizationName_Organization_Name" xml:space="preserve">
+    <value>JoinOrganization Name</value>
+  </data>
+  <data name="TeamMetadata_DepartmentId_Parent_Department" xml:space="preserve">
+    <value>Parent Department</value>
+  </data>
+  <data name="TeamMetadata_Name_Team_Name" xml:space="preserve">
+    <value>Team Name</value>
+  </data>
+</root>

@@ -1,0 +1,88 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.JoiningRequest
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Edit;
+}
+
+<h2> @Resources.Metadata_UISection_Edit </h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>JoiningRequest</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+                @Html.LabelFor(model => model.RequestType, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.RequestType, new { @readonly=true})
+                    @Html.ValidationMessageFor(model => model.RequestType)
+                </div>
+            </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RequestBy, "Request By", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.DropDownList("RequestBy", String.Empty)*@
+                @Html.DisplayFor(model => model.AspNetUser.UserName)
+                @Html.ValidationMessageFor(model => model.RequestBy)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.RequestComments, "Request Comments", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.RequestComments, new { @readonly = true })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.RequestDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.RequestDate, new { @readonly = true })
+                @Html.ValidationMessageFor(model => model.RequestDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+           
+            @Html.LabelFor(model => model.SubmittedTo, "Submitted To", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.DropDownList("RequestBy", String.Empty)*@
+                @Html.DisplayFor(model => model.AspNetUser1.UserName)
+
+                @Html.ValidationMessageFor(model => model.SubmittedTo)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Status, new { @maxlength = "8", @placeholder = "APPROVED" })
+                Valid Entry: PENDING | APPROVED
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ResponseComments, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ResponseComments)
+                @Html.ValidationMessageFor(model => model.ResponseComments)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

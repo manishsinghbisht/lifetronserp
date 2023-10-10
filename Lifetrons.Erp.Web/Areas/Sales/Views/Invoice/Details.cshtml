@@ -1,0 +1,430 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.Invoice
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Details;
+}
+
+<h3>Invoice - Details</h3>
+
+<div class="row center-block">
+    <p>
+
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) | @Html.ActionLink("Back to List", "Index")
+
+    </p>
+</div>
+
+<div class="row">
+
+    <dl class="dl-horizontal">
+        <div class="panel panel-default">
+            <div class="panel-heading">References</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.OwnerId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser2.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.InvoiceNo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InvoiceNo)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Code)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Code)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShrtDesc)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShrtDesc)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Remark)
+                </dt>
+
+                <dd>
+                    @Html.TextAreaFor(model => model.Remark, new { @readonly = true })
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.RefNo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.RefNo)
+                </dd>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_FollowUp</div>
+            <div class="panel-body">
+                <dt>
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.InvoiceDate, User.TimeZone())
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InvoiceDate)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.InvoiceStatusId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InvoiceStatu.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PaymentReceiptDetails)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PaymentReceiptDetails)
+                </dd>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_Relations</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.AccountId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Account.Name)
+                </dd>
+
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ContactId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Contact.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OpportunityId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Opportunity.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OrderId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Order.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.QuoteId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Quote.Name)
+                </dd>
+
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Taxes and Amounts</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.LineItemsAmount)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LineItemsAmount)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.TaxPercent)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TaxPercent)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PostTaxAmount)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PostTaxAmount)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.OtherCharges)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.OtherCharges)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.InvoiceAmount)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.InvoiceAmount)
+                </dd>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_BillingAddress</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.BillingAddressId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Address.Name)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.BillingAddressToName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BillingAddressToName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BillingAddressLine1)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BillingAddressLine1)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BillingAddressLine2)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BillingAddressLine2)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BillingAddressLine3)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BillingAddressLine3)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BillingAddressCity)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BillingAddressCity)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BillingAddressPin)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BillingAddressPin)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BillingAddressState)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BillingAddressState)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BillingAddressCountry)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BillingAddressCountry)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.BillingAddressPhone)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.BillingAddressPhone)
+                </dd>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_ShippingAddress</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShippingAddressId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Address1.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShippingAddressToName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShippingAddressToName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShippingAddressLine1)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShippingAddressLine1)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShippingAddressLine2)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShippingAddressLine2)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShippingAddressLine3)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShippingAddressLine3)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShippingAddressCity)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShippingAddressCity)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShippingAddressPin)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShippingAddressPin)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShippingAddressState)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShippingAddressState)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShippingAddressCountry)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShippingAddressCountry)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ShippingAddressPhone)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ShippingAddressPhone)
+                </dd>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_TermsConds</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.PaymentTerms)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PaymentTerms)
+                </dd>
+            </div>
+        </div>
+
+        @*Start Details - Authorized, Active, Created and Modified*@
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_SystemInfo</div>
+            <div class="panel-body">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Authorized)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Authorized)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Active)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Active)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser.UserName)
+                    &nbsp;
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ModifiedBy)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser1.UserName)
+                    &nbsp;
+                    @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+                </dd>
+            </div>
+        </div>
+        @*End Details - Authorized, Active, Created and Modified*@
+    </dl>
+</div>
+
+
+<div class="row">
+    @{Html.RenderAction("Index", "InvoiceLineItem", new { invoiceId = Model.Id });}
+</div>
+
+
+<div class="row">
+    <div><a href="@Url.Action("Invoice", "SalesReports", new { area = "Reports", reportFormatType = "PDF", invoiceId = Model.Id })"> Get Report PDF</a></div>
+    <div><a href="@Url.Action("Invoice", "SalesReports", new { area = "Reports", reportFormatType = "Excel", invoiceId = Model.Id })"> Get Report Excel</a></div>
+    <div><a href="@Url.Action("Invoice", "SalesReports", new { area = "Reports", reportFormatType = "Word", invoiceId = Model.Id })"> Get Report Word</a></div>
+    <div><a href="@Url.Action("Invoice", "SalesReports", new { area = "Reports", reportFormatType = "Image", invoiceId = Model.Id })"> Get Report Image</a></div>
+</div>

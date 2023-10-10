@@ -1,0 +1,87 @@
+﻿@using System.Threading
+@using Lifetrons.Erp.Helpers
+@using Lifetrons.Erp.Data
+@{
+    ViewBag.Title = "Email";
+}
+@*
+        <div>
+
+            @using (Html.BeginForm("SendMail", "Email", FormMethod.Post, new { id = "emailForm" }))
+            {
+                <input type="text" name="toName" id="toName" placeholder="To Name" required />
+            <input type="email" name="toEmail" id="toEmail" placeholder="To Email" required />
+                <input type="text" name="subject" id="subject" placeholder="Subject" required />
+                <textarea name="message" id="message" placeholder="Message" required></textarea>
+                <input type="submit" id="sendButton" name="sendButton" value="Send" />
+        }
+    </div>
+*@
+
+@*<a data-toggle="modal" href="#modalCompose">   <span class="glyphicon glyphicon-envelope">     </span></a>*@
+
+@using (Html.BeginForm("SendMail", "Email", FormMethod.Post, new { id = "emailForm" }))
+{
+    <!-- /.modal compose message -->
+    @*<div class="modal fade" id="modalCompose" role="dialog" aria-labelledby="modalCompose" aria-hidden="true">*@
+    <div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" onclick="history.go(-1);" data-dismiss="modal" aria-hidden="True">×</button>
+
+                    <h4 class="modal-title">Email Message</h4>
+                </div>
+
+                <div id="mailDiv" class="modal-body row">
+                    <form role="form" class="form-horizontal">
+                        @*<div class="form-group">
+                                <label class="col-sm-2" for="toName">To Name</label>
+                                <div class="col-sm-10"><input type="text" class="form-control" name="toName" id="toName" placeholder="Name"></div>
+                            </div>*@
+
+                        <div class="form-group">
+                            <label class="col-sm-2" for="toEmail">To</label>
+                            <div class="col-sm-10"><input type="email" multiple class="form-control" value="@TempData["toEmailAddress"]" name="toEmail" id="toEmail" placeholder="comma separated list of recipients"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2" for="toEmail">Cc</label>
+                            <div class="col-sm-10"><input type="email" multiple class="form-control" name="ccEmail" id="ccEmail" placeholder="comma separated list of recipients"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2" for="subject">Subject</label>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="subject" id="subject" placeholder="subject"></div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2" for="message">Message</label>
+                            <div class="col-sm-10"><textarea class="form-control" name="message" id="message" rows="10"></textarea></div>
+                        </div>
+                    </form>
+                </div>
+
+                <div id="footerDiv" class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" onclick="history.go(-1);" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-warning pull-left" disabled="true">Save Draft</button>
+                    <button id="sendButton" name="sendButton" type="submit" class="btn btn-primary ">Send <i class="fa fa-arrow-circle-right fa-lg"></i></button>
+                </div>
+
+                <div id="Inbox">
+                    <br />
+                    <br />
+                    @{
+                        var emailInboxUrl = "/" + @Thread.CurrentThread.CurrentUICulture.Name + "/Email/EmailInbox";
+                    }
+                    <div class="partialContents" data-url="EmailInbox">
+                        <img src="~/Images/loading.gif" />
+                    </div>
+                </div>
+            </div><!-- /.modal-content -->
+        </div>
+    </div><!-- /.modal compose message -->
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Email")
+}

@@ -1,0 +1,173 @@
+﻿@using Resources;
+@using System.Threading
+@using Lifetrons.Erp.Helpers
+@using Lifetrons.Erp.Data
+
+@model Lifetrons.Erp.Data.FileRateTable
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Create;
+}
+
+<h2>File Rate Table - Edit</h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>File Template</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">@Resources.Metadata_UISection_References</div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FileType, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("FileType", new List<SelectListItem>
+                            {
+                                new SelectListItem{ Text=Lifetrons.Erp.Data.Helper.FileType.CV.ToString(), Value = Lifetrons.Erp.Data.Helper.FileType.CV.ToString(), Selected = true},
+                                new SelectListItem{ Text=Lifetrons.Erp.Data.Helper.FileType.Transcription.ToString(), Value = Lifetrons.Erp.Data.Helper.FileType.Transcription.ToString()},
+                                new SelectListItem{ Text=Lifetrons.Erp.Data.Helper.FileType.Video.ToString(), Value = Lifetrons.Erp.Data.Helper.FileType.Video.ToString()},
+                                new SelectListItem{ Text=Lifetrons.Erp.Data.Helper.FileType.Image.ToString(), Value = Lifetrons.Erp.Data.Helper.FileType.Image.ToString()}
+                            })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TemplateName, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.TemplateName, new { @class = "manageMaxLength", @maxlength = "100", @placeholder = "Name" })
+                            @Html.ValidationMessageFor(model => model.TemplateName)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.StartDate, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="dateDiv" style="position: relative">
+                                <input class="dateTxt" type="text" id="StartDate" name="StartDate" value="@ControllerHelper.ConvertDateTimeFromUtc(Model.StartDate, User.TimeZone())"
+                                       data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.EndDate, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="dateDiv" style="position: relative">
+                                <input class="dateTxt" type="text" id="EndDate" name="EndDate" value="@ControllerHelper.ConvertDateTimeFromUtc(Model.EndDate, User.TimeZone())"
+                                       data-date-format="@Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortDatePattern.ToUpper() @Thread.CurrentThread.CurrentCulture.DateTimeFormat.ShortTimePattern.ToLower()" />
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.RateType, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("RateType", new List<SelectListItem>
+                            {
+                                new SelectListItem{ Text=Lifetrons.Erp.Data.Helper.FileRateType.PerPageUrgent.ToString(), Value = Lifetrons.Erp.Data.Helper.FileRateType.PerPageUrgent.ToString(), Selected = true},
+                                new SelectListItem{ Text=Lifetrons.Erp.Data.Helper.FileRateType.PerPageNonUrgent.ToString(), Value = Lifetrons.Erp.Data.Helper.FileRateType.PerPageNonUrgent.ToString()},
+                                new SelectListItem{ Text=Lifetrons.Erp.Data.Helper.FileRateType.PerFileUrgent.ToString(), Value = Lifetrons.Erp.Data.Helper.FileRateType.PerFileUrgent.ToString()},
+                                new SelectListItem{ Text=Lifetrons.Erp.Data.Helper.FileRateType.PerFileNonUrgent.ToString(), Value = Lifetrons.Erp.Data.Helper.FileRateType.PerFileNonUrgent.ToString()},
+                            })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Rate, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Rate, new { @class = "manageMaxLength", @maxlength = "6", @placeholder = "Rate" })
+                            @Html.ValidationMessageFor(model => model.Rate)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">@Resources.Metadata_UISection_Relations</div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ContactId, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("ContactId")
+                            @Html.ValidationMessageFor(model => model.ContactId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Desc, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.TextAreaFor(model => model.Desc, new { @class = "manageMaxLength", @maxlength = "500", @placeholder = "Remarks" })
+                            @Html.ValidationMessageFor(model => model.Desc)
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                            @Html.LabelFor(model => model.AccountId, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("AccountId")
+                                @Html.ValidationMessageFor(model => model.AccountId)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.SubAccountId, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("SubAccountId", String.Empty)
+                                @Html.ValidationMessageFor(model => model.SubAccountId)
+                            </div>
+                        </div>*@
+
+
+
+                </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">@Resources.Metadata_UISection_SystemInfo</div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @(User.IsInRole("FileAdmin") ? Html.EditorFor(model => model.Authorized) : Html.DisplayFor(model => model.Authorized))
+                            @Html.ValidationMessageFor(model => model.Authorized)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Active, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @(User.IsInRole("FileAdmin") ? Html.EditorFor(model => model.Active) : Html.DisplayFor(model => model.Active))
+                            @Html.ValidationMessageFor(model => model.Active)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" accesskey="S" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/FileRateTable")
+}

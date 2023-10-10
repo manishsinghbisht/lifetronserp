@@ -1,0 +1,173 @@
+﻿@using Resources;
+@model Lifetrons.Erp.Data.Quote
+@using Lifetrons.Erp.Helpers
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>@Resources.Metadata_UISection_Delete</h2>
+
+<h3>@Resources.Metadata_ConfirmDelete</h3>
+<div>
+    <h4>Quote</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.QuoteNo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.QuoteNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+       
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShrtDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShrtDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remark)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remark)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RefNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RefNo)
+        </dd>
+
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.FollowUpDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FollowUpDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpirationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpirationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Authorized)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Authorized)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contact.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contact.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuoteStatu.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuoteStatu.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ColExtensionId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ColExtensionId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Account.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address1.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address1.Name)
+        </dd>
+
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryTerms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryTerms)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentTerms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentTerms)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" })) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Quote")
+}

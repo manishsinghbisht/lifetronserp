@@ -1,0 +1,131 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.InvoiceLineItem
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Create;
+}
+
+<h2> @Resources.Metadata_UISection_Create </h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Invoice Line Item</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.InvoiceId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.InvoiceId, new { Value = ViewData["InvoiceId"] })
+                @Html.TextBoxFor(model => model.Invoice.Name, new { Value = ViewData["InvoiceName"], @readonly = true })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PriceBookId, "Price Book Line Item", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @{
+    Html.RenderAction("PriceBookLineItemDisplay", "PriceBookLineItemSelector",
+        new { area = "Product", priceBookId = ViewData["PriceBookId"], selectedProductId = Model.ProductId, showSelectLink = true });
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Serial, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Serial, new { @maxlength = "3", @placeholder = "1" })
+                @Html.ValidationMessageFor(model => model.Serial)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ShrtDesc, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ShrtDesc, new { @maxlength = "150", @placeholder = "Short description" })
+                @Html.ValidationMessageFor(model => model.ShrtDesc)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Desc, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Desc, new { @class = "manageMaxLength", @maxlength = "500", @placeholder = "Updates" })
+                @Html.ValidationMessageFor(model => model.Desc)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SalesPrice, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SalesPrice, new { @maxlength = "17", @placeholder = "99.99" })
+                @Html.ValidationMessageFor(model => model.SalesPrice)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DiscountPercent, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="input-group col-md-2">
+                    <input name="DiscountPercent" id="DiscountPercent" type="text" class="form-control" maxlength="17" value="@Model.DiscountPercent" placeholder="Ex: 5">
+                    <span class="input-group-addon">
+                        %
+                    </span>
+                    @Html.ValidationMessageFor(model => model.DiscountPercent)
+                </div>
+            </div>
+        </div>
+
+       <div class="form-group">
+            @Html.LabelFor(model => model.Quantity, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Quantity, new { @maxlength = "17", @placeholder = "1" })
+                @Html.ValidationMessageFor(model => model.Quantity)
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Weight, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Weight, new { @maxlength = "17", @placeholder = "5" })
+                @Html.ValidationMessageFor(model => model.Weight)
+                @Html.DropDownList("WeightUnitId", String.Empty)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.SpecialInstructions, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.SpecialInstructions, new { @placeholder = "Anything you want to emphasize" })
+                @Html.ValidationMessageFor(model => model.SpecialInstructions)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @(User.IsInRole("SalesAuthorize") ? Html.EditorFor(model => model.Authorized) : Html.DisplayFor(model => model.Authorized))
+                @Html.ValidationMessageFor(model => model.Authorized)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" accesskey="S" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Details", "Invoice", new { id = ViewData["InvoiceId"] }, null)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/InvoiceLineItem")
+}

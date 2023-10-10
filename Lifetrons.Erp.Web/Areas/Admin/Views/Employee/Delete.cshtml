@@ -1,0 +1,451 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.Employee
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div class="row">
+    <h4>Employee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Contact1.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contact1.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShrtDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShrtDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Designation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Designation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOJ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOJ)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOL)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Employed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HasLeft)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HasLeft)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PFFlag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PFFlag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESIFlag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESIFlag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FoodFlag)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FoodFlag)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FoodRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FoodRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HourlyRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HourlyRate)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Basic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Basic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HRA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HRA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExecA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExecA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConvA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConvA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TeaA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeaA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WashA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WashA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CEA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CEA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OthA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OthA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PFFix)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PFFix)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CarLInst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CarLInst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IncomeTAXInst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncomeTAXInst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProfTAXInst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProfTAXInst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EduTAXInst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EduTAXInst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceTAXInst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceTAXInst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OtherTAXInst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OtherTAXInst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LifeInsuInst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LifeInsuInst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HealthInsuInst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HealthInsuInst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanWInst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanWInst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoanWOInst)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoanWOInst)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PFNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PFNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESINo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESINo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bank)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bank)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BankAcNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BankAcNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LifeInsuNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LifeInsuNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HealthInsuNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HealthInsuNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GratuityNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GratuityNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PAN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PAN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpVend)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpVend)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DISPNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DISPNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastPerformanceReviewDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastPerformanceReviewDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NextPerformanceReviewDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NextPerformanceReviewDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastCompensationReviewDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastCompensationReviewDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NextCompensationReviewDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NextCompensationReviewDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remarks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Authorized)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Authorized)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.UserName)
+            &nbsp;
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser1.UserName)
+            &nbsp;
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+        </dd>
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.Id)
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Employee")
+}

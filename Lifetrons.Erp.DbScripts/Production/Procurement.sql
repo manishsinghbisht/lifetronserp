@@ -1,0 +1,156 @@
+﻿Use LtSysDb1
+Create Table ProcurementRequest(
+	[Id] [UniqueIdentifier] PRIMARY KEY DEFAULT NEWSEQUENTIALID(),
+	[Name] [nvarchar](400) NOT NULL,
+	[Code] [nvarchar](400) NOT NULL UNIQUE,
+	[RefNo] [nvarchar](50), 
+	[Date] [DateTime] NOT NULL DEFAULT GETDATE(),
+	[DepartmentId] [UniqueIdentifier] NOT NULL FOREIGN KEY REFERENCES Department(Id),
+	[EmployeeId] [UniqueIdentifier] NOT NULL FOREIGN KEY REFERENCES Employee(Id),
+	[Location] [nVarChar](max) NULL,
+	[Remark] [nVarChar](max) NULL,
+	[SharedWith] [nvarchar](max) NULL,
+	[OrgId] [UniqueIdentifier] NOT NULL FOREIGN KEY REFERENCES Organization(Id),
+	[CreatedBy] [nvarchar](128) NOT NULL FOREIGN KEY REFERENCES AspNetUsers(Id),
+	[CreatedDate] [DateTime] NOT NULL DEFAULT GETDATE(),
+	[ModifiedBy] [nvarchar](128) NOT NULL FOREIGN KEY REFERENCES AspNetUsers(Id),
+	[ModifiedDate] [DateTime] NOT NULL DEFAULT GETDATE(),
+	[Authorized][Bit] NOT NULL DEFAULT 0,
+	[Active][Bit] NOT NULL DEFAULT 1,
+	[CustomColumn1] [nvarchar](max),
+	[ColExtensionId] [UniqueIdentifier] NULL,
+	[TimeStamp] [Timestamp] NOT NUll)on [Primary];
+
+ALTER TABLE [dbo].[ProcurementRequest]
+  ADD CONSTRAINT UQ_ProcurementRequest_Code_OrgId UNIQUE(Code, OrgId);
+
+ALTER TABLE [dbo].[ProcurementRequest] WITH CHECK 
+	ADD  CONSTRAINT [CK_ProcurementRequest_ModifiedBy] CHECK  (([dbo].[fncCheckUserOrg]([ModifiedBy],[OrgId])=(1)));
+
+Use LtSysDb1
+Create Table ProcurementRequestDetail(
+	[Id] [UniqueIdentifier] PRIMARY KEY DEFAULT NEWSEQUENTIALID(),  
+	[ProcurementRequestId] [UniqueIdentifier] NOT NULL FOREIGN KEY REFERENCES ProcurementRequest(Id),
+	[ProdPlanRawBookingId] [UniqueIdentifier] NULL FOREIGN KEY REFERENCES ProdPlanRawBooking(Id),
+	[Serial] [int] NULL,
+	[RequiredByDate] [DateTime] NULL,
+	[ItemId] [UniqueIdentifier] NOT NULL FOREIGN KEY REFERENCES Item(Id),
+	[Quantity] [Decimal](18,4) NOT NULL DEFAULT 1,
+	[Weight] [decimal] (18, 4) NULL DEFAULT 0,
+	[WeightUnitId] [UniqueIdentifier] NULL FOREIGN KEY REFERENCES WeightUnit(Id),
+	[EstimatedCost] [decimal](18, 4) Default 0, 
+	[Status] [nvarchar](50) NOT NULL DEFAULT 'PENDING',
+	[Remark] [nVarChar](max),
+	[CustomColumn1] [nvarchar](max),
+	[OrgId] [UniqueIdentifier] NOT NULL FOREIGN KEY REFERENCES Organization(Id),
+	[CreatedBy] [nvarchar](128) NOT NULL FOREIGN KEY REFERENCES AspNetUsers(Id),
+	[CreatedDate] [DateTime] NOT NULL DEFAULT GETDATE(),
+	[ModifiedBy] [nvarchar](128) NOT NULL FOREIGN KEY REFERENCES AspNetUsers(Id),
+	[ModifiedDate] [DateTime] NOT NULL DEFAULT GETDATE(),
+	[Authorized][Bit] NOT NULL DEFAULT 0,
+	[Active][Bit] NOT NULL DEFAULT 1,
+	[TimeStamp] [Timestamp] NOT NUll) on [Primary];
+
+ALTER TABLE [dbo].[ProcurementRequestDetail] ADD CONSTRAINT UQ_ProcurementRequestDetail_ProcurementRequestId_ItemId UNIQUE(ProcurementRequestId, ItemId);
+ALTER TABLE [dbo].[ProcurementRequestDetail] WITH CHECK ADD  CONSTRAINT [CK_ProcurementRequestDetail_ModifiedBy] CHECK  (([dbo].[fncCheckUserOrg]([ModifiedBy],[OrgId])=(1)));
+	
+Use LtSysDb1
+Create Table ProcurementOrder(
+	[Id] [UniqueIdentifier] PRIMARY KEY DEFAULT NEWSEQUENTIALID(),
+	[Name] [nvarchar](400) NOT NULL,
+	[Code] [nvarchar](400) NOT NULL UNIQUE,
+	[RefNo] [nvarchar](50), 
+	[Date] [DateTime] NOT NULL DEFAULT GETDATE(),
+	[AccountId] [UniqueIdentifier] NOT NULL FOREIGN KEY REFERENCES Account(Id),
+	[ContactId] [UniqueIdentifier] NOT NULL FOREIGN KEY REFERENCES Contact(Id),
+	[DeliveryDate] [DateTime] NULL,
+	[DeliveryTerms] [nvarchar](max) NULL,
+	[PaymentTerms] [nvarchar](max) NULL,
+	[SpecialTerms] [nvarchar](max) NULL,
+	[Remark] [nVarChar](max) NULL,
+	[SupplierAddressId] [UniqueIdentifier] NULL FOREIGN KEY REFERENCES Address(Id),
+	[SupplierAddressToName] [nvarchar](400) NULL,
+	[SupplierAddressLine1] [nvarchar](400) NULL,
+	[SupplierAddressLine2] [nvarchar](400) NULL,
+	[SupplierAddressLine3] [nvarchar](400) NULL,
+	[SupplierAddressCity] [nvarchar](400) NULL,
+	[SupplierAddressPin] [nvarchar](400) NULL,
+	[SupplierAddressState] [nvarchar](400) NULL,
+	[SupplierAddressCountry] [nvarchar](400) NULL,
+	[SupplierAddressPhone] [nvarchar](400) NULL,
+	[SupplierAddressEMail] [nvarchar](400) NULL,
+	[BillingAddressId] [UniqueIdentifier] NULL FOREIGN KEY REFERENCES Address(Id),
+	[BillingAddressToName] [nvarchar](400) NULL,
+	[BillingAddressLine1] [nvarchar](400) NULL,
+	[BillingAddressLine2] [nvarchar](400) NULL,
+	[BillingAddressLine3] [nvarchar](400) NULL,
+	[BillingAddressCity] [nvarchar](400) NULL,
+	[BillingAddressPin] [nvarchar](400) NULL,
+	[BillingAddressState] [nvarchar](400) NULL,
+	[BillingAddressCountry] [nvarchar](400) NULL,
+	[BillingAddressPhone] [nvarchar](400) NULL,
+	[BillingAddressEMail] [nvarchar](400) NULL,
+	[ShippingAddressId] [UniqueIdentifier] NULL FOREIGN KEY REFERENCES Address(Id),
+	[ShippingAddressToName] [nvarchar](400) NULL,
+	[ShippingAddressLine1] [nvarchar](400) NULL,
+	[ShippingAddressLine2] [nvarchar](400) NULL,
+	[ShippingAddressLine3] [nvarchar](400) NULL,
+	[ShippingAddressCity] [nvarchar](400) NULL,
+	[ShippingAddressPin] [nvarchar](400) NULL,
+	[ShippingAddressState] [nvarchar](400) NULL,
+	[ShippingAddressCountry] [nvarchar](400) NULL,
+	[ShippingAddressPhone] [nvarchar](400) NULL,
+	[ShippingAddressEMail] [nvarchar](400) NULL,
+	[ReceiptDetails] [nvarchar](max) NULL,
+	[LineItemsAmount] AS (dbo.fnProcurementOrderDetailAmount(Id)),
+	[LineItemsQuantity] AS (dbo.fnProcurementOrderDetailQuantity(Id)),
+	[TaxPercent] [decimal](18,4) NULL,
+	[PostTaxAmount] AS (dbo.fnProcurementOrderDetailAmount(Id) * ((100+ISNULL([TaxPercent],0))/100)),
+	[OtherCharges] [decimal](18,4) NULL,
+	[InvoiceAmount] AS (dbo.fnProcurementOrderDetailAmount(Id) * ((100+ISNULL([TaxPercent],0))/100) + ISNULL([OtherCharges],0)),
+	[SharedWith] [nvarchar](max) NULL,
+	[OrgId] [UniqueIdentifier] NOT NULL FOREIGN KEY REFERENCES Organization(Id),
+	[CreatedBy] [nvarchar](128) NOT NULL FOREIGN KEY REFERENCES AspNetUsers(Id),
+	[CreatedDate] [DateTime] NOT NULL DEFAULT GETDATE(),
+	[ModifiedBy] [nvarchar](128) NOT NULL FOREIGN KEY REFERENCES AspNetUsers(Id),
+	[ModifiedDate] [DateTime] NOT NULL DEFAULT GETDATE(),
+	[Authorized][Bit] NOT NULL DEFAULT 0,
+	[Active][Bit] NOT NULL DEFAULT 1,
+	[CustomColumn1] [nvarchar](max),
+	[ColExtensionId] [UniqueIdentifier] NULL,
+	[TimeStamp] [Timestamp] NOT NUll)on [Primary];
+
+ALTER TABLE [dbo].[ProcurementOrder] ADD CONSTRAINT UQ_ProcurementOrder_Code_OrgId UNIQUE(Code, OrgId);
+ALTER TABLE [dbo].[ProcurementOrder] WITH CHECK ADD  CONSTRAINT [CK_ProcurementOrder_ModifiedBy] CHECK  (([dbo].[fncCheckUserOrg]([ModifiedBy],[OrgId])=(1)));
+
+Use LtSysDb1
+Create Table ProcurementOrderDetail(
+	[Id] [UniqueIdentifier] Primary Key DEFAULT NEWSEQUENTIALID(),
+	[ProcurementOrderId] [UniqueIdentifier] NOT NULL FOREIGN KEY REFERENCES [ProcurementOrder](Id),
+	[ProcurementRequestDetailId] [UniqueIdentifier] NOT NULL FOREIGN KEY REFERENCES ProcurementRequestDetail(Id),
+	[ItemId] [UniqueIdentifier] NOT NULL FOREIGN KEY REFERENCES Item(Id),
+	[Serial] [int] NULL,
+	[ShrtDesc] [nvarchar](400) NULL,
+	[SalesPrice] [decimal] (18, 4) NOT NULL,
+	[Quantity] [decimal] (18, 4) NOT NULL,
+	[Weight] [decimal] (18, 4) NULL,
+	[WeightUnitId] [UniqueIdentifier] NULL FOREIGN KEY REFERENCES WeightUnit(Id),
+	[DiscountPercent] [decimal] (18, 4),
+	[DiscountAmount]  AS ([SalesPrice]*(isnull([DiscountPercent],(0))/(100))),
+	[LineItemPrice] AS ([SalesPrice]-[SalesPrice]*(ISNULL([DiscountPercent],0)/(100))),
+	[LineItemAmount] AS ([SalesPrice]-[SalesPrice]*(ISNULL([DiscountPercent],0)/(100))) * Quantity,
+	[Status] [nvarchar](50) NOT NULL DEFAULT 'PENDING',
+	[Remark] [nvarchar](max),
+	[OrgId] [UniqueIdentifier] NOT NULL FOREIGN KEY REFERENCES Organization(Id),
+	[CreatedBy] [nvarchar](128) NOT NULL FOREIGN KEY REFERENCES AspNetUsers(Id),
+	[CreatedDate] [DateTime] NOT NULL DEFAULT GETDATE(),
+	[ModifiedBy] [nvarchar](128) NOT NULL FOREIGN KEY REFERENCES AspNetUsers(Id),
+	[ModifiedDate] [DateTime] NOT NULL DEFAULT GETDATE(),
+	[Authorized][Bit] NOT NULL DEFAULT 0,
+	[Active][Bit] NOT NULL DEFAULT 1,
+	[CustomColumn1] [nvarchar](max),
+	[ColExtensionId] [UniqueIdentifier] NULL,
+	[TimeStamp] [Timestamp] NOT NUll) on [Primary];
+	
+ALTER TABLE [dbo].[ProcurementOrderDetail] ADD CONSTRAINT UQ_ProcurementOrderDetail_ProcurementOrderId_ItemId UNIQUE(ProcurementOrderId, ItemId);
+ALTER TABLE [dbo].[ProcurementOrderDetail] WITH CHECK ADD  CONSTRAINT [CK_ProcurementOrderDetail_ModifiedBy] CHECK (([dbo].[fncCheckUserOrg]([ModifiedBy],[OrgId])=(1)));

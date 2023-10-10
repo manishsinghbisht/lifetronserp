@@ -1,0 +1,160 @@
+﻿@using System.Threading
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.EmailConfig
+
+@{
+    ViewBag.Title = "New Email Configuration";
+}
+
+<h2> @Resources.Metadata_UISection_Create </h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { name = "frm", id = "frm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Email Configuration</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="panel panel-default">
+            <div class="panel-heading">@Resources.Metadata_UISection_References</div>
+            <div class="panel-body">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Name, new { @class = "manageMaxLength", @maxlength = "25", @placeholder = "John" })
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SmtpUsername, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.SmtpUsername, new { @class = "manageMaxLength", @maxlength = "400", @placeholder = "Username@Gmail.com" })
+                        @Html.ValidationMessageFor(model => model.SmtpUsername)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SmtpPassword, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(model => model.SmtpPassword, new { @class = "manageMaxLength", @maxlength = "400", @placeholder = "Password" })
+                        @Html.ValidationMessageFor(model => model.SmtpPassword)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SmtpHost, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.SmtpHost, new { @class = "manageMaxLength", @maxlength = "400", @placeholder = "smtp.gmail.com" })
+                        @Html.ValidationMessageFor(model => model.SmtpHost)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SmtpPort, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.SmtpPort, new { @class = "manageMaxLength", @maxlength = "4", @placeholder = "587 or 465" })
+                        @Html.ValidationMessageFor(model => model.SmtpPort)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Pop3Username, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Pop3Username, new { @class = "manageMaxLength", @maxlength = "400", @placeholder = "Username@Gmail.com" })
+                        @Html.ValidationMessageFor(model => model.Pop3Username)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Pop3Password, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(model => model.Pop3Password, new { @class = "manageMaxLength", @maxlength = "400", @placeholder = "Password" })
+                        @Html.ValidationMessageFor(model => model.Pop3Password)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Pop3Host, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Pop3Host, new { @class = "manageMaxLength", @maxlength = "400", @placeholder = "pop.gmail.com" })
+                        @Html.ValidationMessageFor(model => model.Pop3Host)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Pop3Port, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Pop3Port, new { @class = "manageMaxLength", @maxlength = "4", @placeholder = "995" })
+                        @Html.ValidationMessageFor(model => model.Pop3Port)
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Ssl, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Ssl)
+                        @Html.ValidationMessageFor(model => model.Ssl)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Tls, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Tls)
+                        @Html.ValidationMessageFor(model => model.Tls)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IsPrimary, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.IsPrimary)
+                        @Html.ValidationMessageFor(model => model.IsPrimary)
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    @Html.LabelFor(model => model.HeskSettings, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.HeskSettings, new { @class = "manageMaxLength", @maxlength = "1000", @placeholder = "Hesk Settings" })
+                        @Html.ValidationMessageFor(model => model.HeskSettings)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.OtherSettings, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.OtherSettings, new { @class = "manageMaxLength", @maxlength = "1000", @placeholder = "Other Settings" })
+                        @Html.ValidationMessageFor(model => model.OtherSettings)
+                    </div>
+                </div>
+
+               <div class="form-group">
+                    @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Authorized)
+                        @Html.ValidationMessageFor(model => model.Authorized)
+                    </div>
+                </div>
+
+            </div>
+        </div>     
+        
+        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" accesskey="S" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Email")
+}

@@ -1,0 +1,86 @@
+﻿@*@model Lifetrons.Erp.Data.JoiningRequest*@
+@using Resources;
+@using Lifetrons.Erp.Helpers
+@model IEnumerable<Lifetrons.Erp.Data.JoiningRequest>
+
+@{
+    ViewBag.Title = Resources.Metadata_UISection_Details;
+}
+
+<h2>Details</h2>
+@{ var item = Model.FirstOrDefault(); }
+    
+<div class="row">
+    <h4>JoiningRequest</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RequestType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => item.RequestType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequestDate)
+        </dt>
+
+        <dd>
+            @ControllerHelper.ConvertDateTimeFromUtc(item.RequestDate, User.TimeZone())
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => item.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApprovedDate)
+        </dt>
+
+        <dd>
+            @ControllerHelper.ConvertDateTimeFromUtc(item.ApprovedDate, User.TimeZone())
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequestComments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => item.RequestComments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResponseComments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => item.ResponseComments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RequestBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => item.AspNetUser.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubmittedTo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => item.AspNetUser1.UserName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+    @Html.ActionLink("Back to List", "Index")*@
+</p>

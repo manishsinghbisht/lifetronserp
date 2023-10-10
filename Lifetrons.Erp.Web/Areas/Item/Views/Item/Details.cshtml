@@ -1,0 +1,674 @@
+﻿@using Resources;
+@model Lifetrons.Erp.Data.Item
+
+@{
+    ViewBag.Title = "Item details";
+}
+
+<h2>Item details</h2>
+
+<div class="row center-block">
+    <p>
+
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) | @Html.ActionLink("Back to List", "Index")
+
+    </p>
+</div>
+
+<div class="form-horizontal">
+    <div class="panel panel-default">
+        <div class="panel-heading">References</div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(model => model.OwnerId, "Owner", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.AspNetUser.Name)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Name)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Code, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Code)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShrtDesc, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.ShrtDesc)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Desc, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Desc)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Lot / Batch</div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(model => model.QuantityPerLot, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.QuantityPerLot)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LotWeight, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.LotWeight)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.LotWeightUnitId, "LotWeightUnitId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.WeightUnit.Name)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Physical Attributes</div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Size, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Size)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Gauge, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Gauge)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ShapeId, "ShapeId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Shape.Name)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ColourId, "ColourId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Colour.Name)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.StyleId, "StyleId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Style.Name)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NatureId, "NatureId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Nature.Name)
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Inventory</div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(model => model.LeadTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.LeadTime)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MinStkLvl, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.MinStkLvl)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SafetyQty, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.SafetyQty)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ReOrdrQty, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.ReOrdrQty)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OpeningQty, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.OpeningQty)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.OpeningLotCost, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.OpeningLotCost)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Wastage, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Wastage)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ScrapRate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.ScrapRate)
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Level, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Level)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AlternativeId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.AlternativeId)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">@Resources.Metadata_UISection_Relations</div>
+        <div class="panel-body">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ClassificationId, "ClassificationId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.ItemClassification.Name)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CategoryId, "CategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.ItemCategory.Name)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TypeId, "TypeId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.ItemType.Name)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ABCClass, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.ABCClass)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.VEDClass, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.VEDClass)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.GroupId, "GroupId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.ItemGroup.Name)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.SubGroupId, "SubGroupId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.ItemSubGroup.Name)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CostingGroupId, "CostingGroupId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.CostingGroup.Name)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CostingSubGroupId, "CostingSubGroupId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.CostingSubGroup.Name)
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">@Resources.Metadata_UISection_SystemInfo</div>
+        <div class="panel-body">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Authorized, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.Authorized)
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                    @Html.LabelFor(model => model.Active, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Active)
+                        @Html.ValidationMessageFor(model => model.Active)
+                    </div>
+                </div>*@
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Media", htmlAttributes: new { @class = "control-label col-md-2" })
+        @if (Request.IsAuthenticated)
+        {
+            <a href="@Url.Action("UploadImage", "Media", new { ParentType = "Item", ParentId = Model.Id, SystemTags = "Item", returnURL = Request.Url.AbsoluteUri, area = "" })">
+                Upload pictures
+            </a>
+        }
+        <section class="content">
+            <div class="row-fluid">
+                <div class="span2">
+
+                    <div class="item">
+                        @{
+                            var media = (ViewBag.Media) as IEnumerable<Lifetrons.Erp.Data.Media>;
+                            if (media != null)
+                            {
+                                foreach (var item in media)
+                                {
+                                    var imageAddr = "~" + item.MediaPath;
+                                    <a class="fancybox" href="@Url.Content(imageAddr)" data-fancybox-group="gallery" title="@item.ShrtDesc">
+                                        <img src="@Url.Action("GetImageThumbnail", "Media", new {  area = "", mediaPath = imageAddr })" alt="Image Not Available"
+                                             onerror="this.onerror=null;this.src='@Url.Content("~/Images/ImageNotAvailable.jpg")';"
+                                             height="100" width="100">
+                                    </a>
+                                }
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    @*<dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Code)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Code)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ShrtDesc)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ShrtDesc)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Desc)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Desc)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreatedDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Authorized)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Authorized)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Active)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Active)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Size)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Size)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AvgWt_Weight)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AvgWt_Weight)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AvgWt_PerLotPcs)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AvgWt_PerLotPcs)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ABCClass)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ABCClass)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.VEDClass)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.VEDClass)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LeadTime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LeadTime)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MinStkLvl)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MinStkLvl)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SafetyQty)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SafetyQty)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ReOrdrQty)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ReOrdrQty)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.OpeningQty)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OpeningQty)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.OpeningLotCost)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OpeningLotCost)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Wastage)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Wastage)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ScrapRate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ScrapRate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Gauge)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Gauge)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Level)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Level)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AlternativeId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AlternativeId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TimeStamp)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TimeStamp)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AspNetUser.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AspNetUser.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AspNetUser1.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AspNetUser1.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AspNetUser2.UserName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AspNetUser2.UserName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Colour.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Colour.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CostingGroup.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CostingGroup.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CostingSubGroup.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CostingSubGroup.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.WeightUnit.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.WeightUnit.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ItemCategory.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ItemCategory.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ItemClassification.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ItemClassification.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ItemGroup.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ItemGroup.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Nature.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nature.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Organization.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Organization.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Shape.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Shape.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Style.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Style.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ItemSubGroup.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ItemSubGroup.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ItemType.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ItemType.Name)
+            </dd>
+
+        </dl>*@
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Item")
+    @*fancyboxScripts creates issue with Login button in Accounts/Login*@
+    @Scripts.Render("~/Scripts/fancybox/fancyboxScripts")
+}

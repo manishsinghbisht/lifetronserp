@@ -1,0 +1,149 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+
+@model IEnumerable<Lifetrons.Erp.Data.Operation>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<table class="table">
+
+    <tr>
+        <td>
+            <h3>List of Operations</h3>
+        </td>
+    </tr>
+  
+</table>
+
+<form method="post" action="@Url.Action("Index", "Operation")">
+    <div class="row">
+        <div class="form-group">
+            @Html.Hidden("isAuthenticated", true)
+            @Html.Label("Select Product", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ProductIdParam")
+                &nbsp;<input type="submit" value="Submit" class="btn btn-default" />
+            </div>
+
+        </div>
+    </div>
+
+</form>
+
+@if (Model != null)
+{
+
+
+    <table class="table">
+
+        <tr>
+            <td>
+                <h4>@Html.Raw((string)ViewBag.ProductName)</h4>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="@Url.Action("Create", new { productId = ViewData["ProductId"] })" class="btn btn-default">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Add
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    <table class="table table-striped table-hover">
+        <tr>
+            <th></th>
+            <th></th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Product.Name)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.EnterpriseStageId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Serial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProcessId)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.CycleTimeInHour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CycleCapacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PerUnitCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RatePerHour)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShrtDesc)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            <a id="Detail" href="@Url.Action("Details", new { productId = item.ProductId, enterpriseStageId = item.EnterpriseStageId, processId = item.ProcessId })">
+                <i id="social" class="fa fa-expand fa-2x social-fb"></i>
+            </a>
+        </td>
+        <td>
+            <a id="Edit" href="@Url.Action("Edit", new { productId = item.ProductId, enterpriseStageId = item.EnterpriseStageId, processId = item.ProcessId })">
+                <i id="social" class="fa fa-edit fa-2x social-em"></i>
+            </a>
+        </td>
+        @*<td>
+                @Html.DisplayFor(modelItem => item.Product.Name)
+            </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.EnterpriseStage.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Serial)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Process.Name)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.CycleTimeInHour) @Html.Raw("hour")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CycleCapacity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PerUnitCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RatePerHour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShrtDesc)
+        </td>
+        <td>
+            <a id="Delete" href="@Url.Action("Delete", new { productId = item.ProductId, enterpriseStageId = item.EnterpriseStageId, processId = item.ProcessId })">
+                <i id="social" class="fa fa-trash-o fa-2x social-gp"></i>
+            </a>
+        </td>
+
+    </tr>
+    }
+
+    </table>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Operation")
+}

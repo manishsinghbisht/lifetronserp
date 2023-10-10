@@ -1,0 +1,156 @@
+﻿@using Resources;
+@using Lifetrons.Erp.Helpers
+@model Lifetrons.Erp.Data.BOMLineItem
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BOM LineItem</h4>
+    <hr />
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { productId = Model.ProductId, itemId = Model.ItemId }) |
+        @Html.ActionLink("Back to List", "Details", "BOM", new { id = Model.ProductId }, null)
+    </p>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </dt>
+        <dd>
+            @Html.HiddenFor(model => model.ProductId)
+            @Html.Raw(ViewBag.ProductName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Item.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ShrtDesc)
+        </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WeightUnitId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WeightUnit.Name)
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShrtDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AllowedLossQuantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AllowedLossQuantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AllowedLossWeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AllowedLossWeight)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AllowedLossWeightUnitId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WeightUnit1.Name)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+       
+
+        @*Start Details - Authorized, Active, Created and Modified*@
+        <dt>
+            @Html.DisplayNameFor(model => model.Authorized)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Authorized)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.UserName)
+            &nbsp;
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.CreatedDate, User.TimeZone())
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser1.UserName)
+            &nbsp;
+            @ControllerHelper.ConvertDateTimeFromUtc(Model.ModifiedDate, User.TimeZone())
+        </dd>
+        @*End Details - Authorized, Active, Created and Modified*@
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { productId = Model.ProductId, itemId = Model.ItemId }) |
+    @Html.ActionLink("Back to List", "Details", "BOM", new { id = Model.ProductId }, null)
+</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/BOMLineItem")
+}

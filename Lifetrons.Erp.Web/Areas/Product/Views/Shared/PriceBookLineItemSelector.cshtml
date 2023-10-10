@@ -1,0 +1,97 @@
+﻿@using Lifetrons.Erp.Helpers
+@model IEnumerable<Lifetrons.Erp.Data.PriceBookLineItemSelectorModel>
+
+@{
+    ViewBag.Title = "PriceBookLineItemSelector";
+}
+
+<h2>PriceBook Line Item Selector</h2>
+
+@using (Html.BeginForm("PriceBookLineItemSelectorPost", "PriceBookLineItemSelector", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" id="returnAction" name="returnAction" value="@TempData["returnAction"]" />
+    <input type="hidden" id="returnController" name="returnController" value="@TempData["returnController"]" />
+    <input type="hidden" id="returnUrl" name="returnUrl" value="@TempData["returnUrl"]" />
+    <p>
+        @if (TempData["EnablePriceBookSelection"].ToString() == "true")
+        {
+            @Html.DropDownList("PriceBookId", string.Empty)
+    <input id="submit1" name="submit1" value="Submit" type="submit" />
+        }
+        else
+        {
+            <input type="hidden" value="@ViewData["PriceBookId"]" />
+            @Html.Label("PriceBook")
+
+            <input type="text" value="@TempData["PriceBookName"]" readonly>
+        }
+
+    </p>
+}
+<div class="panel-body" style="overflow:auto;">
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.IsSelected)*@
+
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ListPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShrtDesc)
+            </th>
+            <th>
+                @Html.DisplayName("Image")
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @*
+                        How to get current URL:
+                        - Without querystring: Request.Url.GetLeftPart(UriPartial.Path)
+                        - With querystring: Request.Url.PathAndQuery*@
+
+                    <a href="@Url.Action("PriceBookLineItemSelectorManageSelection", new { productId = item.ProductId, returnUrl = TempData["returnUrl"] })" class="btn btn-default">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        Add
+                    </a>
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ListPrice)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShrtDesc)
+                </td>
+                <td>
+                    <img src="@Url.Action("GetProductImageThumbnail", "Media", new { area = "", productId = item.ProductId })" class="img-responsive" alt="Image Not Available"
+                         onerror="this.onerror=null;this.src='@Url.Content("~/Images/ImageNotAvailable.jpg")';" height="50" width="50">
+
+                    @*<img src="@item.ImageAddr" class="img-thumbnail" alt="Image Not Available" onerror="this.src = '../../../Images/ImageNotAvailable.jpg'">*@
+                </td>
+
+            </tr>
+        }
+
+
+    </table>
+</div>
